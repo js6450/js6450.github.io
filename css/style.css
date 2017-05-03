@@ -1,0 +1,108 @@
+h6{
+  font-weight: 400;
+  line-height: 24px;
+  background-color: rgba(0,0,0,0.08);
+  padding-bottom: 1rem;
+  margin: 0;
+  padding-top: 1rem;
+  text-align: center;
+  color: rgba(0,0,0,0.4);
+}
+
+.mdl-layout__header{
+  background-color: rgba(0,0,0,0.85) !important;
+}
+
+.mdl-layout__header .mdl-layout__drawer-button{
+  background-color: transparent !important;
+}
+
+#title-link{
+  text-decoration: none;
+  color: white;
+}
+
+#d-title-link{
+  text-decoration: none;
+  color: black;
+}
+
+.b-link{
+  text-decoration: none;
+  color: rgba(0,0,0,0.4);
+}
+
+.p-link:hover{
+  font-weight: bold;
+}
+
+.full-page-content{
+  width: 80vw;
+  display: block;
+  position: relative;
+  margin: auto;
+  padding: 5rem 0;
+}
+
+.p-link{
+  text-decoration: none;
+  color: black;
+}
+
+.grid-img{
+  filter: brightness(90%);
+}
+
+.grid-img:hover{
+  animation-name: increaseB;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes toColor{
+  to{filter: grayscale(1);}
+}
+
+@keyframes increaseB{
+  to{filter: brightness(120%);}
+}
+
+#profile-img{
+  width: 50vw;
+  display: block;
+  position: relative;
+  margin: auto;
+}
+
+.p-img{
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.video-wrap {
+	position: relative;
+	/*padding-bottom: 56.25%; !* 16:9 *!*/
+	padding-bottom: 53.25%;
+	padding-top: 25px;
+	height: 0;
+}
+.video-wrap iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.mdl-button--raised{
+  margin-right: 1rem;
+}
+
+.mdl-mini-footer{
+  padding: 24px 24px !important;
+  background-color: rgba(0,0,0,0.85) !important;
+}
+
+pre{
+  overflow-x: scroll;
+}
