@@ -20,20 +20,14 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="about.html">ABOUT</a>
-        <a class="mdl-navigation__link" href="create.html">CREATE</a>
-        <a class="mdl-navigation__link" href="interact.html">INTERACT</a>
-        <a class="mdl-navigation__link" href="workshop.html">WORKSHOP</a>
+        <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
       </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="about.html">ABOUT</a>
-      <a class="mdl-navigation__link" href="create.html">CREATE</a>
-      <a class="mdl-navigation__link" href="interact.html">INTERACT</a>
-      <a class="mdl-navigation__link" href="workshop.html">WORKSHOP</a>
+      <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -45,7 +39,7 @@
       <p><u>Organizing your media content</u></p>
       <p>Images:</p>
       <p>Very high resolution photos on the web may take too much time to load. There needs to be a compromise between the quality and size of your photos. You can resize your images for your website using Photoshop by selecting the "save for web" under export.</p>
-      <img class="p-img" src="img/workshop/save-for-web.jpg">
+      <img class="p-img" src="img/webportfolio/save-for-web.jpg">
       <br>
       <br>
       <p>It may be also a good idea to keep your images sizes same for all the images that you are going to use for your website. For example, if you are planning on creating a grid of images, making your images to be same sizes will help with keeping a uniform and finished look. For instance, I like sizing my images to 1000px width 562px height.</p>
@@ -174,13 +168,13 @@
       <p><u>Setting up your Github Pages</u></p>
       <p>Github allows you to host a single website per username, and this is called <a class="p-link" href="https://pages.github.com/" target="_blank">Github Pages</a>. Please go to their <a class="p-link" href="https://pages.github.com/" target="_blank">introduction website</a> and read up about what they are. If you create a repository, which is like a folder on Github, and call it <i>your_github_username</i>.github.io, it will let you host these files in the form of a website. So for example, my Github account username is js6450, so if I create a repository called js6450.github.io and put the files for my website in this repository, I can have it hosted under URL of <a class="p-link" href="http://js6450.github.io" target="_blank">js6450.github.io</a></p>
       <p>To create a new repository, click on "new repository" button on your account page, or click on this <a class="p-link" href="https://github.com/new" target="_blank">link</a>.</p>
-      <img class="p-img" src="img/workshop/github-repo.jpg">
+      <img class="p-img" src="img/webportfolio/github-repo.jpg">
       <br><br>
       <p>For your repository name, enter <i>your_github_username</i>.github.io, like in the screenshot above, and click on the "create repository" button at the bottom.</p>
       <p><u>Uploading your files</u></p>
       <p>Assuming you have all or some files for your website ready, we can how upload them to the Github repository to actually see it hosted online.</p>
       <p>This might be a little tricky, because here we are going to use terminal. Open up your "terminal" application and it will look something like this. </p>
-      <img style="display: block; position: relative; margin: auto;" width="50%" src="img/workshop/terminal-00.jpg">
+      <img style="display: block; position: relative; margin: auto;" width="50%" src="img/webportfolio/terminal-00.jpg">
       <br><br>
       <p>First of all, we need to locate the folder that contains the files that we created for our website. To do this, open up finder, and go to the folder and after typing in "cd " (with the space after "cd"), drag your folder on to the terminal screen. When you do this, you will see something like this: </p>
       <pre>
@@ -196,7 +190,7 @@
         Initialized empty Git repository in /Users/js6450/Desktop/web-portfolio-workshop/.git/
       </pre>
       <p>Next, we have to link this local git repository to the one that we have created on Github so we can upload our files to it. When we created a new repository on Github's website, you should have seen something like this image below:</p>
-      <img class="p-img" src="img/workshop/repo-url.jpg">
+      <img class="p-img" src="img/webportfolio/repo-url.jpg">
       <br><br>
       <p>The important information on this page is the url available for copy in the section that says "Quick setup - if you've done this kind of thing before". The url in the form of https://github.com/<i>username</i>/<i>username</i>.github.io.git is the information we need to link our local folder to the one on Github. Using this url, we are going to add it as our "remote origin", meaning that when we tell it to upload files, this is where it will be uploaded to. Type in:</p>
       <pre>
@@ -229,9 +223,7 @@
       <div class="mdl-mini-footer__left-section">
         <div class="mdl-logo">Jiwon Shin</div>
         <ul class="mdl-mini-footer__link-list">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Interact</a></li>
-          <li><a href="#">Create</a></li>
+          <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
         </ul>
       </div>
     </footer>
