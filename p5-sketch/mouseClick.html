@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>rotate_rect</title>
+    <script src="../libraries/p5.js" type="text/javascript"></script>
+
+    <script src="../libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="../libraries/p5.sound.js" type="text/javascript"></script>
+
+    <script>
+    var numCircles = 100;
+    var circles = [];
+
+    function setup(){
+      createCanvas(windowWidth, 480);
+
+      noStroke();
+
+      for(var i = 0; i < numCircles; i++){
+        circles.push(new Circle(width / 2, height / 2));
+      }
+    }
+
+
+    function draw(){
+      background(0, 30);
+
+      for(var i = 0; i < circles.length; i++){
+        circles[i].checkBoundary();
+        circles[i].update();
+        circles[i].display();
+      }
+    }
+
+    function Circle(i, j){
+      this.xorigin = i;
+      this.yorigin = j;
+      this.xpos = i;
+      this.ypos = j;
+      this.xspeed = random(-2, 2);
+      this.yspeed = random(-2, 2);
+      this.size = random(20, 100);
+      this.scale = random(1) + 1;
+      this.c = color(random(255), random(255), random(255), 150);
+      this.toHeart = false;
+
+      this.display = function(){
+        fill(this.c);
+
+        if(mouseIsPressed){
+          if(dist(this.xpos, this.ypos, mouseX, mouseY) <= this.size / 2){
+            this.toHeart = true;
+          }
+        }
+
+        if(this.toHeart == true){
+          push();
+          translate(this.xpos - 50, this.ypos);
+          scale(this.scale);
+          beginShape();
+          vertex(50, 15);
+          bezierVertex(50, -5, 100, 5, 50, 45);
+          vertex(50, 15);
+          bezierVertex(50, -5, 0, 5, 50, 45);
+          endShape();
+          pop();
+        }else{
+          ellipse(this.xpos, this.ypos, this.size, this.size);
+        }
+      }
+
+      this.update = function(){
+        this.xpos += this.xspeed;
+        this.ypos += this.yspeed;
+
+      }
+
+      this.checkBoundary = function(){
+        if(this.xpos <= 0 || this.ypos <= 0 || this.ypos >= height){
+          this.xpos = this.xorigin;
+          this.ypos = this.yorigin;
+          this.toHeart = false;
+          }   
+      }
+
+    }
+    </script>
+
+    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top; width: 100vw; height: auto;} </style>
+  </head>
+  <body>
+  </body>
+</html>

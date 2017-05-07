@@ -306,6 +306,88 @@
 
       <p>Please don't forget to use to the <a href="https://p5js.org/reference" target="_blank" class="p-link">p5.js's reference page</a> for further information about functions used in this workshop and more!</p>
 
+      <h5><b>APPENDIX</b> | Mouse interaction - clickable circle objects</h5>
+      <p>This is what I made with a student after the workshop. We made the circle objects clickable. When the circle is clicked, they turn into hearts. The code for this program is shown below!</p>
+      <iframe height="480px" src="p5-sketch/mouseClick.html"></iframe>
+      <pre>
+      var numCircles = 100;
+      var circles = [];
+
+      function setup(){
+        createCanvas(windowWidth, 480);
+
+        noStroke();
+
+        for(var i = 0; i < numCircles; i++){
+          circles.push(new Circle(width / 2, height / 2));
+        }
+      }
+
+
+      function draw(){
+        background(0, 30);
+
+        for(var i = 0; i < circles.length; i++){
+          circles[i].checkBoundary();
+          circles[i].update();
+          circles[i].display();
+        }
+      }
+
+      function Circle(i, j){
+        this.xorigin = i;
+        this.yorigin = j;
+        this.xpos = i;
+        this.ypos = j;
+        this.xspeed = random(-2, 2);
+        this.yspeed = random(-2, 2);
+        this.size = random(20, 100);
+        this.scale = random(1) + 1;
+        this.c = color(random(255), random(255), random(255), 150);
+        this.toHeart = false;
+
+        this.display = function(){
+          fill(this.c);
+
+          if(mouseIsPressed){
+            if(dist(this.xpos, this.ypos, mouseX, mouseY) <= this.size / 2){
+              this.toHeart = true;
+            }
+          }
+
+          if(this.toHeart == true){
+            push();
+            translate(this.xpos - 50, this.ypos);
+            scale(this.scale);
+            beginShape();
+            vertex(50, 15);
+            bezierVertex(50, -5, 100, 5, 50, 45);
+            vertex(50, 15);
+            bezierVertex(50, -5, 0, 5, 50, 45);
+            endShape();
+            pop();
+          }else{
+            ellipse(this.xpos, this.ypos, this.size, this.size);
+          }
+        }
+
+        this.update = function(){
+          this.xpos += this.xspeed;
+          this.ypos += this.yspeed;
+
+        }
+
+        this.checkBoundary = function(){
+          if(this.xpos <= 0 || this.ypos <= 0 || this.ypos >= height){
+            this.xpos = this.xorigin;
+            this.ypos = this.yorigin;
+            this.toHeart = false;
+            }   
+        }
+
+      }
+      </pre>
+
     </div>
     <footer class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
