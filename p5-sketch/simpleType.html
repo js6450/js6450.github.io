@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>rotate_rect</title>
+    <script src="../libraries/p5.js" type="text/javascript"></script>
+
+    <script src="../libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="../libraries/p5.sound.js" type="text/javascript"></script>
+
+    <script>
+      var numC = 13;
+      var numD = 6;
+      var numG = 7;
+
+      var A = 65;
+
+      var numSound = 0;
+      var pressedKey = "";
+
+      var sounds = [];
+
+      function preload() {
+        for (var i = 0; i < numC; i++) {
+          sounds.push(loadSound('assets/c' + i + ".mp3"));
+        }
+
+        for (var i = 0; i < numD; i++) {
+          sounds.push(loadSound('assets/d' + i + ".mp3"));
+        }
+
+        for (var i = 0; i < numG; i++) {
+          sounds.push(loadSound('assets/g' + i + ".wav"));
+        }
+      }
+
+      function setup() {
+        createCanvas(windowWidth, 240);
+        colorMode(HSB);
+        noStroke();
+      }
+
+      function draw() {
+        background(255, 30);
+
+        textSize(32);
+        text(pressedKey, 50, 50, width - 100, height - 100);
+        
+      }
+
+      function keyPressed() {
+        pressedKey += key;
+        numSound = key.charCodeAt(0) - A;
+        console.log(numSound);
+
+        //catch other keys being pressed;
+        if (numSound >= 0 && numSound <= 26) {
+          sounds[numSound].play();
+        }
+      }
+    </script>
+
+    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top; width: 100vw; height: auto;} </style>
+  </head>
+  <body>
+  </body>
+</html>
