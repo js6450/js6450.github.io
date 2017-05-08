@@ -202,7 +202,7 @@
             push();
             translate(i * c_width + c_width / 2, j * c_height + c_height / 2);
             rotate(frameCount * 0.05);
-            fill(frameCount % 255, 255, 255);
+            fill(frameCount % 360, 360, 360);
             rect(0, 0, 30, 30);
             pop();
           }
@@ -211,7 +211,7 @@
       </pre>
 
       <p>The first thing to note is that our rotation has slowed down. This is because, inside the rotate() function, it now has * 0.05 after the frameCount. This decreases the speed of the rotation.</p>
-      <p>Secondly, we've changed the colorMode to HSB, which stands for Hue, Saturation, Brightness. This color mode makes it easy for us to go through the primary colors, as we only need to change one number, hue. In this example, saturation and brightness is set to their maximum values, 255. We can also use frameCount variable in our color value. Which will make it change from red to blue, and on repeat.</p>
+      <p>Secondly, we've changed the colorMode to HSB, which stands for Hue, Saturation, Brightness. This color mode makes it easy for us to go through the primary colors, as we only need to change one number, hue. In this example, saturation and brightness is set to their maximum values, 360. We can also use frameCount variable in our color value. Which will make it change from red to blue, and on repeat.</p>
       <p>The last thing to look at is the second number in our background() function. This second number indicates the opacity of the background, and using this will create this "fading" or "trailing" visual.</p>
 
       <h5><b>STEP 4</b> | Creating regenerating circles</h5>
