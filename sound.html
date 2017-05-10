@@ -52,6 +52,42 @@
       </pre>
       <p>Please remember that <a href="https://p5js.org/reference/#/libraries/p5.sound" target="_blank" class="p-link">the reference page</a> is also a great resource to look at when you are trying to figure things out with the p5.sound.js library.</p>
 
+      <h5><b>STEP 2</b> | Loading a Sound File</h5>
+      <iframe height="240px" src="p5-sketch/playSound.html"></iframe>
+      <pre>
+      var soundTrack;
+
+      var soundPlaying = false;
+
+      function preload() {
+          soundTrack = loadSound('https://js6450.github.io/p5-sketch/assets/bg.mp3');
+      }
+
+      function setup() {
+        createCanvas(windowWidth, 240);
+      }
+
+      function draw() {
+        background(0, 30);
+
+        if (soundPlaying) {
+          fill(255);
+          ellipse(frameCount % width, height / 2, 100, 100);
+        }
+      }
+
+      function mousePressed() {
+        if (soundTrack.isPlaying()) {
+          soundTrack.pause();
+          soundPlaying = false;
+        } else {
+          soundTrack.play();
+          soundPlaying = true;
+        }
+      }
+      </pre>
+
+      <h5><b>STEP 3</b> | Matching Type with Sound</h5>
       <iframe height="240px" src="p5-sketch/simpleType.html"></iframe>
       <pre>
       var numC = 13;
@@ -67,15 +103,15 @@
 
       function preload() {
         for (var i = 0; i < numC; i++) {
-          sounds.push(loadSound('assets/c' + i + ".mp3"));
+          sounds.push(loadSound('https://js6450.github.io/p5-sketch/assets/c' + i + ".mp3"));
         }
 
         for (var i = 0; i < numD; i++) {
-          sounds.push(loadSound('assets/d' + i + ".mp3"));
+          sounds.push(loadSound('https://js6450.github.io/p5-sketch/assets/d' + i + ".mp3"));
         }
 
         for (var i = 0; i < numG; i++) {
-          sounds.push(loadSound('assets/g' + i + ".wav"));
+          sounds.push(loadSound('https://js6450.github.io/p5-sketch/assets/g' + i + ".wav"));
         }
       }
 
@@ -105,6 +141,7 @@
       }
       </pre>
 
+      <h5><b>STEP 4</b> | Matching Visual with Sound</h5>
       <iframe height="240px" src="p5-sketch/animatedType.html"></iframe>
       <pre>
       var numC = 13;
@@ -122,15 +159,15 @@
 
       function preload() {
         for (var i = 0; i < numC; i++) {
-          sounds.push(loadSound('assets/c' + i + ".mp3"));
+          sounds.push(loadSound('https://js6450.github.io/p5-sketch/assets/c' + i + ".mp3"));
         }
 
         for (var i = 0; i < numD; i++) {
-          sounds.push(loadSound('assets/d' + i + ".mp3"));
+          sounds.push(loadSound('https://js6450.github.io/p5-sketch/assets/d' + i + ".mp3"));
         }
 
         for (var i = 0; i < numG; i++) {
-          sounds.push(loadSound('assets/g' + i + ".wav"));
+          sounds.push(loadSound('https://js6450.github.io/p5-sketch/assets/g' + i + ".wav"));
         }
 
         for (var i = 0; i < 26; i++) {
@@ -195,6 +232,8 @@
       }
       </pre>
 
+
+     
 
     </div>
     <footer class="mdl-mini-footer">
