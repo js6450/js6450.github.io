@@ -42,7 +42,15 @@
     <div id="main-content" class="full-page-content">
       <h4><b>CREATING VISUALS WITH SOUND USING p5.Sound.js</b></h4>
       <h5><b>STEP 1</b> | What is p5.Sound.js?</h5>
-      <p><a href="https://p5js.org/" target="_blank" class="p-link">p5.js</a> is a javascript library which you can basically think of as Processing's javascript version. It allows users to do graphical programming easily. In this workshop, we are going to use p5.js to create visuals iteratively and make multiples do the same, or make them each do something similar but different.</p>
+      <p><a href="https://p5js.org/reference/#/libraries/p5.sound" target="_blank" class="p-link">p5.Sound.js</a> is a sound library of p5.js. If you had downloaded the "p5.js complete" zip file, this library should have been included in your download. If so, we need to include this file in the folder with the rest of our javascript libraries and include it as our script tag in our &lt;head>.
+      <pre>
+        &lt;script language="javascript" src="libraries/p5.dom.js">&lt;/script>
+      </pre>
+      If you don't have the p5.js library files downloaded, you can also go with the CDN option.</p>
+      <pre>
+        &lt;script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/addons/p5.sound.js">&lt;/script>
+      </pre>
+      <p>Please remember that <a href="https://p5js.org/reference/#/libraries/p5.sound" target="_blank" class="p-link">the reference page</a> is also a great resource to look at when you are trying to figure things out with the p5.sound.js library.</p>
 
       <iframe height="240px" src="p5-sketch/simpleType.html"></iframe>
       <pre>
