@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+    <script language="javascript" src="libraries/p5.dom.js"></script>
+    <title>Jiwon Shin</title>
+</head>
+<style>
+    .p5-sketch{
+        width: 100% !important;
+        height: auto !important;
+    }
+</style>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div id="main-content" class="full-page-content">
+            <h4><b>NAS Access & Cyberduck</b></h4>
+            <h5>Resetting Your Password for NAS</h5>
+            <img class="p-img" src="img/fs/nas.jpg">
+            <p>You should have received an email that looks something like the above image, giving you access to NAS. The email should also contain the pre-set password. If you click on to any of the hyperlinked ip addresses or type in <a href="http://192.168.50.184:5000" target="_blank" class="p-link">192.168.50.184:5000</a> in your address bar, it will lead you to a website that looks like the below image.</p>
+            <img class="p-img" src="img/fs/nas1.jpg">
+            <p>Log in to your account with your netid and the pre-set password (if you have not changed it already).</p>
+            <img class="p-img" src="img/fs/nas2.jpg">
+            <p>This is the web interface of your NAS account. If you click on the "person" icon on the top left corner of the web page, you will see a drop down menu like the image above. Click on the <b>Personal</b> section.</p>
+            <img class="p-img" src="img/fs/nas3.jpg">
+            <p>Erase and type in your new desired password in the <b>New Password</b> and <b>Confirm Password</b> boxes, and click <b>Okay</b>. Your account is not set with the new password! No more copying from the email!</p>
+            <h5>Adding Your NAS Account as a Bookmark on Cyberduck</h5>
+            <img class="p-img" src="img/fs/cd1.jpg">
+            <p>Open up your Cyberduck and go to <b>Bookmark</b> > <b>New Bookmark</b> in the menu.</p>
+            <img class="p-img" src="img/fs/cd2.jpg">
+            <p>You will see a window pop up like the image above. It will look similar to the window you get when you press <b>Open Connection</b>. Give your bookmark a nickname, and more importantly, make sure that the server ip address and your username are correct and that the connection type is set to <b>FTP-SSL (Explicit AUTH TLS)</b>. Once you are done entering the information, just close out of the window.</p>
+            <img class="p-img" src="img/fs/cd3.jpg">
+            <p>You will now see that your NAS account is bookmarked on Cyberduck. You can now just simply double click on the bookmark and it will automatically connect you to the NAS server.</p>
+            <img class="p-img" src="img/fs/cd-password.jpg">
+            <p>If this is the first time you are logging on to NAS with Cyberduck or you had just changed your NAS password, another window will pop up, prompting you to enter in your password. If you checkbox the <b>Add to Keychain</b> option, you will no longer have to enter in your password when you connect either.</p>
+            <h5>Knowing Where to Upload Your Files</h5>
+            <img class="p-img" src="img/fs/cd-filepath.jpg">
+            <p>Once you are connected to your NAS account on Cyberduck, go to <b>home</b> > <b>www</b> folder. This is where your <b>home directory</b> is, meaning that this is where your base address <b>http://192.168.50.184/~<i>yourNetId</i>/</b> is pointing to. Simply speaking, uploading all your files that you want to display on your website in this folder.</p>
+            <img class="p-img" src="img/fs/cd6.jpg">
+            <p>As the semester continues, you will accumulate a lot of files on your server. Additionally, because a web page usually links to various external files (such as images, css stylesheets and javascript files), well-organized file structure is crucial in eliminating petty mistakes and broken links. You could have folders for each of the week of the semester, or you could have folders for each of your assignments. Generally, you should be creating a folder for each of your complete websites.</p>
+            <img class="p-img" src="img/fs/cd8.jpg">
+            <p>Remember that if the html file that you want to display as the homepage is named <b>index.html</b>, then you access the web page online by simply going to <b>http://192.168.50.184/~<i>yourNetId</i>/<i>folderName</i></b>. You don't have to add <b>index.html</b> after it. HOWEVER, if you name your homepage as something like <b>assignment1.html</b>, like in the image above, then you HAVE to add the specific html file to the address, like this: <b>http://192.168.50.184/~<i>yourNetId</i>/<i>folderName</i>/assignment1.html</b></p>
+            <br>
+            <h4><b>File Structure for The Web</b></h4>
+            <p>Let's go a little more into depth about how to organize your files, so it is efficient for programming for the web.</p>
+            <img class="p-img" src="img/fs/fs2.jpg">
+            <h5>Naming Conventions for Folders and Files</h5>
+            <p>When naming your folders and files, try not to use spaces in between. A space bar character within your folder / file name is not actually blank, or empty, but it contains a character that represents this space and visually shows as a blank space. If you are trying to name a folder / file that consist of multiple words, like "comic project" or "audio project", then there are multiple ways of doing this without using spaces.</p>
+            <p><u>Camel Casing</u>: This is a way of writing compound / multiple words that replaces spaces by capitalizing the word that would usually come after the space. For example, if you were to camel case the sentence "bubble tea is the best", you would write it as "bubbleTeaIsTheBest". In the above imave, "audio project" is written using camel casing as <b>audioProject</b>.</p>
+            <p><u>Using Underscore or Dash</u>: You can simply replace your spaces with underscores or dashes. So, "audio project" can be written as <b>audio_project</b> or <b>audio-project</b>.</p>
+            <h5>Folder Structure</h5>
+            <p>A website generally will contain similar types of files. This means that you can decide on a structure for websites and keep it that way. Once you get used to how to structure your files for the web, giving file paths for your images, videos, audios, stylesheets, etc., will no longer be confusing. In the image above, within the folder of my website "assignment1", I have three major folders: assets, css, and js. The two folders, css and js, are pretty self-explanatory. They contain css stylesheets and javascript files, respectively.</p>
+            <img class="p-img" src="img/fs/fs3.jpg">
+            <p>The assets folder contains all of my media assets. Within the folder, it has three folders: audio, img and video. This way, I can categorize my media assets in to their categories and keep them organized.</p>
+            <p>Please keep in mind that this isn't the only way that you can structure your folders and files. What is important is that you try to keep a uniform format that you are comfortable with and repeatedly use.</p>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
