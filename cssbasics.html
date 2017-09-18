@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+    <script language="javascript" src="libraries/p5.dom.js"></script>
+    <title>Jiwon Shin</title>
+</head>
+<style>
+    .p5-sketch{
+        width: 100% !important;
+        height: auto !important;
+    }
+
+</style>
+<body>
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+
+    <main class="mdl-layout__content">
+
+        <div id="main-content" class="full-page-content">
+            <h4><b>CSS Basics & Using Inspector</b></h4>
+            <h5>Finding Your Tool: Inspector</h5>
+            <p>Before we review css, we are going to explore something that will help us throughout the semester. On every web browser, there is a tool called <b>inspector</b> that allows you to inspect all the elements that compose a web page. This means that you will be able to see the html and css codes of the web page, and it also gives you some room to play around. You will be able to apply changes to the code and immediately see visual changes that it may create. Let's see how to open this window on Chrome, Firefox and Safari, to see what it looks like and what we can do with it to learn and experiment with css.</p>
+            <p><u>Chrome</u>:</p>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <img class="p-img" src="img/basicCss/chrome1.jpg">
+                </div>
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <img class="p-img" src="img/basicCss/chrome2.jpg">
+                </div>
+            </div>
+            <p>Chrome is the most recommended when doing web development, one of the reasons being that the inspector tool is user-friendly. On Chrome, you can get to inspector by 1) going to <b>View > Developer > Developer Tools</b> on the menu, or 2) right-clicking and selecting <b>Inspect</b>.</p>
+            <p><u>Firefox</u>:</p>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <img class="p-img" src="img/basicCss/firefox1.jpg">
+                </div>
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <img class="p-img" src="img/basicCss/firefox2.jpg">
+                </div>
+            </div>
+            <p>On Firefox, you can get to inspector by 1) going to <b>Tools > Web Developer > Inspector</b> on the menu, or 2) right-clicking and selecting <b>Inspect Element</b>.</p>
+            <p><u>Safari</u>:</p>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <img class="p-img" src="img/basicCss/safari1.jpg">
+                </div>
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <img class="p-img" src="img/basicCss/safari2.jpg">
+                </div>
+            </div>
+            <p>Safari is a little different from the other two browsers, because you have to click a checkbox so we can see these developer tools. Go to <b>Safari > Preferences</b> on the menu and in the <b>Advanced</b> tab, check the <b>Show Develop menu in menu bar</b> option.</p>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <img class="p-img" src="img/basicCss/safari3.jpg">
+                </div>
+                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <img class="p-img" src="img/basicCss/safari4.jpg">
+                </div>
+            </div>
+            <p>Once we have done the above step, we can now get to inspector by 1) going to <b>Develop > Show Web Inspector</b> on the menu, or 2) right-clicking and selecting <b>Inspect Element</b>.</p>
+            <h5>Getting to Know Inspector</h5>
+            <p>For the purpose of this workshop, I will be using Chrome to demonstrate how we can use inspector to learn and test css. But inspector works just about the same for all other browsers, so you shouldn't have too much difficulty following along even if you are not using Chrome.</p>
+            <img class="p-img" src="img/basicCss/inspector1.jpg">
+            <p>When you pull up the inspector window, using any of the two methods shown in the previous section, you will see a window pop up, like in the image above.</p>
+            <img class="p-img" src="img/basicCss/inspector2.jpg">
+            <p>You can change the location of this window by clicking on the "more" icon with three dots. There, you will be able to select your <b>Dock side</b>. The first option will make your inspector a separate window, and the rest three options will change which side of the browser the inspector window is attached to.</p>
+            <img class="p-img" src="img/basicCss/inspector3.jpg">
+            <p>For now, we will focus on what is on the <b>Elements</b> tab of the inspector window. We will learn about how to use the <b>Console</b> tab for javascript soon as well. In the Elements tab, you will see that the left side of the inspector displays the html code, while on the right side shows the css of the selected html element. In the image above, I have clicked on the body html tag, so it shows the css associated with the body tag on the right side. As this website contains raw html code, it doesn't seem to have any special styling. However, an important thing to note here is that there is some <b>default css</b> that exists for the body html tag itself, which is:
+            <pre>
+            body{
+                display: block;
+                margin: 8px;
+            }
+            </pre>
+            Let's take this opportunity to review the syntax of css. First, we see the selector, body. This means that the css declarations inside of the curly brackets are for this particular selector, in this case, a html tag. Remember that we can use 3 different types of selectors: 1) html tags, 2) class name, 3)id name. If we had an html code like this:
+            <pre>
+                &lt;img class="grid-img" id="donut-img" src="img/donut.jpg">
+            </pre>
+            then we can use the class name "grid-img" as our selector like this:
+            <pre>
+                .grid-img{
+                    width: 500px;
+                    height: 400px;
+                }
+            </pre>
+            and we can also use its id name as our selector like this:
+            <pre>
+                #donut-img{
+                    width: 1000px;
+                    height: 800px;
+                }
+            </pre>
+            Let me give an example of the different cases for using an html tag, class name and id name as your selector. Let's say that I am creating a web page with a lot of images. If I want all my images to have a uniform size, I will set this using the img html tag as my selector in my css. If I want to create a category of important images, and want to put a red border around them, I will create a class, maybe call it something like important-img, and use .important-img as my selector to set this style. Lastly, if I want to make an exception and use one particular image to be always fixed on the bottom right corner of my website (maybe it's my "move to top" button), I can do that by giving that particular image an id name (in this case, something like #move-top). The html and css code for this example scenario will look something like this:
+            <br>
+            <br>
+            <u>html:</u>
+            <pre>
+                &lt;img src="img/normal-img.jpg">
+                &lt;img class="important-img" src="img/important-img.jpg">
+                &lt;img src="img/normal-img.jpg">
+                &lt;img class="important-img" src="img/important-img.jpg">
+                &lt;img src="img/normal-img.jpg">
+                &lt;img src="img/normal-img.jpg">
+                &lt;img class="important-img" src="img/important-img.jpg">
+                &lt;img id="move-top" src="img/move-top-img.jpg">
+            </pre>
+            <u>css:</u>
+            <pre>
+                img{
+                    width: 500px;
+                    height: 400px;
+                }
+                .important-img{
+                    border-style: solid;
+                    border-color: red;
+                }
+                #move-top{
+                    width: 50px;
+                    height: 50px;
+                    position: fixed;
+                    bottom: 0px;
+                    right: 0px;
+                }
+            </pre>
+            Now, let's look at the lines of code inside of the curly brackets. They have a syntax of:
+            <pre>
+                css-property: value;
+            </pre>
+            This is where we can use our new tool, inspector, to explore.
+            </p>
+            <img class="p-img" src="img/basicCss/inspector3.jpg">
+            <p>This is the same image that we saw before. Note that there is a section on my web page highlighted in blue, with two orange lines above and below. This section of my webpage is highlighted because my mouse is currently hovering over this particular part of html code inside my inspector. It also has a little indicator above that says "p | 1031 x 36". This means that the selected html code is of an html tag &lt;p> and has width of 1031 pixels and height of 36 pixels at this particular browser size.
+            </p>
+            <img class="p-img" src="img/basicCss/inspector4.jpg">
+            <p>If you actually click on this part of your html code on your inspector, you will see the right side of the inspector window change to display the styles for this element. Right now, same as before, there are no particular styles given.</p>
+            <img class="p-img" src="img/basicCss/inspector5.jpg">
+            <p>If you click on an empty space below where it says <b>element.style</b>, a blank template for a line of css declaration will appear. Let's try to change the color of this selected text.</p>
+            <img class="p-img" src="img/basicCss/inspector6.jpg">
+            <p>Start typing inside the little text box that appears in place for the css property. Knowing that in order to change the color of the text, the given css property is <b>color</b>, as you type in the word, you will notice that it will inspector will try to auto-fill for you and also display options that contain the characters you have already typed before. Thus, you will be able to see that there is are many other css properties that you can set colors of, such as background-color and border-color.</p>
+            <img class="p-img" src="img/basicCss/inspector7.jpg">
+            <p>If you hit tab after selecting the css property <b>color</b>, you will see that it also gives you a list of available values for this particular css property. For the color value in particular, it is possible to give it as hexadecimal or RGB, but the options that appear are the colors that can be referred to as a name.</p>
+            <img class="p-img" src="img/basicCss/inspector8.jpg">
+            <p>I am going to choose the color red. You will see this particular section of text change its color from black to red immediately after you are done typing the word. <b>A very important thing to note here is that ANY CHANGES DONE ON THE INSPECTOR ARE TEMPORARY</b>. If you refresh the page, the changes you have made, in this case changing the color of text to red, will disappear. The inspector tool should be used for experimenting with css and a way of getting immediate visual feedback of what a particular css declaration does. If you want to actually apply this css style to your web page, you should copy the css code from inspector and save it to your local css file.</p>
+            <p>For more detailed information about css syntax, please read <a class="p-link" href="https://www.w3schools.com/css/css_syntax.asp">this w3schools' article</a>. Generally, <a class="p-link" href="https://www.w3schools.com/css/default.asp">w3schools website</a> is also a helpful resource in trying to figure out if there is a css property for what you want to do, and what it exactly does.</p>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
