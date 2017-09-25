@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>css animation - more examples</title>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="full-page-content">
+            <h4><b>More Examples of css animation</b></h4>
+            <h5>Creating Shapes Using divs</h5>
+            <p>You can create shapes in html and css by creating empty div elements and assigning them widith height and background-color css properties.</p>
+            <style>
+                #squareDiv{
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                }
+            </style>
+            <div id="squareDiv"></div>
+            <br>
+            <p><u>HTML</u>:</p>
+            <pre>
+                &lt;div id="squareDiv">&lt;/div>
+            </pre>
+            <p><u>CSS</u>:</p>
+            <pre>
+                #squareDiv{
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                }
+            </pre>
+            <p>We can also turn this square div in to a circle, or circle-like shape by giving it a css property called <b>border-radius</b>. border-radius takes in a numerical value as input and creates a circular edge around the four corners of the div element by using the numerical input as the radius of the circle.</p>
+            <p>For example, if we add</p>
+            <pre>
+                border-radius: 10px;
+            </pre>
+            <p>to the code we already have from above:</p>
+            <style>
+                #circleDiv1{
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                    border-radius: 20px;
+                }
+            </style>
+            <div id="circleDiv1"></div>
+            <br>
+            <p>We can also give the size of border-radius in percentages, relative to the size of the div element. So if I give 50% as my border-radius, this means that it will be 50% of my width and height of my div, which will end up being 50px and ultimately create a circle.</p>
+            <style>
+                #circleDiv2{
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                    border-radius: 50%;
+                }
+            </style>
+            <div id="circleDiv2"></div>
+            <br>
+            <p>If your width and height values are not the same, by setting border-radius to 50%, you will create an ellipse:</p>
+            <style>
+                #ellipseDiv{
+                    width: 200px;
+                    height: 100px;
+                    background-color: red;
+                    border-radius: 50%;
+                }
+            </style>
+            <div id="ellipseDiv"></div>
+            <p>You can also play around with the border elements of css to create outlines of shapes. In order to visualize the border around your div, you need to set your border-style. The default value of border-style is set to none, so you will need to over ride this by giving values such as solid, dotted, dashed and double. Use border-width to set the thickness of your border, and assign the color of your border with border-color.</p>
+            <pre>
+                #outlineDiv{
+                    width: 100px;
+                    height: 100px;
+                    border-style: solid; /* other options: dashed, dotted, double... */
+                    border-color: red;
+                    border-width: 10px;
+                }
+            </pre>
+            <style>
+                #outlineDiv1{
+                    width: 100px;
+                    height: 100px;
+                    border-style: solid;
+                    border-color: red;
+                    border-width: 10px;
+                    position: relative;
+                    display: inline-block;
+                }
+            </style>
+            <div id="outlineDiv1"></div>
+            <style>
+                #outlineDiv2{
+                    width: 100px;
+                    height: 100px;
+                    border-style: dotted;
+                    border-color: red;
+                    border-width: 10px;
+                    position: relative;
+                    display: inline-block;
+                }
+            </style>
+            <div id="outlineDiv2"></div>
+            <style>
+                #outlineDiv3{
+                    width: 100px;
+                    height: 100px;
+                    border-style: dashed;
+                    border-color: red;
+                    border-width: 10px;
+                    position: relative;
+                    display: inline-block;
+                }
+            </style>
+            <div id="outlineDiv3"></div>
+            <style>
+                #outlineDiv4{
+                    width: 100px;
+                    height: 100px;
+                    border-style: double;
+                    border-color: red;
+                    border-width: 10px;
+                    position: relative;
+                    display: inline-block;
+                }
+            </style>
+            <div id="outlineDiv4"></div>
+            <p>You can also assign different styles, colors and widths for the top, bottom, left and right borders.</p>
+            <style>
+                #outlineDiv5{
+                    width: 100px;
+                    height: 100px;
+                    border-top-style: dashed;
+                    border-top-color: blue;
+                    border-top-width: 10px;
+                    border-bottom-style: dotted;
+                    border-bottom-color: red;
+                    border-bottom-width: 5px;
+                    border-left-style: double;
+                    border-left-color: green;
+                    border-left-width: 20px;
+                    border-right-style: solid;
+                    border-right-color: yellow;
+                    border-right-width: 30px;
+                }
+            </style>
+            <div id="outlineDiv5"></div>
+            <pre>
+                #outlineDiv{
+                    width: 100px;
+                    height: 100px;
+                    border-top-style: dashed;
+                    border-top-color: blue;
+                    border-top-width: 10px;
+                    border-bottom-style: dotted;
+                    border-bottom-color: red;
+                    border-bottom-width: 5px;
+                    border-left-style: double;
+                    border-left-color: green;
+                    border-left-width: 20px;
+                    border-right-style: solid;
+                    border-right-color: yellow;
+                    border-right-width: 30px;
+                }
+            </pre>
+            <p>You can actually create triangle shapes using borders as well: by assigning no width and height to the div and making all but one borders transparent.</p>
+            <style>
+                #outlineDiv6{
+                    width: 0px;
+                    height: 0px;
+                    border-bottom: 100px solid red;
+                    border-left: 100px solid transparent;
+                }
+            </style>
+            <div id="outlineDiv6"></div>
+            <pre>
+                #outlineDiv{
+                    width: 0px;
+                    height: 0px;
+                    border-bottom: 100px solid red;
+                    border-left: 100px solid transparent;
+                }
+            </pre>
+            <p>The most important part of this "css trick" is that you can "transparent" as your color value. Another thing to note is that you can merge border-bottom-width, border-bottom-style and border-bottom-color into a single line of css, by just referring to border-bottom, and separating the values for width, style and color with a space. </p>
+            <p>You can create different triangle shapes, depending on which borders you make transparent.</p>
+            <style>
+                #outlineDiv7{
+                    width: 0px;
+                    height: 0px;
+                    border-bottom: 75px solid red;
+                    border-left: 50px solid transparent;
+                    border-right: 50px solid transparent;
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 10px;
+                }
+            </style>
+            <div id="outlineDiv7"></div>
+            <style>
+                #outlineDiv8{
+                    width: 0px;
+                    height: 0px;
+                    border-top: 75px solid blue;
+                    border-left: 50px solid transparent;
+                    border-right: 50px solid transparent;
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 10px;
+                }
+            </style>
+            <div id="outlineDiv8"></div>
+            <style>
+                #outlineDiv9{
+                    width: 0px;
+                    height: 0px;
+                    border-left: 75px solid green;
+                    border-top: 50px solid transparent;
+                    border-bottom: 50px solid transparent;
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 10px;
+                }
+            </style>
+            <div id="outlineDiv9"></div>
+            <style>
+                #outlineDiv10{
+                    width: 0px;
+                    height: 0px;
+                    border-right: 75px solid yellow;
+                    border-top: 50px solid transparent;
+                    border-bottom: 50px solid transparent;
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 10px;
+                }
+            </style>
+            <div id="outlineDiv10"></div>
+            <p>Now that you know how to make shapes using html and css, you can apply movement to them. Please follow through <u><a class="p-link" href="cssani.html">this section of the tutorial</a></u> to learn how to animate using css.</p>
+            <h5>Parallax Background</h5>
+            <iframe height="500px" src="parallax-demo.html"></iframe>
+            <br>
+            <p><u><a class="p-link" href="parallax-demo.html">Click to view the demo as a full web page.</a></u></p>
+            <p>Let's start off with creating three divs, one for each background. We will also give class names for each of these sections.</p>
+            <pre>
+                &lt;div class="section-1">&lt;/div>
+                &lt;div class="section-2">&lt;/div>
+                &lt;div class="section-3">&lt;/div>
+            </pre>
+            <p>Now, we will give it background images to each of these sections in css.</p>
+            <pre>
+                .section-1{
+                    background-image: url(img/parallax/bg1.jpg);
+                }
+                .section-2{
+                    background-image: url(img/parallax/bg2.jpg);
+                }
+                .section-3{
+                    background-image: url(img/parallax/bg3.jpg);
+                }
+            </pre>
+            <p>As of now, nothing will appear on your screen, because you haven't given your html, body and div elements any height yet. If a specific height is not set with css, as all of our html content has height of 0 (div has a height of 0px if there is no content inside of the div - remember that a div element is used just to group html elements and doesn't have any visual qualities) and so the web page does not display anything. So we will set the height of our html, body and the 3 sections of div elements to 100%.</p>
+            <pre>
+                html, body{
+                    height: 100%;
+                }
+                .section-1, .section-2, .section-3{
+                    height: 100%;
+                }
+            </pre>
+            <p>One important thing to note in the css above is that, you can give multiple html / class / id elements the same style by linking them with a comma. For example, as I want all of my three sections to share a css property of height 100%, I can do this in one chunck of css by referring to all three classes at the same time by doing: .section-1, .section-2, .section-3</p>
+            <p>Now, you will notice, depending on the size of your images, the background images that you gave will be either stretched out or tiled to fit the space of your browser. Let's set our background images to be at the center, to not repeat (to prevent the tiling of the image) and to cover the size of the browser.</p>
+            <pre>
+                .section-1, .section-2, .section-3{
+                    height: 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            </pre>
+            <p>With this, we have set the size and position of our background so that it auto-adjusts to the size of the browser. However, for now, it looks like as if the images are just placed in order and it doesn't have the parallax effect yet. Now for the one magic line that will create this parallax effect: <b>background-attachment: fixed;</b></p>
+            <pre>
+                .section-1, .section-2, .section-3{
+                    height: 100%;
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            </pre>
+            <p>That additional line of css will fix the position of the background image regardless of the scrolling. As it scrolls, it reveals the background of the next div, from bottom to top.
+            <br>
+            Now we have a basic parallax web page. You can of course, put in div elements with text in between the div elements with the background images. You can also put in content inside of the div elements with background images, to place them along with each of the background image of the section div. Here is the complete html and css code of the demo web page:</p>
+            <p><u>HTML</u>:</p>
+            <pre>
+                &lt;div class="section-1">
+                    &lt;div class="caption">
+                        &lt;span class="caption-text">Title of Website&lt;/span>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class="section-text">
+                    &lt;div class="inner-text">
+                        &lt;p>This is a place where you can enter in text content.&lt;/p>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class="section-2">&lt;/div>
+                &lt;div class="section-text">
+                    &lt;div class="inner-text">
+                        &lt;p>This is another place where you can enter in text content.&lt;/p>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class="section-3">&lt;/div>
+            </pre>
+            <p><u>CSS</u>:</p>
+            <pre>
+                html, body{
+                    height: 100%;
+                    margin: 0;
+                    font-family: "Helvetica Neue", sans-serif;
+                }
+
+                .section-1, .section-2, .section-3{
+                    position: relative;
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                }
+
+                .section-1{
+                    background-image: url(img/parallax/bg1.jpg);
+                }
+
+                .section-2{
+                    background-image: url(img/parallax/bg2.jpg);
+                }
+
+                .section-3{
+                    background-image: url(img/parallax/bg3.jpg);
+                }
+
+                .section-text{
+                    position: relative;
+                }
+
+                .caption{
+                    position: absolute;
+                    top: 50%;
+                    left: 0px;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .caption-text{
+                    background-color: white;
+                    color: #cecece;
+                    font-size: 42px;
+                    font-weight: bold;
+                    padding: 15px
+                }
+
+                .inner-text{
+                    padding: 50px 80px;
+                    background-color: black;
+                    color: white;
+                    font-size: 20px;
+                }
+            </pre>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+</div>
+</main>
+</div>
+</body>
+</html>

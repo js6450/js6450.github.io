@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parallax Demo</title>
+</head>
+<style>
+    html, body{
+        height: 100%;
+        margin: 0;
+        font-family: "Helvetica Neue", sans-serif;
+    }
+
+    .section-1, .section-2, .section-3{
+        position: relative;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+    }
+
+    .section-1{
+        background-image: url(img/parallax/bg1.jpg);
+    }
+
+    .section-2{
+        background-image: url(img/parallax/bg2.jpg);
+    }
+
+    .section-3{
+        background-image: url(img/parallax/bg3.jpg);
+    }
+
+    .section-text{
+        position: relative;
+    }
+
+    .caption{
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .caption-text{
+        background-color: white;
+        color: #cecece;
+        font-size: 42px;
+        font-weight: bold;
+        padding: 15px
+    }
+
+    .inner-text{
+        padding: 50px 80px;
+        background-color: black;
+        color: white;
+        font-size: 20px;
+    }
+
+</style>
+<body>
+<div class="section-1">
+    <div class="caption">
+        <span class="caption-text">Title of Website</span>
+    </div>
+</div>
+<div class="section-text">
+    <div class="inner-text">
+        <p>This is a place where you can enter in text content.</p>
+    </div>
+</div>
+<div class="section-2"></div>
+<div class="section-text">
+    <div class="inner-text">
+        <p>This is another place where you can enter in text content.</p>
+    </div>
+</div>
+<div class="section-3"></div>
+</body>
+</html>
