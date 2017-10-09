@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsbasics-demo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsbasics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsmult-demo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsmult.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/template.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data.json" afterPath="$PROJECT_DIR$/assets/data.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsbasics.html" afterPath="$PROJECT_DIR$/jsbasics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsmult.html" afterPath="$PROJECT_DIR$/jsmult.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -83,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jsmult.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="jsmult.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jsmult.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="397" column="21" lean-forward="true" selection-start-line="397" selection-start-column="21" selection-end-line="397" selection-end-column="21" />
+            <state relative-caret-position="380">
+              <caret line="408" column="246" lean-forward="false" selection-start-line="408" selection-start-column="246" selection-end-line="408" selection-end-column="246" />
               <folding>
                 <element signature="e#2810#2814#0" expanded="true" />
                 <element signature="e#2841#2845#0" expanded="true" />
@@ -102,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jsbasics.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="jsbasics.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jsbasics.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6930">
-              <caret line="368" column="24" lean-forward="false" selection-start-line="368" selection-start-column="24" selection-end-line="368" selection-end-column="24" />
+            <state relative-caret-position="365">
+              <caret line="377" column="171" lean-forward="false" selection-start-line="377" selection-start-column="171" selection-end-line="377" selection-end-column="284" />
               <folding>
                 <element signature="e#2306#2310#0" expanded="true" />
                 <element signature="e#2337#2341#0" expanded="true" />
@@ -186,8 +180,8 @@
         <option value="$PROJECT_DIR$/jsmult-demo.html" />
         <option value="$PROJECT_DIR$/jsbasics-demo.html" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/jsmult.html" />
         <option value="$PROJECT_DIR$/jsbasics.html" />
+        <option value="$PROJECT_DIR$/jsmult.html" />
       </list>
     </option>
   </component>
@@ -198,7 +192,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="677" />
+    <option name="x" value="245" />
     <option name="y" value="23" />
     <option name="width" value="759" />
     <option name="height" value="824" />
@@ -228,34 +222,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js6450.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js6450.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js6450.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js6450.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js6450.github.io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -376,18 +342,18 @@
       <workItem from="1506315418846" duration="10097000" />
       <workItem from="1506478308734" duration="721000" />
       <workItem from="1507393163648" duration="724000" />
-      <workItem from="1507398573199" duration="23400000" />
+      <workItem from="1507398573199" duration="23904000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53745000" />
+    <option name="totallyTimeSpent" value="54249000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="677" y="23" width="759" height="824" extended-state="0" />
+    <frame x="245" y="23" width="759" height="824" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21343146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21273713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -890,27 +856,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsmult.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="397" column="21" lean-forward="true" selection-start-line="397" selection-start-column="21" selection-end-line="397" selection-end-column="21" />
-          <folding>
-            <element signature="e#2810#2814#0" expanded="true" />
-            <element signature="e#2841#2845#0" expanded="true" />
-            <element signature="e#2954#2958#0" expanded="true" />
-            <element signature="e#21612#21616#0" expanded="true" />
-            <element signature="e#21674#21678#0" expanded="true" />
-            <element signature="e#21703#21707#0" expanded="true" />
-            <element signature="e#21770#21774#0" expanded="true" />
-            <element signature="e#22066#22070#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jsbasics.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6930">
-          <caret line="368" column="24" lean-forward="false" selection-start-line="368" selection-start-column="24" selection-end-line="368" selection-end-column="24" />
+        <state relative-caret-position="365">
+          <caret line="377" column="171" lean-forward="false" selection-start-line="377" selection-start-column="171" selection-end-line="377" selection-end-column="284" />
           <folding>
             <element signature="e#2306#2310#0" expanded="true" />
             <element signature="e#2337#2341#0" expanded="true" />
@@ -940,6 +889,23 @@
             <element signature="e#20133#20137#0" expanded="true" />
             <element signature="e#20149#20153#0" expanded="true" />
             <element signature="e#22815#22819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsmult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="408" column="246" lean-forward="false" selection-start-line="408" selection-start-column="246" selection-end-line="408" selection-end-column="246" />
+          <folding>
+            <element signature="e#2810#2814#0" expanded="true" />
+            <element signature="e#2841#2845#0" expanded="true" />
+            <element signature="e#2954#2958#0" expanded="true" />
+            <element signature="e#21612#21616#0" expanded="true" />
+            <element signature="e#21674#21678#0" expanded="true" />
+            <element signature="e#21703#21707#0" expanded="true" />
+            <element signature="e#21770#21774#0" expanded="true" />
+            <element signature="e#22066#22070#0" expanded="true" />
           </folding>
         </state>
       </provider>
