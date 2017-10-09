@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>Javascript Basics</title>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="full-page-content">
+            <h4><b>Javascript Basics</b></h4>
+            <p>Here is what we are going to make today:</p>
+            <iframe height="500" src="jsbasics-demo.html"></iframe>
+            <p><u><a class="p-link" href="jsbasics-demo.html">Click to view the demo as a full web page.</a></u></p>
+            <h5>Step 1 | Creating html elements with javascript</h5>
+            <p>First, we will need to review how we can create and add html elements using javascript. Let's attach an onclick event to your body tag, and create a simple function that inserts in an image tag whenever the user clicks on the webpage.</p>
+            <p><u>HTML</u>:</p>
+            <pre>
+                &lt;body onclick="insertImg()">&lt;/body>
+            </pre>
+            <p><u>Javascript</u>:</p>
+            <pre>
+                function insertImg(){
+                    //first create img element
+                    var img = document.createElement("IMG");
+                    /set source of the img html tag
+                    img.src = "img/baam.png";
+                    //add created img html element
+                    //inside of &lt;body> tag
+                    document.body.append(img);
+                }
+            </pre>
+            <p>Here, we are creating a new html element of tag img, with the line document.createElement("IMG"). In between the quotation marks, you can reference the tag name of the html element that you want to create in ALL CAPITAL LETTERS. For example, if you want to create a p element in javascript, you can do so by document.createElement("P"). You can create div element by saying document.createElement("DIV") and so on. Next, we are setting the src attribute of the img tag to reference my image with name "baam.png" that is located in a folder called "img". Finally, we can append this newly created img tag inside of our body element by saying document.body.append(img).</p>
+            <p>Right now, the click won't do anything. You also won't get any error messages. This is because the javascript code is correct and is there, but because the height of our website is 0. We need to make the height our html and body elements to be the full height of the browser in order to make the whole web page clickable.</p>
+            <p><u>CSS</u>:</p>
+            <pre>
+                html, body{
+                    height: 100%;
+                }
+            </pre>
+            <p>Now an image will be created either below or next to the last one created every time you click on the web page. If your image is wider than half of the width of the browser, they will be created below the last one created, if it is not, it will create images next to it, until it can no longer be fitted next to it. Let's fix the size of the images using css.</p>
+            <pre>
+                img{
+                   width: 200px;
+                }
+            </pre>
+            <h5>Step 2 | Placing elements on mouse position</h5>
+            <p>Next, lets try to place the images where the user mouse-clicks on the web page, rather than having them to appear next to each other. First, let's review how to get the x and y coordinates of our mouse click.</p>
+            <pre>
+                function insertImg(){
+                    //get x and y position of mouse click
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+	                console.log("x position: " + x + ", y position: " + y);
+
+                   //first create img element
+                    var img = document.createElement("IMG");
+                    /set source of the img html tag
+                    img.src = "img/baam.png";
+                    //add created img html element
+                    //inside of &lt;body> element
+                    document.body.append(img);
+                }
+            </pre>
+            <p>event.clientX returns the x position of the mouse click on the web page, and event.clientY returns the y position. The console.log line prints on our console window (which you can see on the inspector), for example, something like "x position: 215px, y position: 330px". Now, we have to use these coordinates to set the position of the images as they are being created. Remember that we can change the position of an html element by setting the css properties left and top. HOWEVER, in order for those css properties to take effect, the position of the html element has to be set to absolute or fixed. Let's also set the display to block.</p>
+            <p><u>CSS</u>:</p>
+            <pre>
+                img{
+                    position: absolute;
+                    display: block;
+                    width: 200px;
+                }
+            </pre>
+            <p>Now, we are ready to use javascript to set the left and top values of the img html tags as they are being created.</p>
+            <pre>
+                function insertImg(){
+                    //get x and y position of mouse click
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+	                console.log("x position: " + x + ", y position: " + y);
+
+                   //first create img element
+                    var img = document.createElement("IMG");
+                    /set source of the img html tag
+                    img.src = "img/baam.png";
+                    //add created img html element
+                    //inside of &lt;body> element
+                    document.body.append(img);
+
+                    //make sure to add unit of measurement
+		            //"px" at the end
+                    img.style.left = x + "px";
+                    img.style.top = y + "px";
+                }
+            </pre>
+            <p>Since we are setting the css of the img tag, we have to say img.style.left, in order to set this value. Also, notice that it is not just img.style.left = x. Remind yourself to how we would set the left value in css. A numeric value of a css property is followed by a unit. Without it, the left value will not be set properly.</p>
+            <p>Now the images appear where you click. However, they will appear next to and below the mouse cursor, rather than underneath. This is because the left and top values set the position of the top left corner of the img element. In order for the image to appear right under the cursor, which is how the user would expect it to be, we have to some pre-calculations. We need to subtract half the width of the image and half the height of the image from our returned event.clientX and event.clientY positions.</p>
+            <pre>
+                function insertImg(){
+                    //get x and y position of mouse click
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+	                console.log("x position: " + x + ", y position: " + y);
+
+                   //first create img element
+                    var img = document.createElement("IMG");
+                    /set source of the img html tag
+                    img.src = "img/baam.png";
+                    //add created img html element
+                    //inside of &lt;body> element
+                    document.body.append(img);
+
+                    //img.width returns width of img html element
+                    var imgX = x - img.width / 2;
+                    //img.height returns height of img html element
+                    var imgY = y - img.height / 2;
+
+                    //make sure to add unit of measurement
+		            //"px" at the end
+                    img.style.left = imgX + "px";
+                    img.style.top = imgY + "px";
+                }
+            </pre>
+            <p>Now the images will appear right underneath the mouse cursor!</p>
+            <h5>Step 3 | Using conditionals to change source of image</h5>
+            <p>Next, we are going to create buttons on the top left corner of the web page to allow the users to change the images.</p>
+            <p><u>HTML</u>:</p>
+            <pre>
+                &lt;div>
+                &lt;button value="baam" onclick="setImg(this.value)">BAAM!&lt;/button>
+                &lt;button value="pow" onclick="setImg(this.value)">POW&lt;/button>
+                &lt;/div>
+            </pre>
+            <p>Here we create two buttons, one that says BAAM! and the other that says POW. The text you put between the html pages will appear on the buttons. we specify the value of this button, so we can use it to check which button has been clicked in order to change the source of the image tag accordingly. Notice that both of the buttons make a function call to a same function setImg(), and we are passing in the argument <b>this.value</b> to the function. <b>this</b> is a pre-defined javascript variable, that is used to refer to the html element that is calling the function. By saying <b>this.value</b>, you are passing in the set value of the button, which in the case of the first button, will be "baam". This way, we can use the same function setImg() and decide what to do based on what we get passed as an argument.</p>
+            <pre>
+                //at the beginning no source for img html tag is selected
+                var imgValue = "";
+
+                //variable "value" saves this.value that we pass on from index.html
+                function setImg(value){
+                    imgValue = value;
+                    console.log("Now image changed to: " + value);
+                }
+            </pre>
+            <p>Inside of our javascript file, let's create another function called setImg, that takes in an argument, which will we save to a variable with a name <b>value</b>. We will save this value into a <b>global</b> variable called imgValue. The reason why we need to save this value into a global variable is because this value needs to be used inside of another function, in our case, insertImg function. The console.log line will show on our console window of inspector every time a button is clicked and therefore the image is changed. Now, we can use the value of the global variable imgValue inside our insertImg function to check which button was pressed and change the source of the image:</p>
+            <pre>
+                function insertImg(){
+                    //get x and y position of mouse click
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+	                console.log("x position: " + x + ", y position: " + y);
+
+                   //first create img element
+                    var img = document.createElement("IMG");
+
+                    //change source of the img html tag
+		            //depending on which button was clicked
+                    if(imgValue === "baam"){
+                        img.src = "img/baam.png";
+                    }
+                    else if(imgValue === "pow"){
+                        img.src = "img/pow.png";
+                    }
+
+                    //add created img html element
+                    //inside of &lt;body> element
+                    document.body.append(img);
+
+                    //img.width returns width of img html element
+                    var imgX = x - img.width / 2;
+                    //img.height returns height of img html element
+                    var imgY = y - img.height / 2;
+
+                    //make sure to add unit of measurement
+		            //"px" at the end
+                    img.style.left = imgX + "px";
+                    img.style.top = imgY + "px";
+                }
+            </pre>
+            <p>Now, within my insertImg() function, it checks for the value of the imgValue variable before deciding on the source of the img tag being created using if-else if conditional statements.</p>
+            <p>At this stage, there is one thing that we need to think about. When the web page is first loaded, the value of imgValue is "", an empty string. This means that it will not fit any of the if-else if conditionals, and that a click will create an image tag without a source. We need to make sure to only check the value of the imgValue and create and append img tags, only if the value of imgValue is not an empty string. We can do this by surrounding this section of function with an if statement.</p>
+            <pre>
+                function insertImg(){
+                    //get x and y position of mouse click
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+	                console.log("x position: " + x + ", y position: " + y);
+
+                	//check if image source is set
+	                //(not an empty string)
+                    if(imgValue != ""){
+                        //first create img element
+                        var img = document.createElement("IMG");
+                        //change source of the img html tag
+                        //depending on which button was clicked
+                        if(imgValue === "baam"){
+                            img.src = "img/baam.png";
+                        }
+                        else if(imgValue === "pow"){
+                            img.src = "img/pow.png";
+                        }
+
+                        //add created img html element
+                        //inside of &lt;body> element
+                        document.body.append(img);
+
+                        //img.width returns width of img html element
+                        var imgX = x - img.width / 2;
+                        //img.height returns height of img html element
+                        var imgY = y - img.height / 2;
+
+                        //make sure to add unit of measurement
+                        //"px" at the end
+                        img.style.left = imgX + "px";
+                        img.style.top = imgY + "px";
+                    }
+                }
+            </pre>
+            <p>Now, no img tags will be created unless a button has been pressed and the source of the image is set. However, when you click on the button, you will realize that the image is being created on top of the button, which will hide the button element under the img element, thereby making the button element inaccessible. We can prevent this from happening in number of different ways, but the simplest way of doing so using javascript is by setting a height limit for the event.client value. If y coordinate of the mouse is between 0, meaning the top of the browser, and the height of the button, we will not create a new img element.</p>
+            <pre>
+                function insertImg(){
+                    //get x and y position of mouse click
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+	                console.log("x position: " + x + ", y position: " + y);
+
+                	//check if image source is set
+                    //(not an empty string)
+                    //AND if y position of mouse click is greater than 50
+                    if(imgValue != "" && y >= 50){
+                        //first create img element
+                        var img = document.createElement("IMG");
+                        //change source of the img html tag
+                        //depending on which button was clicked
+                        if(imgValue === "baam"){
+                            img.src = "img/baam.png";
+                        }
+                        else if(imgValue === "pow"){
+                            img.src = "img/pow.png";
+                        }
+
+                        //add created img html element
+                        //inside of &lt;body> element
+                        document.body.append(img);
+
+                        //img.width returns width of img html element
+                        var imgX = x - img.width / 2;
+                        //img.height returns height of img html element
+                        var imgY = y - img.height / 2;
+
+                        //make sure to add unit of measurement
+                        //"px" at the end
+                        img.style.left = imgX + "px";
+                        img.style.top = imgY + "px";
+                    }
+                }
+            </pre>
+            <p>You don't need to know the exact height of the buttons (although it is not hard to find out). Here, it is assumed that the height of buttons will be less than 50px, and therefore, a new img element will ONLY be created if 1) imgValue is not "" (empty string) AND 2) value of y is greater than 50.</p>
+            <h5>Step 4 | Using setTimeout function to remove images</h5>
+            <p>We can use the setTimeout function to remove the img element after a certain amount of time has passed. We can also create a button that turns on and off this feature.</p>
+            <p><u>HTML</u>:</p>
+            <pre>
+                &lt;div>
+                &lt;button value="off" onclick="erase(this)">Auto Erase: OFF&lt;/button>
+                 &lt;button value="baam" onclick="setImg(this.value)">BAAM!&lt;/button>
+                &lt;button value="pow" onclick="setImg(this.value)">POW&lt;/button>
+                &lt;/div>
+            </pre>
+            <p>The argument we are passing into our erase() function is slightly different from the argument for the setImg() function. For the setImg() function, we only pass in the button value, whereas for the erase() function, we are passing in the entire button html element. This is because we need to access to more than just the value of the button, which you will see in a moment. Now in our javascript, like we did to change the source of the img element, we will create a global variable to keep track of whether the auto erase feature is on or off.</p>
+            <pre>
+                //autoErase feature is turned off
+                var autoErase = false;
+
+                //variable "erase" saves "this" that we pass on from index.html
+                function erase(erase){
+                    if(erase.value === "off"){
+                        //change value attribute of button tag
+                        erase.value = "on";
+                        //change text between &lt;button> and &lt;/button>
+                        erase.textContent = "Auto Erase: ON";
+                        //set value of autoErase to true
+                        autoErase = true;
+                    }
+                    else{
+                        //change value attribute of button tag
+                        erase.value = "off";
+                        //change text between &lt;button> and &lt;/button>
+                        erase.textContent = "Auto Erase: OFF";
+                        //set value of autoErase to false
+                        autoErase = false;
+                    }
+                }
+
+            </pre>
+            <p>In the erase() function, we are first checking what the value of the button currently is. We save the html element that is passed on from the button when it is clicked to a variable called <b>erase</b>. Then, by saying erase.value, we can get the current button value. In the html, it is initialized to "off", which meets the condition if(erase.value === "off"), and will proceed to the lines of code inside of the if conditional. If it had been pressed once before, erase.value would have been set to "on" and will follow the lines inside of the else conditional. Inside of both conditionals, we are changing 3 things: 1) the value of the button element, 2) the text content (the text between the button tags) of the button and 3) the value of the global variable <b>autoErase</b>. We need to change the button value from off to on, or vice versa, so that we keep track of what state the button is (in this case, it is a switch! On or off!). We should also change the text of the button, to indicate to the users whether the button is on or off. Here, you could visually differentiate between the states even further by applying different css styles according to the button value. Now, in our insertImg() function, we can check the autoErase value to see if the img element should be erased after a certain amount of time.</p>
+            <pre>
+                function insertImg(){
+
+                    //get x and y position of mouse click
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+	                console.log("x position: " + x + ", y position: " + y);
+
+                	//check if image source is set
+                    //(not an empty string)
+                    //AND if y position of mouse click is greater than 50
+                    if(imgValue != "" && y >= 50){
+                        //first create img element
+                        var img = document.createElement("IMG");
+                        //change source of the img html tag
+                        //depending on which button was clicked
+                        if(imgValue === "baam"){
+                            img.src = "img/baam.png";
+                        }
+                        else if(imgValue === "pow"){
+                            img.src = "img/pow.png";
+                        }
+
+                        //add created img html element
+                        //inside of &lt;body> element
+                        document.body.append(img);
+
+                        //img.width returns width of img html element
+                        var imgX = x - img.width / 2;
+                        //img.height returns height of img html element
+                        var imgY = y - img.height / 2;
+
+                        //make sure to add unit of measurement
+                        //"px" at the end
+                        img.style.left = imgX + "px";
+                        img.style.top = imgY + "px";
+                    }
+
+                	//make sure there is an img html tag to remove
+	                //AND autoErase feature is on (autoErase is set to true)
+                    if(img != null && autoErase){
+                		//remove img html tag 1000 millisecons (1 second)
+		                //after it has been created
+                        setTimeout(function(){
+                            img.parentElement.removeChild(img);
+                        }, 1000);
+                    }
+                }
+            </pre>
+            <p>Here, another if condition has been added to check whether an img element has been created (and there for is not empty, or null) AND if autoErase value is set to true. The reason why this if condition is not an else-if, is because the events that happen inside the first if condition is not mutually exclusive, meaning that both events can happen at the same time. If the condition is met, then we use the setTimeout function, which, in this case, waits for 1000 milliseconds ( = 1 second) before it removes itself. The line img.parentElement.removeChild(img) can seem a little counter intuitive. img.parentElement will return the html element that surrounds the img element, which in this case is the body element. Then, from the parent element, you are removing a child element (an html element that is inside of the parent element) and specifying which particular child element, in this case the current img element, to remove. If this is too complex, take a moment to play around with this on the inspector. See what you get in return if you do img.parentElement (you will see an array of child elements).</p>
+            <p>Now we have all the features of today's web page built! You can put more buttons to give users more options of images to draw with.</p>
+            <p>You can download the complete example code from <u><a class="p-link" href="https://github.com/js6450/CommLabGSS/tree/master/_javascript-basics">here.</a></u></p>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>

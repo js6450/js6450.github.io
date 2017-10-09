@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    body, html{
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .circle{
+        position: absolute;
+        display: block;
+        animation: circleAround 2s infinite, fall 10s infinite linear forwards;
+    }
+
+    .circle:hover{
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    @keyframes circleAround{
+        from{
+            transform: rotateY(0deg);
+        }
+        to{
+            transform: rotateY(360deg);
+        }
+    }
+
+    @keyframes fall{
+        to{
+            top: 100%;
+        }
+    }
+</style>
+<body>
+<button value="up" onclick="changeTrans(this.value)">APPEAR</button>
+<button value="down" onclick="changeTrans(this.value)">DISAPPEAR</button>
+</body>
+<script type="text/javascript">
+    var colors = ["red", "pink", "blue", "yellow", "orange", "green"];
+    var opacityValue = 1.0;
+
+    window.onload = function(){
+
+        for(var i = 0; i < 150; i++){
+
+            div = document.createElement("DIV");
+
+            div.className = "circle";
+            div.style.width = "15px";
+            div.style.height = "15px";
+            div.style.borderRadius = "50%";
+
+            div.style.animationDelay = Math.random() * 10 + "s";
+
+            var colorNum = Math.floor(Math.random() * colors.length);
+            div.style.backgroundColor = colors[colorNum];
+
+            div.style.left = Math.random() * window.innerWidth + "px";
+            div.style.top = - Math.random() * 100 - 50 + "px";
+
+            document.body.appendChild(div);
+        }
+    }
+
+    function changeTrans(val){
+        var circles = document.getElementsByClassName('circle');
+
+        if(val === "up"){
+            if(opacityValue < 1.0){
+                opacityValue += 0.1;
+            }
+        }else{
+            if(opacityValue > 0.0){
+                opacityValue -= 0.1;
+            }
+        }
+
+        for(var i = 0; i < circles.length; i++){
+            circles[i].style.opacity = opacityValue;
+        }
+    }
+</script>
+</html>

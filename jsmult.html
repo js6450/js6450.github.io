@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>Javascript: Creating Multiples</title>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="full-page-content">
+            <h4><b>Creating Animated Multiples with Javascript using Arrays and Loops</b></h4>
+            <p>For this workshop, we will learn to apply loops and arrays to produce multiple html elements in few lines of code and apply keyframes css animation to these elements. Here is what we are going to make today:</p>
+            <iframe height="500" src="jsmult-demo.html"></iframe>
+            <p><u><a class="p-link" href="jsmult-demo.html">Click to view the demo as a full web page.</a></u></p>
+            <p>If you don't have previous knowledge about using @keyframes to create animation in css, please refer to <a class="p-link" href="cssani.html"><u>this css animation tutorial</u></a>, and <a class="p-link" href="cssani-examples.html"><u>further examples of css animation tutorial</u></a>.</p>
+            <p> The circles falling from the top of the browser are div elements. The way that this works is that there are 150 div elements created when the web page is loaded and the animations are applied to them in css. As of now, we have been attaching a function to an event that happens to an html element, like this:</p>
+            <pre>
+                &lt;body onclick="insertImg()">&lt;/body>
+            </pre>
+            <p>and also something like this:</p>
+            <pre>
+                &lt;img onmouseover="makeBigger()" src="img/myimg.jpg">
+            </pre>
+            <p>There are also events that can be watched for the entire window of the browser. <a class="p-link" href="https://www.w3schools.com/TAGS/ref_eventattributes.asp"><u>This w3schools link</u></a> lists all the available events that we can tell the browsers to watch for and assign functions to run if the event is triggered. For example, both onclick and onmouseover are mouse events that can be passed on as attributes to any html tags and will watch out for these particular mouse events in the area of the html tag on the web page, and runs the javascript function assigned to the event. In the above example code, if a click is detected inside the area of the body element, then insertImg() function runs. If mouse cursor is over the image of source myimg.jpg, it will run the function makeBigger(). Like so, we can assign a function to run when the window of the web page first loads.</p>
+            <pre>
+                window.onload = function(){
+                    //code in here will run when the browser window loads
+                }
+            </pre>
+            <p>In side of the curly brackets above is where we are going to create div elements, because we want them to be created automatically when the window loads, rather than have the be created by clicking on a button (which is also possible, but for the purpose of the workshop, we will just create them at the time of window load).</p>
+            <pre>
+                window.onload = function(){
+                    for(var i = 0; i < 150; i++){
+                        //code inside here will run 150 times
+                        var div = document.createElement("DIV");
+
+                        document.body.append(div);
+                    }
+                }
+            </pre>
+            <p>At this point you will have created 150 div elements, but you will not "see" anything, because as well all know, a div element does not have any visual characteristics. However, if you open up your inspector, you will see that all the html is there. Let's add some styles to the div in css to visualize the div elements that we have created.</p>
+            <pre>
+                window.onload = function(){
+                    for(var i = 0; i < 150; i++){
+                        //code inside here will run 150 times
+                        var div = document.createElement("DIV");
+
+                        //if you were setting these styles in css, it would be equivalent to
+                        //div{
+                        //   width: 15px;
+                        //   height: 15px;
+                        //   border-radius: 50%;
+                        //   background-color: red;
+                        //}
+
+                        div.style.width = "15px";
+                        div.style.height = "15px";
+                        div.style.borderRadius = 50%;
+                        div.style.backgroundColor = "red";
+
+                        document.body.append(div);
+                    }
+                }
+            </pre>
+            <p>For now, all of my 150 divs are red, 15px wide, 15px tall and have a border radius of 50% to make them into circles rather than squares. The 150 circular divs will appear on top of each other (in a vertical line). Let's set the position of the div elements to be absolute and display to block so that we can use left and top css properties. But before that, let's assign a class to all of these circle div elements so we don't have to refer to all the div elements on our html, but only those of "circle" class.</p>
+            <pre>
+                window.onload = function(){
+                    for(var i = 0; i < 150; i++){
+                        //code inside here will run 150 times
+                        var div = document.createElement("DIV");
+
+                        //assign class "cicle" for these div elements
+                        div.className = "circle";
+
+                        //if you were setting these styles in css, it would be equivalent to
+                        //div{
+                        //   width: 15px;
+                        //   height: 15px;
+                        //   border-radius: 50%;
+                        //   background-color: red;
+                        //}
+
+                        div.style.width = "15px";
+                        div.style.height = "15px";
+                        div.style.borderRadius = 50%;
+                        div.style.backgroundColor = "red";
+
+                        document.body.append(div);
+                    }
+                }
+            </pre>
+            <p>.className can be used to get and set class for any html element. Now, in our css, we can do:</p>
+            <pre>
+                .circle{
+                    position: absolute;
+                    display: block;
+                }
+            </pre>
+            <p>Additionally, let's set our body and html to have height of 100% (height of the browser window).</p>
+            <pre>
+                body, html{
+                    height: 100%;
+                }
+            </pre>
+            <p>Now, we are going to go back to our javascript, to randomly assign the x position of our circle div elements using the "left" css property. To get random numbers, we are going to use a function called Math.random(), which returns a random float (decimal) number between 0 and 1. We can multiply this by the width of our browser to get numbers ranging between 0 and width of the browser.</p>
+            <pre>
+                window.onload = function(){
+                    for(var i = 0; i < 150; i++){
+                        //code inside here will run 150 times
+                        var div = document.createElement("DIV");
+
+                        //assign class "cicle" for these div elements
+                        div.className = "circle";
+
+                        //if you were setting these styles in css, it would be equivalent to
+                        //div{
+                        //   width: 15px;
+                        //   height: 15px;
+                        //   border-radius: 50%;
+                        //   background-color: red;
+                        //}
+
+                        div.style.width = "15px";
+                        div.style.height = "15px";
+                        div.style.borderRadius = 50%;
+                        div.style.backgroundColor = "red";
+
+                        //if the random number we get from Math.random() * window.innerWidth is, for example, 350px
+                        //this line in css would be
+                        //left: 350px;
+                        div.style.left = Math.random() * window.innerWidth + "px";
+
+                        document.body.append(div);
+                    }
+                }
+            </pre>
+            <p>window.innerWidth will return the width of browser window at the point of loading of the web page in pixels. We have to add "px" at the end of our randomly assigned number, because a numeric value in css needs to be specified with a unit.</p>
+            <p>Now, instead of making all of our circles be color red, we are going to create an array of available colors, and have a color in the array be randomly chosen for each div element that we create.</p>
+            <pre>
+                //list colors you want to choose from
+                //in the array as string (between quotation marks)
+                var colors = ["red", "pink", "blue", "yellow", "orange", "green"];
+
+                window.onload = function(){
+                    for(var i = 0; i < 150; i++){
+                        //code inside here will run 150 times
+                        var div = document.createElement("DIV");
+
+                        //assign class "cicle" for these div elements
+                        div.className = "circle";
+
+                        //if you were setting these styles in css, it would be equivalent to
+                        //div{
+                        //   width: 15px;
+                        //   height: 15px;
+                        //   border-radius: 50%;
+                        //   background-color: red;
+                        //}
+
+                        div.style.width = "15px";
+                        div.style.height = "15px";
+                        div.style.borderRadius = 50%;
+
+                        //instead of previous div.style.backgroundColor = "red";
+                        //colors.length returns the number of elements in the colors array
+                        var colorNum = Math.floor(Math.random() * colors.length);
+                        div.style.backgroundColor = colors[colorNum];
+
+                        //if the random number we get from Math.random() * window.innerWidth is, for example, 350px
+                        //this line in css would be
+                        //left: 350px;
+                        div.style.left = Math.random() * window.innerWidth + "px";
+
+                        document.body.append(div);
+                    }
+                }
+            </pre>
+            <p>You can list the colors you want to choose from in worded colors (i.e. pink, red, green) or in hexadecimal (#ffffff for white, #ff0000 for red) or in rgb (rgb(255, 0, 0) for red, rgb(255, 0, 0) for purple). Whatever color representation you want to use, just make sure that they are surrounded by quotation marks. For randomly assigning a color value for the div element, we are going to pick a number between 0 and the length of the colors array (but not including the actual length of the array). Remember that arrays use <b>zero-index</b> meaning the first element in the array is at index 0, the second element in index 1, and the last element in index length - 1. Math.random() function returns a float (decimal) number between 0 and 1, but not including 1. Because if we want to use this random number to choose the index of the array, it has to be a integer (no decimal points - there is no element at index 1.31, for example). So we need the floor integer number (the integer number when the decimal number is rounded down. i.e. 3.14 to 3, 3.88 is also to 3) of the decimal number we get from Math.random() * colors.length. So we surround Math.random() * colors.length with Math.floor(). We first save this number that we have calculated in a variable called colorNum, and use this number to reference the element at the randomly selected index number (colorNum) of our colors array by saying colors[colorNum].</p>
+            <p>Now we are going to use @keyframes css rule to apply animations to our circle div elements. There are two animations going on at the same time: the animation of circle div elements falling, and the one of rotating on the Y axis. Let's create two @keyframes rule for each of these:</p>
+            <pre>
+                @keyframes fall{
+                    to{
+                        top: 100%;
+                    }
+                }
+                @keyframes circleAround{
+                    from{
+                        transform: rotateY(0deg);
+                    }
+                    to{
+                        transform: rotate(360deg);
+                    }
+                }
+            </pre>
+            <p>When the fall @keyframes is applied, it will move the circle div elements to wherever they are all the way to the bottom of the web page. The circleAround @keyframes rotates the circle div elements along the y-axis from 0 degrees to 360 degrees. There is a reason why there is no from{} for the fall @keyframes. We want to be able to assign the starting position of our circle div elements differently for each element, so it doesn't all fall at the same time. Let's set the "top" css property in our javascript, similar to the way we set our "left" values.</p>
+            <pre>
+                //list colors you want to choose from
+                //in the array as string (between quotation marks)
+                var colors = ["red", "pink", "blue", "yellow", "orange", "green"];
+
+                window.onload = function(){
+                    for(var i = 0; i < 150; i++){
+                        //code inside here will run 150 times
+                        var div = document.createElement("DIV");
+
+                        //assign class "cicle" for these div elements
+                        div.className = "circle";
+
+                        //if you were setting these styles in css, it would be equivalent to
+                        //div{
+                        //   width: 15px;
+                        //   height: 15px;
+                        //   border-radius: 50%;
+                        //   background-color: red;
+                        //}
+
+                        div.style.width = "15px";
+                        div.style.height = "15px";
+                        div.style.borderRadius = 50%;
+
+                        //instead of previous div.style.backgroundColor = "red";
+                        //colors.length returns the number of elements in the colors array
+                        var colorNum = Math.floor(Math.random() * colors.length);
+                        div.style.backgroundColor = colors[colorNum];
+
+                        //if the random number we get from Math.random() * window.innerWidth is, for example, 350px
+                        //this line in css would be
+                        //left: 350px;
+                        div.style.left = Math.random() * window.innerWidth + "px";
+
+                        //randomly assign top value
+                        //between -50 and -150
+                        div.style.top = - Math.random() * 100 - 50 + "px";
+
+                        document.body.append(div);
+                    }
+                }
+            </pre>
+            <p>The "top" value needs to be a negative number so our circle div elements will start falling above the top of the browser window. The -50 after - Math.random() * 100 will make sure that the top value is at least -50 and range to -150. Again, we add our unit of measurement "px" at the end.</p>
+            <p>Now we can apply the @keyframes animations to our circle div elements in css:</p>
+            <pre>
+                .circle{
+                    position: absolute;
+                    display: block;
+                    animation: circleAround 2s infinite, fall 10s infinite linear forwards;
+                }
+            </pre>
+            <p>The animation line seems like there is a lot going on, because in order to apply multiple animations to a single html element / class / id, we need to condense our animation properties in one line. Previously, we would assign animation properties in this way:</p>
+            <pre>
+                animation-name: circleAround;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+            </pre>
+            <p>These three lines can be condensed into:</p>
+            <pre>
+                animation: circleAround 2s infinite;
+            </pre>
+            <p>Give the name of the animation first, and all other css animation properties (such as duration, iteration-count, direction...) need to be seperated by a space. The order of the rest of the properties do not matter. If assigning another @keyframes animation, this needs to be separated by a comma.</p>
+            <pre>
+                animation: circleAround 2s infinite, fall 10s infinite linear forwards;
+            </pre>
+            <p>Now it save and see the falling rotating circle div elements!</p>
+            <p>You can give a greater distance between the falling circle div elements by increasing the range of the "top" css value, but we can also assign different animation-delay values for each element in our javascript. We are going to do this similar to the way we randomly assigned "top" values.</p>
+            <pre>
+                //list colors you want to choose from
+                //in the array as string (between quotation marks)
+                var colors = ["red", "pink", "blue", "yellow", "orange", "green"];
+
+                window.onload = function(){
+                    for(var i = 0; i < 150; i++){
+                        //code inside here will run 150 times
+                        var div = document.createElement("DIV");
+
+                        //assign class "cicle" for these div elements
+                        div.className = "circle";
+
+                        //if you were setting these styles in css, it would be equivalent to
+                        //div{
+                        //   width: 15px;
+                        //   height: 15px;
+                        //   border-radius: 50%;
+                        //   background-color: red;
+                        //}
+
+                        div.style.width = "15px";
+                        div.style.height = "15px";
+                        div.style.borderRadius = 50%;
+
+                        //instead of previous div.style.backgroundColor = "red";
+                        //colors.length returns the number of elements in the colors array
+                        var colorNum = Math.floor(Math.random() * colors.length);
+                        div.style.backgroundColor = colors[colorNum];
+
+                        //if the random number we get from Math.random() * window.innerWidth is, for example, 350px
+                        //this line in css would be
+                        //left: 350px;
+                        div.style.left = Math.random() * window.innerWidth + "px";
+
+                        //randomly assign top value
+                        //between -50 and -150
+                        div.style.top = - Math.random() * 100 - 50 + "px";
+
+                        //assign random animation delays
+                        //the unit of animation-delay is in s (second)
+                        div.style.animationDelay = Math.random() * 10 + "s";
+
+                        document.body.append(div);
+                    }
+                }
+            </pre>
+            <p>Here we are getting a random number between 0 and 10 by doing Math.random() * 10. We add the unit of measurement "s" (second) at the end.</p>
+            <p>Now we are going to look at how we can apply changes in css for all of the circle div elements. We are going to try to change the opacity of the div elements. Let's create two buttons in our html, one for increasing opacity (making the colors more visible, more opaque), and one for decreasing opacity (making the colors more transparent).</p>
+            <pre>
+                &lt;button value="up" onclick="changeTrans(this.value)">APPEAR&lt;/button>
+                &lt;button value="down" onclick="changeTrans(this.value)">DISAPPEAR&lt;/button>
+            </pre>
+            <p>Same as the way that we did for the <a class="p-link" href="jsbasics.html"><u>basic javascript workshop</u></a>, we are going to use one function to do both increase and decrease of opacity. <b>this.value</b> will pass in the value given inside the &lt;button> html tag (for the first button it will be "up", and the second "down") to decide whether to increase or decrease opacity in our javascript.</p>
+            <pre>
+                var opacityValue = 1.0;
+
+                function changeTrans(val){
+                    if(val === "up"){
+                        //opacityValue = opacityValue + 0.1;
+                        opacityValue += 0.1;
+                    }
+                    else{
+                        //opacityValue = opacityValue - 0.1;
+                        opacityValue -= 0.1;
+                    }
+                }
+            </pre>
+            <p>Couple of things to note here. The value given for the pressed button is saved to a variable called "val", as written inside brackets of function: changgTrans(val). The opacityValue += 0.1 line is same as saying opacityValue = opacityValue + 0.1; The += symbol is a way of abreviating to say that you want to update the value of the variable opacityValue after you have added 0.1 to what was. For example, if the opacityValue is 0.5, if you do opacityValue += 0.1, it the value of variable opacityValue will now be saved as 0.6. Before we can do this addition and subtraction to the opacityValue, we have to make sure that it doesn't go above 1.0 (fully opaque) and below 0.0 (fully transparent). So we put an if statement around the line we change the value of the variable opacityValue.</p>
+            <pre>
+                var opacityValue = 1.0;
+
+                function changeTrans(val){
+                    if(val === "up"){
+                        //only increase opacityValue if it is less than 1.0
+                        if(opacityValue < 1.0){
+                            //opacityValue = opacityValue + 0.1;
+                            opacityValue += 0.1;
+                        }
+                    }
+                    else{
+                        //only decrease opacityValue if it is greater than 0.0
+                        if(opacityValue > 0.0){
+                            //opacityValue = opacityValue - 0.1;
+                            opacityValue -= 0.1;
+                        }
+                    }
+                }
+            </pre>
+            <p>The function will check whether the value of variable opacityValue before changing it. This way, it will never go below 0.0 and above 1.0. Now, we will actually change opacity using the value of opacityValue variable.</p>
+            <pre>
+                var opacityValue = 1.0;
+
+                function changeTrans(val){
+                    //circles variable contains the array of div elements with class "circle"
+                    var circles = document.getElementsByClassName("circle");
+
+                    if(val === "up"){
+                        //only increase opacityValue if it is less than 1.0
+                        if(opacityValue < 1.0){
+                            //opacityValue = opacityValue + 0.1;
+                            opacityValue += 0.1;
+                        }
+                    }
+                    else{
+                        //only decrease opacityValue if it is greater than 0.0
+                        if(opacityValue > 0.0){
+                            //opacityValue = opacityValue - 0.1;
+                            opacityValue -= 0.1;
+                        }
+                    }
+
+                    //use for loop to set opacity of all div elements with class "circle"
+                    //using value of opacityValue variable
+                    for(var i = 0; i < circles.length; i++){
+                        circles[i].style.opacity = opacityValue;
+                    }
+                }
+            </pre>
+            <p>First, we get all of the html elements of circle class and save it in a variable called circles. We have familarized ourselves with document.getElementById, which returns a single html element of that id. document.getElementsByClassName (make sure you write Elements with an s, not Element) will give you all the existing html elements wht the class name you specify, in this case circle, in an array. We can use a for loop to iterate through the circles array and set the opacity css property to be opacityValue for all of our circle div elements.</p>
+            <p>Now we are done! We have 150 falling circle div elements that we can also change the opacity of using our buttons!</p>
+            <p>You can download the example code from <u><a class="p-link" href="https://github.com/js6450/CommLabGSS/tree/master/_javascript-multiples">here.</a></u></p>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>

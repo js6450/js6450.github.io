@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Basics - Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    body, html{
+        height: 100%;
+        background-color: black;
+    }
+
+    img{
+        position: absolute;
+        display: block;
+        width: 200px;
+    }
+</style>
+<body onclick="insertImg()">
+<div id="panel">
+    <button value="off" onclick="erase(this)">Auto Erase: OFF</button>
+    <button value="baam" onclick="setImg(this.value)">BAAM!</button>
+    <button value="pow" onclick="setImg(this.value)">POW</button>
+    <button value="bang" onclick="setImg(this.value)">BANG</button>
+    <button value="cry" onclick="setImg(this.value)">:')</button>
+    <button value="heart" onclick="setImg(this.value)"><3</button>
+</div>
+</body>
+<script type="text/javascript">
+    var imgValue = "";
+    var autoErase = false;
+    var mult = true;
+
+    function erase(erase){
+        if(erase.value === "off"){
+            erase.value = "on";
+            erase.textContent = "Auto Erase: ON";
+            autoErase = true;
+        }
+        else{
+            erase.value = "off";
+            erase.textContent = "Auto Erase: OFF";
+            autoErase = false;
+        }
+    }
+
+    function setImg(value){
+        imgValue = value;
+        console.log("Now image changed to: " + value);
+    }
+
+    function insertImg(){
+        var img;
+
+        var x = event.clientX;
+        var y = event.clientY;
+
+        console.log("x position: " + x + ", y position: " + y);
+
+        if(imgValue != "" && y >= 50){
+
+            //first create img element
+            //https://www.w3schools.com/jsref/met_document_createelement.asp
+            img = document.createElement("IMG");
+
+            if(imgValue === "baam"){
+                img.src = "img/jsbasics/baam.png";
+            }
+            else if(imgValue === "pow"){
+                img.src = "img/jsbasics/pow.png";
+            }
+            else if(imgValue === "bang"){
+                img.src = "img/jsbasics/bang.png";
+            }
+            else if(imgValue === "cry"){
+                img.src = "img/jsbasics/cry.png";
+            }
+            else if(imgValue === "heart"){
+                img.src = "img/jsbasics/heart.png";
+            }
+
+            document.body.append(img);
+
+            var imgX = x - img.width / 2;
+            var imgY = y - img.height / 2;
+
+            img.style.left = imgX + "px";
+            img.style.top = imgY + "px";
+
+        }
+
+        if(img != null && autoErase){
+            setTimeout(function(){
+                img.parentElement.removeChild(img);
+            }, 1000);
+        }
+
+    }
+</script>
+</html>
