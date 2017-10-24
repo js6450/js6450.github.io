@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Sound Visualization</title>
+</head>
+<style>
+    body, html{
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+    }
+    #visuals{
+        float: left;
+        width: 85%;
+        height: 100%;
+    }
+    #controls{
+        float: right;
+        padding-top: 5%;
+        width: 15%;
+        height: 100%;
+        background-color: black;
+    }
+    #spinCircle{
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 50px;
+        border-top-color: red;
+        border-bottom-color: blue;
+        border-left-color: yellow;
+        border-right-color: green;
+        z-index: 1;
+    }
+    .otherCircles{
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+        opacity: 0.5;
+    }
+    #startCircle{
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        border-radius: 50%;
+        background-color: pink;
+    }
+    #startCircle:hover{
+        background-color: red;
+    }
+
+    #volUp{
+        width: 0px;
+        margin: 50px auto;
+        border-style: solid;
+        border-width: 25px;
+        border-bottom-color: lightblue;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
+
+    #volUp:hover{
+        border-bottom-color: blue;
+    }
+
+    #volDown{
+        width: 0px;
+        margin: 50px auto;
+        border-style: solid;
+        border-width: 25px;
+        border-top-color: lightblue;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
+
+    #volDown:hover{
+        border-top-color: blue;
+    }
+
+    @keyframes spin{
+        from{
+            transform: rotateZ(0deg);
+        }
+        to{
+            transform: rotateZ(360deg);
+        }
+    }
+
+    @keyframes blink{
+        to{
+            opacity: 0.2;
+        }
+    }
+
+    @keyframes twirl{
+        from{
+            transform: rotateY(0deg);
+        }
+        to{
+            transform: rotateY(360deg);
+        }
+    }
+
+    @keyframes makeBig{
+        from{
+            transform: scale(1);
+        }
+        to{
+            transform: scale(2);
+        }
+    }
+
+    @keyframes twist{
+        from{
+            transform: skew(0deg, 0deg);
+        }
+        to{
+            transform: skew(-40deg, -40deg);
+        }
+    }
+
+    @keyframes disappear{
+        from{
+            opacity: 1.0;
+        }
+        to{
+            opacity: 0.0;
+        }
+    }
+</style>
+<body>
+<div id="visuals">
+    <div id="otherCircles"></div>
+    <div id="spinCircle"></div>
+</div>
+<div id="controls">
+    <div onclick="startBGM()" id="startCircle"></div>
+    <div onclick="volumeUp()" id="volUp"></div>
+    <div onclick="volumeDown()" id="volDown"></div>
+</div>
+<audio oncanplay="setNumbers()" ontimeupdate="addCircles()" onended="disappear()" id="bgm">
+    <source src="audio/bgm.mp3">
+</audio>
+</body>
+<script type="text/javascript">
+    var visualW;
+    var visualH;
+
+    var bgm = document.getElementById('bgm');
+    var bgmCircle = document.getElementById("spinCircle");
+    var bgmCircleW;
+    var bgmCircleTop;
+    var bgmCircleReduce;
+    var playing = false;
+    var vol = 1.0;
+    var totalTime;
+    var interval = 2;
+    var numCircles;
+    var numSections;
+    var circleSize = 10;
+    var circleCreated = false;
+
+    window.onload = function(){
+        visualW = document.getElementById('visuals').clientWidth;
+        visualH = document.getElementById('visuals').clientHeight;
+
+        if(visualW < visualH){
+            bgmCircleW = visualW - 200;
+            spinCircle.style.width = spinCircle.style.height = bgmCircleW + "px";
+        }else{
+            bgmCircleW = visualH - 200;
+            spinCircle.style.width = spinCircle.style.height = bgmCircleW + "px";
+        }
+        bgmCircleTop = (visualH - bgmCircleW) / 2 - 50;
+        bgmCircle.style.marginTop = bgmCircleTop + "px";
+
+    }
+
+    function setNumbers(){
+        totalTime = bgm.duration;
+        numCircles = Math.floor(totalTime / interval);
+        numSections = Math.floor(numCircles / 4);
+    }
+
+    function startBGM(){
+        if(playing){
+            bgm.pause();
+            bgmCircle.style.animation = null;
+        }else{
+            bgm.play();
+            bgmCircle.style.animation = "spin 3s infinite linear";
+        }
+        playing = !playing;
+    }
+
+    function volumeUp(){
+        if(vol < 1.0){
+            vol += 0.1;
+        }else{
+            vol = 1.0;
+        }
+        console.log(vol);
+        bgm.volume = vol;
+        bgmCircle.style.width = bgmCircleW * vol + "px";
+    }
+
+    function volumeDown(){
+        if(vol > 0.0){
+            vol -= 0.1;
+        }else{
+            vol = 0.0;
+        }
+        console.log(vol);
+        bgm.volume = vol;
+        bgmCircle.style.width = bgmCircleW * vol + "px";
+    }
+
+    function addCircles(){
+        //console.log(Math.floor(bgm.currentTime));
+        for(var i = 0; i < numCircles; i++){
+            if(Math.floor(bgm.currentTime) == interval * i && !circleCreated){
+                // console.log("create new circle!");
+                var newCircle = document.createElement("DIV");
+                newCircle.className = "otherCircles";
+                circleSize++;
+                newCircle.style.width = newCircle.style.height = circleSize + "px";
+                newCircle.style.left = Math.random() * document.getElementById('visuals').clientWidth + "px";
+                newCircle.style.top = Math.random() * document.getElementById('visuals').clientHeight + "px";
+
+                if(i < numSections){
+                    newCircle.style.backgroundColor = "red";
+                    newCircle.style.animation = "twist 1s infinite alternate";
+                }
+                else if(i >= numSections && i < numSections * 2){
+                    newCircle.style.backgroundColor = "green";
+                    newCircle.style.animation = "blink 1s infinite alternate";
+                }
+                else if(i >= numSections * 2 && i < numSections * 3){
+                    newCircle.style.backgroundColor = "blue";
+                    newCircle.style.animation = "twirl 2s infinite"
+                }
+                else if(i >= numSections * 3){
+                    newCircle.style.backgroundColor = "yellow";
+                    newCircle.style.animation = "makeBig 1s infinite alternate";
+                }
+
+                document.getElementById('otherCircles').append(newCircle);
+
+                bgmCircleW -= 4;
+                bgmCircleTop += 2;
+                bgmCircle.style.width = bgmCircle.style.height = bgmCircleW + "px";
+                bgmCircle.style.marginTop = bgmCircleTop + "px";
+
+                circleCreated = true;
+            }
+
+            if(Math.floor(bgm.currentTime) == interval * i + 1){
+                circleCreated = false;
+            }
+
+        }
+    }
+
+    function disappear(){
+        bgmCircle.style.animation = "disappear 3s 1 forwards"
+    }
+
+</script>
+</html>
