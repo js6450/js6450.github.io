@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<style>
+    html, body{
+        height: 100%;
+        overflow: hidden;
+        margin: 0px;
+
+        font-family: 'Helvetica',  sans-serif;
+    }
+
+    .grid-vid-row{
+        height: 50%;
+    }
+
+    .grid-vid-item{
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    /*
+    CSS filter property
+    https://www.w3schools.com/cssref/css3_pr_filter.asp
+
+    CSS filter demo
+    https://www.w3schools.com/cssref/playit.asp?filename=playcss_filter&preval=none
+    */
+
+    .grid-vid{
+        width: 100%;
+        height: 100%;
+        filter: grayscale(100%);
+        transition: filter 2s;
+    }
+
+    .grid-vid:hover{
+        filter: grayscale(0%);
+        cursor: pointer;
+    }
+
+    @keyframes changeColor{
+        from{
+            filter: hue-rotate(0deg);
+        }
+        to{
+            filter: hue-rotate(360deg);
+        }
+    }
+</style>
+<body>
+<div class="grid-vid-row">
+    <div class="grid-vid-item">
+        <video onclick="" class="grid-vid" autoplay loop muted>
+            <source src="assets/video/piano_jiwon.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="grid-vid-item">
+        <video class="grid-vid" autoplay loop muted>
+            <source src="assets/video/piano_leon.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+<div class="grid-vid-row">
+    <div class="grid-vid-item">
+        <video class="grid-vid" autoplay loop muted>
+            <source src="assets/video/guitar.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="grid-vid-item">
+        <video class="grid-vid" autoplay loop muted>
+            <source src="assets/video/drum.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    //Audio / Video DOM references
+    //https://www.w3schools.com/tags/ref_av_dom.asp
+
+    var grid_videos = [];
+    var numPlaying = 0;
+
+    window.onload = function(){
+        console.log("loading window");
+        full_vid = document.getElementById('full-page');
+        options = document.getElementById('options');
+
+        grid_videos = document.getElementsByClassName('grid-vid');
+
+        for(var i = 0; i < grid_videos.length; i++){
+            // grid_videos[i].setAttribute("onmouseover", "unmuteVid("+ i + ")");
+            // grid_videos[i].setAttribute("onmouseout", "muteVid(" + i + ")");
+            grid_videos[i].setAttribute("onclick", "playVid(" + i + ")");
+        }
+    };
+
+    function unmuteVid(vidNum){
+        // console.log(vidNum);
+        grid_videos[vidNum].muted = false;
+    }
+
+    function muteVid(vidNum){
+        grid_videos[vidNum].muted = true;
+    }
+
+    function playVid(vidNum){
+        var video = grid_videos[vidNum];
+        video.muted = !video.muted;
+        if(video.muted){
+            video.style.filter = "grayscale(100%)";
+            numPlaying--;
+        }else{
+            video.style.filter = "grayscale(0%)";
+            numPlaying++;
+        }
+        console.log(numPlaying);
+
+        if(numPlaying == 4){
+            console.log("all playing!");
+            for(var i = 0; i < grid_videos.length; i++){
+                document.body.style.backgroundColor = "red";
+                grid_videos[i].style.animation = "changeColor 1s infinite";
+            }
+        }else{
+            for(var i = 0; i < grid_videos.length; i++){
+                document.body.style.backgroundColor = "white";
+                grid_videos[i].style.animation = null;
+            }
+        }
+    }
+</script>
+</html>

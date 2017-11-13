@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>css animation - more examples</title>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="full-page-content">
+            <h4><b>Videos with Javascript</b></h4>
+            <p>For this workshop, we will learn how to use Javascript to pause, play, mute and change styles of videos. We are going to create two styles of web video views: full-page of one video and grid of four videos.</p>
+            <h5>Full-page video with pop-up options</h5>
+            <iframe height="500" src="video-full-page.html"></iframe>
+            <br>
+            <p><u><a class="p-link" href="video-full-page.html">Click to view the demo as a full web page.</a></u></p>
+            <p>You can download the example code as compressed zip files from <a class="p-link" href="assets/video-full-page.zip" download><u>here</u></a>.</p>
+            <h5>Video grid</h5>
+            <iframe height="500" src="video-grid.html"></iframe>
+            <p><u><a class="p-link" href="video-grid.html">Click to view the demo as a full web page.</a></u></p>
+            <p>You can download the example code as compressed zip files from <a class="p-link" href="assets/video-grid.zip" download><u>here</u></a>.</p>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
