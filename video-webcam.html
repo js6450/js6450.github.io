@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style>
+
+#cam, #canvas{
+	display: none;
+}
+
+.outputImg{
+	width: 10%;
+	display: block;
+	position: relative;
+	float: left;
+}
+
+@keyframes changeHue{
+	from{
+		filter: hue-rotate(0deg);
+	}to{
+		filter: hue-rotate(300deg);
+	}
+}
+</style>
+<body>
+	<video oncanplay="setupCanvas()" id="cam"></video>
+	<canvas id="canvas"></canvas>
+	<div id="output"></div>
+</body>
+<script type="text/javascript">
+	var cam, canvas;
+
+	window.onload = function(){
+		cam = document.getElementById('cam');
+		canvas = document.getElementById('canvas');
+
+		canvas.setAttribute('width', 640);
+		canvas.setAttribute('height', 480);
+
+		setupMedia();
+	};
+
+	function setupMedia(){
+		navigator.mediaDevices.getUserMedia({video: true}).then(function(stream){
+			cam.srcObject = stream;
+			cam.play();
+		}).catch(function(err){
+			console.log(err);
+		});
+	}
+
+	function setupCanvas(){
+		setInterval(takePhotos, 500);
+	}
+
+	function takePhotos(){
+		var context = canvas.getContext('2d');
+
+		context.drawImage(cam, 0, 0, canvas.width, canvas.height);
+
+		var data = canvas.toDataURL('img/png');
+
+		var newImg = document.createElement('IMG');
+		newImg.src = data;
+		newImg.className = "outputImg";
+		var randHue = Math.floor(Math.random() * 360);
+		newImg.style.filter = "hue-rotate(" + randHue + "deg)";
+
+		document.getElementById('output').append(newImg);
+	}
+</script>
+</html>

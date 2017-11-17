@@ -19,9 +19,6 @@
     #full-page{
         height: 100%;
         width: 100%;
-        position: relative;
-        display: block;
-        margin: auto;
     }
 
     #options{
@@ -91,14 +88,10 @@
     var section_times = [7, 14, 21, 27];
     var changed = false;
 
-    window.onload = function(){
-        console.log("loading window");
-        full_vid = document.getElementById('full-page');
-        options = document.getElementById('options');
-    };
+    full_vid = document.getElementById('full-page');
+    options = document.getElementById('options');
 
     function checkTime(vid){
-        console.log(vid.currentTime.toFixed(1));
         if(changed == false){
             for(var i = 0; i < section_times.length; i++){
                 if(Math.floor(vid.currentTime) == section_times[i]){
@@ -107,7 +100,6 @@
                 }
             }
         }
-
     }
 
     function changeVideo(vidNum){
