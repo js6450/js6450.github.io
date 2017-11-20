@@ -60,7 +60,7 @@
 </style>
 <body>
 <div class="full-page-vid">
-    <video ontimeupdate="checkTime(this)" id="full-page" autoplay loop muted>
+    <video ontimeupdate="checkTime(this)" id="full-page" autoplay loop>
         <source src="assets/video/all.mp4" type="video/mp4">
     </video>
 </div>
@@ -88,10 +88,14 @@
     var section_times = [7, 14, 21, 27];
     var changed = false;
 
-    full_vid = document.getElementById('full-page');
-    options = document.getElementById('options');
+    window.onload = function(){
+        console.log("loading window");
+        full_vid = document.getElementById('full-page');
+        options = document.getElementById('options');
+    };
 
     function checkTime(vid){
+        console.log(vid.currentTime.toFixed(1));
         if(changed == false){
             for(var i = 0; i < section_times.length; i++){
                 if(Math.floor(vid.currentTime) == section_times[i]){
@@ -100,6 +104,7 @@
                 }
             }
         }
+
     }
 
     function changeVideo(vidNum){
