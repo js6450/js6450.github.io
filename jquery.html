@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Basics</title>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+    html, body{
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .row-item{
+        height: 100%;
+        background-color: lightyellow;
+        float: left;
+    }
+
+    .top-bar{
+        width: 100%;
+        background-color: lightgreen;
+    }
+
+    .bottom-bar{
+        width: 100%;
+        display: none;
+        background-color: lightblue;
+    }
+
+    .rotate{
+        animation: rotateRight 2s 1;
+    }
+
+    @keyframes rotateRight{
+        0%{
+            transform: rotateZ(0deg);
+        }
+        50%{
+            transform: rotateZ(90deg);
+        }
+        100%{
+            transform: rotateZ(0deg);
+        }
+    }
+</style>
+<body>
+<div class="row">
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+    <div class="row-item">
+        <div class="top-bar"></div>
+        <div class="bottom-bar"></div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    //runs after the html has finished loading
+    //this allows you to have script before the body
+    $(document).ready(function(){
+        setSize();
+    });
+
+    $(window).resize(function(){
+        setSize();
+    });
+
+    function setSize(){
+        var divWidth = $(window).width() * 0.2;
+        var leftMargin = ($(window).width() - divWidth * 4) * 0.2;
+
+        $('.row-item').css({"margin-left": leftMargin + "px", "width": divWidth + "px"});
+
+        var divHeight = $(window).height() * 0.25;
+        var topMargin = ($(window).height() - divHeight * 3) * 0.25;
+        $('.row').css({"height": divHeight+ "px" ,"margin-top": topMargin + "px"});
+
+        var topHeight = divHeight * 0.25;
+        var bottomHeight = divHeight - topHeight;
+
+        $('.top-bar').css("height", topHeight + "px");
+        $('.bottom-bar').css("height", bottomHeight + "px");
+    }
+
+    //this way, toggle happens for all .top-bar elements
+    //AT THE SAME TIME
+    // $('.top-bar').click(function(){
+    // 	$('.bottom-bar').slideToggle("slow");
+    // });
+
+    //individually attach click for all .top-bar elements
+    $('.top-bar').each(function(){
+        $(this).click(function(){
+            $(this).next().slideToggle("slow");
+            $(this).parent().animate({
+                opacity: "0.25", width: "-=50px", marginLeft: "+=25px", marginRight: "+=25px"
+            }, 1000).animate({
+                opacity: "1.0", width: "+=50px", marginLeft: "-=25px", marginRight: "-=25px"
+            }, 1000);
+            // console.log($(this).parent());
+        })
+    });
+
+    //add and remove classes, to apply different styles
+    $('.top-bar:even').each(function(){
+        $(this).click(function(){
+            //one line!
+            //same as what is below!
+            $(this).parent().toggleClass('rotate');
+            // if($(this).parent().hasClass('rotate')){
+            // 	$(this).parent().removeClass('rotate');
+            // }else{
+            // 	$(this).parent().addClass('rotate');
+            // }
+        });
+    });
+
+</script>
+</html>

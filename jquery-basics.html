@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>jQuery Basics</title>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="full-page-content">
+            <h4><b>jQuery Basics</b></h4>
+            <p>For this workshop, we will learn how to use <a class="p-link" href="https://jquery.com/"><u>jQuery</u></a>, a Javascript library that provides shorthand notations for javascript. It also uses css-style notations for its selectors. We will get to know what this actually means. Here is what we will make today:</p>
+            <iframe height="500" src="jquery.html"></iframe>
+            <br>
+            <p><u><a class="p-link" href="jquery.html">Click to view the demo as a full web page.</a></u></p>
+            <p>This tutorial will be more about the tools of making this demo, rather than the steps you need to take to make the demo, because learning the fundamentals of jQuery is more important than achieving the final result of the demo. The code for the demo is available at the bottom of this page as usual.</p>
+            <h5>Using jQuery</h5>
+            <p>jQuery is a library. This means that we need to include the library as a script tag inside of our html. We don't actually need to download the file (although you can, if that is what you want), and we can use <a class="p-link" href="https://code.jquery.com/"><u>jQuery CDN</u></a>. Using the latest minified version is recommended. When you click on the "minified" link, it will show you a lightbox with a script tag you can paste into your html, that looks something like this:</p>
+            <pre>
+    &lt;script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">&lt;/script>
+            </pre>
+            <p>You should put this script tag inside of the &lt;head> tag. The reason for this is that this library needs to be included inside of the web page before we can write javascript that uses this library. Once this step is done, we can go ahead and use jQuery!</p>
+            <h5>Select with $</h5>
+            <p>With jQuery, you can refer to html elements using a $ sign, and the selector in the style of css inside of () brackets.</p>
+            <p>For example, if you want to refer to all &lt;div> elements inside of your html page, simply write:</p>
+            <pre>
+    $('div')
+            </pre>
+            <p>If you want to refer everything with class name 'row', then simply write:</p>
+            <pre>
+    $('.row')
+            </pre>
+            <p>Similarly, if you want to refer to an element of id 'specialDiv':</p>
+            <pre>
+    $('#specialDiv')
+            </pre>
+            <p>As you may now come to realize, you can use css notations inside of the quotation marks of the brackets to refer to html elements inside of your web page. No more document.getElementbyId()!</p>
+            <p><a class="p-link" href="https://www.w3schools.com/jquery/jquery_ref_selectors.asp"><u>This w3schools page</u></a> has a comprehensive list of all jQuery selectors.</p>
+            <h5>Attaching Events</h5>
+            <p>It becomes easier to attach events in jQuery. We can attach events, without having to define it inside of html using attributes and it is simpler than adding event handliers.</p>
+            <p><a class="p-link" href="https://www.w3schools.com/jquery/jquery_ref_events.asp"><u>This w3schools page</u></a> has a comprehensive list of all jQuery events. Please DO NOT use events in the list, if it says "removed" or "deprecated" in red text. This means that those events have been taken out of the recent version of jQuery, and you will not be able to use it.</p>
+            <h5>Effects in jQuery</h5>
+            <p>jQuery provides effects that are useful for transitioning elements from being visible to not visible. The most commonly used effects are hide / show, fade and slide.</p>
+            <p><a class="p-link" href="https://www.w3schools.com/jquery/jquery_ref_effects.asp"><u>This w3schools page</u></a> has a comprehensive list of all jQuery effects.</p>
+            <h5>Collective vs Individual</h5>
+            <p>If you want to apply the same actions / styles to all elements of a certain class, this is really easy using jQuery. We don't need a for-loop! For example, if we want to have background-color of all elements of class 'red' to be red, we can simply do:</p>
+            <pre>
+    $('.red').css('background-color', 'red);
+            </pre>
+            <p>However, this gets a little tricky if you want to attach events (click, dbclick, mouseover...) to all elements of a certain class name. The code below will demonstrate this.</p>
+            <pre>
+    $('.top-bar').click(function(){
+	    $('.bottom-bar').slideToggle("slow");
+    });
+            </pre>
+            <p>The above code basically makes clicking on any .top-bar element to toggle slide of all .bottom-bar elements AT THE SAME TIME. This may be something you want, but you might also be wondering how to allow individual .top-bar element to toggle slide for individual .bottom-bar element. Here is where each() function becomes useful.</p>
+            <pre>
+    $('.top-bar').each(function(){
+		$(this).click(function(){
+			$(this).next().slideToggle("slow");
+		})
+	});
+            </pre>
+            <p>The each() function in the above code allows each element of .top-bar class to be accessible inside of the function. You can refer to the individual element as $(this), and therefore create individual click events for each element of the .top-bar class. Inside of the click function, it is being told to slideToggle the element that is referred to as $(this).next() -- and you might be wondering, what does next() do? Now, we will have to talk about "traversing" html elements.</p>
+            <h5>Traversing HTML elements</h5>
+            <p>To talk about traversing, looking at an html grid will make it easier to understand. Let's say we have html code that looks like this:</p>
+            <pre>
+&lt;div class="row">
+    &lt;div class="row-item">
+        &lt;div class="top-bar">&lt;/div>
+        &lt;div class="bottom-bar">&lt;/div>
+    &lt;/div>
+    &lt;div class="row-item"&lt;
+        &lt;div class="top-bar">&lt;/div>
+        &lt;div class="bottom-bar">&lt;/div>
+    &lt;/div>
+    &lt;div class="row-item">
+        &lt;div class="top-bar">&lt;/div>
+        &lt;div class="bottom-bar">&lt;/div>
+    &lt;/div>
+    &lt;div class="row-item">
+        &lt;div class="top-bar">&lt;/div>
+        &lt;div class="bottom-bar">&lt;/div>
+    &lt;/div>
+&lt;/div>
+            </pre>
+            <p>Inside of the &lt;div> with class "row", there are four &lt;div> elements of class "row-item". And inside of each &lt;div> "row-item", there is a &lt;div> of class "top-bar" and a &lt;div> of class "bottom-bar". The elements directly inside of the &lt;div> of class "row" are it's children. In this example, $('.row').children() will return 4 &lt;div> elements of class "row-item". This means that for each of the 4 &lt;div> elements of class "row-item", their parent is the &lt;div> of class "row". Each &lt;div> of class "row-item" also has 2 children -- one of class "top-bar" and another of "bottom-bar". The relationship between &lt;div> of "top-bar" and "bottom-bar" is that they are siblings. You can refer to all elements within a same div (or elements that have a common parent), by saying $('top-bar').siblings(). You can also use the .next() function to refer to the slibling that appears after itself, or .prev() to refer to the sibling that appeared before itself. It can be a little complicated to wrap your head around. But this is the way that you can basically traverse along html elements (this is also true for vanilla javascript as well as jQuery).</p>
+            <h5>Using animate()</h5>
+            <p>You can use the animate() jquery function to apply animation to html elements. The syntax of the function is:</p>
+            <pre>
+    $('.class').animate({cssProperty: "value"}, time_in_milliseconds);
+            </pre>
+            <p>Replace '.class' with any selector. Replace cssProperty with any css properties, but this needs to be camelCased (no dash - this is probably the only place you CANNOT refer to something in jQuery in non-css syntax!). The "value" should be the numeric value (and its unit) for the cssProperty. Replace time_in_milliseconds to a number to refer to the actual milliseconds in time that you want the total duration of the animation to be. You can also use "slow", "normal" and "fast" which are predetermined times in jQuery ("slow" = 600, "normal" = 400, "fast" = 200).</p>
+            <p>However, there are some limitations with this function. One thing to note is that you CANNOT use animate() for css properties of non-numeric values. What this means is that you can animate an element to go from height of 100px to height of 200px using animate() function like this:</p>
+            <pre>
+    $('.row').animate({height: '200px'}, 2000);
+            </pre>
+            <p>However, below code will NOT work:</p>
+            <pre>
+    $('.row').animate({transform: 'rotateZ(90deg)'}, 2000);
+            </pre>
+            <p>Since the value of the transform css property is non-numeric (it is not just a number with a specfied unit), animate() function will not take effect. One other important thing to note is that this will NOT cause any errors.</p>
+            <p>Another thing to note is that it is not so straight-forward to make your animate() function run an infinite animation loop. You can do this by recursion, but it is easier to use @keyframes if you want an animation to happen infinitely. However, you can chain animate() events so that it does more than one single animation. For example, if you want your element to blink once, you can write:</p>
+            <pre>
+    $('.row').animate({opacity: '0.25'}, 1000).animate({opacity: '1.0'}, 1000);
+            </pre>
+            <p>The above code will make all elements of class .row to first change their opacity to 0.25 during 1000 ms, and to 1.0 during 1000 ms. animate() function leaves the state of elements to its end state (same as saying animation-fill-mode: forwards; in css). Because of the above reasons, it is best to leave animate() to use to create transitions, rather than to create on-going animations.</p>
+            <h5>Using toggleClass()</h5>
+            <p>toggleClass() can be used to add and remove a class to an element. Just like toggleFade() and toggleSlide(), it basically goes back and forth of one state to another -- in the case of toggleClass(), the state of adding a class and removing a class. This is useful when an event is triggered you want certain set of css styles to be applied and removed repeatedly.</p>
+            <pre>
+    $('.top-bar').each(function(){
+		$(this).click(function(){
+			$(this).parent().toggleClass('rotate');
+		});
+    });
+            </pre>
+            <p>The above code will add and remove the class .rotate to the parent of all elements of class .top-bar. The above code is basically a condensed way of writing the below code:</p>
+            <pre>
+    $('.top-bar').each(function(){
+		$(this).click(function(){
+			if($(this).parent().hasClass('rotate')){
+			    $(this).parent().removeClass('rotate');
+			}else{
+			    $(this).parent().addClass('rotate');
+			}
+		});
+    });
+            </pre>
+            <h5>Code</h5>
+            <p>Here is the code for what we have made during the workshop:</p>
+            <script src="https://gist.github.com/js6450/10db05c34852346e493566ec12bfdb06.js"></script>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
