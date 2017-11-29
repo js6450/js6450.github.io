@@ -31,6 +31,13 @@
         background-color: lightblue;
     }
 
+    .pattern-bar{
+        position: absolute;
+        z-index: -1;
+        height: 100%;
+        background-color: pink;
+    }
+
     .rotate{
         animation: rotateRight 2s 1;
     }
@@ -48,6 +55,7 @@
     }
 </style>
 <body>
+<div class="pattern"></div>
 <div class="row">
     <div class="row-item">
         <div class="top-bar"></div>
@@ -130,6 +138,8 @@
 
         $('.top-bar').css("height", topHeight + "px");
         $('.bottom-bar').css("height", bottomHeight + "px");
+
+        $('.pattern-bar').css("width", $(window).width() / 12 + "px");
     }
 
     //this way, toggle happens for all .top-bar elements
@@ -141,7 +151,15 @@
     //individually attach click for all .top-bar elements
     $('.top-bar').each(function(){
         $(this).click(function(){
+            if($(this).next().is(':hidden')){
+                $('.pattern').append('<div class="pattern-bar"></div>');
+                $('.pattern-bar:last').css({"width": $(window).width() / 12 + "px", "left": ($('.pattern-bar').length - 1) * 50 + "px"});
+            }else{
+                $('.pattern-bar:last').remove();
+            }
+
             $(this).next().slideToggle("slow");
+
             $(this).parent().animate({
                 opacity: "0.25", width: "-=50px", marginLeft: "+=25px", marginRight: "+=25px"
             }, 1000).animate({

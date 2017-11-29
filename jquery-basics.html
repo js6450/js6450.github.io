@@ -59,7 +59,35 @@
     $('#specialDiv')
             </pre>
             <p>As you may now come to realize, you can use css notations inside of the quotation marks of the brackets to refer to html elements inside of your web page. No more document.getElementbyId()!</p>
-            <p><a class="p-link" href="https://www.w3schools.com/jquery/jquery_ref_selectors.asp"><u>This w3schools page</u></a> has a comprehensive list of all jQuery selectors.</p>
+            <p>You can also use filters with your selectors, meaning that you can be more specific with the selection you make. For example, it is possible to select only the even &lt;div> elements of class .row by doing:</p>
+            <pre>
+    $('.row:even')
+            </pre>
+            <p>Looking at the example selector above, notice that the word "even", a jQuery selector filter, is followed by a colon and this is included INSIDE of the quotation marks. Another thing to note is that the zero-indexing applies here as well. The first .row element is of index 0, and the second .row element will be of index 1. So when $('.row:even') is called, it means the elements of even indexes. Thus, if I have html that looks like this:</p>
+            <pre>
+    &lt;div class="row">&lt;/div>
+    &lt;div class="row">&lt;/div>
+    &lt;div class="row">&lt;/div>
+    &lt;div class="row">&lt;/div>
+            </pre>
+            <p>then, the first and third &lt;div> will be returned, because they have index of 0 and 2.</p>
+            <p>There is a list of filters that you can use, and there are filters of 5 categories: basic filters, content filters, visibility filters, child filters and attribute filters. The basic filters filter within the elements referred to with the selector. For example, $('.row:even') returns the even elements within the entire .row class. The child filters make selections within the children of the elements referred to with the selector. So, if you want to select the even children of the .row class, you can write $('.row:nth-child(even)'). If you are confused what "children" means, please refer to the section about Traversing HTML Elements further down this tutorial. If you are curious about all existing jQuery filters, <a class="p-link" href="https://www.w3schools.com/jquery/jquery_ref_selectors.asp"><u>this w3schools page</u></a> has a comprehensive list of all jQuery selectors.</p>
+            <h5>Using $(document).ready()</h5>
+            <p>This function call is similar to that of vanilla javascript's window.onload(), but the crucial difference is that while window.onload() function runs after all the content INCLUDING its media content (i.e. all images and videos included in the html) has been loaded, while jQuery's $(document).ready() function runs once the html content has been loaded. This means, if your html page contains a lot of media content, window.onload() will run quite significantly later than $(document).ready(). Most of the jQuery code that you will find online are surrounded inside of the $(document).ready() function, because it ensures that the html elements that you want to modify / add events to, exist before the function is being called.</p>
+            <pre>
+    $(document).ready(function(){
+       //code here will run after all html content has been loaded (excluding loading media content)
+    });
+            </pre>
+            <h5>Adding and Removing</h5>
+            <p>It is easier to generate HTML content using jQuery. We don't actually need to create an element, but we can simply write html code inside of the append() function. See the demo below:</p>
+            <pre>
+    $('.pattern').append('&lt;div class="pattern-bar">&lt;/div>');
+            </pre>
+            <p>You can also attach remove() function to the element that you want remove. So, if I want to remove the last element of &lt;div> of class .pattern, all we need to do is figure out how to write the selector, and call the remove() function, like so:</p>
+            <pre>
+    $('.pattern:last-child').remove();
+            </pre>
             <h5>Attaching Events</h5>
             <p>It becomes easier to attach events in jQuery. We can attach events, without having to define it inside of html using attributes and it is simpler than adding event handliers.</p>
             <p><a class="p-link" href="https://www.w3schools.com/jquery/jquery_ref_events.asp"><u>This w3schools page</u></a> has a comprehensive list of all jQuery events. Please DO NOT use events in the list, if it says "removed" or "deprecated" in red text. This means that those events have been taken out of the recent version of jQuery, and you will not be able to use it.</p>
