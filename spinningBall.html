@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!--https://cdnjs.com/libraries/p5.js-->	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.sound.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js" type="text/javascript"></script>
+</head>
+<style type="text/css">
+	html, body{
+		margin: 0;
+
+	}
+</style>
+<body>
+
+</body>
+<script type="text/javascript">
+
+	var circles = [];
+
+	function setup() {
+	  createCanvas(window.innerWidth, window.innerHeight);
+	  colorMode(HSB, 360, 100, 100, 100);
+	  noStroke();
+	}
+
+	function draw() {
+	  background(0, 15);
+	  
+	  for(var i = 0; i < circles.length; i++){
+	    circles[i].display();
+	  }
+	}
+
+	function mousePressed(){
+	  circles.push(new Circle(mouseX, mouseY));
+	}
+
+	function Circle(x, y){
+
+    this.xpos = x;
+    this.ypos = y;
+    this.distance = random(50, 75);
+    this.rad = random(15, 30);
+    this.col = random(360);
+    this.colSpeed = random(0.01, 0.05);
+
+	  
+	this.display = function(){
+	    for(var i = 0; i < 6; i++){
+	    	push();
+	    	translate(this.xpos, this.ypos);
+		    rotate(frameCount * this.colSpeed + PI * i / 3);
+		    fill(this.col + 5 * i, sin(frameCount * this.colSpeed) * 30 + 70, 100, 75);
+		    ellipse(this.distance + sin(frameCount * this.colSpeed) * this.distance, 0, this.rad + 3 * i, this.rad + 3 * i);
+		    pop();
+	    }
+	  }
+	}
+</script>
+</html>

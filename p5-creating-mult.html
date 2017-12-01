@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>css animation - more examples</title>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="full-page-content">
+            <h4><b>Creating Multiples with p5.js</b></h4>
+            <p>In this workshop, we will look at how to create multiples using for-loops and objects as well as looking at some methods of enhancing the style of our visuals.</p>
+            <h5>Example 1: Bouncing balls</h5>
+            <p>Click on canvas to create balls:</p>
+            <iframe height="500" src="bouncingBall.html"></iframe>
+            <br>
+            <script src="https://gist.github.com/js6450/ed4025a02c4d6bed1dbe821db1724edf.js"></script>
+            <h5>Example 2: Spinning balls</h5>
+            <p>Click on canvas to create spinning balls:</p>
+            <p><u><a class="p-link" href="bouncingBall.html">Click to view the demo as a full web page.</a></u></p>
+            <iframe height="500" src="spinningBall.html"></iframe>
+            <br>
+            <script src="https://gist.github.com/js6450/3e72708b72f7cfcf9ac0c8ee2875d865.js"></script>
+            <h5>Example 3: Waves</h5>
+            <p><u><a class="p-link" href="spinningBall.html">Click to view the demo as a full web page.</a></u></p>
+            <iframe height="500" src="waves.html"></iframe>
+            <br>
+            <p><u><a class="p-link" href="waves.html">Click to view the demo as a full web page.</a></u></p>
+            <script src="https://gist.github.com/js6450/3413f9a1667916f02ee36a5644b31806.js"></script>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
