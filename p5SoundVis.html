@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>css animation - more examples</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="full-page-content">
+            <h5>Example 1: Make sound with Oscillator</h5>
+            <p>Click on canvas to create spinning balls & sound:</p>
+            <iframe height="500" src="osc.html"></iframe>
+            <br>
+            <p><u><a class="p-link" href="osc.html">Click to view the demo as a full web page.</a></u></p>
+            <br>
+            <script src="https://gist.github.com/js6450/e3684100118b2c6ed9816b0b99a83ad8.js"></script>
+            <h5>Example 2: Simple sound visualization with FFT</h5>
+            <p>Uses microphone as input:</p>
+            <iframe height="500" src="fftSimple.html"></iframe>
+            <br>
+            <p><u><a class="p-link" href="fftSimple.html">Click to view the demo as a full web page.</a></u></p>
+            <br>
+            <script src="https://gist.github.com/js6450/896a4d86ff6a04e93c705c24a59a24ba.js"></script>
+            <h5>Example 3: Sound visualization with transformation and FFT</h5>
+            <p>Uses microphone as input:</p>
+            <iframe height="500" src="fftCircle.html"></iframe>
+            <br>
+            <p><u><a class="p-link" href="fftCircle.html">Click to view the demo as a full web page.</a></u></p>
+            <br>
+            <script src="https://gist.github.com/js6450/b33771f190e8eb6bbd6511b1252ad20e.js"></script>
+            <h5>Example 4: Sound visualization with angles and FFT</h5>
+            <p>Uses microphone as input:</p>
+            <iframe height="500" src="fftFlower.html"></iframe>
+            <br>
+            <p><u><a class="p-link" href="fftFlower.html">Click to view the demo as a full web page.</a></u></p>
+            <br>
+            <script src="https://gist.github.com/js6450/983c4d33a9290076ab8dd573fa0f57ac.js"></script>
+        </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Jiwon Shin</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+</body>
+</html>

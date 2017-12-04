@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!--https://cdnjs.com/libraries/p5.js-->	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.sound.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js" type="text/javascript"></script>
+</head>
+<style type="text/css">
+	html, body{
+		margin: 0;
+
+	}
+</style>
+<body>
+
+</body>
+<script type="text/javascript">
+
+var audioInput;
+var fft, spectrum;
+
+var sound;
+
+function preload() {
+  sound = loadSound('audio/nightOwl.mp3');
+  //sound = loadSound('audio/skyline.mp3');
+}
+
+function setup() {
+  createCanvas(window.innerWidth, window.innerHeight);
+
+  audioInput = new p5.AudioIn();
+  audioInput.start();
+
+  //sound.loop();
+
+  fft = new p5.FFT();
+  fft.setInput(audioInput);
+  //fft.setInput(sound);
+
+  background(255);
+  noStroke();
+}
+
+function draw() {
+  background(255, 15);
+
+  spectrum = fft.analyze();
+
+  translate(width / 2, height / 2);
+  rotate(frameCount * 0.01);
+
+  for (var i = 0; i < spectrum.length; i++) {
+    var x = map(i, 0, spectrum.length, 0, 360);
+    if (x < 120) {
+      fill(129, 199, 255 - spectrum[i], 50);
+    } else if (x >= 120 && x < 240) {
+      fill(255 - spectrum[i], 170, 170, 50);
+    } else {
+      fill(255 - spectrum[i], 76, 16, 50);
+    }
+    push();
+    rotate(radians(x));
+    ellipse(50, spectrum[i], 5, 5);
+    
+    noFill();
+    stroke(129, 199, 212, 70);
+    strokeWeight(0.1);
+    line(50, height, 50, spectrum[i]);
+    pop();
+  }
+
+}
+
+</script>
+</html>
