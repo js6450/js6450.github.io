@@ -24,8 +24,8 @@ var fft, spectrum;
 var sound;
 
 function preload() {
-  sound = loadSound('audio/nightOwl.mp3');
-  //sound = loadSound('audio/skyline.mp3');
+  //sound = loadSound('audio/nightOwl.mp3');
+  sound = loadSound('audio/skyline.mp3');
 }
 
 function setup() {
@@ -34,7 +34,7 @@ function setup() {
   audioInput = new p5.AudioIn();
   audioInput.start();
 
-  //sound.loop();
+ // sound.loop();
 
   fft = new p5.FFT();
   fft.setInput(audioInput);
