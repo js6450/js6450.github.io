@@ -19,12 +19,13 @@
 	#container{
 		position: absolute;
 		margin-left: 10%;
+		width: 80%;
 	}
 
 	#title{
 		position: absolute;
-		right: 2%;
-		top: 2.5%;
+		right: 2em;
+		top: 2em;
 		height: 75%;
 	}
 
@@ -40,6 +41,13 @@
 	.project-link{
 		text-decoration: none;
 		color: white;
+		transition: background 1s;
+		background: transparent;
+	}
+
+	.project-link:hover{
+		transition: background 1s;
+		background: black;
 	}
 </style>
 <body>
@@ -72,14 +80,14 @@ function setup() {
   colorMode(HSB, 360, 100, 100, 100);
   noStroke();
   
-  hueRange = random(45, 80);
+  hueRange = random(30, 75);
   hueStart = random(hueRange, 360 - hueRange);
 }
 
 function draw() {
   for(var i = 0; i <= height; i += barSize){
     var h = sin((frameCount + i) * 0.01) * hueRange;
-    fill(hueStart + h, 30, 80, 60);
+    fill(hueStart + h, 30, 70, 60);
     rect(0, i, width, barSize);
   }
 }
