@@ -3,11 +3,15 @@
 <head>
     <meta name="author" content="Jiwon Shin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <title>Sound Visualization with CSS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Basic Sound Visualization</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
     <script>
@@ -19,27 +23,9 @@
     </script>
 </head>
 <body>
-<!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
-            </nav>
-        </div>
-    </header>
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
-        </nav>
-    </div>
     <main class="mdl-layout__content">
+        <div class="page-content">
         <div class="full-page-content">
             <h4><b>Creating Sound Visualization with CSS Animation</b></h4>
             <iframe height="500" src="sound-visual-demo.html"></iframe>
@@ -52,15 +38,55 @@
             <p><a class="p-link" href="https://commons.wikimedia.org/wiki/Main_Page">WikiMedia Commons</a></p>
             <p>You can download the example code from <u><a class="p-link" href="https://github.com/js6450/CommLabGSS/tree/master/_sound-visualization">Github</a></u> or as compressed zip files from <a class="p-link" href="assets/sound-visual.zip" download><u>here</u></a>.</p>
         </div>
-        <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">Jiwon Shin</div>
-                <ul class="mdl-mini-footer__link-list">
-                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
-                </ul>
-            </div>
-        </footer>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
     </main>
 </div>
 </body>
+<script>
+    var cvs;
+    var barSize = 5;
+    var bigBarSize = barSize * 3;
+    var hueStart, hueRange;
+    var titleWidth;
+
+    function setup() {
+        cvs = createCanvas(windowWidth, windowHeight);
+        cvs.id('bgCanvas');
+        colorMode(HSB, 360, 100, 100, 100);
+        noStroke();
+
+        hueRange = random(30, 75);
+        hueStart = random(hueRange, 360 - hueRange);
+
+        titleWidth = width * 0.15;
+    }
+
+    function draw() {
+        background(255, 15);
+        for(var i = 0; i <= height; i += barSize){
+            var h = sin((frameCount + i) * 0.01) * hueRange;
+            var opacity = 50;
+            var xOffset = 0;
+
+            fill(hueStart + h, 30, 70, opacity);
+            rect(0 + xOffset, i, width, barSize);
+        }
+    }
+
+    function windowResized(){
+        resizeCanvas(windowWidth, windowHeight);
+    }
+</script>
 </html>

@@ -3,11 +3,16 @@
 <head>
   <meta name="author" content="Jiwon Shin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <link rel="stylesheet" href="css/style.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <title>Jiwon Shin</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="js/script.js" defer></script>
+  <title>WORKSHOPS | Jiwon Shin</title>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
   <script>
@@ -19,102 +24,126 @@
   </script>
 </head>
 <body>
-  <!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
-<!--         <a class="mdl-navigation__link" href="create.html">CREATE</a>
-        <a class="mdl-navigation__link" href="interact.html">INTERACT</a>
-        <a class="mdl-navigation__link" href="workshop.html">WORKSHOP</a> -->
-      </nav>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
-<!--       <a class="mdl-navigation__link" href="create.html">CREATE</a>
-      <a class="mdl-navigation__link" href="interact.html">INTERACT</a>
-      <a class="mdl-navigation__link" href="workshop.html">WORKSHOP</a> -->
-    </nav>
-  </div>
   <main class="mdl-layout__content">
     <div class="page-content">
+      <h4 class="section-head">SPRING 18</h4>
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
+          <a href="documentation.html"><img class="grid-img" width="100%" src="img/docworkshop.jpg"></a>
+          <h6 class="b-head"><a class="b-link" href="documentation.html">Documentation (Part 1)</a></h6>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
+          <a href="webBasics.html"><img class="grid-img" width="100%" src="img/docworkshop.jpg"></a>
+          <h6 class="b-head"><a class="b-link" href="webBasics.html">Basics of Web Dev (Part 2)</a></h6>
+        </div>
+      </div>
+      <h4 class="section-head">FALL 17</h4>
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
           <a href="p5SoundVis.html"><img class="grid-img" width="100%" src="img/p5SoundVis.png"></a>
-          <h6><a class="b-link" href="p5SoundVis.html">Creating Multiples in p5.js</a></h6>
+          <h6 class="b-head"><a class="b-link" href="p5SoundVis.html">Sound Visualization in p5.js</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
           <a href="p5-creating-mult.html"><img class="grid-img" width="100%" src="img/p5_mult.jpg"></a>
-          <h6><a class="b-link" href="p5-creating-mult.html">Creating Multiples in p5.js</a></h6>
+          <h6 class="b-head"><a class="b-link" href="p5-creating-mult.html">Creating Multiples in p5.js</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
           <a href="jquery-basics.html"><img class="grid-img" width="100%" src="img/jquery.jpg"></a>
-          <h6><a class="b-link" href="jquery-basics.html">Video with Javascript</a></h6>
+          <h6 class="b-head"><a class="b-link" href="jquery-basics.html">jQuery Basics</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
           <a href="video.html"><img class="grid-img" width="100%" src="img/video.jpg"></a>
-          <h6><a class="b-link" href="video.html">Video with Javascript</a></h6>
+          <h6 class="b-head"><a class="b-link" href="video.html">Video with Javascript</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
           <a href="soundVisual.html"><img class="grid-img" width="100%" src="img/soundVisual.jpg"></a>
-          <h6><a class="b-link" href="soundVisual.html">Basic Sound Visualization</a></h6>
+          <h6 class="b-head"><a class="b-link" href="soundVisual.html">Basic Sound Visualization</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
           <a href="jsmult.html"><img class="grid-img" width="100%" src="img/js.jpg"></a>
-          <h6><a class="b-link" href="jsmult.html">Animation Using Loops & Arrays</a></h6>
+          <h6 class="b-head"><a class="b-link" href="jsmult.html">Animation Using Loops & Arrays</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
           <a href="jsbasics.html"><img class="grid-img" width="100%" src="img/js.jpg"></a>
-          <h6><a class="b-link" href="jsbasics.html">Javascript Basics</a></h6>
+          <h6 class="b-head"><a class="b-link" href="jsbasics.html">Javascript Basics</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <a href="cssani-examples.html"><img class="grid-img" width="100%" src="img/css-ani.jpg"></a>
-          <h6><a class="b-link" href="cssani-examples.html">CSS Animation: Creating Shapes and Parallax</a></h6>
+          <h6 class="b-head"><a class="b-link" href="cssani-examples.html">CSS Animation and Parallax</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <a href="filestructure.html"><img class="grid-img" width="100%" src="img/filestructures.jpg"></a>
-          <h6><a class="b-link" href="filestructure.html">NAS & File Structure Workshop (Part 1)</a></h6>
+          <h6 class="b-head"><a class="b-link" href="filestructure.html">NAS & File Structure (Part 1)</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <a href="cssbasics.html"><img class="grid-img" width="100%" src="img/filestructures.jpg"></a>
-          <h6><a class="b-link" href="cssbasics.html">CSS Basics & Inspector (Part 2)</a></h6>
+          <h6 class="b-head"><a class="b-link" href="cssbasics.html">CSS Basics & Inspector (Part 2)</a></h6>
         </div>
+      </div>
+      <h4 class="section-head">SPRING 17</h4>
+      <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--4-col">
           <a href="sound.html"><img class="grid-img" width="100%" src="img/soundjs.jpg"></a>
-          <h6><a class="b-link" href="sound.html">p5.sound.js Workshop</a></h6>
+          <h6 class="b-head"><a class="b-link" href="sound.html">p5.sound.js</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <a href="iterative.html"><img class="grid-img" width="100%" src="img/commlabmini.jpg"></a>
-          <h6><a class="b-link" href="iterative.html">Iterative Methods Workshop</a></h6>
+          <h6 class="b-head"><a class="b-link" href="iterative.html">Iterative Methods</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <a href="cssani.html"><img class="grid-img" width="100%" src="img/commlabmini.jpg"></a>
-          <h6><a class="b-link" href="cssani.html">CSS Animation Workshop</a></h6>
+          <h6 class="b-head"><a class="b-link" href="cssani.html">CSS Animation</a></h6>
         </div>
         <div class="mdl-cell mdl-cell--4-col">
           <a href="webportfolio.html"><img class="grid-img" width="100%" src="img/web.jpg"></a>
-          <h6><a class="b-link" href="webportfolio.html">Web Portfolio Workshop</a></h6>
+          <h6 class="b-head"><a class="b-link" href="webportfolio.html">Web Portfolios</a></h6>
         </div>
       </div>
+      <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__right-section">
+          <ul class="mdl-mini-footer__link-list">
+            <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+          </ul>
+        </div>
+      </footer>
     </div>
-    <footer class="mdl-mini-footer">
-      <div class="mdl-mini-footer__left-section">
-        <div class="mdl-logo">Jiwon Shin</div>
-        <ul class="mdl-mini-footer__link-list">
-          <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
-        </ul>
-      </div>
-    </footer>
+
   </main>
-</div>
+
 </body>
+<script>
+    var cvs;
+    var barSize = 5;
+    var bigBarSize = barSize * 3;
+    var hueStart, hueRange;
+    var titleWidth;
+
+    function setup() {
+        cvs = createCanvas(windowWidth, windowHeight);
+        cvs.id('bgCanvas');
+        colorMode(HSB, 360, 100, 100, 100);
+        noStroke();
+
+        hueRange = random(30, 75);
+        hueStart = random(hueRange, 360 - hueRange);
+
+        titleWidth = width * 0.15;
+    }
+
+    function draw() {
+        background(255, 15);
+        for(var i = 0; i <= height; i += barSize){
+            var h = sin((frameCount + i) * 0.01) * hueRange;
+            var opacity = 50;
+            var xOffset = 0;
+
+            fill(hueStart + h, 30, 70, opacity);
+            rect(0 + xOffset, i, width, barSize);
+        }
+    }
+
+    function windowResized(){
+        resizeCanvas(windowWidth, windowHeight);
+    }
+</script>
 </html>

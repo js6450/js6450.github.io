@@ -3,11 +3,15 @@
 <head>
     <meta name="author" content="Jiwon Shin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <title>Videos with Javascript</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Video with Javascript</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
     <script>
@@ -19,27 +23,9 @@
     </script>
 </head>
 <body>
-<!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
-            </nav>
-        </div>
-    </header>
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
-        </nav>
-    </div>
     <main class="mdl-layout__content">
+        <div class="page-content">
         <div class="full-page-content">
             <h4><b>Videos with Javascript</b></h4>
             <p>For this workshop, we will learn how to use Javascript to pause, play, mute and change styles of videos. We are going to create two styles of web video views: full-page of one video and grid of four videos.</p>
@@ -363,15 +349,55 @@ function changeVideo(vidNum){
             <p>In our window.onload function, we also set the width and height attribute of our canvas. The code inside of takePhotos() functions can be a little tricky. the getContext function accesses the content of the canvas, so we can alter it or insert in graphics inside of the canvas. The '2d' argument indicates that the graphics we will be rendering inside of the canvas will be in 2 dimensions. Next, we will draw the current frame of the video inside of the context as an image, by using the drawImage function. This function takes 5 arguments: image / video object, starting point, end point, width, height. The toDataURL function returns us the path to the image that is created inside of our browser's cache, which we can use to create an img object and to give as the source (src) attribute. We create a new html elemement, give the source and class name, then insert it into a div with id 'output'.</p>
             <p>You can download the example code from <a class="p-link" href="assets/video_webcam.zip" download><u>here</u></a>.</p>
         </div>
-        <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">Jiwon Shin</div>
-                <ul class="mdl-mini-footer__link-list">
-                    <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
-                </ul>
-            </div>
-        </footer>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
     </main>
 </div>
 </body>
+<script>
+    var cvs;
+    var barSize = 5;
+    var bigBarSize = barSize * 3;
+    var hueStart, hueRange;
+    var titleWidth;
+
+    function setup() {
+        cvs = createCanvas(windowWidth, windowHeight);
+        cvs.id('bgCanvas');
+        colorMode(HSB, 360, 100, 100, 100);
+        noStroke();
+
+        hueRange = random(30, 75);
+        hueStart = random(hueRange, 360 - hueRange);
+
+        titleWidth = width * 0.15;
+    }
+
+    function draw() {
+        background(255, 15);
+        for(var i = 0; i <= height; i += barSize){
+            var h = sin((frameCount + i) * 0.01) * hueRange;
+            var opacity = 50;
+            var xOffset = 0;
+
+            fill(hueStart + h, 30, 70, opacity);
+            rect(0 + xOffset, i, width, barSize);
+        }
+    }
+
+    function windowResized(){
+        resizeCanvas(windowWidth, windowHeight);
+    }
+</script>
 </html>

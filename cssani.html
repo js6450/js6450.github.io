@@ -3,11 +3,16 @@
 <head>
   <meta name="author" content="Jiwon Shin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <link rel="stylesheet" href="css/style.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <title>css animation</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="js/script.js" defer></script>
+  <title>CSS Animation</title>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
   <script>
@@ -21,26 +26,9 @@
 <body>
   <!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title"><a id="title-link" href="index.html">JIWON SHIN</a></span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
-      </nav>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title"><a id="d-title-link" href="index.html">JIWON SHIN</a></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="http://jiwonshin.com" target="_blank">ABOUT</a>
-    </nav>
-  </div>
   <main class="mdl-layout__content">
-    <div class="full-page-content">
+    <div class="page-content">
+      <div class="full-page-content">
       <h4><b>STEP-BY-STEP GUIDE TO CSS ANIMATION</b></h4>
       <h5><b>STEP 1</b> | Understanding Keyframes</h5>
       <p>We use @keyframes css attribute to define the rules of a particular animation. The syntax of the @keyframes tag is as follows:</p>
@@ -51,7 +39,7 @@
       <pre>
       @keyframes moveToRight {keyframes-selector {css-styles;}}
       </pre>
-      <p>CSS animation is simple. We are simply applying different css styles to a html element at different times. <i>keyframes-selector</i> is what defines the timing of when a particular css-style is applied to the html element.</p>     
+      <p>CSS animation is simple. We are simply applying different css styles to a html element at different times. <i>keyframes-selector</i> is what defines the timing of when a particular css-style is applied to the html element.</p>
       <h5><b>STEP 2</b> | Timing with Keyframes selectors</h5>
       <p><i>keyframes-selector</i> can be values <i>from</i> and <i>to</i> or it can also be written in percentages. For example, in the case of this example code below:</p>
       <pre>
@@ -77,7 +65,7 @@
         }
       </style>
       <div id="moveToRight"></div>
-      <p>Using <i>from</i> and <i>to</i> keyframe-selectors, however, limits an animation to be a one-step action: it goes from one state to another. If we use percentages instead, we can put more steps in within the animation.</p> 
+      <p>Using <i>from</i> and <i>to</i> keyframe-selectors, however, limits an animation to be a one-step action: it goes from one state to another. If we use percentages instead, we can put more steps in within the animation.</p>
       <pre>
       @keyframes moveToRight2 {
         0%{left: 0px;}
@@ -106,7 +94,7 @@
       </style>
       <div id="moveToRight2"></div>
       <p>So, the <i>from</i> keyframes-selector is same as 0%, and <i>to</i> is same as 100%.</p>
-    
+
       <h5><b>STEP 3</b> | Understanding Animation Properties</h5>
       <p>Now that we know how to define an animation using @keyframes, let's see how we can apply this animation to an html element.</p>
       <p>Let's create an empty div and give it width, height and background-color so we see it. Don't forget to give it some sort of id so we can refer to it in css.</p>
@@ -271,7 +259,7 @@
       <p style="text-align: center;"><i>default (none)</i> example</p>
       <div id="changeColors2"></div>
       <p style="text-align: center;"><i>forwards</i> example</p>
-      
+
       <p>The two examples above are using default animation-iteration-count (meaning it will only run once), so it may not be animating when you look at this right now. The top example is the default example - when animation-fill-mode attribute is not called. You will see that it's changed back to the original style applied to this div, which was at background-color: red; The bottom one:
       <pre>
       animation-fill-mode: forwards;
@@ -347,7 +335,7 @@
         animation-iteration-count: infinite;
         animation-timing-function: ease-in-out;
       }
-      </pre>        
+      </pre>
 
       <style>
         @keyframes moveToRight3{
@@ -487,7 +475,7 @@
         animation-duration: 5s;
         animation-iteration-count: infinite;
       }
-      
+
       #blink{
         animation-name: blink;
         animation-duration: 1s;
@@ -554,7 +542,7 @@
       </style>
       <p id="type4">This is a sentence!<span id="blinkCursor"> |</span></p>
 
-      <p>This is a little more fluid than the last version, but we need to add another css style to this to make it even more so. We need to tell the white-spaces of this sentence (meaning the spacebar characters in between the words) to not wrap at the bottom.      
+      <p>This is a little more fluid than the last version, but we need to add another css style to this to make it even more so. We need to tell the white-spaces of this sentence (meaning the spacebar characters in between the words) to not wrap at the bottom.
       <pre>
       #type{
         /* do not wrap the white-spaces at the bottom!*/
@@ -580,7 +568,7 @@
       </style>
       <p id="type5">This is a sentence!<span id="blinkCursor"> |</span></p>
 
-      <p>Now, the animation is not multi-lined! However, the difference between the end product that I showed at the beginning compared to this one is that, it's too fluid. We need to create a choppy movement that make it look like its being typed. This is where the animation-timing-function comes in. We are going to use thes <i>steps</i> value and give it 40 steps.      
+      <p>Now, the animation is not multi-lined! However, the difference between the end product that I showed at the beginning compared to this one is that, it's too fluid. We need to create a choppy movement that make it look like its being typed. This is where the animation-timing-function comes in. We are going to use thes <i>steps</i> value and give it 40 steps.
       <pre>
       #type{
         white-space: nowrap;
@@ -609,18 +597,57 @@
       <p id="type6">This is a sentence!<span id="blinkCursor"> |</span></p>
 
       <p>And we are done! The <a href="https://www.w3schools.com/cssref/css3_pr_animation-direction.asp" target="_blank" class="p-link">w3schools link on css animation properties</a> will have more in-depth description about each of those described in this tutorial!</p>
-
-    </div>
-    <footer class="mdl-mini-footer">
-      <div class="mdl-mini-footer__left-section">
-        <div class="mdl-logo">Jiwon Shin</div>
-        <ul class="mdl-mini-footer__link-list">
-          <li><a href="http://jiwonshin.com" target="_blank">About</a></li>
-        </ul>
       </div>
-    </footer>
-  </div>
+        <footer class="mdl-mini-footer">
+          <div class="mdl-mini-footer__left-section">
+            <ul class="mdl-mini-footer__link-list">
+              <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+            </ul>
+          </div>
+        <div class="mdl-mini-footer__right-section">
+          <!--<div class="mdl-logo">Jiwon Shin</div>-->
+          <ul class="mdl-mini-footer__link-list">
+            <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
   </main>
 </div>
 </body>
+<script>
+    var cvs;
+    var barSize = 5;
+    var bigBarSize = barSize * 3;
+    var hueStart, hueRange;
+    var titleWidth;
+
+    function setup() {
+        cvs = createCanvas(windowWidth, windowHeight);
+        cvs.id('bgCanvas');
+        colorMode(HSB, 360, 100, 100, 100);
+        noStroke();
+
+        hueRange = random(30, 75);
+        hueStart = random(hueRange, 360 - hueRange);
+
+        titleWidth = width * 0.15;
+    }
+
+    function draw() {
+        background(255, 15);
+        for(var i = 0; i <= height; i += barSize){
+            var h = sin((frameCount + i) * 0.01) * hueRange;
+            var opacity = 50;
+            var xOffset = 0;
+
+            fill(hueStart + h, 30, 70, opacity);
+            rect(0 + xOffset, i, width, barSize);
+        }
+    }
+
+    function windowResized(){
+        resizeCanvas(windowWidth, windowHeight);
+    }
+</script>
 </html>
