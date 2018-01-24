@@ -28,6 +28,97 @@
         <div class="page-content">
             <div class="full-page-content">
                 <h4>Basics of Web Development</h4>
+                <h5>Resetting Your Password for NAS</h5>
+                <img class="p-img" src="img/fs/nas.jpg">
+                <p>You should have received an email that looks something like the above image, giving you access to NAS. Note that the addresses contained in the email will be different from those in the above screenshot. The email should also contain the pre-set password. If you click on to any of the hyperlinked addresses or type <a href="https://imanas.shanghai.nyu.edu:5001" target="_blank" class="p-link">https://imanas.shanghai.nyu.edu:5001</a> into your address bar, it will lead you to a website that looks like the image below.</p>
+                <img class="p-img" src="img/fs/nas1.jpg">
+                <p>Sign in to your account with your net id and the pre-set password (if you have not changed it already).</p>
+                <img class="p-img" src="img/fs/nas2.jpg">
+                <p>This is the web interface of your NAS account. If you click on the "person" icon on the top left corner of the web page, you will see a drop down menu like the image above. Click on the <b>Personal</b> section.</p>
+                <img class="p-img" src="img/fs/nas3.jpg">
+                <p>Erase and type in your new desired password in the <b>New Password</b> and <b>Confirm Password</b> boxes, and click <b>Okay</b>. Your account is now set with the new password! No more copying from the email!</p>
+                <h5>Adding Your NAS Account as a Bookmark on Cyberduck</h5>
+                <img class="p-img" src="img/fs/cd1.jpg">
+                <p>Open up your Cyberduck and go to <b>Bookmark</b> > <b>New Bookmark</b> in the menu.</p>
+                <img class="p-img" src="img/fs/cd-bookmark.png">
+                <p>You will see a window pop up like the image above. It will look similar to the window you get when you press <b>Open Connection</b>. Give your bookmark a nickname, and more importantly, make sure that the server ip address and your username are correct and that the connection type is set to <b>SFTP (SSH File Transfer Protocol)</b>. Once you are done entering the information, just close out of the window.</p>
+                <img class="p-img" src="img/fs/cd3.png">
+                <p>You will now see that your NAS account is bookmarked on Cyberduck. You can now just simply double click on the bookmark and it will automatically connect you to the NAS server.</p>
+                <img class="p-img" src="img/fs/cd-password.jpg">
+                <p>If this is the first time you are logging on to NAS with Cyberduck or you had just changed your NAS password, another window will pop up, prompting you to enter in your password. If you checkbox the <b>Add to Keychain</b> option, you will no longer have to enter in your password when you connect either.</p>
+                <h5>Knowing Where to Upload Your Files</h5>
+                <img class="p-img" src="img/fs/cd-filepath.jpg">
+                <p>Once you are connected to your NAS account on Cyberduck, go to <b>home</b> > <b>www</b> folder. This is where your <b>home directory</b> is, meaning that this is where your base address <b>https://imanas.shanghai.nyu.edu/~<i>yourNetId</i>/</b> is pointing to. Simply speaking, upload all the files that you want to display on your website in this folder.</p>
+                <img class="p-img" src="img/fs/cd6.jpg">
+                <p>As the semester continues, you will accumulate a lot of files on your server. Additionally, because a web page usually links to various external files (such as images, css stylesheets and javascript files), a well-organized file structure is crucial in eliminating petty mistakes and broken links. You could have folders for each week of the semester, or you could have folders for each of your assignments. Generally, you should be creating a folder for each of your complete websites.</p>
+                <img class="p-img" src="img/fs/cd8.jpg">
+                <p>Remember that if the html file that you want to display as the homepage is named <b>index.html</b>, then you access the web page online by simply going to <b>https://imanas.shanghai.nyu.edu/~<i>yourNetId</i>/<i>folderName</i></b>. You don't have to add <b>index.html</b> after it. HOWEVER, if you name your homepage something like <b>assignment1.html</b>, like in the image above, then you MUST add the specific html file to the address, like this: <b>https://imanas.shanghai.nyu.edu/~<i>yourNetId</i>/<i>folderName</i>/assignment1.html</b></p>
+                <br>
+                <h4><b>File Structure for The Web</b></h4>
+                <p>Let's go a little more in depth about how to organize your files, so it is efficient for programming for the web.</p>
+                <img class="p-img" src="img/fs/fs2.jpg">
+                <h5>Naming Conventions for Folders and Files</h5>
+                <p>When naming your folders and files, don't use spaces, as a space bar character within your folder / file name is not actually blank (or empty). It contains a character that represents this space and visually shows a blank space. If you are trying to name a folder / file that consists of multiple words, like "comic project" or "audio project", then there are multiple ways of doing this without using spaces.</p>
+                <p><u>Camel Casing</u>: This is a way of writing compound / multiple words that replaces spaces by capitalizing the word that would usually come after the space. For example, if you were to camel case the sentence "bubble tea is the best", you would write it as "bubbleTeaIsTheBest". In the above image, "audio project" is written using camel casing as <b>audioProject</b>.</p>
+                <p><u>Using Underscore or Dash</u>: You can simply replace your spaces with underscores or dashes. So, "audio project" can be written as <b>audio_project</b> or <b>audio-project</b>.</p>
+                <h5>Folder Structure</h5>
+                <p>A website generally will contain similar file types. This means that you can decide on a structure for websites and keep it that way. Once you get used to how to structure your files for the web, giving file paths for your images, videos, audios, stylesheets, etc., will no longer be confusing. In the image above, within the folder of my website "assignment1", I have three major folders: assets, css, and js. The two folders, css and js, are pretty self-explanatory. They contain css stylesheets and javascript files, respectively.</p>
+                <img class="p-img" src="img/fs/fs3.jpg">
+                <p>The assets folder contains all of my media assets. Inside, it has three other folders: audio, img and video. This way, I can upload my media assets into their categories and keep them organized.</p>
+                <p>Please keep in mind that this isn't the only way that you can structure your folders and files. What is important is that you try to keep a uniform format that you are comfortable with and repeatedly use.</p>
+                <h5>Finding Your Tool: Inspector</h5>
+                <p>Before we review css, we are going to explore something that will help us throughout the semester. On every web browser, there is a tool called <b>inspector</b> that allows you to inspect all the elements that compose a web page. This means that you will be able to see the html and css codes of the web page, and it also gives you some room to play around. You will be able to apply changes to the code and immediately see visual changes that it may create. Let's see how to open this window on Chrome, Firefox and Safari, to see what it looks like and what we can do with it to learn and experiment.</p>
+                <p><u>Chrome</u>:</p>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                        <img class="p-img" src="img/basicCss/chrome1.jpg">
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                        <img class="p-img" src="img/basicCss/chrome2.jpg">
+                    </div>
+                </div>
+                <p>Chrome is the most recommended when doing web development, one of the reasons being that the inspector tool is user-friendly. On Chrome, you can get to inspector by 1) going to <b>View > Developer > Developer Tools</b> on the menu, or 2) right-clicking and selecting <b>Inspect</b>.</p>
+                <p><u>Firefox</u>:</p>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                        <img class="p-img" src="img/basicCss/firefox1.jpg">
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                        <img class="p-img" src="img/basicCss/firefox2.jpg">
+                    </div>
+                </div>
+                <p>On Firefox, you can get to inspector by 1) going to <b>Tools > Web Developer > Inspector</b> on the menu, or 2) right-clicking and selecting <b>Inspect Element</b>.</p>
+                <p><u>Safari</u>:</p>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                        <img class="p-img" src="img/basicCss/safari1.jpg">
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                        <img class="p-img" src="img/basicCss/safari2.jpg">
+                    </div>
+                </div>
+                <p>Safari is a little different from the other two browsers, because you have to click a checkbox so we can see these developer tools. Go to <b>Safari > Preferences</b> on the menu and in the <b>Advanced</b> tab, check the <b>Show Develop menu in menu bar</b> option.</p>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                        <img class="p-img" src="img/basicCss/safari3.jpg">
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                        <img class="p-img" src="img/basicCss/safari4.jpg">
+                    </div>
+                </div>
+                <p>Once we have done the above step, we can now get to inspector by 1) going to <b>Develop > Show Web Inspector</b> on the menu, or 2) right-clicking and selecting <b>Inspect Element</b>.</p>
+                <h5>Getting to Know Inspector</h5>
+                <p>For the purpose of this workshop, I will be using Chrome to demonstrate how we can use inspector to learn and test css. But inspector works just about the same for all other browsers, so you shouldn't have too much difficulty following along even if you are not using Chrome.</p>
+                <img class="p-img" src="img/basicCss/inspector1.jpg">
+                <p>When you pull up the inspector window, using any of the two methods shown in the previous section, you will see a window pop up, like in the image above.</p>
+                <img class="p-img" src="img/basicCss/inspector2.jpg">
+                <p>You can change the location of this window by clicking on the "more" icon with three dots. There, you will be able to select your <b>Dock side</b>. The first option will make your inspector a separate window, and the rest three options will change which side of the browser the inspector window is attached to.</p>
+                <img class="p-img" src="img/basicCss/inspector3.jpg">
+                <p>For now, we will focus on what is on the <b>Elements</b> tab of the inspector window. We will learn about how to use the <b>Console</b> tab for javascript soon as well. In the Elements tab, you will see that the left side of the inspector displays the html code, while on the right side shows the css of the selected html element. In the image above, I have clicked on the body html tag, so it shows the css associated with the body tag on the right side.</p>
+                <img class="p-img" src="img/fs/inspector1.jpg">
+                <p>You can pull up the inspector window on any website to see the code that compose it as well as to play around with it. The top left icon on the inspector highlighted in the image above is the selector tool. After clicking on it, you can click on an element on the website, and it will indicate for you on the inspector which part of the html code corresponds to the selection you have made. You can also double click on the html code shown on the inspector to edit it. Note that ANY CHANGES YOU MAKE ON THE INSPECTOR IS NOT PERMANENT. You are simply changing it for this instance of connection to the website, and if you hit refresh, it will load the page using its original code / files.</p>
+                <img class="p-img" src="img/fs/inspector2.jpg">
+                <p>We have not covered what css is in class yet, but this is just to illustrate that you can also edit (temporarily) the styles on the website and see the immediate implications.</p>
             </div>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
