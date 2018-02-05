@@ -22,12 +22,289 @@
         gtag('config', 'UA-110518171-1');
     </script>
 </head>
+<style>
+    .code-demo{
+        background-color: white;
+        padding: 2rem;
+    }
+
+    .code-demo-p{
+        margin: 0;
+    }
+
+    .selection{
+        background-color: hotpink;
+        color: white;
+        /*	width: 200px;
+        */	height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+</style>
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="full-page-content">
-            <h4><b>The Basics of CSS</b></h4>
+                <h4><b>The Basics of CSS</b></h4>
+                <h5>Getting to Know Inspector</h5>
+                <p>For the purpose of this workshop, I will be using Chrome to demonstrate how we can use inspector to learn and test css. But inspector works just about the same for all other browsers, so you shouldn't have too much difficulty following along even if you are not using Chrome.</p>
+                <img class="p-img" src="img/basicCss/inspector1.jpg">
+                <p>When you pull up the inspector window, using any of the two methods shown in the previous section, you will see a window pop up, like in the image above.</p>
+                <img class="p-img" src="img/basicCss/inspector2.jpg">
+                <p>You can change the location of this window by clicking on the "more" icon with three dots. There, you will be able to select your <b>Dock side</b>. The first option will make your inspector a separate window, and the rest three options will change which side of the browser the inspector window is attached to.</p>
+                <img class="p-img" src="img/basicCss/inspector3.jpg">
+                <p>For now, we will focus on what is on the <b>Elements</b> tab of the inspector window. We will learn about how to use the <b>Console</b> tab for javascript soon as well. In the Elements tab, you will see that the left side of the inspector displays the html code, while on the right side shows the css of the selected html element. In the image above, I have clicked on the body html tag, so it shows the css associated with the body tag on the right side. As this website contains raw html code, it doesn't seem to have any special styling. However, an important thing to note here is that there is some <b>default css</b> that exists for the body html tag itself, which is:
+                <pre>
+            body{
+                display: block;
+                margin: 8px;
+            }
+            </pre>
+                Let's take this opportunity to review the syntax of css. First, we see the selector, body. This means that the css declarations inside of the curly brackets are for this particular selector, in this case, a html tag. Remember that we can use 3 different types of selectors: 1) html tags, 2) class name, 3)id name. If we had an html code like this:
+                <pre>
+                &lt;img class="grid-img" id="donut-img" src="img/donut.jpg">
+            </pre>
+                then we can use the class name "grid-img" as our selector like this:
+                <pre>
+                .grid-img{
+                    width: 500px;
+                    height: 400px;
+                }
+            </pre>
+                and we can also use its id name as our selector like this:
+                <pre>
+                #donut-img{
+                    width: 1000px;
+                    height: 800px;
+                }
+            </pre>
+                Let me give an example of the different cases for using an html tag, class name and id name as your selector. Let's say that I am creating a web page with a lot of images. If I want all my images to have a uniform size, I will set this using the img html tag as my selector in my css. If I want to create a category of important images, and want to put a red border around them, I will create a class, maybe call it something like important-img, and use .important-img as my selector to set this style. Lastly, if I want to make an exception and use one particular image to be always fixed on the bottom right corner of my website (maybe it's my "move to top" button), I can do that by giving that particular image an id name (in this case, something like #move-top). The html and css code for this example scenario will look something like this:
+                <br>
+                <br>
+                <u>html:</u>
+                <pre>
+                &lt;img src="img/normal-img.jpg">
+                &lt;img class="important-img" src="img/important-img.jpg">
+                &lt;img src="img/normal-img.jpg">
+                &lt;img class="important-img" src="img/important-img.jpg">
+                &lt;img src="img/normal-img.jpg">
+                &lt;img src="img/normal-img.jpg">
+                &lt;img class="important-img" src="img/important-img.jpg">
+                &lt;img id="move-top" src="img/move-top-img.jpg">
+            </pre>
+                <u>css:</u>
+                <pre>
+                img{
+                    width: 500px;
+                    height: 400px;
+                }
+                .important-img{
+                    border-style: solid;
+                    border-color: red;
+                }
+                #move-top{
+                    width: 50px;
+                    height: 50px;
+                    position: fixed;
+                    bottom: 0px;
+                    right: 0px;
+                }
+            </pre>
+                Now, let's look at the lines of code inside of the curly brackets. They have a syntax of:
+                <pre>
+                css-property: value;
+            </pre>
+                This is where we can use our new tool, inspector, to explore.
+                </p>
+                <img class="p-img" src="img/basicCss/inspector3.jpg">
+                <p>This is the same image that we saw before. Note that there is a section on my web page highlighted in blue, with two orange lines above and below. This section of my webpage is highlighted because my mouse is currently hovering over this particular part of html code inside my inspector. It also has a little indicator above that says "p | 1031 x 36". This means that the selected html code is of an html tag &lt;p> and has width of 1031 pixels and height of 36 pixels at this particular browser size.
+                </p>
+                <img class="p-img" src="img/basicCss/inspector4.jpg">
+                <p>If you actually click on this part of your html code on your inspector, you will see the right side of the inspector window change to display the styles for this element. Right now, same as before, there are no particular styles given.</p>
+                <img class="p-img" src="img/basicCss/inspector5.jpg">
+                <p>If you click on an empty space below where it says <b>element.style</b>, a blank template for a line of css declaration will appear. Let's try to change the color of this selected text.</p>
+                <img class="p-img" src="img/basicCss/inspector6.jpg">
+                <p>Start typing inside the little text box that appears in place for the css property. Knowing that in order to change the color of the text, the given css property is <b>color</b>, as you type in the word, you will notice that it will inspector will try to auto-fill for you and also display options that contain the characters you have already typed before. Thus, you will be able to see that there is are many other css properties that you can set colors of, such as background-color and border-color.</p>
+                <img class="p-img" src="img/basicCss/inspector7.jpg">
+                <p>If you hit tab after selecting the css property <b>color</b>, you will see that it also gives you a list of available values for this particular css property. For the color value in particular, it is possible to give it as hexadecimal or RGB, but the options that appear are the colors that can be referred to as a name.</p>
+                <img class="p-img" src="img/basicCss/inspector8.jpg">
+                <p>I am going to choose the color red. You will see this particular section of text change its color from black to red immediately after you are done typing the word. <b>A very important thing to note here is that ANY CHANGES DONE ON THE INSPECTOR ARE TEMPORARY</b>. If you refresh the page, the changes you have made, in this case changing the color of text to red, will disappear. The inspector tool should be used for experimenting with css and a way of getting immediate visual feedback of what a particular css declaration does. If you want to actually apply this css style to your web page, you should copy the css code from inspector and save it to your local css file.</p>
+                <p>For more detailed information about css syntax, please read <a class="p-link" href="https://www.w3schools.com/css/css_syntax.asp">this w3schools' article</a>. Generally, <a class="p-link" href="https://www.w3schools.com/css/default.asp">w3schools website</a> is also a helpful resource in trying to figure out if there is a css property for what you want to do, and what it exactly does.</p>
+            <h5>Display Property</h5>
+                <div class="code-demo">
+                    <p class="code-demo-p">Welcome to <span class="selection">Comm Lab</span> Group Study Sessions!</p>
+                </div>
+                <br>
+                <form onchange="checkVal(this)">
+                    <div style="width: 50%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="tVal" id="textVal" value="Comm Lab">
+                        <label class="mdl-textfield__label" for="textVal">Text Content:</label>
+                    </div>
+                    <br>
+                    Display Value:<br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" class="mdl-radio__button" name="dVal" value="inline" checked>
+                        <span class="mdl-radio__label">inline (default)</span>
+                    </label>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" class="mdl-radio__button" name="dVal" value="inline-block">
+                        <span class="mdl-radio__label">inline-block</span>
+                    </label>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" class="mdl-radio__button" name="dVal" value="block">
+                        <span class="mdl-radio__label">block</span>
+                    </label>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" class="mdl-radio__button" name="dVal" value="none">
+                        <span class="mdl-radio__label">none</span>
+                    </label>
+                    <br><br>
+                    Width: <span id="currWidth">auto</span>
+                    <br>
+                    <p style="width: 50%; margin-top: 1rem;">
+                    <input class="mdl-slider mdl-js-slider" type="range" name="wVal" min="0" max="500" value="0" tabindex="0">
+                    </p>
+                    <br>
+                    Height: <span id="currHeight">auto</span> (0px = auto)
+                    <br>
+                    <p style="width: 50%; margin-top: 1rem;">
+                        <input class="mdl-slider mdl-js-slider" type="range" name="hVal" min="0" max="500" value="0" tabindex="0">
+                    </p>
+                </form>
+            <h5>Demo: Parallax Web Page</h5>
+                <iframe height="500px" src="parallax-demo.html"></iframe>
+                <br>
+                <p><u><a class="p-link" href="parallax-demo.html">Click to view the demo as a full web page.</a></u></p>
+                <p>Let's start off with creating three divs, one for each background. We will also give class names for each of these sections.</p>
+                <pre>
+                &lt;div class="section-1">&lt;/div>
+                &lt;div class="section-2">&lt;/div>
+                &lt;div class="section-3">&lt;/div>
+            </pre>
+                <p>Now, we will give it background images to each of these sections in css.</p>
+                <pre>
+                .section-1{
+                    background-image: url(img/parallax/bg1.jpg);
+                }
+                .section-2{
+                    background-image: url(img/parallax/bg2.jpg);
+                }
+                .section-3{
+                    background-image: url(img/parallax/bg3.jpg);
+                }
+            </pre>
+                <p>As of now, nothing will appear on your screen, because you haven't given your html, body and div elements any height yet. If a specific height is not set with css, as all of our html content has height of 0 (div has a height of 0px if there is no content inside of the div - remember that a div element is used just to group html elements and doesn't have any visual qualities) and so the web page does not display anything. So we will set the height of our html, body and the 3 sections of div elements to 100%.</p>
+                <pre>
+                html, body{
+                    height: 100%;
+                }
+                .section-1, .section-2, .section-3{
+                    height: 100%;
+                }
+            </pre>
+                <p>One important thing to note in the css above is that, you can give multiple html / class / id elements the same style by linking them with a comma. For example, as I want all of my three sections to share a css property of height 100%, I can do this in one chunck of css by referring to all three classes at the same time by doing: .section-1, .section-2, .section-3</p>
+                <p>Now, you will notice, depending on the size of your images, the background images that you gave will be either stretched out or tiled to fit the space of your browser. Let's set our background images to be at the center, to not repeat (to prevent the tiling of the image) and to cover the size of the browser.</p>
+                <pre>
+                .section-1, .section-2, .section-3{
+                    height: 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            </pre>
+                <p>With this, we have set the size and position of our background so that it auto-adjusts to the size of the browser. However, for now, it looks like as if the images are just placed in order and it doesn't have the parallax effect yet. Now for the one magic line that will create this parallax effect: <b>background-attachment: fixed;</b></p>
+                <pre>
+                .section-1, .section-2, .section-3{
+                    height: 100%;
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            </pre>
+                <p>That additional line of css will fix the position of the background image regardless of the scrolling. As it scrolls, it reveals the background of the next div, from bottom to top.
+                    <br>
+                    Now we have a basic parallax web page. You can of course, put in div elements with text in between the div elements with the background images. You can also put in content inside of the div elements with background images, to place them along with each of the background image of the section div. Here is the complete html and css code of the demo web page:</p>
+                <p><u>HTML</u>:</p>
+                <pre>
+                &lt;div class="section-1">
+                    &lt;div class="caption">
+                        &lt;span class="caption-text">Title of Website&lt;/span>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class="section-text">
+                    &lt;div class="inner-text">
+                        &lt;p>This is a place where you can enter in text content.&lt;/p>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class="section-2">&lt;/div>
+                &lt;div class="section-text">
+                    &lt;div class="inner-text">
+                        &lt;p>This is another place where you can enter in text content.&lt;/p>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class="section-3">&lt;/div>
+            </pre>
+                <p><u>CSS</u>:</p>
+                <pre>
+                html, body{
+                    height: 100%;
+                    margin: 0;
+                    font-family: "Helvetica Neue", sans-serif;
+                }
+
+                .section-1, .section-2, .section-3{
+                    position: relative;
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                }
+
+                .section-1{
+                    background-image: url(img/parallax/bg1.jpg);
+                }
+
+                .section-2{
+                    background-image: url(img/parallax/bg2.jpg);
+                }
+
+                .section-3{
+                    background-image: url(img/parallax/bg3.jpg);
+                }
+
+                .section-text{
+                    position: relative;
+                }
+
+                .caption{
+                    position: absolute;
+                    top: 50%;
+                    left: 0px;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .caption-text{
+                    background-color: white;
+                    color: #cecece;
+                    font-size: 42px;
+                    font-weight: bold;
+                    padding: 15px
+                }
+
+                .inner-text{
+                    padding: 50px 80px;
+                    background-color: black;
+                    color: white;
+                    font-size: 20px;
+                }
+            </pre>
             </div>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
@@ -78,6 +355,38 @@
 
     function windowResized(){
         resizeCanvas(windowWidth, windowHeight);
+    }
+
+    var newWidth;
+    var newHeight;
+    function checkVal(thisForm){
+
+        document.getElementsByClassName('selection')[0].innerHTML = document.getElementsByName('tVal')[0].value;
+        newWidth = document.getElementsByName('wVal')[0].value;
+        newHeight = document.getElementsByName('hVal')[0].value;
+        if(newWidth == 0){
+            document.getElementsByClassName('selection')[0].style.width = "auto";
+            document.getElementById('currWidth').innerHTML = "auto";
+        }else{
+            document.getElementsByClassName('selection')[0].style.width = newWidth + "px";
+            document.getElementById('currWidth').innerHTML = newWidth + "px";
+        }
+
+        if(newHeight == 0){
+            document.getElementsByClassName('selection')[0].style.height = "auto";
+            document.getElementById('currHeight').innerHTML = "auto";
+        }else{
+            document.getElementsByClassName('selection')[0].style.height = newHeight + "px";
+            document.getElementsByClassName('selection')[0].style.lineHeight = newHeight + "px";
+            document.getElementById('currHeight').innerHTML = newHeight + "px";
+        }
+
+        for(var i = 0; i < thisForm.length; i++){
+            if(thisForm[i].checked){
+                document.getElementsByClassName('selection')[0].style.display = thisForm[i].value;
+                console.log(thisForm[i].value);
+            }
+        }
     }
 </script>
 </html>

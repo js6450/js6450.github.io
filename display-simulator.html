@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Display Value Simulator</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<style>
+    .code-demo{
+        background-color: white;
+        padding: 2rem;
+    }
+
+    .code-demo-p{
+        margin: 0;
+    }
+
+    .selection{
+        background-color: hotpink;
+        color: white;
+        /*	width: 200px;
+        */	height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+</style>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <div class="code-demo">
+                    <p class="code-demo-p">Welcome to <span class="selection">Comm Lab</span> Group Study Sessions!</p>
+                </div>
+                <br>
+                <form onchange="checkVal(this)">
+                    <div style="width: 50%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="tVal" id="textVal" value="Comm Lab">
+                        <label class="mdl-textfield__label" for="textVal">Text Content:</label>
+                    </div>
+                    <br>
+                    Display Value:<br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" class="mdl-radio__button" name="dVal" value="inline" checked>
+                        <span class="mdl-radio__label">inline (default)</span>
+                    </label>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" class="mdl-radio__button" name="dVal" value="inline-block">
+                        <span class="mdl-radio__label">inline-block</span>
+                    </label>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" class="mdl-radio__button" name="dVal" value="block">
+                        <span class="mdl-radio__label">block</span>
+                    </label>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" class="mdl-radio__button" name="dVal" value="none">
+                        <span class="mdl-radio__label">none</span>
+                    </label>
+                    <br><br>
+                    Width: <span id="currWidth">auto</span> (0px = auto)
+                    <br>
+                    <p style="width: 50%; margin-top: 1rem;">
+                        <input class="mdl-slider mdl-js-slider" type="range" name="wVal" min="0" max="500" value="0" tabindex="0">
+                    </p>
+                    <br>
+                    Height: <span id="currHeight">auto</span> (0px = auto)
+                    <br>
+                    <p style="width: 50%; margin-top: 1rem;">
+                        <input class="mdl-slider mdl-js-slider" type="range" name="hVal" min="0" max="500" value="0" tabindex="0">
+                    </p>
+                </form>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script>
+    var cvs;
+    var barSize = 5;
+    var bigBarSize = barSize * 3;
+    var hueStart, hueRange;
+    var titleWidth;
+
+    function setup() {
+        cvs = createCanvas(windowWidth, windowHeight);
+        cvs.id('bgCanvas');
+        colorMode(HSB, 360, 100, 100, 100);
+        noStroke();
+
+        hueRange = random(30, 75);
+        hueStart = random(hueRange, 360 - hueRange);
+
+        titleWidth = width * 0.15;
+    }
+
+    function draw() {
+        background(255, 15);
+        for(var i = 0; i <= height; i += barSize){
+            var h = sin((frameCount + i) * 0.01) * hueRange;
+            var opacity = 50;
+            var xOffset = 0;
+
+            fill(hueStart + h, 30, 70, opacity);
+            rect(0 + xOffset, i, width, barSize);
+        }
+    }
+
+    function windowResized(){
+        resizeCanvas(windowWidth, windowHeight);
+    }
+
+    var newWidth;
+    var newHeight;
+    function checkVal(thisForm){
+
+        document.getElementsByClassName('selection')[0].innerHTML = document.getElementsByName('tVal')[0].value;
+        newWidth = document.getElementsByName('wVal')[0].value;
+        newHeight = document.getElementsByName('hVal')[0].value;
+        if(newWidth == 0){
+            document.getElementsByClassName('selection')[0].style.width = "auto";
+            document.getElementById('currWidth').innerHTML = "auto";
+        }else{
+            document.getElementsByClassName('selection')[0].style.width = newWidth + "px";
+            document.getElementById('currWidth').innerHTML = newWidth + "px";
+        }
+
+        if(newHeight == 0){
+            document.getElementsByClassName('selection')[0].style.height = "auto";
+            document.getElementById('currHeight').innerHTML = "auto";
+        }else{
+            document.getElementsByClassName('selection')[0].style.height = newHeight + "px";
+            document.getElementsByClassName('selection')[0].style.lineHeight = newHeight + "px";
+            document.getElementById('currHeight').innerHTML = newHeight + "px";
+        }
+
+        for(var i = 0; i < thisForm.length; i++){
+            if(thisForm[i].checked){
+                document.getElementsByClassName('selection')[0].style.display = thisForm[i].value;
+                console.log(thisForm[i].value);
+            }
+        }
+    }
+</script>
+</html>
