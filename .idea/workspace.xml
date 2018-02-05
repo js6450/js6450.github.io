@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/basic-css.html" afterPath="$PROJECT_DIR$/basic-css.html" />
-      <change beforePath="$PROJECT_DIR$/display-simulator.html" afterPath="$PROJECT_DIR$/display-simulator.html" />
+      <change beforePath="$PROJECT_DIR$/display-simulator.html" afterPath="$PROJECT_DIR$/css-simulator.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -95,8 +94,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="display-simulator.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/display-simulator.html">
+      <file leaf-file-name="css-simulator.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css-simulator.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1482">
               <caret line="90" column="65" lean-forward="false" selection-start-line="90" selection-start-column="65" selection-end-line="90" selection-end-column="65" />
@@ -384,12 +383,12 @@
       <workItem from="1515050882295" duration="5247000" />
       <workItem from="1515993929252" duration="6247000" />
       <workItem from="1516716226508" duration="10678000" />
-      <workItem from="1517808032937" duration="13480000" />
+      <workItem from="1517808032937" duration="13547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127259000" />
+    <option name="totallyTimeSpent" value="127326000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="214" y="23" width="1226" height="876" extended-state="0" />
@@ -767,7 +766,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/display-simulator.html">
+    <entry file="file://$PROJECT_DIR$/css-simulator.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1482">
           <caret line="90" column="65" lean-forward="false" selection-start-line="90" selection-start-column="65" selection-end-line="90" selection-end-column="65" />
