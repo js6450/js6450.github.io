@@ -23,22 +23,13 @@
     </script>
 </head>
 <style>
-    .code-demo{
-        background-color: white;
-        padding: 2rem;
+    .col{
+        width: 50%;
+        float: left;
     }
 
-    .code-demo-p{
-        margin: 0;
-    }
-
-    .selection{
-        background-color: hotpink;
-        color: white;
-        /*	width: 200px;
-        */	height: 50px;
-        line-height: 50px;
-        text-align: center;
+    #panel{
+        min-height: 400px;
     }
 </style>
 <body>
@@ -131,49 +122,83 @@
                 <img class="p-img" src="img/basicCss/inspector8.jpg">
                 <p>I am going to choose the color red. You will see this particular section of text change its color from black to red immediately after you are done typing the word. <b>A very important thing to note here is that ANY CHANGES DONE ON THE INSPECTOR ARE TEMPORARY</b>. If you refresh the page, the changes you have made, in this case changing the color of text to red, will disappear. The inspector tool should be used for experimenting with css and a way of getting immediate visual feedback of what a particular css declaration does. If you want to actually apply this css style to your web page, you should copy the css code from inspector and save it to your local css file.</p>
                 <p>For more detailed information about css syntax, please read <a class="p-link" href="https://www.w3schools.com/css/css_syntax.asp">this w3schools' article</a>. Generally, <a class="p-link" href="https://www.w3schools.com/css/default.asp">w3schools website</a> is also a helpful resource in trying to figure out if there is a css property for what you want to do, and what it exactly does.</p>
-            <h5>Display Property</h5>
-                <div class="code-demo">
-                    <p class="code-demo-p">Welcome to <span class="selection">Comm Lab</span> Group Study Sessions!</p>
-                </div>
+            <h5>Position and Display Property</h5>
+                <iframe id="code-demo" height="200px" src="css-basic-demo.html"></iframe>
                 <br>
-                <form onchange="checkVal(this)">
+                <form id="panel" oninput="checkNum()" onchange="checkVal()">
                     <div style="width: 50%" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" name="tVal" id="textVal" value="Comm Lab">
                         <label class="mdl-textfield__label" for="textVal">Text Content:</label>
                     </div>
                     <br>
-                    Display Value:<br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-                        <input type="radio" class="mdl-radio__button" name="dVal" value="inline" checked>
-                        <span class="mdl-radio__label">inline (default)</span>
-                    </label>
-                    <br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-                        <input type="radio" class="mdl-radio__button" name="dVal" value="inline-block">
-                        <span class="mdl-radio__label">inline-block</span>
-                    </label>
-                    <br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-                        <input type="radio" class="mdl-radio__button" name="dVal" value="block">
-                        <span class="mdl-radio__label">block</span>
-                    </label>
-                    <br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-                        <input type="radio" class="mdl-radio__button" name="dVal" value="none">
-                        <span class="mdl-radio__label">none</span>
-                    </label>
-                    <br><br>
-                    Width: <span id="currWidth">auto</span>
-                    <br>
-                    <p style="width: 50%; margin-top: 1rem;">
-                    <input class="mdl-slider mdl-js-slider" type="range" name="wVal" min="0" max="500" value="0" tabindex="0">
-                    </p>
-                    <br>
-                    Height: <span id="currHeight">auto</span> (0px = auto)
-                    <br>
-                    <p style="width: 50%; margin-top: 1rem;">
-                        <input class="mdl-slider mdl-js-slider" type="range" name="hVal" min="0" max="500" value="0" tabindex="0">
-                    </p>
+                    <div class="col">
+                        Display Value:<br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" class="mdl-radio__button" name="dVal" value="inline" checked>
+                            <span class="mdl-radio__label">inline (default)</span>
+                        </label>
+                        <br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" class="mdl-radio__button" name="dVal" value="inline-block">
+                            <span class="mdl-radio__label">inline-block</span>
+                        </label>
+                        <br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" class="mdl-radio__button" name="dVal" value="block">
+                            <span class="mdl-radio__label">block</span>
+                        </label>
+                        <br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" class="mdl-radio__button" name="dVal" value="none">
+                            <span class="mdl-radio__label">none</span>
+                        </label>
+                        <br><br>
+                        Width: <span id="currWidth">auto</span> (0px = auto)
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="wVal" min="0" max="800" value="0" tabindex="0">
+                        </p>
+                        <br>
+                        Height: <span id="currHeight">auto</span> (0px = auto)
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="hVal" min="0" max="800" value="0" tabindex="0">
+                        </p>
+                    </div>
+                    <div class="col">
+                        Position Value:<br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" class="mdl-radio__button" name="pVal" value="static" checked>
+                            <span class="mdl-radio__label">static (default)</span>
+                        </label>
+                        <br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" class="mdl-radio__button" name="pVal" value="relative">
+                            <span class="mdl-radio__label">relative</span>
+                        </label>
+                        <br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" class="mdl-radio__button" name="pVal" value="fixed">
+                            <span class="mdl-radio__label">fixed</span>
+                        </label>
+                        <br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" class="mdl-radio__button" name="pVal" value="absolute">
+                            <span class="mdl-radio__label">absolute</span>
+                        </label>
+                        <br><br>
+                        Top: <span id="currTop">0%</span>
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="topVal" min="0" max="100" value="0" tabindex="0">
+                        </p>
+                        <br>
+                        Left: <span id="currLeft">0</span>%
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="leftVal" min="0" max="100" value="0" tabindex="0">
+                        </p>
+                    </div>
                 </form>
             <h5>Demo: Parallax Web Page</h5>
                 <iframe height="500px" src="parallax-demo.html"></iframe>
@@ -306,7 +331,7 @@
                 }
             </pre>
             </div>
-            <footer class="mdl-mini-footer">
+            <footer style="clear: both;" class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
                     <ul class="mdl-mini-footer__link-list">
                         <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
@@ -357,34 +382,56 @@
         resizeCanvas(windowWidth, windowHeight);
     }
 
-    var newWidth;
-    var newHeight;
-    function checkVal(thisForm){
 
-        document.getElementsByClassName('selection')[0].innerHTML = document.getElementsByName('tVal')[0].value;
+    var newWidth, newHeight;
+    var newTop, newLeft;
+    function checkNum(){
+        var selectSpan = document.getElementById('code-demo').contentDocument.getElementsByClassName('selection')[0];
+
+        selectSpan.innerHTML = document.getElementsByName('tVal')[0].value;
         newWidth = document.getElementsByName('wVal')[0].value;
         newHeight = document.getElementsByName('hVal')[0].value;
         if(newWidth == 0){
-            document.getElementsByClassName('selection')[0].style.width = "auto";
+            selectSpan.style.width = "auto";
             document.getElementById('currWidth').innerHTML = "auto";
         }else{
-            document.getElementsByClassName('selection')[0].style.width = newWidth + "px";
+            selectSpan.style.width = newWidth + "px";
             document.getElementById('currWidth').innerHTML = newWidth + "px";
         }
 
         if(newHeight == 0){
-            document.getElementsByClassName('selection')[0].style.height = "auto";
+            selectSpan.style.height = "auto";
             document.getElementById('currHeight').innerHTML = "auto";
         }else{
-            document.getElementsByClassName('selection')[0].style.height = newHeight + "px";
-            document.getElementsByClassName('selection')[0].style.lineHeight = newHeight + "px";
+            selectSpan.style.height = newHeight + "px";
             document.getElementById('currHeight').innerHTML = newHeight + "px";
         }
 
-        for(var i = 0; i < thisForm.length; i++){
-            if(thisForm[i].checked){
-                document.getElementsByClassName('selection')[0].style.display = thisForm[i].value;
-                console.log(thisForm[i].value);
+        newTop = document.getElementsByName('topVal')[0].value;
+        newLeft = document.getElementsByName('leftVal')[0].value;
+        var calcTop = newTop * 8;
+        if(document.getElementsByName('pVal')[3].checked){
+            selectSpan.style.top = calcTop + "px";
+        }else{
+            selectSpan.style.top = newTop + "%";
+        }
+        selectSpan.style.left = newLeft + "%";
+        document.getElementById('currTop').innerHTML = newTop + "%, " + calcTop + "px";
+        document.getElementById('currLeft').innerHTML = newLeft;
+
+    }
+
+    function checkVal(){
+        var selectSpan = document.getElementById('code-demo').contentDocument.getElementsByClassName('selection')[0];
+        for(var i = 0; i < document.getElementsByName('dVal').length; i++){
+            if(document.getElementsByName('dVal')[i].checked){
+                selectSpan.style.display = document.getElementsByName('dVal')[i].value;
+            }
+        }
+
+        for(var i = 0; i < document.getElementsByName('pVal').length; i++){
+            if(document.getElementsByName('pVal')[i].checked){
+                selectSpan.style.position = document.getElementsByName('pVal')[i].value;
             }
         }
     }
