@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Fundamentals of CSS Animation</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+            <h4><b>Fundamentals of CSS Animation</b></h4>
+                <h5>Creating Shapes Using divs</h5>
+                <p>You can create shapes in html and css by creating empty div elements and assigning them widith height and background-color css properties.</p>
+                <style>
+                    #squareDiv{
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                    }
+                </style>
+                <div id="squareDiv"></div>
+                <br>
+                <p><u>HTML</u>:</p>
+                <pre>
+                &lt;div id="squareDiv">&lt;/div>
+            </pre>
+                <p><u>CSS</u>:</p>
+                <pre>
+                #squareDiv{
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                }
+            </pre>
+                <p>We can also turn this square div in to a circle, or circle-like shape by giving it a css property called <b>border-radius</b>. border-radius takes in a numerical value as input and creates a circular edge around the four corners of the div element by using the numerical input as the radius of the circle.</p>
+                <p>For example, if we add</p>
+                <pre>
+                border-radius: 10px;
+            </pre>
+                <p>to the code we already have from above:</p>
+                <style>
+                    #circleDiv1{
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        border-radius: 20px;
+                    }
+                </style>
+                <div id="circleDiv1"></div>
+                <br>
+                <p>We can also give the size of border-radius in percentages, relative to the size of the div element. So if I give 50% as my border-radius, this means that it will be 50% of my width and height of my div, which will end up being 50px and ultimately create a circle.</p>
+                <style>
+                    #circleDiv2{
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        border-radius: 50%;
+                    }
+                </style>
+                <div id="circleDiv2"></div>
+                <br>
+                <p>If your width and height values are not the same, by setting border-radius to 50%, you will create an ellipse:</p>
+                <style>
+                    #ellipseDiv{
+                        width: 200px;
+                        height: 100px;
+                        background-color: red;
+                        border-radius: 50%;
+                    }
+                </style>
+                <div id="ellipseDiv"></div>
+                <p>You can also play around with the border elements of css to create outlines of shapes. In order to visualize the border around your div, you need to set your border-style. The default value of border-style is set to none, so you will need to over ride this by giving values such as solid, dotted, dashed and double. Use border-width to set the thickness of your border, and assign the color of your border with border-color.</p>
+                <pre>
+                #outlineDiv{
+                    width: 100px;
+                    height: 100px;
+                    border-style: solid; /* other options: dashed, dotted, double... */
+                    border-color: red;
+                    border-width: 10px;
+                }
+            </pre>
+                <style>
+                    #outlineDiv1{
+                        width: 100px;
+                        height: 100px;
+                        border-style: solid;
+                        border-color: red;
+                        border-width: 10px;
+                        position: relative;
+                        display: inline-block;
+                    }
+                </style>
+                <div id="outlineDiv1"></div>
+                <style>
+                    #outlineDiv2{
+                        width: 100px;
+                        height: 100px;
+                        border-style: dotted;
+                        border-color: red;
+                        border-width: 10px;
+                        position: relative;
+                        display: inline-block;
+                    }
+                </style>
+                <div id="outlineDiv2"></div>
+                <style>
+                    #outlineDiv3{
+                        width: 100px;
+                        height: 100px;
+                        border-style: dashed;
+                        border-color: red;
+                        border-width: 10px;
+                        position: relative;
+                        display: inline-block;
+                    }
+                </style>
+                <div id="outlineDiv3"></div>
+                <style>
+                    #outlineDiv4{
+                        width: 100px;
+                        height: 100px;
+                        border-style: double;
+                        border-color: red;
+                        border-width: 10px;
+                        position: relative;
+                        display: inline-block;
+                    }
+                </style>
+                <div id="outlineDiv4"></div>
+                <p>You can also assign different styles, colors and widths for the top, bottom, left and right borders.</p>
+                <style>
+                    #outlineDiv5{
+                        width: 100px;
+                        height: 100px;
+                        border-top-style: dashed;
+                        border-top-color: blue;
+                        border-top-width: 10px;
+                        border-bottom-style: dotted;
+                        border-bottom-color: red;
+                        border-bottom-width: 5px;
+                        border-left-style: double;
+                        border-left-color: green;
+                        border-left-width: 20px;
+                        border-right-style: solid;
+                        border-right-color: yellow;
+                        border-right-width: 30px;
+                    }
+                </style>
+                <div id="outlineDiv5"></div>
+                <pre>
+                #outlineDiv{
+                    width: 100px;
+                    height: 100px;
+                    border-top-style: dashed;
+                    border-top-color: blue;
+                    border-top-width: 10px;
+                    border-bottom-style: dotted;
+                    border-bottom-color: red;
+                    border-bottom-width: 5px;
+                    border-left-style: double;
+                    border-left-color: green;
+                    border-left-width: 20px;
+                    border-right-style: solid;
+                    border-right-color: yellow;
+                    border-right-width: 30px;
+                }
+            </pre>
+                <p>You can actually create triangle shapes using borders as well: by assigning no width and height to the div and making all but one borders transparent.</p>
+                <style>
+                    #outlineDiv6{
+                        width: 0px;
+                        height: 0px;
+                        border-bottom: 100px solid red;
+                        border-left: 100px solid transparent;
+                    }
+                </style>
+                <div id="outlineDiv6"></div>
+                <pre>
+                #outlineDiv{
+                    width: 0px;
+                    height: 0px;
+                    border-bottom: 100px solid red;
+                    border-left: 100px solid transparent;
+                }
+            </pre>
+                <p>The most important part of this "css trick" is that you can "transparent" as your color value. Another thing to note is that you can merge border-bottom-width, border-bottom-style and border-bottom-color into a single line of css, by just referring to border-bottom, and separating the values for width, style and color with a space. </p>
+                <p>You can create different triangle shapes, depending on which borders you make transparent.</p>
+                <style>
+                    #outlineDiv7{
+                        width: 0px;
+                        height: 0px;
+                        border-bottom: 75px solid red;
+                        border-left: 50px solid transparent;
+                        border-right: 50px solid transparent;
+                        display: inline-block;
+                        position: relative;
+                        margin-right: 10px;
+                    }
+                </style>
+                <div id="outlineDiv7"></div>
+                <style>
+                    #outlineDiv8{
+                        width: 0px;
+                        height: 0px;
+                        border-top: 75px solid blue;
+                        border-left: 50px solid transparent;
+                        border-right: 50px solid transparent;
+                        display: inline-block;
+                        position: relative;
+                        margin-right: 10px;
+                    }
+                </style>
+                <div id="outlineDiv8"></div>
+                <style>
+                    #outlineDiv9{
+                        width: 0px;
+                        height: 0px;
+                        border-left: 75px solid green;
+                        border-top: 50px solid transparent;
+                        border-bottom: 50px solid transparent;
+                        display: inline-block;
+                        position: relative;
+                        margin-right: 10px;
+                    }
+                </style>
+                <div id="outlineDiv9"></div>
+                <style>
+                    #outlineDiv10{
+                        width: 0px;
+                        height: 0px;
+                        border-right: 75px solid yellow;
+                        border-top: 50px solid transparent;
+                        border-bottom: 50px solid transparent;
+                        display: inline-block;
+                        position: relative;
+                        margin-right: 10px;
+                    }
+                </style>
+                <div id="outlineDiv10"></div>
+                <h5>Understanding Keyframes</h5>
+                <p>We use @keyframes css attribute to define the rules of a particular animation. The syntax of the @keyframes tag is as follows:</p>
+                <pre>
+      @keyframes animationname {keyframes-selector {css-styles;}}
+      </pre>
+                <p>So, if we wanted to define an animation called "moveToRight" then, we write:</p>
+                <pre>
+      @keyframes moveToRight {keyframes-selector {css-styles;}}
+      </pre>
+                <p>CSS animation is simple. We are simply applying different css styles to a html element at different times. <i>keyframes-selector</i> is what defines the timing of when a particular css-style is applied to the html element.</p>
+                <h5>Timing with Keyframes selectors</h5>
+                <p><i>keyframes-selector</i> can be values <i>from</i> and <i>to</i> or it can also be written in percentages. For example, in the case of this example code below:</p>
+                <pre>
+      @keyframes moveToRight {
+        from{left: 0px;}
+        to{left: 300px;}
+      }
+      </pre>
+                <p>If the above @keyframes code is applied to a html element, it will move 300px to the right. This means that if the duration of the animation is 5 seconds (we will learn how to set the duration of an animation in a bit), at 0 second, the position of the html element will be at left: 0px; and at 5 second, the position will be at left: 300px;. Below is what happens if the above animation is applied(and told to repeat infinitely - which we will also learn how to do soon).</p>
+                <style>
+                    @keyframes moveToRight{
+                        from{left: 0px;}
+                        to{left: 300px;}
+                    }
+                    #moveToRight{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                    }
+                </style>
+                <div id="moveToRight"></div>
+                <p>Using <i>from</i> and <i>to</i> keyframe-selectors, however, limits an animation to be a one-step action: it goes from one state to another. If we use percentages instead, we can put more steps in within the animation.</p>
+                <pre>
+      @keyframes moveToRight2 {
+        0%{left: 0px;}
+        25%{left: 250px;}
+        50%{left: 100px;}
+        100%{left: 300px;}
+      }
+      </pre>
+                <p>Now, we've broken up the 5 second duration of the animation in 4 steps. At 0 second, the position is at left: 0px;, at 1.25 second, the position is at left: 250px;, at 2.5 second it is at left: 100px; and finally at 5 second, it is at left: 300px;. See this animation applied below.</p>
+                <style>
+                    @keyframes moveToRight2 {
+                        0%{left: 0px;}
+                        25%{left: 250px;}
+                        50%{left: 100px;}
+                        100%{left: 300px;}
+                    }
+                    #moveToRight2{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight2;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                    }
+                </style>
+                <div id="moveToRight2"></div>
+                <p>So, the <i>from</i> keyframes-selector is same as 0%, and <i>to</i> is same as 100%.</p>
+
+                <h5>Understanding Animation Properties</h5>
+                <p>Now that we know how to define an animation using @keyframes, let's see how we can apply this animation to an html element.</p>
+                <p>Let's create an empty div and give it width, height and background-color so we see it. Don't forget to give it some sort of id so we can refer to it in css.</p>
+                <p>HTML:</p>
+                <pre>
+        &lt;div id="changeColor">&lt;/div>
+      </pre>
+                <p>CSS:</p>
+                <pre>
+        #changeColor{
+          width: 100px;
+          height: 100px;
+          background-color: red;
+        }
+      </pre>
+                <p>For practice, let's define a css animation that changes the background color from red to blue.</p>
+                <pre>
+        @keyframes redToBlue{
+          to{background-color: blue;}
+        }
+      </pre>
+                <p>Note that I didn't define <i>from</i>. If <i>from</i> is not defined, it will use the css styles that is defined with the html element. In this cass, the <i>from</i> state will be background-color: red;.</p>
+
+                <p><u>animation-name</u></p>
+                <p>The way that we reference a @keyframe animation to a html element is by defining the animation name in the style. See the code below:</p>
+                <pre>
+        #changeColor{
+          width: 100px;
+          height: 100px;
+          background-color: red;
+          animation-name: redToBlue;
+        }
+      </pre>
+                <p>Now, the div with id <i>changeColor</i> will use @keyframes with name <i>redToBlue</i>. However, this code won't do anything, because we haven't give it how long the duration of the animation is supposed to be.</p>
+
+                <p><u>animation-duration</u></p>
+                <p>Again, like we did with passing animation-name, we define the duration of the animation in the style of the html element, like below:</p>
+                <pre>
+        #changeColor{
+          width: 100px;
+          height: 100px;
+          background-color: red;
+          animation-name: redToBlue;
+          animation-duration: 3s;
+        }
+      </pre>
+                <p>The duration of the animation is measured in seconds - hense the "s" after the 3 as the argument for the animation-duration attribute. In this example, this means that it will take 3 seconds for the color to change from red to blue.</p>
+
+                <style>
+                    #changeColor{
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: redToBlue;
+                        animation-duration: 3s;
+                    }
+                    @keyframes redToBlue{
+                        to{background-color: blue;}
+                    }
+                </style>
+                <div id="changeColor"></div>
+
+                <p>You might be saying "This is not working!" if you have been reading the instructions from top to here. If you refresh this page and come down to this section of code, you will see the animation. This is because we haven't told it to run how many times - so by default, the animation only runs once.</p>
+
+                <p><u>animation-iteration-count</u></p>
+                <p>Now, let's offset the default state of the animation running once, by defining the animation-iteration-count css attribute.</p>
+
+                <pre>
+        #changeColor{
+          width: 100px;
+          height: 100px;
+          background-color: red;
+          animation-name: redToBlue;
+          animation-duration: 3s;
+          animation-iteration-count: 5;
+        }
+      </pre>
+
+                <style>
+                    #changeColor2{
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: redToBlue2;
+                        animation-duration: 3s;
+                        animation-iteration-count: 5;
+                    }
+                    @keyframes redToBlue2{
+                        to{background-color: blue;}
+                    }
+                </style>
+                <div id="changeColor2"></div>
+
+                <p>The argument of the animation-iteration-count attribute signifies the number of times the particular @keyframes animation will run. In this case, it will run for 5 times and then it will go back to the original state of background-color:red; and remain this way. There is one non-numeric value you can give to this attribute and it is "infinite".</p>
+                <pre>
+      animation-iteration-count: infinite;
+      </pre>
+                <p>Now this animation will run infinite times, as you see below.</p>
+                <style>
+                    #changeColor3{
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: redToBlue3;
+                        animation-duration: 3s;
+                        animation-iteration-count: infinite;
+                    }
+                    @keyframes redToBlue3{
+                        to{background-color: blue;}
+                    }
+                </style>
+                <div id="changeColor3"></div>
+                <br>
+                <p><u>animation-delay</u></p>
+                <p>This is a simple animation attribute that lets you have a delay at the beginning of your animation. Same as the animation-duration attribute, it is measured in seconds. Note that this delay will only happen at the very beginning of the animation - and not at the start of following iterations. The following code will put 5 second delay at the start of the animation.
+                <pre>
+      animation-delay: 5s;
+      </pre></p>
+
+                <p><u>animation-fill-mode</u></p>
+                <p>This attribute can be important when animating a html element only once. This determines the end state of an animation. The default value of animation-fill-mode attribute is <i>none</i>, meaning that it will return to the original style that the html is applied with.</p>
+                <p>Let's create an empty square div with original background-color: red;.</p>
+                <pre>
+      #changeColors{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        animation-name: blueToGreen;
+        animation-duration: 5s;
+      }
+      </pre>
+                <p>In our @keyframes, lets set the starting background color at <i>from</i> as background-color: blue; and at <i>to</i> as background-color: green;.
+                <pre>
+      @keyframes blueToGreen{
+        from{background-color: blue;}
+        to{background-color: green;}
+      }
+      </pre></p>
+                <style>
+                    #changeColors{
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: blueToGreen;
+                        animation-duration: 5s;
+                    }
+                    #changeColors2{
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: blueToGreen;
+                        animation-duration: 5s;
+                        animation-fill-mode: forwards;
+                    }
+                    @keyframes blueToGreen{
+                        from{background-color: blue;}
+                        to{background-color: green;}
+                    }
+                </style>
+
+                <div id="changeColors"></div>
+                <p style="text-align: center;"><i>default (none)</i> example</p>
+                <div id="changeColors2"></div>
+                <p style="text-align: center;"><i>forwards</i> example</p>
+
+                <p>The two examples above are using default animation-iteration-count (meaning it will only run once), so it may not be animating when you look at this right now. The top example is the default example - when animation-fill-mode attribute is not called. You will see that it's changed back to the original style applied to this div, which was at background-color: red; The bottom one:
+                <pre>
+      animation-fill-mode: forwards;
+      </pre>
+                remains at background-color: green;, because we told it to remain <i>forwards</i>, as in "change the css style to what it is at the end of the animation".</p>
+
+                <p><u>animation-direction</u></p>
+                <p>This attribute lets you decide whether you want to run the sequence of defined @keyframes animation in a <i>normal</i> order, <i>reverse</i> order or <i>alternate</i> order. To see the differences, we are going to apply the same @keyframes animation and give it different values for the animation-direction property.</p>
+                <style>
+                    #moveToRight7{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                    }
+                    #moveToRight8{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-direction: reverse;
+                    }
+                    #moveToRight9{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;
+                    }
+                </style>
+
+                <div id="moveToRight7"></div>
+                <p style="text-align: center;"><i>default (normal)</i> example</p>
+                <div id="moveToRight8"></div>
+                <p style="text-align: center;"><i>reverse</i> example</p>
+                <div id="moveToRight9"></div>
+                <p style="text-align: center;"><i>alternate</i> example</p>
+
+                <p>The top example is when no animation-direction property is given, so using the default <i>normal</i> order of animation. The middle example uses:
+                <pre>
+      animation-direction: reverse;
+      </pre>
+                You will see that this example goes from right to left, not left to right as it is in the first example. The bottom example uses:
+                <pre>
+      animation-direction: alternate;
+      </pre>
+                which alternates between going from left to right and right to left.</p>
+
+                <p><u>animation-timing-function</u></p>
+                <p>So far, the animations defined change from one state to another in a linear way, meaning that the change happens with a fixed constant speed which is dependant on animation-duration and the actions defined in the @keyframes. animation-timing-function lets you set the speed curve of your animation. For more detailed explanation of this property, please visit the <a class="p-link" href="https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp" target="_blank">w3schools link</a>. The link also contains all possible values you can give for the animation-timing-function attribute.</p>
+
+                <p>In this tutorial, we are going to look at <i>ease-in-out</i> and <i>steps</i>.</p>
+
+                <p>Let's reuse our first example of moving the empty div box from left to right by 300px and add animation-timing-function attribute and give it value "ease-in-out".</p>
+
+                <pre>
+      #moveToRight{
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        animation-name: moveToRight;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+      }
+      </pre>
+
+                <style>
+                    @keyframes moveToRight3{
+                        from{left: 0px;}
+                        to{left: 300px;}
+                    }
+                    #moveToRight3{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight3;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: ease-in-out;
+                    }
+                </style>
+                <div id="moveToRight3"></div>
+                <p style="text-align: center"><i>ease-in-out</i> example</p>
+                <div id="moveToRight"></div>
+                <p style="text-align: center"><i>default (linear)</i> example</p>
+
+                <p>For ease of comparison, the top one is the ease-in-out example and the bottom one is the exact same example as the first one we made in this tutorial - the default linear one. Can you see the difference? ease-in-out makes the speed of the animation "curved", meaning that it builds up to full speed slowly, then stops gradualy. Both animations, however, take exactly same time to finish: 5 seconds.</p>
+
+                <p>Now let's look at the steps() function that can be used to pass in as a value for the animation-timing-function attribute. The syntax for the steps value is as follows:</p>
+
+                <pre>
+      steps(int, start | end);
+      </pre>
+
+                <p>The first argument <i>int</i> is required, and indicates number of steps the animation will be broken up into. This number has to be greater than zero. The second argument is optional, and decides whether the step count will increase at the beginning of the action or the end of the action. This can create subtle difference in the way an html element is animated.</p>
+
+                <style>
+                    @keyframes moveToRight4{
+                        from{left: 0px;}
+                        to{left: 300px;}
+                    }
+                    #moveToRight4{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight4;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: steps(5);
+                    }
+                    #moveToRight5{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight4;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: steps(50);
+                    }
+                </style>
+                <div id="moveToRight4"></div>
+                <p style="text-align: center"><i>steps(5)</i> example</p>
+                <div id="moveToRight5"></div>
+                <p style="text-align: center"><i>steps(50)</i> example</p>
+                <div id="moveToRight"></div>
+                <p style="text-align: center"><i>default (linear)</i> example</p>
+
+                <p>The top one uses
+                <pre>
+      animation-timing-function: steps(5);
+      </pre>while the middle one uses
+                <pre>
+      animation-timing-function: steps(50);
+      </pre> and the bottom one is the first linear speed example placed here for comparison. The top example breaks up the movement in 5 steps, while the middle one does it in 50 steps. You will see that the top one doesn't actually reach all the way to the top. This is because the default value of the second optional value that we didn't pass in for this example is <i>end</i>. Let's change this default value and give a second argument to our animation-timing-function:
+                <pre>
+      animation-timing-function: steps(5, start);
+      </pre></p>
+                <style>
+                    #moveToRight6{
+                        position: relative;
+                        width: 100px;
+                        height: 100px;
+                        background-color: red;
+                        animation-name: moveToRight4;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: steps(5, start);
+                    }
+                </style>
+                <div id="moveToRight6"></div>
+
+                <h5><b>Example</b> | Typing Animation</h5>
+                <p>As a practice, we are going to use a combination of things we learned above to create a "typing" animation. This is what we are going to acheive:</p>
+                <style>
+                    #blinkCursor{
+                        animation-name: blink;
+                        animation-duration: 1s;
+                        animation-iteration-count: infinite;
+                    }
+                    #type{
+                        font-size: 1.5em;
+                        width: 20em;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        animation-name: type;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: steps(50, end);
+                    }
+
+                    @keyframes type{
+                        from{width: 0em}
+                    }
+                    @keyframes blink{
+                        from{opacity: 0;}
+                    }
+                </style>
+
+                <p id="type">This is being typed!!!<span id="blinkCursor"> |</span></p>
+
+                <p>Using @keyframes and css animation properties, we can create this typing effect, with the blinking cursor as a plus.</p>
+                <p>The trick to this animation is, in reality, it is only manipulating the width of the paragraph html element that can be seen on the browser. Let's create a paragraph tag with the id "type" and put some sort of text inside. Let's also put a span tag with id "blink" inside the paragraph tag and put "|" (pipleline character) inside, which we are going to animate to be our blinking cursor.
+                <pre>
+      &lt;p id="type">This is a sentence!&lt;span id="blink"> |&lt;/p>&lt;/p>
+      </pre>
+                Next, we are going to define our @keyframes for the typing animation and the blinking cursor animation:
+                <pre>
+      @keyframes type{
+        from{width: 0px;}
+      }
+      @keyframes type{
+        from{opacity: 0;}
+      }
+      </pre>
+                You might be asking - is this all it is? Yes! The typing function is just changing the width of the paragraph tag from 0px to a certain width and the blinking animation is simply changing the opacity from 0% to 100%. Now let's apply these animations to our html elements.
+                <pre>
+      #type{
+        animation-name: type;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+      }
+
+      #blink{
+        animation-name: blink;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+      </pre>
+                </p>
+                <style>
+                    #blink{
+                        animation-name: blink;
+                        animation-duration: 1s;
+                        animation-iteration-count: infinite;
+                    }
+                    #type2{
+                        animation-name: type;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                    }
+                </style>
+
+                <p id="type2">This is a sentence!<span id="blinkCursor"> |</span></p>
+
+                <p>THIS IS NOT HOW IT IS SUPPOSED TO LOOK LIKE! Well, it's because, we are not done! The blinking cursor seems to work fine, but it is the type animation that doesn't look like how it is supposed to yet. The first thing that may come to your mind is, because I said that all this animation does is changing the width from 0 to a certain width, we should maybe try to define the width. Let's add the width to be 150px - so now the style of my type paragraph is:
+                <pre>
+      #type{
+        width: 150px;
+        animation-name: type;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+      }
+      </pre></p>
+
+                <style>
+                    #type3{
+                        width: 150px;
+                        animation-name: type;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                    }
+                </style>
+                <p id="type3">This is a sentence!<span id="blinkCursor"> |</span></p>
+
+                <p>Okay, so it looks a little closer to what we want. I wish if there was a way of hiding everything else except for the top part of the animation! Well, there is a way. First, lets tell it to hide the overflow of the content of the paragraph.
+                <pre>
+      #type{
+        /* let's hide the overflow content!*/
+        overflow: hidden;
+
+        width: 150px;
+        animation-name: type;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+      }
+      </pre></p>
+
+                <style>
+                    #type4{
+                        overflow: hidden;
+                        width: 150px;
+                        animation-name: type;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                    }
+                </style>
+                <p id="type4">This is a sentence!<span id="blinkCursor"> |</span></p>
+
+                <p>This is a little more fluid than the last version, but we need to add another css style to this to make it even more so. We need to tell the white-spaces of this sentence (meaning the spacebar characters in between the words) to not wrap at the bottom.
+                <pre>
+      #type{
+        /* do not wrap the white-spaces at the bottom!*/
+        white-space: nowrap;
+
+        overflow: hidden;
+        width: 150px;
+        animation-name: type;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+      }
+      </pre></p>
+
+                <style>
+                    #type5{
+                        white-space: nowrap;
+                        overflow: hidden;
+                        width: 150px;
+                        animation-name: type;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                    }
+                </style>
+                <p id="type5">This is a sentence!<span id="blinkCursor"> |</span></p>
+
+                <p>Now, the animation is not multi-lined! However, the difference between the end product that I showed at the beginning compared to this one is that, it's too fluid. We need to create a choppy movement that make it look like its being typed. This is where the animation-timing-function comes in. We are going to use thes <i>steps</i> value and give it 40 steps.
+                <pre>
+      #type{
+        white-space: nowrap;
+        overflow: hidden;
+        width: 150px;
+        animation-name: type;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+
+        /* make choppy type-like movement! */
+        animation-timing-function: steps(40);
+      }
+      </pre></p>
+
+                <style>
+                    #type6{
+                        white-space: nowrap;
+                        overflow: hidden;
+                        width: 150px;
+                        animation-name: type;
+                        animation-duration: 5s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: steps(40);
+                    }
+                </style>
+                <p id="type6">This is a sentence!<span id="blinkCursor"> |</span></p>
+
+                <p>And we are done! The <a href="https://www.w3schools.com/cssref/css3_pr_animation-direction.asp" target="_blank" class="p-link"><u>w3schools link on css animation properties</u></a> will have more in-depth description about each of those described in this tutorial!</p>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script>
+    var cvs;
+    var barSize = 5;
+    var bigBarSize = barSize * 3;
+    var hueStart, hueRange;
+    var titleWidth;
+
+    function setup() {
+        cvs = createCanvas(windowWidth, windowHeight);
+        cvs.id('bgCanvas');
+        colorMode(HSB, 360, 100, 100, 100);
+        noStroke();
+
+        hueRange = random(30, 75);
+        hueStart = random(hueRange, 360 - hueRange);
+
+        titleWidth = width * 0.15;
+    }
+
+    function draw() {
+        background(255, 15);
+        for(var i = 0; i <= height; i += barSize){
+            var h = sin((frameCount + i) * 0.01) * hueRange;
+            var opacity = 50;
+            var xOffset = 0;
+
+            fill(hueStart + h, 30, 70, opacity);
+            rect(0 + xOffset, i, width, barSize);
+        }
+    }
+
+    function windowResized(){
+        resizeCanvas(windowWidth, windowHeight);
+    }
+</script>
+</html>
