@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/fundamental-css-animation.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/fundamentals-css-animation.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change beforePath="$PROJECT_DIR$/css-basic-demo.html" afterPath="$PROJECT_DIR$/css-basic-demo.html" />
+      <change beforePath="$PROJECT_DIR$/display-position-simulator.html" afterPath="$PROJECT_DIR$/display-position-simulator.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,8 +44,8 @@
             <file leaf-file-name="cssani.html" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/cssani.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="330">
-                    <caret line="598" column="270" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="598" selection-end-column="270" />
+                  <state relative-caret-position="360">
+                    <caret line="600" column="40" lean-forward="true" selection-start-line="600" selection-start-column="40" selection-end-line="600" selection-end-column="40" />
                     <folding />
                   </state>
                 </provider>
@@ -80,11 +78,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fundamental-css-animation.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fundamental-css-animation.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fundamental-css-animation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13964">
-              <caret line="822" column="40" lean-forward="false" selection-start-line="822" selection-start-column="40" selection-end-line="822" selection-end-column="40" />
+            <state relative-caret-position="-1979">
+              <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="display-position-simulator.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/display-position-simulator.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="css-basic-demo.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css-basic-demo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -159,10 +182,11 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css-ani-svg.html" />
         <option value="$PROJECT_DIR$/parallax-demo.html" />
-        <option value="$PROJECT_DIR$/css-basic-demo.html" />
         <option value="$PROJECT_DIR$/display-simulator.html" />
         <option value="$PROJECT_DIR$/basic-css.html" />
         <option value="$PROJECT_DIR$/fundamental-css-animation.html" />
+        <option value="$PROJECT_DIR$/css-basic-demo.html" />
+        <option value="$PROJECT_DIR$/display-position-simulator.html" />
       </list>
     </option>
   </component>
@@ -174,7 +198,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="720" />
+    <option name="width" value="994" />
     <option name="height" value="876" />
   </component>
   <component name="ProjectView">
@@ -343,18 +367,18 @@
       <workItem from="1515050882295" duration="5247000" />
       <workItem from="1515993929252" duration="6247000" />
       <workItem from="1516716226508" duration="10678000" />
-      <workItem from="1517808032937" duration="14507000" />
+      <workItem from="1517808032937" duration="16495000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128286000" />
+    <option name="totallyTimeSpent" value="130274000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="720" height="876" extended-state="0" />
+    <frame x="0" y="23" width="994" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22222222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1609658" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -687,29 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css-basic-demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="54" lean-forward="false" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/display-position-simulator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="201" column="58" lean-forward="true" selection-start-line="201" selection-start-column="58" selection-end-line="201" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#1;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#0;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#1;n#div#2;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#footer#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/basic-css.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
@@ -749,19 +750,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cssani.html">
+    <entry file="file://$PROJECT_DIR$/fundamental-css-animation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="598" column="270" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="598" selection-end-column="270" />
+        <state relative-caret-position="-1979">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fundamental-css-animation.html">
+    <entry file="file://$PROJECT_DIR$/css-basic-demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13964">
-          <caret line="822" column="40" lean-forward="false" selection-start-line="822" selection-start-column="40" selection-end-line="822" selection-end-column="40" />
+        <state relative-caret-position="420">
+          <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cssani.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="600" column="40" lean-forward="true" selection-start-line="600" selection-start-column="40" selection-end-line="600" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/display-position-simulator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#2;n#div#1;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#3;n#form#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
