@@ -28,8 +28,14 @@
         float: left;
     }
 
+    .form-row{
+        width: 33%;
+        float: left;
+        margin-bottom: 1rem;
+    }
+
     #panel{
-        min-height: 400px;
+        min-height: 450px;
     }
 </style>
 <body>
@@ -131,7 +137,29 @@
                         <input class="mdl-textfield__input" type="text" name="tVal" id="textVal" value="Comm Lab">
                         <label class="mdl-textfield__label" for="textVal">Text Content:</label>
                     </div>
-                    <br>
+                    <div class="form-col">
+                        <div class="form-row">
+                            Margin: <span id="currMargin">0</span>px
+                            <br>
+                            <p style="width: 100%; margin-top: 1rem;">
+                                <input class="mdl-slider mdl-js-slider" type="range" name="marginVal" min="0" max="150" value="0" tabindex="0">
+                            </p>
+                        </div>
+                        <div class="form-row">
+                            Padding: <span id="currPadding">0</span>px
+                            <br>
+                            <p style="width: 100%; margin-top: 1rem;">
+                                <input class="mdl-slider mdl-js-slider" type="range" name="paddingVal" min="0" max="150" value="0" tabindex="0">
+                            </p>
+                        </div>
+                        <div class="form-row">
+                            Border: <span id="currBorder">0</span>px
+                            <br>
+                            <p style="width: 100%; margin-top: 1rem;">
+                                <input class="mdl-slider mdl-js-slider" type="range" name="borderVal" min="0" max="50" value="0" tabindex="0">
+                            </p>
+                        </div>
+                    </div>
                     <div class="col">
                         Display Value:<br>
                         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
@@ -420,6 +448,16 @@
         document.getElementById('currTop').innerHTML = newTop + "%, " + calcTop + "px";
         document.getElementById('currLeft').innerHTML = newLeft;
 
+        newMargin = document.getElementsByName('marginVal')[0].value;
+        newPadding = document.getElementsByName('paddingVal')[0].value;
+        newBorder = document.getElementsByName('borderVal')[0].value;
+        selectSpan.style.margin = newMargin + "px";
+        selectSpan.style.padding = newPadding + "px";
+        selectSpan.style.borderWidth = newBorder + "px";
+
+        document.getElementById('currMargin').innerHTML = newMargin;
+        document.getElementById('currPadding').innerHTML = newPadding;
+        document.getElementById('currBorder').innerHTML = newBorder;
     }
 
     function checkVal(){
