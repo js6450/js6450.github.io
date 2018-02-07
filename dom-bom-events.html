@@ -64,8 +64,10 @@
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="full-page-content">
+                <p style="width: 80%; display: block; margin: auto; background: white; border-radius: 24px; padding: 32px;"><b>Quick Guide</b>: In this javascript simulator, you will see a snippet of html element, followed by the code for that html element. There will be a textfield below that, with a 'RUN' button next to it. You can edit the text inside of the textfield, and it will run your input as javascript code and show you the result below. If the javascript code you entered has a visual effect, that will also be seen.</p>
                 <h4>DOM Objects</h4>
                 <h5><u><i>elements</i></u>:</h5>
+                <p>You can use javascript to get the html elements inside of the webpage. <i>document</i> will give you all the whole html code of the webpage. <i>document.body</i> will give you the html code inside of and including the &lt;body> tag of your webpage. You can get a more specific section of your html code by looking up the id of that element using the <i>getElementById()</i> function. Given that we have the particular html code below, try to figure out the javascript code for getting the &lt;p> tag with text "Javascript is fun!".</p>
                 <hr>
                 <div id="text-div">
                     <p id="div-content">Javascript is fun!</p>
@@ -84,20 +86,22 @@
                     <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
                     <pre class="code-result"></pre>
                 </div>
-                <p><b>Examples</b>:</p>
+                <p><b>Examples of code for selecting HTML elements</b>: You can try these in the above textfield!</p>
                 <pre>
 document
 document.body
+//returns the HTML element with the id of ‘text-div’
 document.getElementById('text-div')
 document.getElementById('div-content')
                 </pre>
                 <h5><u>Properties of DOM Elements</u>:</h5>
+                <p>You can do more than just looking up html elements with javascript. You can also look up specific properties that pertain to an HTML element. You are already familiar with some properties of HTML elements, but you just not might think of them as such. In the section of HTML below, we have an image tag, with 3 attributes: id, width and src. The attributes of an HTML element, that get written inside of the HTML tag, are part of properties of the HTML element. Therefore, you can look up the values of these properties of an HTML tag, as well as set them as some other value of your choice.</p>
                 <hr>
                 <h1 id="title">My Title</h1>
                 <img id="pattern" width="100%" src="img/img1.jpg">
                 <pre>
-&lt;img id="pattern" width="100%" src="img/img1.jpg">
 &lt;h1 id="title">Basics of Javascript!&lt;/h1>
+&lt;img id="pattern" width="100%" src="img/img1.jpg">
 	            </pre>
                 <hr>
                 <div class="code-window">
@@ -108,37 +112,48 @@ document.getElementById('div-content')
                     <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
                     <pre class="code-result"></pre>
                 </div>
-                <p></p>
+                <p><b>Examples of code for looking up properties of an &lt;img> element</b>:</p>
                 <pre>
 document.getElementById('pattern').id
 document.getElementById('pattern').width
 document.getElementById('pattern').height
+//if the HTML element is an image, returns the source (file path) if the image
 document.getElementById('pattern').src
                 </pre>
-                <p></p>
+                <p><b>Examples of code for looking up properties of general HTML elements</b>:</p>
                 <pre>
 document.getElementById('title').id
+//returns the width of the HTML element
+//the width includes the width of the content, padding-left and padding-right
 document.getElementById('title').clientWidth
+//returns the height of the HTML element
+//the height includes the height of the content, padding-top and padding-bottom
 document.getElementById('title').clientHeight
+//returns the content inside of the HTML element
 document.getElementById(title').innerHTML
                 </pre>
-                <p></p>
+                <p><b>Examples of code for setting properties of an &lt;img> element</b>:<br>
+                Note that in my <i>img</i> folder, there are 5 images called: img1.jpg, img2.jpg, img3.jpg, img4.jpg and img5.jpg.</p>
                 <pre>
 document.getElementById('pattern').id = "new-id"
 document.getElementById('pattern').width = 200
 document.getElementById('pattern').height = 500
+//if the DOM element is an image, sets the source (file path) if the image
 document.getElementById('pattern').src = "img/img2.jpg"
                 </pre>
-                <p></p>
+                <p><b>Examples of code for setting properties of general HTML elements</b>:</p>
                 <pre>
 document.getElementById('title').id = "new-id"
+//sets the content inside of the HTML element
 document.getElementById('title').innerHTML = "New text for my h1 tag!"
                 </pre>
+                <h5><u><i>element.style</i></u>:</h5>
+                <p>You can also look up the CSS styles applied to a particular HTML element as well as set them to a value of your choice. To refer to the css related to a particular HTML element, simply add <i>.style</i> after. If you want to look up / set a value of a particular CSS property, add another <i>.</i> (dot) and follow it by that CSS property. If the CSS property you want to look up / set has a - (dash) in its name, change the way it is written using camel casing. Camel casing is a way of writing compound / multiple words that usually replaces spaces, but in this cas dashs, by capitalizing the word that would usually come after the space / dash. For example, background-color can be rewritten as backgroundColor. Use the HTML code below to look up and set CSS properties in the textfield.</p>
                 <hr>
-                <h5><u><i>elements.style</i></u>:</h5>
                 <div style="background-color: black; color: white; padding: 24px;" id="text-box">
                     <p style="font-size: 24px; text-align: center; margin:0;" id="inner-text">Javascript is fun!</p>
                 </div>
+                <br>
                 <p><u>HTML</u>:</p>
                 <pre>
 &lt;div id="text-box">
@@ -167,7 +182,7 @@ document.getElementById('title').innerHTML = "New text for my h1 tag!"
                     <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
                     <pre class="code-result"></pre>
                 </div>
-                <p></p>
+                <p><b>Examples of code for looking up CSS properties of an HTML element</b>:</p>
                 <pre>
 document.getElementById('text-box').backgroundColor
 document.getElementById('text-box').color
@@ -175,7 +190,7 @@ document.getElementById('text-box').padding
 document.getElementById('inner-text').fontSize
 document.getElementById('inner-text').textAlign
                 </pre>
-                <p></p>
+                <p><b>Examples of code for setting CSS properties of an HTML element</b>:</p>
                 <pre>
 document.getElementById('text-box').backgroundColor = "red"
 document.getElementById('text-box').color = "#cecece"
@@ -191,11 +206,15 @@ document.getElementById('inner-text').fontSize = "48px"
                     <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
                     <pre class="code-result"></pre>
                 </div>
-                <p></p>
+                <p><b>Examples of code for looking up properties of window object</b>:</p>
                 <pre>
+//returns the width of the browser window
 window.innerWidth
+//returns the height of the browser window
 window.innerHeight
+//returns the x position of the scroll
 window.scrollX
+//returns the y position of the scroll
 window.scrollY
                 </pre>
                 <h5><u>Methods of BOM Objects</u>:</h5>
@@ -207,20 +226,36 @@ window.scrollY
                     <button onclick="runCode(this)" class="mdl-button mdl-js-button mdl-button--raised code-run">RUN</button>
                     <pre class="code-result"></pre>
                 </div>
-                <p></p>
+                <p><b>Examples of code for using methods of window object</b>:</p>
                 <pre>
+//window.scrollTo(xpos, ypos)
+//scrolls the window to xpos from the left and ypos from the top
+//xpos and ypos are in pixels
 window.scrollTo(0, 100)
+//window.scrollBy(xnum, ynum)
+//scrolls by xnum amount towards the right and ynum amount towards the bottom every time this function is triggered
+//xnum and ynum are in pixels
 window.scrollBy(10, 50)
                 </pre>
-                <p></p>
+                <p><b>Examples of code for creating different styles of popup boxes</b>:</p>
                 <pre>
+//displays the alert message
 alert("This is an alert message!")
+//opens a confirm popup window with ‘OK’ and ‘Cancel’ buttons
 confirm("Please press OK to confirm!")
+//opens a prompt popup window with a place for users to enter in text
 prompt("What is your name?")
                 </pre>
-                <p></p>
+                <p><b>Example code for creating a popup window</b>:</p>
                 <pre>
+//window.open(url, name, specs);
+//name: _blank, _parent, _self, _top
+//specs: width (px), height (px), top (px), left (px)
+//to use specs, you must have a name argument
 window.open('http://ima.nyu.sh', '_blank', 'width=200, height=200, left=500, top=100')
+                </pre>
+                <p><b>Code for closing the current window</b>:</p>
+                <pre>
 window.close()
                 </pre>
                 <h4>DOM Events</h4>
@@ -355,6 +390,8 @@ function onkeyupEvent(){
         }else if(currCode.indexOf('(') > -1){
             if(currCode.search('window') > -1 || currCode.search('alert')  > -1 || currCode.search('confirm') > -1 || currCode.search('prompt') > -1){
                 doCode();
+            }else{
+                getCode();
             }
         }
         else{
