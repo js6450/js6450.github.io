@@ -10,6 +10,10 @@ body{
   background-color: transparent !important;
 }
 
+.mdl-layout__container{
+  height: auto !important;
+}
+
 .page-content{
   width: 75%;
   margin-left: 12.5%;
