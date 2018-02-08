@@ -25,7 +25,3 @@ function setup() {
         rect(0 + xOffset, i, width, barSize);
     }
 }
-
-function windowResized(){
-    resizeCanvas(windowWidth, windowHeight);
-}
