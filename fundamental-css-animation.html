@@ -690,7 +690,7 @@
       @keyframes type{
         from{width: 0px;}
       }
-      @keyframes type{
+      @keyframes blink{
         from{opacity: 0;}
       }
       </pre>
@@ -823,6 +823,108 @@
                 <p id="type6">This is a sentence!<span id="blinkCursor"> |</span></p>
 
                 <p>And we are done! The <a href="https://www.w3schools.com/cssref/css3_pr_animation-direction.asp" target="_blank" class="p-link"><u>w3schools link on css animation properties</u></a> will have more in-depth description about each of those described in this tutorial!</p>
+                <h5>Code from Workshop</h5>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;title>&lt;/title>
+	&lt;link rel="stylesheet" type="text/css" href="css/style.css">
+&lt;/head>
+&lt;body>
+	&lt;div class="square">&lt;/div>
+	&lt;div class="circle">&lt;/div>
+	&lt;div class="ellipse">&lt;/div>
+	&lt;div class="triangle">&lt;/div>
+&lt;/body>
+&lt;/html>
+                </pre>
+                <p><u>CSS</u>:</p>
+                <pre>
+.square{
+	height: 200px;
+    background-color: red;
+    width: 200px;
+    animation-name: rotateAround;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.circle{
+	height: 200px;
+    background-color: blue;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.ellipse{
+	height: 100px;
+    background-color: green;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.triangle{
+    height: 0;
+    /* background-color: yellow; */
+    width: 0;
+    border-style: solid;
+    border-width: 150px;
+    border-top-color: red;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: red;
+    animation-name: changeBG;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+    animation-direction: alternate;
+    animation-timing-function: steps(10);
+}
+
+@keyframes changeBG{
+	0%{
+		border-top-color: green;
+		border-right-color: green;
+		margin-left: 0px;
+		border-width: 50px;
+	}
+
+	50%{
+		border-width: 300px;
+	}
+
+	100%{
+		border-top-color: blue;
+		border-right-color: yellow;
+		margin-left: 150px;
+		border-width: 150px;
+	}
+}
+
+
+@keyframes rotateAround{
+
+	0%{
+		background-color: red;
+		transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(0.5);
+	}
+
+	50%{
+		background-color: green;
+		transform: rotateX(120deg) rotateY(230deg) rotateZ(30deg) scaleX(5.0) scaleY(0.5);
+	}
+
+	100%{
+		background-color: pink;
+		transform: rotateX(0deg) rotateY(80deg) rotateZ(300deg) scaleX(0.1) scaleY(10);
+	}
+
+}
+                </pre>
             </div>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">

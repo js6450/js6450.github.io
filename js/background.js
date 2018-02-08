@@ -28,7 +28,7 @@ function setup() {
 
 function windowResized(){
     resizeCanvas(windowWidth, windowHeight);
-    
+
     background(255, 15);
     for(var i = 0; i <= height; i += barSize){
         var h = sin((frameCount + i) * 0.01) * hueRange;

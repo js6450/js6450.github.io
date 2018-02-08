@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/fundamental-css-animation.html" afterPath="$PROJECT_DIR$/fundamental-css-animation.html" />
       <change beforePath="$PROJECT_DIR$/js/background.js" afterPath="$PROJECT_DIR$/js/background.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -61,12 +62,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="background.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="background.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/background.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
-              <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fundamental-css-animation.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fundamental-css-animation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="542">
+              <caret line="840" column="4" lean-forward="false" selection-start-line="840" selection-start-column="4" selection-end-line="840" selection-end-column="4" />
+              <folding>
+                <element signature="e#41037#41041#0" expanded="true" />
+                <element signature="e#41056#41060#0" expanded="true" />
+                <element signature="e#41066#41070#0" expanded="true" />
+                <element signature="e#41077#41081#0" expanded="true" />
+                <element signature="e#41087#41091#0" expanded="true" />
+                <element signature="e#41100#41104#0" expanded="true" />
+                <element signature="e#41164#41168#0" expanded="true" />
+                <element signature="e#41175#41179#0" expanded="true" />
+                <element signature="e#41186#41190#0" expanded="true" />
+                <element signature="e#41209#41213#0" expanded="true" />
+                <element signature="e#41220#41224#0" expanded="true" />
+                <element signature="e#41243#41247#0" expanded="true" />
+                <element signature="e#41254#41258#0" expanded="true" />
+                <element signature="e#41278#41282#0" expanded="true" />
+                <element signature="e#41289#41293#0" expanded="true" />
+                <element signature="e#41314#41318#0" expanded="true" />
+                <element signature="e#41324#41328#0" expanded="true" />
+                <element signature="e#41335#41339#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,7 +173,6 @@
         <option value="$PROJECT_DIR$/display-position-simulator.html" />
         <option value="$PROJECT_DIR$/documentation.html" />
         <option value="$PROJECT_DIR$/filestructure.html" />
-        <option value="$PROJECT_DIR$/fundamental-css-animation.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/iterative.html" />
         <option value="$PROJECT_DIR$/jquery-basics.html" />
@@ -158,6 +187,7 @@
         <option value="$PROJECT_DIR$/webportfolio.html" />
         <option value="$PROJECT_DIR$/dom-bom-events.html" />
         <option value="$PROJECT_DIR$/js/background.js" />
+        <option value="$PROJECT_DIR$/fundamental-css-animation.html" />
       </list>
     </option>
   </component>
@@ -168,10 +198,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="488" />
+    <option name="x" value="278" />
     <option name="y" value="23" />
-    <option name="width" value="930" />
-    <option name="height" value="876" />
+    <option name="width" value="720" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -344,12 +374,12 @@
       <workItem from="1515050882295" duration="5247000" />
       <workItem from="1515993929252" duration="6247000" />
       <workItem from="1516716226508" duration="10678000" />
-      <workItem from="1517808032937" duration="48122000" />
+      <workItem from="1517808032937" duration="48950000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161901000" />
+    <option name="totallyTimeSpent" value="162729000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="876" extended-state="6" />
@@ -598,14 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fundamental-css-animation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="842" column="40" lean-forward="false" selection-start-line="842" selection-start-column="40" selection-end-line="842" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="603">
@@ -801,8 +823,35 @@
     <entry file="file://$PROJECT_DIR$/js/background.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fundamental-css-animation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="840" column="4" lean-forward="false" selection-start-line="840" selection-start-column="4" selection-end-line="840" selection-end-column="4" />
+          <folding>
+            <element signature="e#41037#41041#0" expanded="true" />
+            <element signature="e#41056#41060#0" expanded="true" />
+            <element signature="e#41066#41070#0" expanded="true" />
+            <element signature="e#41077#41081#0" expanded="true" />
+            <element signature="e#41087#41091#0" expanded="true" />
+            <element signature="e#41100#41104#0" expanded="true" />
+            <element signature="e#41164#41168#0" expanded="true" />
+            <element signature="e#41175#41179#0" expanded="true" />
+            <element signature="e#41186#41190#0" expanded="true" />
+            <element signature="e#41209#41213#0" expanded="true" />
+            <element signature="e#41220#41224#0" expanded="true" />
+            <element signature="e#41243#41247#0" expanded="true" />
+            <element signature="e#41254#41258#0" expanded="true" />
+            <element signature="e#41278#41282#0" expanded="true" />
+            <element signature="e#41289#41293#0" expanded="true" />
+            <element signature="e#41314#41318#0" expanded="true" />
+            <element signature="e#41324#41328#0" expanded="true" />
+            <element signature="e#41335#41339#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
