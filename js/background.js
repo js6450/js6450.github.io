@@ -25,3 +25,17 @@ function setup() {
         rect(0 + xOffset, i, width, barSize);
     }
 }
+
+function windowResized(){
+    resizeCanvas(windowWidth, windowHeight);
+    
+    background(255, 15);
+    for(var i = 0; i <= height; i += barSize){
+        var h = sin((frameCount + i) * 0.01) * hueRange;
+        var opacity = 50;
+        var xOffset = 0;
+
+        fill(hueStart + h, 50, 80, opacity);
+        rect(0 + xOffset, i, width, barSize);
+    }
+}
