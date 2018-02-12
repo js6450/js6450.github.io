@@ -39,8 +39,10 @@
         <div class="page-content">
             <div class="full-page-content">
                 <h4>Creating SVG Shapes</h4>
+                <h5>What is SVG?</h5>
+                <p><b>SVG</b> stands for Scalable Vector Graphics. <b>Vector Graphics</b> are usually talked in comparison to <b>Raster Images</b>. The difference between the two can be easily thought by the program we would normally use to create each of them. To create vector graphics, we would normally use Illustrator - and use points, lines and curves to create shapes. To create raster graphics, we would use Photoshop - which are normally comprised of thousands of pixels. For more information about the difference between the two, please refer to <a class="p-link" href="https://designshack.net/articles/layouts/vector-vs-raster-what-do-i-use/"><u>this article</u></a>, that talks about the differences between the two types of images as well as which one to use for different needs. In terms of HTML, there is an &lt;svg> tag that we can use to define <b>S</b>calable <b>V</b>ector <b>G</b>raphics. Let's first look at how to create basic shapes.</p>
                 <p><u>Rectangle</u>:</p>
-                <p></p>
+                <p>All &lt;svg> HTML element start with its opening and closing tag. And inside of it, we can use one of the pre-defined basic shapes and use the relevant attributes to define width, height and position. Of course, to style our shapes, we use CSS. The contents inside of the style="" attribute are in CSS.</p>
                 <hr>
                 <svg width="250" height="250">
                     <rect height="150" width="250" style="fill:red;" />
@@ -51,6 +53,8 @@
     &lt;rect height="150" width="250" style="fill:red;" />
 &lt;/svg>
                 </pre>
+                <p>For rectangles, <b>width</b> and <b>height</b> values need to be given for us to see the shape. In the <a class="p-link" href="https://js6450.github.io/fundamental-css-animation.html"><u>previous CSS animation workshop</u></a>, when we used &lt;div> tags to create shapes, we used background-color to define the color of our shape. When creating shapes with &lt;svg> tags, because they are actual shapes, we use the CSS property <b>fill</b>.</p>
+                <p>We can actually put multiple shapes within the same &lt;svg> tag. This means that you can manipuate each of the shapes inside of the &lt;svg> as well as manipuate the whole as a complete graphic.</p>
                 <hr>
                 <svg width="250" height="250">
                     <rect x="25" y="50" height="150" width="100" style="fill:blue;" />
@@ -63,6 +67,7 @@
     &lt;rect x="200" y="25" height="150" width="100" style="fill:green;" />
 &lt;/svg>
                 </pre>
+                <p>We can give <b>x</b> and <b>y</b> values to each shape to pinpoint where exactly the individual shapes should be located within the whole &lt;svg> graphics. For rectangles, the x and y values are used for defining position of <b>left-top corner</b> of the rectangle.</p>
                 <hr>
                 <svg width="250" height="250">
                     <rect x="25" y="25" height="200" width="200" rx="25" ry="25" style="fill:red;" />
@@ -73,8 +78,9 @@
     &lt;rect height="200" width="200" rx="25" ry="25" style="fill:red;" />
 &tl;/svg>
                 </pre>
+                <p>You can also give border-radius to the rectangle shape. For &lt;svg> shapes, this can be defined by the values <b>rx</b> and <b>ry</b>. rx standsfor x radius and ry stands for y radius.</p>
                 <p><u>Circle</u>:</p>
-                <p></p>
+                <p>Circles in &svg> require a center x point, <b>cx</b>, a center y point, <b>cy</b> and a radius, <b>r</b>.</p>
                 <hr>
                 <svg height="250" width="250">
                    <circle r="100" cx="50%" cy="50%" style="fill:red; stroke-width: 5px; stroke: black;" />
@@ -85,8 +91,9 @@
    &lt;circle r="80" cx="50%" cy="50%" style="fill:red; stroke-width: 5px; stroke: black;" />
 &lt;/svg>
                 </pre>
+                <p>We can also give stroke to our shape, by giving the color of the stroke with <b>stroke</b> css property and using <b>stroke-width</b> css property for the thickness of the stroke.</p>
                 <p><u>Ellipse</u>:</p>
-                <p></p>
+                <p>Ellipses are similar to circles, only that you need to give x radius, <b>rx</b>, and y radius, <b>ry</b> values.</p>
                 <hr>
                 <svg height="250" width="250">
                     <ellipse rx="100" ry="50" cx="50%" cy="50%" style="fill:pink;" />
@@ -109,8 +116,9 @@
     &lt;ellipse rx="100" ry="50" cx="50%" cy="50%" style="fill:lightblue; fill-opacity: 0.5; stroke: blue; stroke-width: 5px;" />
 &lt;/svg>
                 </pre>
+                <p>We can also give transparency to our fill, by using the css property <b>fill-opacity</b>. The maximum value of fill-opacity is 1 and minimum is 0. You can give in a decimal number between 1 and 0.</p>
                 <p><u>Line</u>:</p>
-                <p></p>
+                <p>Lines require 2 points. <b>x1</b> and <b>y1</b> for the first point and <b>x2</b> and <b>y2</b> for the second point.</p>
                 <hr>
                 <svg height="250" width="250">
                     <line x1="0" y1="0" x2="250" y2="250" style="stroke: black; stroke-width: 5px;" />
@@ -121,6 +129,7 @@
     &lt;line x1="0" y1="0" x2="250" y2="250" style="stroke: black; stroke-width: 5px;" />
 &lt;/svg>
                 </pre>
+                <p>Below are different ways of styling the lines, or strokes for shapes. <b>stroke-dasharray</b> is used for defining spaces within the line to create a dash-like effect, and <b>stroke-linecap</b> is used to define the shape of the lines - whether they have a square tip or a round tip.</p>
                 <hr>
                 <svg height="250" width="250">
                     <line x1="10" y1="50" x2="240" y2="50" style="stroke: black; stroke-width: 5px;" />
@@ -137,6 +146,7 @@
     &lt;line x1="10" y1="200" x2="240" y2="200" style="stroke: green; stroke-width: 5px; stroke-dasharray: 5, 10, 20, 12; stroke-linecap: round;" />
 &lt;/svg>
                 </pre>
+                <p>You can create more complex shapes by using the <b>polyline</b> and <b>polygon</b> tag. For these, you have to give specific points that would comprise your shape. Each point is written in the for of <b>x,y</b> with a space between each point.</p>
                 <p><u>Polyline</u>:</p>
                 <p></p>
                 <hr>
@@ -173,6 +183,7 @@
                 <p><u>Path</u>:</p>
                 <p></p>
                 <h4>SVG Filters</h4>
+                <p>You can create "special effect" or filters for the shapes you create in &lt;svg>. These also get defined within the &lt;svg> tag. Below are some of the most commonly used &lt;svg> filters, but definitely not all that exist.</p>
                 <p><u>Blur</u>:</p>
                 <hr>
                 <svg height="250" width="250">
@@ -192,6 +203,7 @@
     &lt;circle cx="190" cy="125" r="50" style="fill: green; stroke: black; stroke-width: 5px; filter: url(#blur);" />
 &lt;/svg>
                 </pre>
+                <p>Important thing to note here would be how the filter is linked to the shape within the &lt;svg tag. The &lt;filter> tag as to have an id, for it to be linked to the shape using css. <b>url(#blur)</b> means that the defined filter can be referred to by looking up the id of #blur. Remember that <b>#</b> (hashtag) symbol is used to reference <b>id names</b> in CSS.</p>
                 <p><u>Linear Gradient</u>:</p>
                 <hr>
                 <svg height="250" width="250">
@@ -231,6 +243,7 @@
 &lt;/svg>
                 </pre>
                 <h4>Applying Animation to SVGs</h4>
+                <p>Like mentioned earlier, the reason why you would use &lt;svg> instead of &lt;div> tags and CSS would be that the shapes we create within the &lt;svg> tags stay within it, while we can manipulate the individual shapes inside, as well as the whole graphics overall. Below is how we would apply 3 different @keyframes animations for 1) the pink ellipse, 2) the blue ellipse and 3) the whole &lt;svg> tag.</p>
                 <hr>
                 <style>
                     #spinCircles{
@@ -330,6 +343,8 @@
 &lt;/svg>
                 </pre>
                 <h4>Clipping</h4>
+                <p>One interesting thing that we can do with &lt;svg> tags is that we can actually use it to alter our media HTML elements, such as &lt;img> tags. We can create shapes within a &lt;clipPath> tag inside of the &lt;svg> tag, which will be used to clip the element that it is applied to.</p>
+                <p>One important thing to note here would be that <b>both the width and height of the SVG has to be set to 0</b>. You can, of course, try to give values for the width and height. You will realize that when this is done, it will actually occupy "invisible" space for the width and height you give.</p>
                 <p><u>Using SVG clipPath</u>:</p>
                 <hr>
                 <svg width="0" height="0">
@@ -347,6 +362,8 @@
 &lt;/svg>
 &lt;img width="250px" src="img/flower.jpg" style="clip-path: url(#circleClip)">
                 </pre>
+                <p>The difference between simply creating a circle shape in svg and creating a circle to be used for clipping is that the &lt;clipPath> tag comes around the &lt;circle> tag. The &lt;clipPath> tag also needs an <b>id</b> assigned to it so that, like with svg filters, it can be referenced using the <b>url()</b> CSS function to give as the <b>clip-path</b> css property for our &lt;img> tag.</p>
+                <p>You can also create multiple shapes within the &lt;clipPath> tag. The image will be visible within all the shapes you create inside of the &lt;clipPath> tag.</p>
                 <hr>
                 <svg width="0" height="0">
                     <clipPath id="stripClip">
@@ -371,6 +388,7 @@
 &lt;/svg>
 &lt;img width="250px" src="img/flower.jpg" style="clip-path: url(#stripClip)">
                 </pre>
+                <p>We can also animate our shapes inside of the &lt;clipPath> tag using @keyframes animation. For this, we also need to give an id to the shape tage, in this case the &lt;circle> tag, so that we can apply the css to it.</p>
                 <hr>
                 <style>
                     #clipping-circle{
@@ -418,6 +436,9 @@
 &lt;img class="center-img" width="250px" src="img/flower.jpg" style="clip-path: url(#circleClip)">
                 </pre>
                 <p><u>Using CSS clip-path</u>:</p>
+                <p>However, if you are trying to animate clipping of our shapes / images, you will see difficulties in achieving that using &lt;clipPath> tag of &lt;svg>. There are ways to animate within the &lt;svg> tag, but it will quickly become unnecessarily complex. If you are looking to do clipping animation, there is a CSS alternative!</p>
+                <p>We still use the <b>clip-path</b> css property to apply to the image that we want to clip. However, instead of using the url() css function, we can actually define our clipping shape here. There are 4 basic shapes that you can use as values for the clip-path css property: inset(), circle(), ellipse(), and polygon().</p>
+                <p><b>inset()</b> defines how much to go towards the inside of the image. We can use this in the form of <b>inset(x% y%)</b>, where the x% defines the percentage in relative to width that it will decrease from both left and right side of the image and y% defines the percentage in relative to height that it will decrease from both top and bottom of the image.</p>
                 <hr>
                 <style>
                     #inset-clip{
@@ -429,7 +450,7 @@
                             clip-path: inset(0% 0%);
                         }
                         to{
-                            clip-path: inset(10% 25% round 10%);
+                            clip-path: inset(10% 25%);
                         }
                     }
                 </style>
@@ -446,7 +467,7 @@
         clip-path: inset(0% 0%);
     }
     to{
-        clip-path: inset(10% 25% round 10%);
+        clip-path: inset(10% 25%;
     }
 }
                 </pre>
@@ -454,6 +475,7 @@
                 <pre>
 &lt;img id="inset-clip" width="250px" src="img/flower.jpg">
                 </pre>
+                <p><b>circle()</b> creates a circle clipping shape. It is used in the form of <b>circle(r%)</b>, where r% is the percentage in relative to width that will be used for the radius of the circle.</p>
                 <hr>
                 <style>
                     #circle-clip{
@@ -488,6 +510,7 @@
                 </pre>
                 <p><u>HTML</u>:</p>
 &lt;img id="circle-clip" width="250px" src="img/flower.jpg">
+                <p><b>ellipse()</b> is similar to circle() shape, but requires additional value. It is used in the form of <b>ellipse(rx% ry%)</b> where rx% refers to the percentage in relative to the width that will be used for the x radius, and ry% refers to the percentage in relative to the height that will be used for the y radius.</p>
                 <hr>
                 <style>
                     #elli-clip{
@@ -522,6 +545,7 @@
                 </pre>
                 <p><u>HTML</u>:</p>
 &lt;img id="elli-clip" width="250px" src="img/flower.jpg">
+                <p><b>polygon()</b> basically works like the &lt;polygon> tag for svg that we saw earlier. We need to give specific coordinates for each of the points of our shape. It is used in the form of <b>polygon(x1% y1%, x2% y2%, x3% y3%)</b>, where each coordinates are separated by commas and x and y coordinates are separated by a space.</p>
                 <hr>
                 <style>
                     #poly-clip{
@@ -558,6 +582,7 @@
                 <pre>
 &lt;img id="poly-clip" width="250px" src="img/flower.jpg">
                 </pre>
+                <p>One thing to note for using <b>polygon()</b> is that if you are using it to animate, you need to have equal number of points for the beginning sequence of your animation and the ending sequence of your animation, like it is in the example above. You will also see that the order of the points defined also matter in creating a particular animation.</p>
             </div>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
