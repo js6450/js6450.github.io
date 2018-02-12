@@ -22,13 +22,542 @@
         gtag('config', 'UA-110518171-1');
     </script>
 </head>
+<style>
+    svg{
+        display: block;
+        margin: auto;
+    }
+
+    .center-img{
+        display: block;
+        margin: auto;
+    }
+</style>
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="full-page-content">
-                <h4><b>CSS Animation with SVG</b></h4>
+                <h4>Creating SVG Shapes</h4>
+                <p><u>Rectangle</u>:</p>
                 <p></p>
+                <hr>
+                <svg width="250" height="250">
+                    <rect height="150" width="250" style="fill:red;" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg width="300" height="200">
+    &lt;rect height="150" width="250" style="fill:red;" />
+&lt;/svg>
+                </pre>
+                <hr>
+                <svg width="250" height="250">
+                    <rect x="25" y="50" height="150" width="100" style="fill:blue;" />
+                    <rect x="150" y="50" height="150" width="100" style="fill:green;" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg width="350" height="200">
+    &lt;rect x="50" y="25" height="150" width="100" style="fill:blue;" />
+    &lt;rect x="200" y="25" height="150" width="100" style="fill:green;" />
+&lt;/svg>
+                </pre>
+                <hr>
+                <svg width="250" height="250">
+                    <rect x="25" y="25" height="200" width="200" rx="25" ry="25" style="fill:red;" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg width="250" height="250">
+    &lt;rect height="200" width="200" rx="25" ry="25" style="fill:red;" />
+&tl;/svg>
+                </pre>
+                <p><u>Circle</u>:</p>
+                <p></p>
+                <hr>
+                <svg height="250" width="250">
+                   <circle r="100" cx="50%" cy="50%" style="fill:red; stroke-width: 5px; stroke: black;" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="200" width="200">
+   &lt;circle r="80" cx="50%" cy="50%" style="fill:red; stroke-width: 5px; stroke: black;" />
+&lt;/svg>
+                </pre>
+                <p><u>Ellipse</u>:</p>
+                <p></p>
+                <hr>
+                <svg height="250" width="250">
+                    <ellipse rx="100" ry="50" cx="50%" cy="50%" style="fill:pink;" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="200" width="400">
+    &lt;ellipse rx="150" ry="50" cx="50%" cy="50%" style="fill:pink;" />
+&lt;/svg>
+                </pre>
+                <hr>
+                <svg height="250" width="250">
+                    <ellipse rx="50" ry="100" cx="50%" cy="50%" style="fill:pink; fill-opacity: 0.5; stroke: hotpink; stroke-width: 5px;"  />
+                    <ellipse rx="100" ry="50" cx="50%" cy="50%" style="fill:lightblue; fill-opacity: 0.5; stroke: blue; stroke-width: 5px;" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;ellipse rx="50" ry="100" cx="50%" cy="50%" style="fill:pink; fill-opacity: 0.5; stroke: hotpink; stroke-width: 5px;"  />
+    &lt;ellipse rx="100" ry="50" cx="50%" cy="50%" style="fill:lightblue; fill-opacity: 0.5; stroke: blue; stroke-width: 5px;" />
+&lt;/svg>
+                </pre>
+                <p><u>Line</u>:</p>
+                <p></p>
+                <hr>
+                <svg height="250" width="250">
+                    <line x1="0" y1="0" x2="250" y2="250" style="stroke: black; stroke-width: 5px;" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;line x1="0" y1="0" x2="250" y2="250" style="stroke: black; stroke-width: 5px;" />
+&lt;/svg>
+                </pre>
+                <hr>
+                <svg height="250" width="250">
+                    <line x1="10" y1="50" x2="240" y2="50" style="stroke: black; stroke-width: 5px;" />
+                    <line x1="10" y1="100" x2="240" y2="100" style="stroke: red; stroke-width: 5px; stroke-linecap: round;" />
+                    <line x1="10" y1="150" x2="240" y2="150" style="stroke: blue; stroke-width: 5px; stroke-dasharray: 5, 10, 20, 12;" />
+                    <line x1="10" y1="200" x2="240" y2="200" style="stroke: green; stroke-width: 5px; stroke-dasharray: 5, 10, 20, 12; stroke-linecap: round;" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;line x1="10" y1="50" x2="240" y2="50" style="stroke: black; stroke-width: 5px;" />
+    &lt;line x1="10" y1="100" x2="240" y2="100" style="stroke: red; stroke-width: 5px; stroke-linecap: round;" />
+    &lt;line x1="10" y1="150" x2="240" y2="150" style="stroke: blue; stroke-width: 5px; stroke-dasharray: 5, 10, 20, 12;" />
+    &lt;line x1="10" y1="200" x2="240" y2="200" style="stroke: green; stroke-width: 5px; stroke-dasharray: 5, 10, 20, 12; stroke-linecap: round;" />
+&lt;/svg>
+                </pre>
+                <p><u>Polyline</u>:</p>
+                <p></p>
+                <hr>
+                <svg height="250" width="250">
+                    <polyline points="10,100 60,240 150,10 100,10 190,240 240,100" style="fill:none; stroke: black; stroke-width: 5px" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;polyline points="10,100 60,240 150,10 100,10 190,240 240,100" style="fill:none; stroke: black; stroke-width: 5px" />
+&lt;/svg>
+                </pre>
+                <svg height="250" width="250">
+                    <polyline points="10,240 30,10 60,240 90,10 120,240 180,10 240,240" style="fill:pink; stroke: black; stroke-width: 5px" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;polyline points="10,100 60,240 150,10 100,10 190,240 240,100" style="fill:pink; stroke: black; stroke-width: 5px" />
+&lt;/svg>
+                </pre>
+                <p><u>Polygon</u>:</p>
+                <p></p>
+                <hr>
+                <svg height="250" width="250">
+                    <polygon points="125,10 10,190 50,240 240,170" style="fill: lightblue; stroke: black; stroke-width: 5px" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;polygon points="125,10 10,190 50,240 240,170" style="fill: lightblue; stroke: black; stroke-width: 5px" />
+&lt;/svg>
+                </pre>
+                <p><u>Path</u>:</p>
+                <p></p>
+                <h4>SVG Filters</h4>
+                <p><u>Blur</u>:</p>
+                <hr>
+                <svg height="250" width="250">
+                    <filter id="blur">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+                    </filter>
+                    <circle cx="60" cy="125" r="50" style="fill: green; stroke: black; stroke-width: 5px;" />
+                    <circle cx="190" cy="125" r="50" style="fill: green; stroke: black; stroke-width: 5px; filter: url(#blur);" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;filter id="blur">
+        &lt;feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    &lt;/filter>
+    &lt;circle cx="60" cy="125" r="50" style="fill: green; stroke: black; stroke-width: 5px;" />
+    &lt;circle cx="190" cy="125" r="50" style="fill: green; stroke: black; stroke-width: 5px; filter: url(#blur);" />
+&lt;/svg>
+                </pre>
+                <p><u>Linear Gradient</u>:</p>
+                <hr>
+                <svg height="250" width="250">
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color: rgb(0, 255, 255);" />
+                        <stop offset="100%" style="stop-color: rgb(255, 0, 255);" />
+                    </linearGradient>
+                    <ellipse rx="100" ry="50" cx="50%" cy="50%" style="fill:url(#grad1);" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        &lt;stop offset="0%" style="stop-color: rgb(0, 255, 255);" />
+        &lt;stop offset="100%" style="stop-color: rgb(255, 0, 255);" />
+    &lt;/linearGradient>
+    &lt;ellipse rx="100" ry="50" cx="50%" cy="50%" style="fill:url(#grad1);" />
+&lt;/svg>
+                </pre>
+                <p><u>Radial Gradient</u>:</p>
+                <hr>
+                <svg height="250" width="250">
+                    <radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" style="stop-color: lightblue; stop-opacity: 0.5" />
+                        <stop offset="100%" style="stop-color: navy; stop-opacity: 1" />
+                    </radialGradient>
+                    <circle cx="125" cy="125" r="100" fill="url(#grad2)" />
+                </svg>
+                <hr>
+                <pre>
+&lt;svg height="250" width="250">
+    &lt;radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        &lt;stop offset="0%" style="stop-color: lightblue; stop-opacity: 0.5" />
+        &lt;stop offset="100%" style="stop-color: navy; stop-opacity: 1" />
+    &lt;/radialGradient>
+    &lt;circle cx="125" cy="125" r="100" fill="url(#grad2)" />
+&lt;/svg>
+                </pre>
+                <h4>Applying Animation to SVGs</h4>
+                <hr>
+                <style>
+                    #spinCircles{
+                        animation: scaleSize 5s linear alternate infinite;
+                    }
+
+                    @keyframes scaleSize {
+                        from{
+                            transform: scale(1);
+                        }
+                        to{
+                            transform: scale(0.2);
+                        }
+                    }
+
+                    #pinkEllipse{
+                        transform-origin: center;
+                        animation: rotatePink 3s linear infinite;
+                    }
+
+                    @keyframes rotatePink{
+                        from{
+                            transform: rotateZ(0deg);
+                        }
+                        to{
+                            transform: rotateZ(360deg);
+                        }
+                    }
+
+                    #blueEllipse{
+                        transform-origin: center;
+                        animation: rotateBlue 1.5s linear infinite;
+                    }
+
+                    @keyframes rotateBlue{
+                        from{
+                            transform: rotateY(0deg);
+                        }
+                        to{
+                            transform: rotateY(360deg);
+                        }
+                    }
+                </style>
+                <svg id="spinCircles" height="250" width="250">
+                    <ellipse id="pinkEllipse" rx="50" ry="100" cx="50%" cy="50%" style="fill:pink; fill-opacity: 0.5; stroke: hotpink; stroke-width: 5px;"  />
+                    <ellipse id="blueEllipse" rx="100" ry="50" cx="50%" cy="50%" style="fill:lightblue; fill-opacity: 0.5; stroke: blue; stroke-width: 5px;" />
+                </svg>
+                <hr>
+                <p><u>CSS</u>:</p>
+                <pre>
+#spinCircles{
+    animation: scaleSize 5s linear alternate infinite;
+}
+
+@keyframes scaleSize {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(0.2);
+    }
+}
+
+#pinkEllipse{
+    transform-origin: center;
+    animation: rotatePink 3s linear infinite;
+}
+
+@keyframes rotatePink{
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+#blueEllipse{
+    transform-origin: center;
+    animation: rotateBlue 1.5s linear infinite;
+}
+
+@keyframes rotateBlue{
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}
+                </pre>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;svg id="spinCircles" height="250" width="250">
+    &lt;ellipse id="pinkEllipse" rx="50" ry="100" cx="50%" cy="50%" style="fill:pink; fill-opacity: 0.5; stroke: hotpink; stroke-width: 5px;"  />
+    &lt;ellipse id="blueEllipse" rx="100" ry="50" cx="50%" cy="50%" style="fill:lightblue; fill-opacity: 0.5; stroke: blue; stroke-width: 5px;" />
+&lt;/svg>
+                </pre>
+                <h4>Clipping</h4>
+                <p><u>Using SVG clipPath</u>:</p>
+                <hr>
+                <svg width="0" height="0">
+                    <clipPath id="circClip">
+                        <circle cx="125" cy="125" r="120" />
+                    </clipPath>
+                </svg>
+                <img class="center-img" width="250px" src="img/flower.jpg" style="clip-path: url(#circClip)">
+                <hr>
+                <pre>
+&lt;svg width="0" height="0">
+    &lt;clipPath id="circleClip">
+        &lt;circle cx="125" cy="125" r="120" />
+    &lt;/clipPath>
+&lt;/svg>
+&lt;img width="250px" src="img/flower.jpg" style="clip-path: url(#circleClip)">
+                </pre>
+                <hr>
+                <svg width="0" height="0">
+                    <clipPath id="stripClip">
+                        <rect x="15" y="50" width="25" height="150" />
+                        <rect x="65" y="25" width="25" height="200" />
+                        <rect x="115" y="0" width="25" height="250" />
+                        <rect x="165" y="25" width="25" height="200" />
+                        <rect x="215" y="50" width="25" height="150" />
+                    </clipPath>
+                </svg>
+                <img class="center-img" width="250px" src="img/flower.jpg" style="clip-path: url(#stripClip)">
+                <hr>
+                <pre>
+&lt;svg width="0" height="0">
+    &lt;clipPath id="stripClip">
+        &lt;rect x="15" y="50" width="25" height="150" />
+        &lt;rect x="65" y="25" width="25" height="200" />
+        &lt;rect x="115" y="0" width="25" height="250" />
+        &lt;rect x="165" y="25" width="25" height="200" />
+        &lt;rect x="215" y="50" width="25" height="150" />
+    &lt;/clipPath>
+&lt;/svg>
+&lt;img width="250px" src="img/flower.jpg" style="clip-path: url(#stripClip)">
+                </pre>
+                <hr>
+                <style>
+                    #clipping-circle{
+                        animation: upAndDown 2s alternate infinite;
+                    }
+
+                    @keyframes upAndDown {
+                        from{
+                            transform: translateY(125px) translateX(-60px);
+                        }
+                        to{
+                            transform: translateY(0px) translateX(60px);
+                        }
+                    }
+                </style>
+                <svg width="0" height="0">
+                    <clipPath id="circleClip">
+                        <circle id="clipping-circle" cx="125" cy="60" r="50" />
+                    </clipPath>
+                </svg>
+                <img class="center-img" width="250px" src="img/flower.jpg" style="clip-path: url(#circleClip)">
+                <hr>
+                <p><u>CSS</u>:</p>
+                <pre>
+#clipping-circle{
+    animation: upAndDown 2s alternate infinite;
+}
+
+@keyframes upAndDown {
+    from{
+        transform: translateY(125px) translateX(-60px);
+    }
+    to{
+        transform: translateY(0px) translateX(60px);
+    }
+}
+                </pre>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;svg width="0" height="0">
+    &lt;clipPath id="circleClip">
+        &lt;circle id="clipping-circle" cx="125" cy="60" r="50" />
+    &lt;/clipPath>
+&lt;/svg>
+&lt;img class="center-img" width="250px" src="img/flower.jpg" style="clip-path: url(#circleClip)">
+                </pre>
+                <p><u>Using CSS clip-path</u>:</p>
+                <hr>
+                <style>
+                    #inset-clip{
+                        animation: insetAni 2s alternate infinite;
+                    }
+
+                    @keyframes insetAni{
+                        from{
+                            clip-path: inset(0% 0%);
+                        }
+                        to{
+                            clip-path: inset(10% 25% round 10%);
+                        }
+                    }
+                </style>
+                <img id="inset-clip" class="center-img" width="250px" src="img/flower.jpg">
+                <hr>
+                <p><u>CSS</u>:</p>
+                <pre>
+#inset-clip{
+    animation: insetAni 2s alternate infinite;
+}
+
+@keyframes insetAni{
+    from{
+        clip-path: inset(0% 0%);
+    }
+    to{
+        clip-path: inset(10% 25% round 10%);
+    }
+}
+                </pre>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;img id="inset-clip" width="250px" src="img/flower.jpg">
+                </pre>
+                <hr>
+                <style>
+                    #circle-clip{
+                        animation: circleAni 2s alternate infinite;
+                    }
+
+                    @keyframes circleAni{
+                        from{
+                            clip-path: circle(45%);
+                        }
+                        to{
+                            clip-path: circle(15%);
+                        }
+                    }
+                </style>
+                <img id="circle-clip" class="center-img" width="250px" src="img/flower.jpg">
+                <hr>
+                <p><u>CSS</u>:</p>
+                <pre>
+#circle-clip{
+    animation: circleAni 2s alternate infinite;
+}
+
+@keyframes circleAni{
+    from{
+        clip-path: circle(45%);
+    }
+    to{
+        clip-path: circle(15%);
+    }
+}
+                </pre>
+                <p><u>HTML</u>:</p>
+&lt;img id="circle-clip" width="250px" src="img/flower.jpg">
+                <hr>
+                <style>
+                    #elli-clip{
+                        animation: elliAni 2s alternate infinite;
+                    }
+
+                    @keyframes elliAni{
+                        from{
+                            clip-path: ellipse(15% 45%);
+                        }
+                        to{
+                            clip-path: ellipse(45% 15%);
+                        }
+                    }
+                </style>
+                <img id="elli-clip" class="center-img" width="250px" src="img/flower.jpg">
+                <hr>
+                <p><u>CSS</u>:</p>
+                <pre>
+#elli-clip{
+    animation: elliAni 2s alternate infinite;
+}
+
+@keyframes elliAni{
+    from{
+        clip-path: ellipse(15% 45%);
+    }
+    to{
+        clip-path: ellipse(45% 15%);
+    }
+}
+                </pre>
+                <p><u>HTML</u>:</p>
+&lt;img id="elli-clip" width="250px" src="img/flower.jpg">
+                <hr>
+                <style>
+                    #poly-clip{
+                        animation: polyAni 2s alternate infinite;
+                    }
+
+                    @keyframes polyAni{
+                        from{
+                            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+                        }
+                        to{
+                            clip-path: polygon(75% 15%, 15% 50%, 30% 85%, 95% 60%);
+                        }
+                    }
+                </style>
+                <img id="poly-clip" class="center-img" width="250px" src="img/flower.jpg">
+                <hr>
+                <p><u>CSS</u>:</p>
+                <pre>
+#poly-clip{
+    animation: polyAni 2s alternate infinite;
+}
+
+@keyframes polyAni{
+    from{
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    to{
+        clip-path: polygon(75% 15%, 15% 50%, 30% 85%, 95% 60%);
+    }
+}
+                </pre>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;img id="poly-clip" width="250px" src="img/flower.jpg">
+                </pre>
             </div>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
