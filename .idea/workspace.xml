@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/css-ani-svg.html" afterPath="$PROJECT_DIR$/css-ani-svg.html" />
-    </list>
+    <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="css-ani-svg.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css-ani-svg.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="584" column="356" lean-forward="false" selection-start-line="584" selection-start-column="356" selection-end-line="584" selection-end-column="356" />
+            <state relative-caret-position="423">
+              <caret line="579" column="22" lean-forward="true" selection-start-line="579" selection-start-column="22" selection-end-line="579" selection-end-column="22" />
               <folding>
                 <element signature="e#2588#2592#0" expanded="true" />
                 <element signature="e#2790#2794#0" expanded="true" />
@@ -534,12 +532,12 @@
       <workItem from="1515993929252" duration="6247000" />
       <workItem from="1516716226508" duration="10678000" />
       <workItem from="1517808032937" duration="54224000" />
-      <workItem from="1518451206710" duration="13800000" />
+      <workItem from="1518451206710" duration="14198000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181803000" />
+    <option name="totallyTimeSpent" value="182201000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="690" y="23" width="750" height="876" extended-state="0" />
@@ -975,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css-ani-svg.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="584" column="356" lean-forward="false" selection-start-line="584" selection-start-column="356" selection-end-line="584" selection-end-column="356" />
+        <state relative-caret-position="423">
+          <caret line="579" column="22" lean-forward="true" selection-start-line="579" selection-start-column="22" selection-end-line="579" selection-end-column="22" />
           <folding>
             <element signature="e#2588#2592#0" expanded="true" />
             <element signature="e#2790#2794#0" expanded="true" />

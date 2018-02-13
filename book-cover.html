@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<style>
+html, body{
+	height: 100%;
+	margin: 0;
+	font-family: 'Helvetica', sans-serif;
+}
+
+.section-1{
+	width: 50%;
+	height: 100%;
+	float: left;
+	background-color: black;
+	color: white;
+}
+
+.section-2{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+.section-title, .section-button{
+	position: absolute;
+	width: 50%;
+	text-align: center;
+}
+
+.section-title{
+	top: calc(50% - 5vw);
+
+	transition: top 1s;
+}
+
+.section-button{
+	bottom: 5vw;
+}
+
+.title-text{
+	font-size: 5vw;
+
+	transition: font-size 1s;
+}
+
+.title-smaller{
+	font-size: 3vw;
+
+	transition: font-size 1s;
+}
+
+.button-text{
+	border-radius: 0.5vw;
+	padding: 0.75vw;
+	font-size: 1.5vw;
+}
+
+#bt-comm-lab, #bt-comm-lab:hover, #bt-ix-lab, #bt-ix-lab:hover{
+	transition: background-color 1s, color 1s;
+}
+
+#bt-comm-lab:hover, #bt-ix-lab:hover{
+	cursor: pointer;
+}
+
+#bt-comm-lab{
+	border: solid white 0.25vw;
+	background-color: black;
+	color: white;
+}
+
+#bt-comm-lab:hover{
+	background-color: white;
+	color: black;
+
+}
+
+#bt-ix-lab{
+	border: solid black 0.25vw;
+	background-color: white;
+	color: black;
+}
+
+#bt-ix-lab:hover{
+	background-color: black;
+	color: white;
+}
+
+.text-left, .text-right{
+	top: 0;
+	transition: top 1s;
+}
+
+.text-left{
+	text-align: start;
+
+}
+
+.text-right{
+	text-align: end;
+}
+
+@keyframes toLeft{
+	to{
+		top: 0%;
+		text-align: start;
+	}
+}
+</style>
+<body>
+<div class="section-1">
+	<div class="section-title">
+		<span class="title-text t-comm-lab">COMMUNICATIONS<br>LAB</span>
+	</div>
+	<div class="section-button">
+		<span onclick="showDesc($(this))" id="bt-comm-lab" class="button-text">READ DESCRIPTION</span>
+	</div>
+</div>
+<div class="section-2">
+	<div class="section-title">
+		<span class="title-text t-ix-lab">INTERACTION<br>LAB</span>
+	</div>
+	<div class="section-button">
+		<span onclick="showDesc($(this))" id="bt-ix-lab" class="button-text">READ DESCRIPTION</span>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	var btn;
+	function showDesc(currBtn){
+
+		btn = currBtn;
+
+		$currSection = currBtn.parent().prev();
+		$currTitle = $currSection.children();
+
+		console.log($currSection);
+
+		if($currTitle.hasClass('t-comm-lab')){
+			$currSection.toggleClass('text-left');
+
+			if($currSection.hasClass('text-left')){
+				console.log('here');
+				currBtn.innerHTML = "START READING";
+			}else{
+				currBtn.innerHTML = "READ DESCRIPTION";
+			}
+		}else{
+			$currSection.toggleClass('text-right');
+		}
+
+		$currSection.children().toggleClass('title-smaller');
+
+
+		// if(num == 0){
+		// 	$('.section-1 .section-title').toggleClass('text-up-left');
+		// }
+	}
+</script>
+</html>
