@@ -150,6 +150,7 @@ li{
 
 pre{
   overflow-x: scroll;
+  background-color: white;
 }
 
 #bgCanvas{
