@@ -343,6 +343,7 @@
 &lt;/svg>
                 </pre>
                 <h4>Clipping</h4>
+                <p>We will be using an &lt;img> tag for this section. If you need an image to play around with, fill free to use <a href="img/flower1.jpg" class="p-link" download><u>this one</u></a> or <a href="img/flower2.jpg" class="p-link" download><u>this one</u></a> or <a href="img/flower3.jpg" class="p-link" download><u>this one</u></a>.</p>
                 <p>One interesting thing that we can do with &lt;svg> tags is that we can actually use it to alter our media HTML elements, such as &lt;img> tags. We can create shapes within a &lt;clipPath> tag inside of the &lt;svg> tag, which will be used to clip the element that it is applied to.</p>
                 <p>One important thing to note here would be that <b>both the width and height of the SVG has to be set to 0</b>. You can, of course, try to give values for the width and height. You will realize that when this is done, it will actually occupy "invisible" space for the width and height you give.</p>
                 <p><u>Using SVG clipPath</u>:</p>
@@ -467,7 +468,7 @@
         clip-path: inset(0% 0%);
     }
     to{
-        clip-path: inset(10% 25%;
+        clip-path: inset(10% 25%);
     }
 }
                 </pre>
