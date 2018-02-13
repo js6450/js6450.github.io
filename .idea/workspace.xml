@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="" />
+    <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/book.html" afterPath="$PROJECT_DIR$/book.html" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -25,10 +27,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="css-ani-svg.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="css-ani-svg.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css-ani-svg.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
+            <state relative-caret-position="8744">
               <caret line="579" column="22" lean-forward="true" selection-start-line="579" selection-start-column="22" selection-end-line="579" selection-end-column="22" />
               <folding>
                 <element signature="e#2588#2592#0" expanded="true" />
@@ -181,6 +183,16 @@
                 <element signature="e#28139#28143#0" expanded="true" />
                 <element signature="e#29451#29455#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/book.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -345,6 +357,7 @@
         <option value="$PROJECT_DIR$/js/background.js" />
         <option value="$PROJECT_DIR$/fundamental-css-animation.html" />
         <option value="$PROJECT_DIR$/css-ani-svg.html" />
+        <option value="$PROJECT_DIR$/book.html" />
       </list>
     </option>
   </component>
@@ -355,9 +368,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="690" />
+    <option name="x" value="497" />
     <option name="y" value="23" />
-    <option name="width" value="750" />
+    <option name="width" value="943" />
     <option name="height" value="876" />
   </component>
   <component name="ProjectView">
@@ -375,6 +388,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -392,7 +406,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -532,18 +545,18 @@
       <workItem from="1515993929252" duration="6247000" />
       <workItem from="1516716226508" duration="10678000" />
       <workItem from="1517808032937" duration="54224000" />
-      <workItem from="1518451206710" duration="14198000" />
+      <workItem from="1518451206710" duration="14490000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182201000" />
+    <option name="totallyTimeSpent" value="182493000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="690" y="23" width="750" height="876" extended-state="0" />
+    <frame x="497" y="23" width="943" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15138888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18027571" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -602,13 +615,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="46" lean-forward="false" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/filestructure.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -973,7 +979,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css-ani-svg.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
+        <state relative-caret-position="8744">
           <caret line="579" column="22" lean-forward="true" selection-start-line="579" selection-start-column="22" selection-end-line="579" selection-end-column="22" />
           <folding>
             <element signature="e#2588#2592#0" expanded="true" />
@@ -1126,6 +1132,14 @@
             <element signature="e#28139#28143#0" expanded="true" />
             <element signature="e#29451#29455#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
