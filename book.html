@@ -97,20 +97,29 @@ html, body{
 }
 
 .text-left{
-	text-align: start;
+	text-align: left;
 
 }
 
 .text-right{
-	text-align: end;
+	text-align: right;
 }
 
-@keyframes toLeft{
-	to{
-		top: 0%;
-		text-align: start;
-	}
+.section-desc{
+	display: none;
+	opacity: 0;
+
+	transition: opacity 1s;
 }
+
+.show-desc{
+	display: block;
+	opacity: 1;
+
+	transition: opacity 1s;
+}
+
+
 </style>
 <body>
 <div class="section-1">
@@ -120,6 +129,9 @@ html, body{
 	<div class="section-button">
 		<span onclick="showDesc($(this))" id="bt-comm-lab" class="button-text">READ DESCRIPTION</span>
 	</div>
+	<div class="section-desc desc-comm-lab">
+		<p>In this foundation course, designed to provide students with a framework to effectively communicate through digital means, students will explore the possibilities of digital media by successively producing projects that make use of digital images, audio, video, and the Web. Students learn in a laboratory context of hands-on experimentation, and principles of interpersonal communications, media theory, and human factors will be introduced in readings and investigated through discussion. Students will learn the principles of digital imaging, recording and editing video and audio, and the basics of fundamental web languages HTML, CSS and JavaScript, in order to establish a diverse digital toolkit. Both traditional and experimental outputs, including online and interactive media platforms, will be explored.</p>
+	</div>
 </div>
 <div class="section-2">
 	<div class="section-title">
@@ -127,6 +139,9 @@ html, body{
 	</div>
 	<div class="section-button">
 		<span onclick="showDesc($(this))" id="bt-ix-lab" class="button-text">READ DESCRIPTION</span>
+	</div>
+	<div class="section-desc desc-ix-lab">
+		<p>In this course students will be asked to think beyond the conventional forms of human computer interaction (i.e. the keyboard and mouse) to develop interfaces that consider the entire body, the body's capacity for gesture, as well as the relationship between the body and it's environment. Students will learn the fundamentals of electronics and programming as they build projects using the Arduino microcontroller platform. Arduino is a small computer based on open source hardware and software. When used in conjunction with various sensors and actuators, Arduino is capable of gathering information about and acting upon the physical world. In addition to these physical computing techniques, students will also learn to harness the methods of traditional computation. The fundamentals of programming: variables, conditionals, iteration, functions and objects, will be explored first through the use of JavaScript, an approachable scripting language most commonly associated with the Web, and later with the Processing programming language. Students will gain a deeper appreciation of the expressive possibilities of computation as they learn to author their own software, and not simply use that which has been provided to them. Additional topics will include digital fabrication using 3D printers and laser cutters, the manipulation, presentation, and exchange of data, algorithmic drawing and animation techniques, as well as control of images, video, and audio.</p>
 	</div>
 </div>
 </body>
@@ -138,23 +153,26 @@ html, body{
 
 		$currSection = currBtn.parent().prev();
 		$currTitle = $currSection.children();
+		$currDesc = currBtn.parent().next();
 
 		console.log($currSection);
 
 		if($currTitle.hasClass('t-comm-lab')){
 			$currSection.toggleClass('text-left');
-
-			if($currSection.hasClass('text-left')){
-				console.log('here');
-				currBtn.innerHTML = "START READING";
-			}else{
-				currBtn.innerHTML = "READ DESCRIPTION";
-			}
 		}else{
 			$currSection.toggleClass('text-right');
 		}
 
-		$currSection.children().toggleClass('title-smaller');
+		if($currSection.hasClass('text-left') || $currSection.hasClass('text-right')){
+            currBtn[0].innerText = "START READING";
+
+            var topMargin = ($(window).height() - $currDesc.height()) * 0.5;
+
+            $currDesc.toggleClass('show-desc');
+            $currDesc.css({"margin": topMargin + "px 5vw 0 5vw"});
+		}
+
+		$currTitle.toggleClass('title-smaller');
 
 
 		// if(num == 0){
