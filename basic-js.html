@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Basics of Javascript</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<style>
+    #square{
+        width: 150px;
+        height: 150px;
+        background-color: pink;
+        margin: auto;
+    }
+
+    .mdl-checkbox{
+        width: initial;
+        margin-right: 2rem;
+    }
+
+    .event-opt{
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    #currDiv{
+        background-color: white;
+    }
+</style>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main onmousemove="updateMouse()" class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <h4><b>Javascript;</b> Review and the Fundamentals</h4>
+                <p>Before going over this section, if you need a refresher on the very basics of javascript about DOM and BOM elements, please refer to <a class="p-link" href="dom-bom-events.html"><u>this javascript simulator</u></a>.</p>
+                <h5><b>Mouse Interaction</b></h5>
+                <h5>onclick and ondblclick Event:</h5>
+                <p>The most straight forward and simple mouse interaction with a web browser is "clicking". You can use a click of the mouse as a trigger for an event to happen: to name a few - changing the image, changing the text, changing a css style of a section, etc. We already know an html tag that uses the click of a mouse to do an action: &lt;a> tag. The action of clicking on a section of html surrounded by the &lt;a> tag can open a new html page. Like so, we can use the click on a section of our html to trigger a set of actions that we can define in javascript.</p>
+                <pre>
+ &lt;div onclick="clickFunction()" id="click-section">&lt;/div>
+                </pre>
+                <p>In the above example, the &lt;div> of id "click-section" is now waiting for a click event, and <b>ON CLICK</b> of the &lt;div>, it will trigger the clickFunction() function. Looking at the way this is written in html, <b>onclick="clickFunction()"</b> is written INSIDE of the OPENING TAG of the html element. This is because onclick event (and all other events for this matter) is an attribute that belongs to this particular html tag. This means that this onclick event that calls clickFunction() when triggered is attached specifically to this &lt;div> ONLY. Clicking on other html elements of the web page will NOT trigger the clickFunction() function. But this means you can attach onclick events to many html elements of the web page, and have them call other functions.</p>
+                <pre>
+ &lt;div onclick="clickOne()" id="section-one">&lt;/div>
+ &lt;div onclick="clickTwo()" id="section-two">&lt;/div>
+                </pre>
+                <p>In the code above, clicking on the &lt;div> with id "section-one" will run the clickOne() function, and clicking on the &lt;div> with id "section-two" will run the clickTwo() function.</p>
+                <p>You can also make a distinction between a single click and a double click. A single click can be detected using the <b>onclick</b> event, like we saw above, and a double click can be detected using the <b>ondblclick</b> (on-double-click but without the vowels in the word "double") event.</p>
+                <h5>onmouseover and onmouseout Event:</h5>
+                <p>The mouse doesn't have to click on an html element to trigger a javascript function. The mouse cursor can also simply be <b>OVER</b> or <b>OUT</b> of an html element. These actions can be detected using <b>onmouseover</b> and <b>onmouseout</b> events.</p>
+                <p>Let's see the mouse events that we've looked at so far in action:</p>
+                <hr>
+                <div id="square"></div>
+                <div class="event-opt" onchange="applyEvent()">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="onclick">
+                        <input type="checkbox" name="eVal" id="onclick" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">onclick</span>
+                    </label>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ondblclick">
+                        <input type="checkbox" name="eVal" id="ondblclick" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">ondblclick</span>
+                    </label>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="onmouseover">
+                        <input type="checkbox" name="eVal" id="onmouseover" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">onmouseover</span>
+                    </label>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="onmouseout">
+                        <input type="checkbox" name="eVal" id="onmouseout" class="mdl-checkbox__input">
+                        <span class="mdl-checkbox__label">onmouseout</span>
+                    </label>
+                    <button onclick="resetStyles()" class="mdl-button mdl-js-button mdl-button--raised">RESET</button>
+                </div>
+                <pre id="currDiv"></pre>
+                <hr>
+                <p></p>
+                <pre>
+function clickEvent(){
+    document.getElementById('click-div').style.backgroundColor = "red";
+}
+
+function dblclickEvent(){
+    document.getElementById('click-div').style.backgroundColor = "blue";
+}
+
+function onmouseoverEvent(){
+    document.getElementById('click-div').style.border = "solid 5px green";
+}
+
+function onmouseoutEvent(){
+    document.getElementById('click-div').style.border = "dotted 10px yellow";
+}
+                </pre>
+                <h5>onmousemove Event:</h5>
+                <p>You can also trigger a javascript function whenever the mouse cursor is <b>moving</b> using the onmousemove event. Note that this event usually gets attached to the &lt;body> tag of the html document, because if attached to a particular html element, it will only be triggered when the mouse is moving WITHIN the html element. See that the below text changes to reflect the x and y position of the mouse as it moves.</p>
+                <div style="background-color: white; padding: 2em;">
+                    <p style="text-align: center; margin: 0; font-size: 16px" id="mouseVal"></p>
+                </div>
+                <p>One thing that you can do with this event is to use the position of the mouse to change the position of an html element. Additionally, by adding a function to an onclick event to allow the html element to move, you can fake a drag-and-drop effect. Click on the red square below to move it around and click it again to leave it where it is.</p>
+                <iframe height="500px" src="basic-js-demo-dragdrop.html"></iframe>
+                <p><u><a class="p-link" href="basic-js-demo-dragdrop.html">Click to view it as a full web page.</a></u></p>
+                <br>
+                <p>With the things that we've learned about mouse events, take a look at the demo below. Clicking on the images will change the source of the image and the mouse position changes the innerHTML and backgroundColor of the centered text.</p>
+                <iframe height="500px" src="basic-js-demo-fs.html"></iframe>
+                <p><u><a class="p-link" href="basic-js-demo-fs.html">Click to view it as a full web page.</a></u></p>
+                <p><u>CSS</u>:</p>
+                <pre>
+html, body{
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+    font-family: 'Helvetica', sans-serif;
+}
+
+#left-section, #right-section{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#left-section:hover, #right-section:hover{
+    cursor: pointer;
+}
+
+#left-img, #right-img{
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+#text-section{
+    position: absolute;
+    top: calc(50% - 32px);
+    width: 100%;
+    text-align: center;
+}
+
+#title-text{
+    background-color: black;
+    color: white;
+    font-size: 64px;
+}
+                </pre>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;body onmousemove="changeText()">
+    &lt;div id="text-section">
+        &lt;span id="title-text">Blue or Orange?&lt;/span>
+    &lt;/div>
+    &lt;div onclick="changeBlue()" id="left-section">
+        &lt;img id="left-img" src="img/basicJs/blue1.jpg">
+    &lt;/div>
+    &lt;div onclick="changeOrange()" id="right-section">
+        &lt;img id="right-img" src="img/basicJs/orange1.jpg">
+    &lt;/div>
+&lt;/body>
+                </pre>
+                <p><u>Javascript</u>:</p>
+                <pre>
+var bIndex = 1;
+var oIndex = 1;
+
+var leftText = "Blue?";
+var rightText = "Orange?";
+var centerText = "Blue or Orange?"
+
+function changeBlue(){
+    if(bIndex < 4){
+        bIndex++;
+    }else{
+        bIndex = 1;
+    }
+
+    document.getElementById('left-img').src = "img/basicJs/blue" + bIndex + ".jpg";
+
+}
+
+function changeOrange(){
+    if(oIndex < 4){
+        oIndex++;
+    }else{
+        oIndex = 1;
+    }
+
+    document.getElementById('right-img').src = "img/basicJs/orange" + oIndex + ".jpg";
+
+}
+
+function changeText(){
+    var x = event.clientX;
+    var y = event.clientY;
+
+    var w = window.innerWidth;
+    var titleSpan = document.getElementById('title-text');
+
+    if(x < w / 3){
+        titleSpan.innerHTML = leftText;
+        titleSpan.style.backgroundColor = 'blue';
+    }else if(x >= w / 3 && x < w * 2 / 3){
+        titleSpan.innerHTML = centerText;
+        titleSpan.style.backgroundColor = 'black';
+    }else{
+        titleSpan.innerHTML = rightText;
+        titleSpan.style.backgroundColor = 'orange';
+    }
+
+    // console.log(x + ", " + y);
+}
+                </pre>
+                <h5>Scroll Interaction</h5>
+                <p>You can also use the scrolling position of your web page to trigger a javascript function. Same as the way it is for click events that we looked at in the above section, there is an event that will wait for scrolling to happen, which you can attach a javascript function to do a set of actions according to the scrolled position (amount of pixels scrolled).</p>
+                <pre>
+&lt;body onscroll="scrollFunction()">&lt;body>
+                </pre>
+                <p>One thing to note, that is different from the way we attach a click event to an html element, is that you would normally attach the onscroll event for the whole body, rather than a particular section of your html document. This is because you need a "scrollable area". If there is nothing to scroll in the area of the html element that you have attached the onscroll event to, then obviously, it won't do anything. However, if you DO have a section of an html element that can scroll, you can of course attach the onscroll event there. Inside of the scrollFunction(), you can get the how much the html element that the event is attached to (in this case - the whole body) by using event.scrollX and event.scrollY</p>
+                <p>If your web page scrolls horizontally, you would use the event.scrollX value to check how much it has been scrolled in the x direction and if your web page scrolls vertically, you would use the event.scrollY value.</p>
+                <pre>
+function scrollFunction(){
+  var xpos = event.scrollX;
+  var ypos = event.scrollY;
+}
+                </pre>
+                <p>In the example above, every time your web page (more accurately, the body of your web page) has been scrolled, it will save the values (in pixels) in variables called xpos and ypos. You can use these to variables with if-statements, to do another set of actions accordingly.</p>
+                <pre>
+function scrollFunction(){
+  var xpos = event.scrollX;
+  var ypos = event.scrollY;
+
+  if(ypos < 500){
+    document.body.style.backgroundColor = "red";
+  }else{
+    document.body.style.backgroundColor = "blue";
+  }
+}
+                </pre>
+                <p>In the above code, <b>IF</b> the value of the ypos variable is less than 500 (meaning the webpage has been scrolled down less than 500px), then the backgroundColor of &lt;body> is set to red. <b>ELSE</b> (meaning the webpage has been scrolled down more than 500px), the backgroundColor is set to blue.</p>
+                <p>But, what if you want to base your if-statements based on the total width or height of the html element? All html elements have a property called <b>scrollWidth</b> and <b>scrollHeight</b> that you can use in javascript. scrollWidth will return the amount of width available to scroll, and scrollHeight returns the amount of height available to scroll. Thus, for our example, document.body.scrollHeight will return the total height the body has available for the user to scroll.</p>
+                <pre>
+function scrollFunction(){
+  var xpos = event.scrollX;
+  var ypos = event.scrollY;
+  var bodyHeight = document.body.scrollHeight;
+
+  if(ypos < bodyHeight / 2){
+    document.body.style.backgroundColor = "red";
+  }else{
+    document.body.style.backgroundColor = "blue";
+  }
+}
+                </pre>
+                <p>By using the scrollHeight value, now we can create conditions based on the scrollable height of our body, without knowing the exact height of the body beforehand.</p>
+                <p>With the things we've learned about using the onscroll event, take a look at the below demo:</p>
+                <iframe height="500px" src="basic-js-demo-scroll.html"></iframe>
+                <p><u><a class="p-link" href="basic-js-demo-scroll.html">Click to view it as a full web page.</a></u></p>
+                <p><u>CSS</u>:</p>
+                <pre>
+html, body{
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.section{
+    width: 100%;
+    height: 100%;
+}
+
+.section-img{
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+#float-section, #title-section{
+    position: fixed;
+}
+
+#float-section{
+    top: 0;
+}
+
+#title-section{
+    top: calc(50% - 24px);
+    width: 100%;
+    text-align: center;
+}
+
+#float-text{
+    background-color: black;
+    color: white;
+    font-size: 18px;
+}
+
+#title{
+    font-size: 48px;
+    background-color: white;
+}
+                </pre>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;body onscroll="changeStory()">
+    &lt;div id="float-section">
+        &lt;span id="float-text">&lt;/span>
+    &lt;/div>
+    &lt;div id="title-section">
+        &lt;span id="title">&lt;/span>
+    &lt;/div>
+    &lt;div class="section">
+        &lt;img class="section-img" src="img/basicJs/land1.jpg">
+    &lt;/div>
+    &lt;div class="section">
+        &lt;img class="section-img" src="img/basicJs/land2.jpg">
+    &lt;/div>
+    &lt;div class="section">
+        &lt;img class="section-img" src="img/basicJs/land3.jpg">
+    &lt;/div>
+    &lt;div class="section">
+        &lt;img class="section-img" src="img/basicJs/land4.jpg">
+    &lt;/div>
+    &lt;div class="section">
+        &lt;img class="section-img" src="img/basicJs/land5.jpg">
+    &lt;/div>
+&lt;/body>
+                </pre>
+                <p><u>Javascript</u>:</p>
+                <pre>
+var story1 = "This is a story.";
+var story2 = "Your character is in danger.";
+var story3 = "How will your character solve this?";
+var story4 = "Miraculously your character solves the problem.";
+var story5 = "Happily ever after."
+
+function changeStory(){
+    // console.log(window.scrollY);
+
+    var ypos = window.scrollY;
+    var h = document.body.scrollHeight;
+    var titleSpan = document.getElementById('title');
+
+    document.getElementById('float-text').innerHTML = window.scrollY + "px scrolled";
+
+
+    if(ypos < h / 5){
+        titleSpan.innerHTML = story1;
+    }else if(ypos >= h / 5 && ypos < h * 2 / 5){
+        titleSpan.innerHTML = story2;
+    }else if(ypos >= h * 2 / 5 && ypos < h * 3 / 5){
+        titleSpan.innerHTML = story3;
+    }else if(ypos >= h * 3 / 5 && ypos < h * 4 / 5){
+        titleSpan.innerHTML = story4;
+    }else{
+        titleSpan.innerHTML = story5;
+    }
+
+}
+                </pre>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+<script>
+    var events;
+    var sDiv;
+    function applyEvent(){
+        events = document.getElementsByName('eVal');
+        sDiv = document.getElementById('square');
+
+        for(var i = 0; i < events.length; i++){
+            if(events[i].checked){
+                sDiv.setAttribute(events[i].id, chooseEvent(i));
+            }else{
+                sDiv.removeAttribute(events[i].id);
+            }
+        }
+
+        updateDivText();
+    }
+
+    function chooseEvent(i){
+        switch(i){
+            case 1:
+                return "dblclickEvent()";
+                break;
+            case 2:
+                return "onmouseoverEvent()";
+                break;
+            case 3:
+                return "onmouseoutEvent()";
+                break;
+            default:
+                return "clickEvent()";
+                break;
+        }
+    }
+
+    function updateDivText(){
+        var divEval = eval(sDiv).outerHTML;
+        var divHTML = "";
+        for(var i = 0; i < divEval.length; i++){
+            if(divEval[i] == "<"){
+                divHTML += "&lt;"
+            }else{
+                divHTML += divEval[i];
+            }
+        }
+
+        document.getElementById('currDiv').innerHTML = divHTML;
+    }
+
+    function clickEvent(){
+        sDiv.style.backgroundColor = "red";
+        updateDivText();
+    }
+
+    function dblclickEvent(){
+        sDiv.style.backgroundColor = "blue";
+        updateDivText();
+    }
+
+    function onmouseoverEvent(){
+        sDiv.style.border = "solid 5px green";
+        updateDivText();
+    }
+
+    function onmouseoutEvent(){
+        sDiv.style.border = "dotted 10px yellow";
+        updateDivText();
+    }
+
+    function resetStyles(){
+        sDiv.removeAttribute('style');
+        updateDivText();
+    }
+
+    function updateMouse(){
+        document.getElementById('mouseVal').innerHTML = "mouse x pos: " + event.clientX + "px, mouse y pos: " + event.clientY + "px";
+    }
+
+</script>
+</html>

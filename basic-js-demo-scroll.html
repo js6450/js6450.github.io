@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scroll Demo: Basics of Javascript</title>
+</head>
+<style>
+    html, body{
+        margin: 0;
+        overflow-x: hidden;
+        font-family: 'Helvetica', sans-serif;
+    }
+
+    .section{
+        width: 100%;
+        height: 100%;
+    }
+
+    .section-img{
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+    }
+
+    #float-section, #title-section{
+        position: fixed;
+    }
+
+    #float-section{
+        top: 0;
+    }
+
+    #title-section{
+        top: calc(50% - 24px);
+        width: 100%;
+        text-align: center;
+    }
+
+    #float-text{
+        background-color: black;
+        color: white;
+        font-size: 18px;
+    }
+
+    #title{
+        font-size: 48px;
+        background-color: white;
+    }
+</style>
+<body onscroll="changeStory()">
+    <div id="float-section">
+        <span id="float-text"></span>
+    </div>
+    <div id="title-section">
+        <span id="title"></span>
+    </div>
+    <div class="section">
+        <img class="section-img" src="img/basicJs/land1.jpg">
+    </div>
+    <div class="section">
+        <img class="section-img" src="img/basicJs/land2.jpg">
+    </div>
+    <div class="section">
+        <img class="section-img" src="img/basicJs/land3.jpg">
+    </div>
+    <div class="section">
+        <img class="section-img" src="img/basicJs/land4.jpg">
+    </div>
+    <div class="section">
+        <img class="section-img" src="img/basicJs/land5.jpg">
+    </div>
+</body>
+<script>
+    var story1 = "This is a story.";
+    var story2 = "Your character is in danger.";
+    var story3 = "How will your character solve this?";
+    var story4 = "Miraculously your character solves the problem.";
+    var story5 = "Happily ever after."
+
+    function changeStory(){
+        // console.log(window.scrollY);
+
+        var ypos = window.scrollY;
+        var h = document.body.scrollHeight;
+        var titleSpan = document.getElementById('title');
+
+        document.getElementById('float-text').innerHTML = window.scrollY + "px scrolled";
+
+
+        if(ypos < h / 5){
+            titleSpan.innerHTML = story1;
+        }else if(ypos >= h / 5 && ypos < h * 2 / 5){
+            titleSpan.innerHTML = story2;
+        }else if(ypos >= h * 2 / 5 && ypos < h * 3 / 5){
+            titleSpan.innerHTML = story3;
+        }else if(ypos >= h * 3 / 5 && ypos < h * 4 / 5){
+            titleSpan.innerHTML = story4;
+        }else{
+            titleSpan.innerHTML = story5;
+        }
+
+    }
+</script>
+</html>

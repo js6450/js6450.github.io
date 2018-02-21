@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fullscreen Demo: Basics of Javascript</title>
+</head>
+<style>
+
+    html, body{
+        margin: 0;
+        overflow: hidden;
+        height: 100%;
+        font-family: 'Helvetica', sans-serif;
+    }
+
+    #left-section, #right-section{
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    #left-section:hover, #right-section:hover{
+        cursor: pointer;
+    }
+
+    #left-img, #right-img{
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+    }
+
+    #text-section{
+        position: absolute;
+        top: calc(50% - 32px);
+        width: 100%;
+        text-align: center;
+    }
+
+    #title-text{
+        background-color: black;
+        color: white;
+        font-size: 64px;
+    }
+
+</style>
+<body onmousemove="changeText()">
+    <div id="text-section">
+        <span id="title-text">Blue or Orange?</span>
+    </div>
+    <div onclick="changeBlue()" id="left-section">
+        <img id="left-img" src="img/basicJs/blue1.jpg">
+    </div>
+    <div onclick="changeOrange()" id="right-section">
+        <img id="right-img" src="img/basicJs/orange1.jpg">
+    </div>
+</body>
+<script>
+    var bIndex = 1;
+    var oIndex = 1;
+
+    var leftText = "Blue?";
+    var rightText = "Orange?";
+    var centerText = "Blue or Orange?"
+
+    function changeBlue(){
+        if(bIndex < 4){
+            bIndex++;
+        }else{
+            bIndex = 1;
+        }
+
+        document.getElementById('left-img').src = "img/basicJs/blue" + bIndex + ".jpg";
+
+    }
+
+    function changeOrange(){
+        if(oIndex < 4){
+            oIndex++;
+        }else{
+            oIndex = 1;
+        }
+
+        document.getElementById('right-img').src = "img/basicJs/orange" + oIndex + ".jpg";
+
+    }
+
+    function changeText(){
+        var x = event.clientX;
+        var y = event.clientY;
+
+        var w = window.innerWidth;
+        var titleSpan = document.getElementById('title-text');
+
+        if(x < w / 3){
+            titleSpan.innerHTML = leftText;
+            titleSpan.style.backgroundColor = 'blue';
+        }else if(x >= w / 3 && x < w * 2 / 3){
+            titleSpan.innerHTML = centerText;
+            titleSpan.style.backgroundColor = 'black';
+        }else{
+            titleSpan.innerHTML = rightText;
+            titleSpan.style.backgroundColor = 'orange';
+        }
+
+        // console.log(x + ", " + y);
+    }
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop Demo: Basics of Javascript</title>
+</head>
+<style>
+    html, body{
+        height: 100%;
+        margin: 0;
+        background-color: white;
+    }
+
+    #square{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+    }
+</style>
+<body onmousemove="moveSquare()">
+    <div onclick="changeState()" id="square"></div>
+</body>
+<script>
+    var canMove = false;
+
+    function changeState(){
+        if(canMove == false){
+            canMove = true;
+            document.getElementById('square').style.backgroundColor = "blue";
+        }else{
+            canMove = false;
+            document.getElementById('square').style.backgroundColor = "red";
+        }
+    }
+
+    function moveSquare(){
+        var xpos = event.clientX;
+        var ypos = event.clientY;
+
+        if(canMove == true){
+            document.getElementById('square').style.left= xpos + "px";
+            document.getElementById('square').style.top = ypos + "px";
+        }
+    }
+
+</script>
+</html>
