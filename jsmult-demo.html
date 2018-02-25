@@ -8,24 +8,22 @@
     body, html{
         height: 100%;
         overflow: hidden;
+        margin: 0;
+        background-color: rgba(250, 214, 137, 0.3);
     }
 
     .circle{
         position: absolute;
         display: block;
-        animation: circleAround 2s infinite, fall 10s infinite linear forwards;
-    }
-
-    .circle:hover{
-        width: 30px !important;
-        height: 30px !important;
+        animation: circleAround 2s infinite alternate, fall 10s infinite linear forwards, leftAndRight 1s alternate infinite;
+        opacity: 0.75;
     }
 
     @keyframes circleAround{
-        from{
+        0%{
             transform: rotateY(0deg);
         }
-        to{
+        100%{
             transform: rotateY(360deg);
         }
     }
@@ -35,13 +33,29 @@
             top: 100%;
         }
     }
+
+    @keyframes leftAndRight{
+        to{
+            margin-left: 0;
+        }
+    }
+
+    @keyframes toSquare{
+        from{
+            border-radius: 50%;
+        }
+
+        to{
+            border-radius: 0%;
+        }
+    }
 </style>
 <body>
-<button value="up" onclick="changeTrans(this.value)">APPEAR</button>
-<button value="down" onclick="changeTrans(this.value)">DISAPPEAR</button>
+<button value="up" onclick="changeTrans(0)">APPEAR</button>
+<button value="down" onclick="changeTrans(1)">DISAPPEAR</button>
 </body>
 <script type="text/javascript">
-    var colors = ["red", "pink", "blue", "yellow", "orange", "green"];
+    var colors = ["#F596AA", "#DB4D6D", "#CB1B45", "#E87A90", "#A5DEE4", "#81C7D4", "#58B2DC", "#51A8DD", "#8B81C3", "#8F77B5", "#B28FCE", "#986DB2", "#B481BB", "#E03C8A"];
     var opacityValue = 1.0;
 
     window.onload = function(){
@@ -51,17 +65,24 @@
             div = document.createElement("DIV");
 
             div.className = "circle";
-            div.style.width = "15px";
-            div.style.height = "15px";
+
+            var size = Math.random() * 40 + 40;
+            div.style.width = size +  "px";
+            size *= Math.random() + 0.5;
+            div.style.height = size + "px";
             div.style.borderRadius = "50%";
 
-            div.style.animationDelay = Math.random() * 10 + "s";
+            div.style.animationDelay = Math.random() * 12 + "s";
 
             var colorNum = Math.floor(Math.random() * colors.length);
             div.style.backgroundColor = colors[colorNum];
 
-            div.style.left = Math.random() * window.innerWidth + "px";
-            div.style.top = - Math.random() * 100 - 50 + "px";
+            div.style.left = Math.random() * (window.innerWidth + 40) - 40 + "px";
+            div.style.top = - Math.random() * 200 - 120 + "px";
+
+
+            var mLeft = Math.random() * 100 + 25;
+            div.style.marginLeft = mLeft + "px";
 
             document.body.appendChild(div);
         }
@@ -70,7 +91,7 @@
     function changeTrans(val){
         var circles = document.getElementsByClassName('circle');
 
-        if(val === "up"){
+        if(val === 0){
             if(opacityValue < 1.0){
                 opacityValue += 0.1;
             }

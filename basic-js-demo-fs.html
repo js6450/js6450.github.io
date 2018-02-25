@@ -33,8 +33,9 @@
     #text-section{
         position: absolute;
         top: calc(50% - 32px);
-        width: 100%;
-        text-align: center;
+        /*width: 100%;*/
+        /*text-align: center;*/
+        left: calc(50% - 235px);
     }
 
     #title-text{
@@ -45,7 +46,7 @@
 
 </style>
 <body onmousemove="changeText()">
-    <div id="text-section">
+    <div onclick="canMove()" id="text-section">
         <span id="title-text">Blue or Orange?</span>
     </div>
     <div onclick="changeBlue()" id="left-section">
@@ -62,6 +63,9 @@
     var leftText = "Blue?";
     var rightText = "Orange?";
     var centerText = "Blue or Orange?"
+
+    var move = false;
+    var movedOnce = false;
 
     function changeBlue(){
         if(bIndex < 4){
@@ -85,6 +89,18 @@
 
     }
 
+    function canMove(){
+        movedOnce = true;
+
+        if(move == true){
+            move = false;
+            document.getElementById('title-text').style.border = "none";
+        }else{
+            move = true;
+            document.getElementById('title-text').style.border = "solid red 5px";
+        }
+    }
+
     function changeText(){
         var x = event.clientX;
         var y = event.clientY;
@@ -101,6 +117,21 @@
         }else{
             titleSpan.innerHTML = rightText;
             titleSpan.style.backgroundColor = 'orange';
+        }
+
+        if(movedOnce == false){
+            if(x < w / 3){
+                document.getElementById('text-section').style.left = "calc(50% - 82px)";
+            }else if(x >= w / 3 && x < w * 2 / 3){
+                document.getElementById('text-section').style.left = "calc(50% - 235px)";
+            }else{
+                document.getElementById('text-section').style.left = "calc(50% - 125px)";
+            }
+        }
+
+        if(move == true){
+            document.getElementById('text-section').style.left = x + "px";
+            document.getElementById('text-section').style.top = y + "px";
         }
 
         // console.log(x + ", " + y);
