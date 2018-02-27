@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo: Timed Events in Javascript</title>
+</head>
+<style>
+    body, html{
+        margin: 0;
+        height: 100%;
+        background-color: white;
+    }
+
+    .box{
+        display: inline-block;
+    }
+
+    .box:hover{
+        opacity: 0.5;
+    }
+
+    #counter{
+        position: absolute;
+        top: calc(50% - 24px);
+        left: calc(50% - 12px);
+        font-size: 48px;
+    }
+</style>
+<body>
+    <div id="counter"><span id="counter-text">5</span></div>
+</body>
+<script>
+    var divs = [];
+    var windows = [];
+
+    var counter = 5;
+
+    window.onload = function(){
+
+        for(var i = 0; i < 9; i++){
+            windows[i] = i + ".html";
+
+            var newDiv = document.createElement('DIV');
+
+            newDiv.id = i;
+            newDiv.className = "box";
+            newDiv.style.width = "30%";
+            newDiv.style.height = "30%";
+            newDiv.style.marginLeft = "2.5%";
+            var mTop = window.innerHeight * 0.025;
+            newDiv.style.marginTop = mTop + "px";
+            newDiv.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + ", " +  Math.floor(Math.random() * 255) + ", " +  Math.floor(Math.random() * 255) + ")";
+
+            newDiv.setAttribute("onclick", "popupWindow(" + i + ")");
+
+            document.body.appendChild(newDiv);
+
+        }
+
+        divs = document.getElementsByClassName('box');
+
+        setInterval(function(){
+            for(var i = 0; i < divs.length; i++){
+                divs[i].style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + ", " +  Math.floor(Math.random() * 255) + ", " +  Math.floor(Math.random() * 255) + ")";
+            }
+        }, 5000);
+
+        setInterval(function(){
+            counter--;
+
+            if(counter == 0){
+                counter = 5;
+            }
+
+            document.getElementById('counter-text').innerHTML = counter;
+        }, 1000);
+    }
+
+    function popupWindow(i){
+        // var newWindow = window.open("js-timed-events/" + windows[i], "_blank", "width=640, height=480, left=400, top=200");
+        var newWindow = window.open("", "_blank", "width=640, height=480, left=400, top=200");
+        var textCol = divs[i].style.backgroundColor;
+        newWindow.document.write("<h1 style='color:" + textCol + "'>Window " + i + "</h1>");
+
+        setTimeout(function(){
+            newWindow.close();
+        }, 2000);
+    }
+
+</script>
+</html>
