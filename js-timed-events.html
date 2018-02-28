@@ -28,11 +28,85 @@
         <div class="page-content">
             <div class="full-page-content">
                 <h4>Timed Events in Javascript</h4>
+                <p>There are ways in javascript to create a timed sequence of actions, either through delaying or by setting a repeated interval. In this tutorial, we will look at two functions of the BOM window object: setInterval() and setTimeout(). Before looking specificially into these functions, we will need to know the concept of "callback functions".</p>
+                <h5>Callback Functions</h5>
+                <p>Callback function is a function that is used as an argument of another function. We know that a function can take "arguments" or inputs that is passed to be used inside of the function, for example:</p>
+                <pre>
+function timesTwo(number){
+    var total = number * 2;
+
+    console.log(total);
+}
+                </pre>
+                <p>Instead of giving a variable as an argument of a function, you can give a function as an argument of another function like this:
+                <pre>
+function getNumber(callback){
+    var number = prompt("Give me a number, and I'll multiply it by two.");
+
+    callback(number);
+}
+
+function timesTwo(number){
+    var total = number * 2;
+
+    console.log(total);
+}
+
+getNumber(timesTwo);
+                </pre>
+                <p>In the example above, timesTwo function is given as an argument of the getNumber function. The timesTwo function is used inside of the getNumber function after the number is received from the prompt window.</p>
+                <p>We've actually been using callback functions without realizing. The functions we give as values of our events, such as onclick, onmouseover and onmouseout, are actually callback functions. It is because the onclick attributes of html elements are actually a way of adding an "event listener" to a particular html element. For example, if we have a &lt;div> element that has an onclick attribute like this:</p>
+                <pre>
+&lt;div id="divId" onclick="clickFunction()">&lt;/div>
+                </pre>
+                <p>This could actually be written purely in javascript as:</p>
+                <pre>
+document.getElementById("divId").addEventListener("click", clickFunction);
+                </pre>
+                <p>In the case above, clickFunction is a callback function of the addEventListener function.</p>
+                <p>Similar to the addEventListener function, both setInterval() and setTimeout() takes a function as an argument.</p>
+                <h5>setInterval()</h5>
+                <p>setInterval() function is used to do a set of actions <b>EVERY INTERVAL</b> of the specified time. This function takes two arguments:</p>
+                <pre>
+setInterval(callback, time);
+                </pre>
+                <p>The first argument of the function is a callback function, used to specify the set of action you would like to do for every specified time. For example:</p>
+                <pre>
+setInterval(changeBackground, 1000);
+                </pre>
+                <p>In the example above, the changeBackground function is given as a callback function of the setInterval function to run every 1000 milliseconds (= 1 second). Another way of using setInterval() without defining a specific function to pass in as an argument would be:</p>
+                <pre>
+setInterval(function(){
+
+   //code here for changing background
+
+}, 1000);
+                </pre>
+                <h5>setTimeout()</h5>
+                <p>setTimeout() function is used to do a set of actions <b>AFTER</b> the specified time. It takes two argument, just like the setInterval function.</p>
+                <pre>
+setTimeout(callback, time);
+                </pre>
+                <p>For example, if we have a line of code that looks like below:</p>
+                <pre>
+setTimeout(changeBackground, 5000);
+                </pre>
+                <p>it means that the changeBackground function will run every 5000 milliseconds (= 5 seconds).</p>
+                <p>But what if you need to pass in arguments inside of the changeBackground function? For example, if our changeBackground function looks like below:</p>
+                <pre>
+function changeBackground(color){
+    document.getElementById("divId").style.backgroundColor = color;
+}
+                </pre>
+                <p>to be able to use this function inside, we will also want to give an argument of the changeBackground function inside of setTimeout(). Logically, you would think that the below code will work.</p>
+                <pre>
+setTimeout(changeBackground("red"), 5000);
+                </pre>
+                <p>Above will not work, because the syntax of the setTimeout function is that the first argument has to be a <b>NAME</b> of a function. changeBackground("red") is a function call, not a name of a function, meaning that when it is written this way in javascript, it will execute the changeBackground function with "red" as argument, as soon as the javascript file is loaded. Which is why if were to put the above line of code inside of our javascript file, it will actually change the background-color of the &lt;div> of id "divId" <b>WITHOUT</b> waiting for the 5000 second given as the specified time of delay.</p>
+                <p>Let's look at a demo of how the setTimeout() and setInterval() functions could be used.</p>
                 <iframe height="500" src="js-timed-events-demo.html"></iframe>
                 <p><u><a class="p-link" href="js-timed-events-demo.html">Click to view the demo as a full web page.</a></u></p>
-                <h5>setInterval()</h5>
-
-                <h5>setTimeout()</h5>
+                <p>Below is the full code of the demo:</p>
                 <p><u>HTML</u>:</p>
                 <pre>
 &lt;body>
@@ -67,8 +141,6 @@ body, html{
 var divs = [];
 var windows = [];
 
-var counter = 5;
-
 window.onload = function(){
 
     for(var i = 0; i < 9; i++){
@@ -93,21 +165,26 @@ window.onload = function(){
 
     divs = document.getElementsByClassName('box');
 
-    setInterval(function(){
+    setInterval(changeBackground, 5000);
+    setInterval(increaseCounter, 1000);
+}
+
+var counter = 5;
+
+function increaseCounter(){
+    counter--;
+
+    if(counter == 0){
+        counter = 5;
+    }
+
+    document.getElementById('counter-text').innerHTML = counter;
+}
+
+function changeBackground(){
         for(var i = 0; i < divs.length; i++){
             divs[i].style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + ", " +  Math.floor(Math.random() * 255) + ", " +  Math.floor(Math.random() * 255) + ")";
         }
-    }, 5000);
-
-    setInterval(function(){
-        counter--;
-
-        if(counter == 0){
-            counter = 5;
-        }
-
-        document.getElementById('counter-text').innerHTML = counter;
-    }, 1000);
 }
 
 function popupWindow(i){
