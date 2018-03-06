@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Sound Recording and Editing</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <h4><b>Sound Recording and Editing</b></h4>
+                <h5>Sound Recording Devices: When to use what?</h5>
+                <p class="p-head">Tascam DR-40 Field Recorder</p>
+                <img class="p-mid-img" src="img/soundrecording/tascam.png">
+                <p>Tascam handheld field recorders operate on batteries and are designed to be <b>portable</b>, so it is adequate to be used <b>outdoors</b>, such as for capturing ambient sound. The Tascam recorders have 2 internal microphones, but it is also <b>possible to connect up to two external microphones</b>. All the files recorded using the Tascam recorder saves on to an SD card, and the card is ejectable and can be plugged into your computer for file transfer.</p>
+                <p>Below Youtube video is one of many great available tutorials online on how to use the Tascam recorder.</p>
+                <div class="video-wrap">
+                    <iframe width="1000" height="526" src="https://www.youtube.com/embed/ndR5eC0DQCU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <br>
+                <p class="p-head">External Microphones</p>
+                <p>You can attach external microphones to the Tascam field recorder. The external microphone can be attached using the <b>XLR Male-Female cable</b> on the bottom of the Tascam recorder. Here are two external microphones that are available for you to borrow from the equipment room:</p>
+                <p><b>Audio-Technica Shotgun Microphone</b>:</p>
+                <img class="p-mid-img" src="img/soundrecording/shotgun.png">
+                <p>The shotgun microphone is good for <b>ambient recording of surroundings</b>, both indoor and outdoor. It provides the narrow acceptance angle desirable for long-distance sound pickup, featuring sound rejection from the sides and rear of microphone. It operates on battery or phantom power. When you are using the shotgun microphone with Tascam field recorder, please make sure that the "External In" (<b>EXT IN</b>) setting is set to <b>MIC + PHANTOM</b>.</p>
+                <p><b>Sennheiser Vocal Microphone</b>:</p>
+                <img class="p-mid-img" src="img/soundrecording/vocal.png">
+                <p>The Vocal microphone is good for recording speech or vocals. This is a standard microphone that you would see on stage, interviews and karaoke. When you are using the vocal microphone with Tascam field recorder, please make sure that the "External In" (<b>EXT IN</b>) setting is set to <b>MIC</b>.</p>
+                <p class="p-head">Blue Yeti USB Microphone</p>
+                <img class="p-mid-img" src="img/soundrecording/yeti.png">
+                <p>The Blue Yeti USB Microphone is a simple USB plug-in microphone that is generally used when recording in a static setting using your computer. It is generally used for recording sound in a studio / indoor locations. It is easily useable, as all you need to do is plug it into your USB port on your computer and select "BLUE YETI 2.0" as your audio input device in your system preferences / audio editing software.</p>
+                <p>For more detailed information about how to use the Blue Yeti microphone, please refer to <a href="assets/yeti-manual.pdf" download>the product manual</a>.
+                </p>
+                <p class="p-head"><u>Podcasting Room</u></p>
+                <img class="p-mid-img" src="img/soundrecording/podcasting.png">
+                <p>The podcasting room (934) currently has three Shure Dynamic Instrument Microphone, which are designed for vocal and instrumental recording, connected to the MG102 Yamaha mixing board. The mixing board currently allows sound input from all three microphones to be recorded on a single stereo track.</p>
+                <p>When using the podcasting room with this setup, make sure that the mixing board is powered on (you can tell by whether the light is on next to the power indicator or not). If it is not on, on the top left corner of the mixing board, there is a switch to turn on the board.</p>
+                <p>The podcasting room is available for you to reserve. You can book a slot to use the room using <a href="http://bit.ly/ima-podcasting-room">this google calendar appointment page</a>. When booking a slot, in the "description" field, please put the name of the course you are intending to use the room for.</p>
+                <p>If you have reserved the podcasting room, come to the IMA lab (826) about 5 - 10 minutes before the reserved time so that you can come pick up the key to the room. Please ask anyone in the equipment room or IMA fellows on duty for the key. Make sure that you return the key back to a fellow <b>BEFORE</b> your reservation time is over. When you are done using the room, please do <b>NOT</b> turn off the computer or the mixing board, but turn off the light and make sure to lock the room. You can book multiple slots in a row, but please be mindful that there may be others needing to use to room.</p>
+                <h5>Recording <b>Room Tone</b></h5>
+                <p>Generally, the good practice is to record <b>ROOM TONE</b> before and after recording the desired sound for about 5 - 10 seconds. This means that you should record the sound of your surroundings the way it naturally is. For example, if you are recording an interview, wherever you are, you will want to capture the natural sound of your location, whether it be indoors or outdoors. This doesn’t apply if you are using the Tascam to capture the sound of traffic, for example. Recording room tone is useful when you are editing sound and you need to insert in some <b>silent gaps</b>. Using the generated silence on your audio editing software will actually sound unnatural as it is not how silence would have sounded like in the environment your recording was done in. Another reason why this is important is because you can sample this part of your recording to run a <b>noise reduction</b> effect, which is usually available in most of audio editing softwares, on the rest of your sound recording.</p>
+                <h5>Sound Editing with Audacity</h5>
+                <p>Audacity is a free and cross-platform (available for all Mac, Windows, Linux computers) audio recording and editing software. Audacity is downloadable through <a href="http://www.audacityteam.org/download/">this link</a>.</p>
+                <p class="p-head">Importing Sound to Edit</p>
+                <p><b>Using Existing Sound files</b>:</p>
+                <p>On the menu bar, go to <b>File > Import > Audio...</b> to select and import the audio files you want to edit on Audacity.</p>
+                <p><b>Recording sound on Audacity</b>:</p>
+                <p>You can also record sound using Audacity. You would be doing this if you are using the Blue Yeti USB Microphone or are in the podcasting room. Using audacity to record is quite simple.</p>
+                <img class="p-mid-img" src="img/soundrecording/record.png">
+                <p>You simply need to click the red record button to start recording and a new track will appear and you will see sound waves being recorded onto the track. To stop the recording, either click the stop button or hit spacebar.</p>
+                <p class="p-head">Tracks</p>
+                <p>When you upload a sound file or record a sound on audacity, it will create a track on the project window, like the below image.</p>
+                <img class="p-mid-img" src="img/soundrecording/track.png">
+                <p>You will see that there are two sound waves within a track - for left channel and right channel. This will be the case if your sound file is in stereo. If your sound file is in mono, you will only see one sound file.</p>
+                <p>There are two buttons on the track that can be useful: Mute and Solo. <b>Mute</b> makes the selected track muted. <b>Solo</b> makes all other tracks <b>EXCEPT</b> the selected track muted.</p>
+                <p class="p-head">Tools for Editing</p>
+                <img class="p-small-img" src="img/soundrecording/select.png">
+                <p><b>Select</b>: The cursor icon is the select tool. You can use this to make a selection within a track. Click to select a start point for audio playback, or click and drag to select a range of audio to play or edit.</p>
+                <img class="p-mid-img" src="img/soundrecording/selection.gif">
+                <hr>
+                <img class="p-small-img" src="img/soundrecording/timeshift.png">
+                <p><b>Time Shift</b> ( = Move): The time shift tool lets you synchronize audio in a project by dragging individual or multiple tracks or selection(s) of tracks. Also use this tool to drag individual tracks or clips up or down into another track. You can think of it as a "move" tool.</p>
+                <img class="p-mid-img" src="img/soundrecording/timeshift-edit.gif">
+                <hr>
+                <img class="p-small-img" src="img/soundrecording/envelop.png">
+                <p><b>Envelop</b>: This tool allows smooth volume changes to be made over the length of a track by means of embedded volume "control points". Click in the track to create a control point, then set the volume of that point by dragging one of its four vertically arranged "handles".</p>
+                <img class="p-mid-img" src="img/soundrecording/envelop-edit.gif">
+                <hr>
+                <img class="p-small-img" src="img/soundrecording/edittools.png">
+                <p><b>Copy, Paste, Cut and Trim</b>: You can also copy, paste and cut a selection of a track you have made, as well as trim inside and outside of the selection. The shortcuts for copy, paste and cut apply in the exact same way (cmd / ctrl + c for copy, cmd / ctrl + p for paste, cmd / ctrl + x for cut).</p>
+                <img class="p-mid-img" src="img/soundrecording/copy-paste-move.gif">
+                <p>You can use the select tool to make a selection within a track, then copy and paste the selection on a black space of the track and use the time shift tool to move it around along time timeline for the track.</p>
+                <img class="p-mid-img" src="img/soundrecording/trim-outside.gif">
+                <p>The trim outside tool deletes all sound waves <b>OUTSIDE</b> of the selection.</p>
+                <img class="p-mid-img" src="img/soundrecording/trim-inside.gif">
+                <p>The trim inside tool deletes all sound waves <b>INSIDE</b> of the selection.</p>
+                <p class="p-head">Effects</p>
+                <p>There are a number of effects that Audacity provides, but we will only look at the two most widely used ones: Noise Reduction and Amplify.</p>
+                <p><b>Noise Reduction</b>: Noise Reduction can reduce constant background sounds such as hum, whistle, whine, buzz, and "hiss", such as tape hiss, fan noise or FM/webcast carrier noise. It is not suitable for individual clicks and pops, or irregular background noise such as from traffic or an audience. This is where the recording of <b>ROOM TONE</b> becomes important. You will be using a section of it as the <b>Noise Reduction Profile</b>.</p>
+                <img class="p-mid-img" src="img/soundrecording/noise-reduction.png">
+                <p>First, select a section of room tone. Then go to <b>Effect > Noise Reduction</b> on the menu bar. Click on <b>Get Noise Profile</b> under Step 1. Then, select the whole track or the section of the track you want to run noise reduction on and go to Effect > Noise Reduction again. This time, click <b>OK</b>. You will see that the sound waves of the track / selection subtly changes.</p>
+                <img class="p-mid-img" src="img/soundrecording/noise-reduction.gif">
+                <p><b>Amplify</b>: The Amplify effect increases the amplitude of the selected sound waves, hence increasing the volume. Note that there a limit to how much a sound can be amplified using a audio editing software, so it is more important for you to monitor while recording to make sure you are getting adequate volume of sound to begin with. You can find the Amplify effect under <b>Effect > Amplify</b> in the menu bar.</p>
+                <img class="p-mid-img" src="img/soundrecording/amplify.gif">
+                <p class="p-head">Saving your Files</p>
+                <p>There are multiple ways of saving the recorded files.</p>
+                <ul>
+                    <li><b>File > Save Project</b>: This means that you are going to only be able to open this file using Audacity. But it also means that all of your tracks will be loaded on a single project file, and if you had made changes to your tracks, all of those edits will also be saved. This is similar to saving a photoshop file as .psd file so when the file is reopened, all of your layers are present.</li>
+                    <img class="p-mid-img" src="img/soundrecording/export.png">
+                    <li><b>File > Export > Export Audio...</b>: This option will collapse all the tracks you have on the particular Audacity project into a <b>single sound file</b>. This would be similar to saving a photoshop file as a image format, such as .jpeg or .png. This is probably not the option that you are looking for if whatever you have in your Audacity project window is not exactly how you want your final product to be. This option ignores whether individual tracks are put on mute.</li>
+                    <br>
+                    <img class="p-mid-img" src="img/soundrecording/export-format.png">
+                    <ul>
+                        <li>You can save your audio file in different formats. Above image shows you all the available options of file formats you can export your audio in. The most commonly used audio formats are .wav and .mp3</li>
+                    </ul>
+                    <br>
+                    <img class="p-mid-img" src="img/soundrecording/export-audio-warning.png">
+                    <ul>
+                        <li>If you have multiple tracks for your Audacity project, the Export Audio option will give you a warning like the above image. It is simply telling you that all of your tracks will be collapsed into one single audio file. If that is what you want, you can go ahead and click OK.</li>
+                    </ul>
+                    <li><b>File > Export > Export Selected Audio...</b>: This option exports out the tracks you have selected as <b>one single sound file</b>. The selected tracks will become highlighted in blue, and you can select multiple tracks by clicking on tracks with the shift key down. The selected tracks get combined together into one single sound file.</li>
+                    <img class="p-mid-img" src="img/soundrecording/export-mult.png">
+                    <li><b>File > Export > Export Multiple...</b>: This option will let you export all tracks on your Audacity project window as <b>individual sound files per track</b>. If you were editing sound files in one single Audacity window, and want to save all of them individually as sound files, this will be the option for you.
+                    </li>
+                </ul>
+                <p>For more in-depth guide on how to use Audacity, please refer to <a href="http://manual.audacityteam.org">the software manual</a> and <a href="http://wiki.audacityteam.org/wiki/Audacity_Wiki_Home_Page">the wiki page</a>.</p>
+                <h5>Open License Audio Resources</h5>
+                <p>There are many places that you can freely download audio files for your use. Some of the files you will find in these sources may be license-free and may not require you to attribute them, and others may ask you to attribute them but you can use and modify the resource however you want to. When in doubt, it is always good to state your sources.</p>
+                <ul>
+                    <li><a href="http://freesound.org">freesound.org</a> is a platform where you can download sound samples. This is a good place to look for sound effects or sample sounds of instruments.</li>
+                    <li><a href="http://archive.org">archive.org</a> is a place where you can download historical media. This is where you can find archives of radio recordings, audio books, etc., in various languages.</li>
+                    <li><a href="http://freemusicarchive.org">freemusicarchive.org</a> has open-license music you can download and use. This is a good website to look through for some background music.</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a> also has freely useable media files that you can browse through.</li>
+                </ul>
+                <h5>Checking out Audio Equipment</h5>
+                <p class="p-head"><u>General Things</u>:</p>
+                <ol>
+                    <li>Please find out the name of the equipment you are trying to borrow beforehand.</li>
+                    <li>Everything that is available for check out will be listed on <a href="http://ima.nyu.sh/equip">IMA Equipment Website</a>. please check this website beforehand to see our inventory. If something is not listed on this page, then we most likely will not have it.</li>
+                    <li>When checking out multiple things, please provide a list. it makes things a lot more efficient.</li>
+                    <li>If there is particular equipment you really need, please try to come earlier rather than later.</li>
+                </ol>
+                <p class="p-head"><u>Tascam Field Recorders</u>:</p>
+                <ol>
+                    <li>Please do not throw away the batteries for the Tascam field recorders, if they run out of battery, you can come to the equipment room and exchange them for new ones.</li>
+                    <li>Please make sure that the SD card is in the card slot when returning the Tascam.</li>
+                </ol>
+                <p class="p-head"><u>Microphones</u>:</p>
+                <ol>
+                    <li>Cables are checked out separately. If you need a XLR or audio cable, the you will need to specify when checking out.</li>
+                    <li>When returning microphones, please make sure that all of the accessories (bags, holders, etc.) are brought back as well.</li>
+                </ol>
+                <p>If you have questions about the equipment check-out policy please email <b>ima.equipment@nyu.edu</b></p>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+</html>

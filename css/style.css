@@ -71,6 +71,11 @@ body{
   }
 }
 
+.p-head{
+  font-size: 18px;
+  text-decoration: underline;
+}
+
 .p-link:hover{
   font-weight: bold;
   cursor: pointer;
@@ -116,6 +121,20 @@ body{
 
 .p-img{
   width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.p-mid-img{
+  width: 70%;
+  margin: auto;
+  display: block;
+  margin-bottom: 2.5rem;
+}
+
+.p-small-img{
+  width: 25%;
+  margin: auto;
+  display: block;
   margin-bottom: 2.5rem;
 }
 
