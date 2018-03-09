@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<style>
+    body, html{
+        height: 100%;
+        font-family: Helvetica, 'sans-serif';
+        margin: 0;
+    }
+
+    #bg{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+
+    #rateDiv, #volDiv, #timeDiv{
+        width: 33%;
+        height: 100%;
+        /*		margin-left: 2.5%;
+        */		display: inline-block;
+    }
+
+    #rateDiv{
+        background-color: rgb(255, 0, 0);
+    }
+
+    #volDiv{
+        background-color: rgb(0, 255, 0);
+    }
+
+    #timeDiv{
+        background-color: rgb(0, 0, 255);
+    }
+
+</style>
+<body>
+<audio onloadeddata="console.log('load done')" onratechange="updateRate()" onvolumechange="updateVol()" ontimeupdate="updateTime()" id="bg" controls loop preload="auto">
+    <source src="audio/1.mp3" type="audio/mp3">
+</audio>
+<div onclick="changeRate()" id="rateDiv"><h1 id="rateDisplay">Playback Rate:<br> <span id="rateVal">1</span></h1></div>
+<div onclick="changeVol()" id="volDiv"><h1 id="volDisplay">Volume:<br> <span id="volVal">0</span></h1></div>
+<div onclick="changeTime()" id="timeDiv"><h1 id="timeDisplay">Time:<br> <span id="timeVal">0</span></h1></div>
+</body>
+<script type="text/javascript">
+    var bg = document.getElementById('bg');
+
+    function changeRate(){
+        var rate = (event.clientY / window.innerHeight) * 4.75 + 0.25;
+        bg.playbackRate = rate;
+    }
+
+    function changeVol(){
+        var vol = event.clientY / window.innerHeight;
+        bg.volume = vol;
+    }
+
+    function changeTime(){
+        var time = (event.clientY / window.innerHeight) * bg.duration;
+        console.log(time);
+        bg.currentTime = time;
+    }
+
+    function updateRate(){
+        document.getElementById('rateVal').innerHTML = bg.playbackRate;
+
+        var blueVal = parseInt(bg.playbackRate * 51);
+        document.getElementById('rateDiv').style.backgroundColor = "rgb(255, 0, " + blueVal + ")";
+    }
+
+    function updateVol(){
+        document.getElementById('volVal').innerHTML = bg.volume;
+
+        var redVal = parseInt(bg.volume * 255);
+        document.getElementById('volDiv').style.backgroundColor = "rgb(" + redVal + ", 255, 0)";
+    }
+
+    function updateTime(){
+        document.getElementById('timeVal').innerHTML = bg.currentTime;
+
+        var greenVal = parseInt(bg.currentTime / bg.duration * 255);
+        document.getElementById('timeDiv').style.backgroundColor = "rgb(0, " + greenVal + ", 255)";
+    }
+</script>
+</html>
