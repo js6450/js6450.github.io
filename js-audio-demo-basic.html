@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Demo: Javascript with Audio</title>
 </head>
 <style>
     body, html{
@@ -14,13 +14,13 @@
         position: fixed;
         bottom: 0;
         right: 0;
+        z-index: 1;
     }
 
     #rateDiv, #volDiv, #timeDiv{
-        width: 33%;
+        width: calc(100% / 3);
         height: 100%;
-        /*		margin-left: 2.5%;
-        */		display: inline-block;
+        float: left;
     }
 
     #rateDiv{
@@ -28,24 +28,82 @@
     }
 
     #volDiv{
-        background-color: rgb(0, 255, 0);
+        background-color: rgb(255, 255, 0);
     }
 
     #timeDiv{
         background-color: rgb(0, 0, 255);
     }
 
+    #player{
+        width: 100%;
+        height: 12.5%;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        background-color: lightyellow;
+        text-align: center;
+    }
+
+    #play, #pause, #stop{
+        display: inline-block;
+    }
+
+    #play-text, #pause-text, #stop-text{
+        line-height: 12.5vh;
+        font-size: 1.5em;
+    }
+
+    #play-text:hover, #pause-text:hover, #stop-text:hover{
+        font-style: italic;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+    }
+
+    #play-text, #pause-text{
+        margin-right: 2em;
+    }
+
+    #pb-time{
+        width: 25px;
+        height: 25px;
+        background-color: black;
+        border-radius: 50%;
+        position: fixed;
+        bottom: calc(12.5% - 12.5px);
+    }
+
 </style>
 <body>
-<audio onloadeddata="console.log('load done')" onratechange="updateRate()" onvolumechange="updateVol()" ontimeupdate="updateTime()" id="bg" controls loop preload="auto">
+<audio onloadeddata="console.log('load done')" onratechange="updateRate()" onvolumechange="updateVol()" ontimeupdate="updateTime()" id="bg" loop preload="auto">
     <source src="audio/1.mp3" type="audio/mp3">
 </audio>
 <div onclick="changeRate()" id="rateDiv"><h1 id="rateDisplay">Playback Rate:<br> <span id="rateVal">1</span></h1></div>
-<div onclick="changeVol()" id="volDiv"><h1 id="volDisplay">Volume:<br> <span id="volVal">0</span></h1></div>
+<div onclick="changeVol()" id="volDiv"><h1 id="volDisplay">Volume:<br> <span id="volVal">1</span></h1></div>
 <div onclick="changeTime()" id="timeDiv"><h1 id="timeDisplay">Time:<br> <span id="timeVal">0</span></h1></div>
+<div id="player">
+    <div id="pb-time"></div>
+    <div id="play" onclick="playAudio()"><span id="play-text">PLAY </span></div>
+    <div id="pause" onclick="pauseAudio()"><span id="pause-text">PAUSE </span></div>
+    <div id="stop" onclick="stopAudio()"><span id="stop-text">STOP </span></div>
+</div>
 </body>
 <script type="text/javascript">
     var bg = document.getElementById('bg');
+
+    function playAudio() {
+        bg.play();
+    }
+
+    function pauseAudio(){
+        bg.pause();
+    }
+
+    function stopAudio() {
+        bg.pause();
+        bg.currentTime = 0;
+    }
 
     function changeRate(){
         var rate = (event.clientY / window.innerHeight) * 4.75 + 0.25;
@@ -59,7 +117,6 @@
 
     function changeTime(){
         var time = (event.clientY / window.innerHeight) * bg.duration;
-        console.log(time);
         bg.currentTime = time;
     }
 
@@ -82,6 +139,10 @@
 
         var greenVal = parseInt(bg.currentTime / bg.duration * 255);
         document.getElementById('timeDiv').style.backgroundColor = "rgb(0, " + greenVal + ", 255)";
+
+        var leftVal = (bg.currentTime / bg.duration) * window.innerWidth;
+
+        document.getElementById('pb-time').style.left = leftVal + "px";
     }
 </script>
 </html>

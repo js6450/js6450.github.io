@@ -27,7 +27,210 @@
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="full-page-content">
+                <h4>Javascript with Audio</h4>
+                <p>In this tutorial, we will look at how to include and manipulate audio in HTML and javascript. Audio files are included in HTML like below:</p>
+                <pre>
+&lt;audio>
+    &lt;source src="audio/1.mp3" type="audio/mpeg">
+&lt;/audio>
+                </pre>
+                <p>Types of audio formats:</p>
+                <ul>
+                    <li>mp3: <b>type="audio/mpeg"</b></li>
+                    <li>wav: <b>type="audio/wav"</b></li>
+                    <li>ogg: <b>type="audio/ogg"</b></li>
+                </ul>
+                <h5>Attributes</h5>
+                <p>Attributes of the audio tag are written inside of the opening tag of the &lt;audio> element, as shown below.</p>
+                <pre>
+&lt;audio autoplay controls loop muted preload>
+    &lt;source src="audio/1.mp3" type="audio/mpeg">
+&lt;/audio>
+                </pre>
+                <ul>
+                    <li><b>autoplay</b>: immediately play the audio file upload loading of the website</li>
+                    <li><b>controls</b>: show audio controls</li>
+                    <li><b>loop</b>: loop the playing of audio file</li>
+                    <li><b>muted</b>: start audio file on mute</li>
+                    <li><b>preload</b>: preload the audio file before playing</li>
+                </ul>
+                <p></p>
+                <h5>Methods</h5>
+                <ul>
+                    <li>play()</li>
+                    <li>pause()</li>
+                </ul>
+                <pre>
+&lt;audio autoplay id="bgm">
+    &lt;source src="audio/1.mp3" type="audio/mpeg">
+&lt;/audio>
+                </pre>
+                <pre>
+document.getElementById('bgm').play();
+                </pre>
+                <pre>
+document.getElementById('bgm').pause();
+                </pre>
+                <h5>Properties</h5>
+                <ul>
+                    <li><b>currentSrc</b>: Set or return audio source</li>
+                    <li><b>currentTime</b>: Set or return playback position of audio (in seconds)</li>
+                    <li><b>duration</b>: Return duration of audio source (in seconds)</li>
+                    <li><b>ended</b>: Return (true or false) whether audio playback has ended</li>
+                    <li><b>loop</b>: Set or return whether audio is on loop</li>
+                    <li><b>muted</b>: Set or return whether audio is on mute</li>
+                    <li><b>paused</b>: Return whether audio is paused</li>
+                    <li><b>playbackRate</b>: Set or return speed of audio playback</li>
+                    <li><b>played</b>: Return whether audio is has been played</li>
+                    <li><b>volume</b>: Set or return volume of audio</li>
+                </ul>
+                <h5>Demo: Simple Audio Player</h5>
+                <iframe height="500px" src="js-audio-demo-basic.html"></iframe>
+                <p><u><a class="p-link" href="js-audio-demo-basic.html">Click to view it as a full web page.</a></u></p>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;audio onloadeddata="console.log('load done')" onratechange="updateRate()" onvolumechange="updateVol()" ontimeupdate="updateTime()" id="bg" loop preload="auto">
+    &lt;source src="audio/1.mp3" type="audio/mp3">
+&lt;/audio>
+&lt;div onclick="changeRate()" id="rateDiv">&lt;h1 id="rateDisplay">Playback Rate:&lt;br>&lt;span id="rateVal">1&lt;/span>&lt;/h1>&lt;/div>
+&lt;div onclick="changeVol()" id="volDiv">&lt;h1 id="volDisplay">Volume:&lt;br>&lt;span id="volVal">1&lt;/span>&lt;/h1>&lt;/div>
+&lt;div onclick="changeTime()" id="timeDiv">&lt;h1 id="timeDisplay">Time:&lt;br>&lt;span id="timeVal">0&lt;/span>&lt;/h1>&lt;/div>
+&lt;div id="player">
+    &lt;div id="pb-time">&lt;/div>
+    &lt;div id="play" onclick="playAudio()">&lt;span id="play-text">PLAY&lt;/span>&lt;/div>
+    &lt;div id="pause" onclick="pauseAudio()">&lt;span id="pause-text">PAUSE&lt;/span>&lt;/div>
+    &lt;div id="stop" onclick="stopAudio()">&lt;span id="stop-text">STOP&lt;/span>&lt;/div>
+&lt;/div>
+                </pre>
+                <p><u>CSS</u>:</p>
+                <pre>
+body, html{
+    height: 100%;
+    font-family: Helvetica, 'sans-serif';
+    margin: 0;
+}
 
+#bg{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#rateDiv, #volDiv, #timeDiv{
+    width: calc(100% / 3);
+    height: 100%;
+    float: left;
+}
+
+#rateDiv{
+    background-color: rgb(255, 0, 0);
+}
+
+#volDiv{
+    background-color: rgb(255, 255, 0);
+}
+
+#timeDiv{
+    background-color: rgb(0, 0, 255);
+}
+
+#player{
+    width: 100%;
+    height: 12.5%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: lightyellow;
+    text-align: center;
+}
+
+#play, #pause, #stop{
+    display: inline-block;
+}
+
+#play-text, #pause-text, #stop-text{
+    line-height: 12.5vh;
+    font-size: 1.5em;
+}
+
+#play-text:hover, #pause-text:hover, #stop-text:hover{
+    font-style: italic;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+}
+
+#play-text, #pause-text{
+    margin-right: 2em;
+}
+
+#pb-time{
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    border-radius: 50%;
+    position: fixed;
+    bottom: calc(12.5% - 12.5px);
+}
+                </pre>
+                <p><u>Javascript</u>:</p>
+                <pre>
+var bg = document.getElementById('bg');
+
+function playAudio() {
+    bg.play();
+}
+
+function pauseAudio(){
+    bg.pause();
+}
+
+function stopAudio() {
+    bg.pause();
+    bg.currentTime = 0;
+}
+
+function changeRate(){
+    var rate = (event.clientY / window.innerHeight) * 4.75 + 0.25;
+    bg.playbackRate = rate;
+}
+
+function changeVol(){
+    var vol = event.clientY / window.innerHeight;
+    bg.volume = vol;
+}
+
+function changeTime(){
+    var time = (event.clientY / window.innerHeight) * bg.duration;
+    bg.currentTime = time;
+}
+
+function updateRate(){
+    document.getElementById('rateVal').innerHTML = bg.playbackRate;
+
+    var blueVal = parseInt(bg.playbackRate * 51);
+    document.getElementById('rateDiv').style.backgroundColor = "rgb(255, 0, " + blueVal + ")";
+}
+
+function updateVol(){
+    document.getElementById('volVal').innerHTML = bg.volume;
+
+    var redVal = parseInt(bg.volume * 255);
+    document.getElementById('volDiv').style.backgroundColor = "rgb(" + redVal + ", 255, 0)";
+}
+
+function updateTime(){
+    document.getElementById('timeVal').innerHTML = bg.currentTime;
+
+    var greenVal = parseInt(bg.currentTime / bg.duration * 255);
+    document.getElementById('timeDiv').style.backgroundColor = "rgb(0, " + greenVal + ", 255)";
+
+    var leftVal = (bg.currentTime / bg.duration) * window.innerWidth;
+
+    document.getElementById('pb-time').style.left = leftVal + "px";
+}
+                </pre>
             </div>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
