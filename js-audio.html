@@ -89,7 +89,7 @@ document.getElementById('bgm').pause();
                 <p><u><a class="p-link" href="js-audio-demo-basic.html">Click to view it as a full web page.</a></u></p>
                 <p><u>HTML</u>:</p>
                 <pre>
-&lt;audio onloadeddata="console.log('load done')" onratechange="updateRate()" onvolumechange="updateVol()" ontimeupdate="updateTime()" id="bg" loop preload="auto">
+&lt;audio onratechange="updateRate()" onvolumechange="updateVol()" ontimeupdate="updateTime()" id="bg" loop preload="auto">
     &lt;source src="audio/1.mp3" type="audio/mp3">
 &lt;/audio>
 &lt;div onclick="changeRate()" id="rateDiv">&lt;h1 id="rateDisplay">Playback Rate:&lt;br>&lt;span id="rateVal">1&lt;/span>&lt;/h1>&lt;/div>
@@ -108,13 +108,6 @@ body, html{
     height: 100%;
     font-family: Helvetica, 'sans-serif';
     margin: 0;
-}
-
-#bg{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 1;
 }
 
 #rateDiv, #volDiv, #timeDiv{

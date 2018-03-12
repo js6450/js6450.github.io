@@ -10,13 +10,6 @@
         margin: 0;
     }
 
-    #bg{
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        z-index: 1;
-    }
-
     #rateDiv, #volDiv, #timeDiv{
         width: calc(100% / 3);
         height: 100%;
@@ -76,7 +69,7 @@
 
 </style>
 <body>
-<audio onloadeddata="console.log('load done')" onratechange="updateRate()" onvolumechange="updateVol()" ontimeupdate="updateTime()" id="bg" loop preload="auto">
+<audio onratechange="updateRate()" onvolumechange="updateVol()" ontimeupdate="updateTime()" id="bg" loop preload="auto">
     <source src="audio/1.mp3" type="audio/mp3">
 </audio>
 <div onclick="changeRate()" id="rateDiv"><h1 id="rateDisplay">Playback Rate:<br> <span id="rateVal">1</span></h1></div>
@@ -90,6 +83,7 @@
 </div>
 </body>
 <script type="text/javascript">
+    var actx = new (window.AudioContext || window.webkitAudioContext)();
     var bg = document.getElementById('bg');
 
     function playAudio() {
@@ -135,6 +129,7 @@
     }
 
     function updateTime(){
+
         document.getElementById('timeVal').innerHTML = bg.currentTime;
 
         var greenVal = parseInt(bg.currentTime / bg.duration * 255);
