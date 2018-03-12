@@ -84,6 +84,19 @@ document.getElementById('bgm').pause();
                     <li><b>played</b>: Return whether audio is has been played</li>
                     <li><b>volume</b>: Set or return volume of audio</li>
                 </ul>
+                <h5>Events</h5>
+                <p>Below is a list of events to be used as HTML attributes for &lt;audio> tag:</p>
+                <ul>
+                    <li><b>oncanplaythrough</b>: fires when browser is ready to play the audio file all the way through without buffering</li>
+                    <li><b>onended</b>: fires when the audio file finishes playing</li>
+                    <li><b>onpause</b>: fires when the audio player is paused</li>
+                    <li><b>onplay</b>: fires when the audio player is set to play</li>
+                    <li><b>onratechange</b>: fires when the playback rate changes</li>
+                    <li><b>onseeking</b>: fires when the user is seaking to a new position of the audio playback</li>
+                    <li><b>ontimeupdate</b>: fires when the playback position changes (when the audio file is playing)</li>
+                    <li><b>onvolumechange</b>: fires when the volume of playback changes</li>
+                </ul>
+                <p>Link to <a href="https://www.w3schools.com/tags/ref_av_dom.asp">full reference of audio methods, properties and events</a>.</p>
                 <h5>Demo: Simple Audio Player</h5>
                 <iframe height="500px" src="js-audio-demo-basic.html"></iframe>
                 <p><u><a class="p-link" href="js-audio-demo-basic.html">Click to view it as a full web page.</a></u></p>
