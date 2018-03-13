@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/js-audio-advanced.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/js-audio-analyser.html" afterPath="$PROJECT_DIR$/js-audio-analyser.html" />
     </list>
@@ -21,7 +22,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="15">
               <caret line="31" column="90" lean-forward="false" selection-start-line="31" selection-start-column="90" selection-end-line="31" selection-end-column="90" />
               <folding />
             </state>
@@ -31,8 +32,8 @@
       <file leaf-file-name="js-audio.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js-audio.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="82" column="60" lean-forward="false" selection-start-line="82" selection-start-column="60" selection-end-line="82" selection-end-column="60" />
+            <state relative-caret-position="231">
+              <caret line="101" column="60" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding>
                 <element signature="e#1764#1768#0" expanded="true" />
                 <element signature="e#1779#1783#0" expanded="true" />
@@ -90,11 +91,28 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="js-audio-advanced.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js-audio-advanced.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="154" column="18" lean-forward="true" selection-start-line="154" selection-start-column="18" selection-end-line="154" selection-end-column="18" />
+              <folding>
+                <element signature="e#2246#2250#0" expanded="true" />
+                <element signature="e#2312#2316#0" expanded="true" />
+                <element signature="e#2367#2371#0" expanded="true" />
+                <element signature="e#2415#2419#0" expanded="true" />
+                <element signature="e#2967#2971#0" expanded="true" />
+                <element signature="e#3017#3021#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="js-audio-analyser.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="178" column="33" lean-forward="false" selection-start-line="178" selection-start-column="33" selection-end-line="178" selection-end-column="33" />
+            <state relative-caret-position="463">
+              <caret line="242" column="37" lean-forward="true" selection-start-line="242" selection-start-column="37" selection-end-line="242" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -132,8 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/template.html" />
-        <option value="$PROJECT_DIR$/basic-css.html" />
         <option value="$PROJECT_DIR$/cssani.html" />
         <option value="$PROJECT_DIR$/cssani-examples.html" />
         <option value="$PROJECT_DIR$/cssbasics.html" />
@@ -182,6 +198,8 @@
         <option value="$PROJECT_DIR$/js-audio-demo-basic.html" />
         <option value="$PROJECT_DIR$/js-audio.html" />
         <option value="$PROJECT_DIR$/js-audio-context.html" />
+        <option value="$PROJECT_DIR$/js-audio-advanced.html.js" />
+        <option value="$PROJECT_DIR$/js-audio-advanced.html" />
         <option value="$PROJECT_DIR$/js-audio-analyser.html" />
       </list>
     </option>
@@ -193,8 +211,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="439" />
-    <option name="y" value="24" />
+    <option name="x" value="438" />
+    <option name="y" value="23" />
     <option name="width" value="1001" />
     <option name="height" value="877" />
   </component>
@@ -244,8 +262,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -396,15 +414,16 @@
       <workItem from="1519876467837" duration="12448000" />
       <workItem from="1520322539191" duration="855000" />
       <workItem from="1520406316997" duration="14106000" />
-      <workItem from="1520907732765" duration="21840000" />
+      <workItem from="1520907732765" duration="21874000" />
+      <workItem from="1520959254027" duration="3103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264514000" />
+    <option name="totallyTimeSpent" value="267651000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="439" y="24" width="1001" height="877" extended-state="0" />
+    <frame x="438" y="23" width="1001" height="877" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28469387" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -465,20 +484,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/osc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/p5-creating-mult.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/parallax-demo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -754,26 +759,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js-audio-demo-basic.html.js" />
     <entry file="file://$PROJECT_DIR$/basic-js.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="538">
           <caret line="273" column="40" lean-forward="false" selection-start-line="273" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="31" column="90" lean-forward="false" selection-start-line="31" selection-start-column="90" selection-end-line="31" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -788,14 +778,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-97">
           <caret line="84" column="31" lean-forward="true" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js-audio-context.html" />
+    <entry file="file://$PROJECT_DIR$/js-audio-advanced.html.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="31" column="90" lean-forward="false" selection-start-line="31" selection-start-column="90" selection-end-line="31" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js-audio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="82" column="60" lean-forward="false" selection-start-line="82" selection-start-column="60" selection-end-line="82" selection-end-column="60" />
+        <state relative-caret-position="231">
+          <caret line="101" column="60" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
             <element signature="e#1764#1768#0" expanded="true" />
             <element signature="e#1779#1783#0" expanded="true" />
@@ -852,18 +866,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js-audio-context.html">
+    <entry file="file://$PROJECT_DIR$/js-audio-advanced.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="132" column="29" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="213" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="595">
+          <caret line="154" column="18" lean-forward="true" selection-start-line="154" selection-start-column="18" selection-end-line="154" selection-end-column="18" />
+          <folding>
+            <element signature="e#2246#2250#0" expanded="true" />
+            <element signature="e#2312#2316#0" expanded="true" />
+            <element signature="e#2367#2371#0" expanded="true" />
+            <element signature="e#2415#2419#0" expanded="true" />
+            <element signature="e#2967#2971#0" expanded="true" />
+            <element signature="e#3017#3021#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="178" column="33" lean-forward="false" selection-start-line="178" selection-start-column="33" selection-end-line="178" selection-end-column="33" />
+        <state relative-caret-position="463">
+          <caret line="242" column="37" lean-forward="true" selection-start-line="242" selection-start-column="37" selection-end-line="242" selection-end-column="37" />
           <folding />
         </state>
       </provider>

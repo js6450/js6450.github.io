@@ -86,11 +86,8 @@
         initPanner();
         initAnalyser();
 
-        // createVisuals(bufferLength);
-
         audioSource.connect(panner);
         panner.connect(analyser);
-        // source.connect(analyser);
         analyser.connect(audioCtx.destination);
     }
 
@@ -101,11 +98,8 @@
             initPanner();
             initAnalyser();
 
-            // createVisuals();
-
             streamSource.connect(panner);
             panner.connect(analyser);
-            // source.connect(analyser);
             analyser.connect(audioCtx.destination);
 
             if(params.input == false){
@@ -193,10 +187,13 @@
             audioSource.connect(panner);
         }
     });
-    gui.add(params, 'visual', ['spectrum', 'waveform']).onChange(function(value){
+    gui.add(params, 'visual', ['spectrum', 'waveform', 'amplitude']).onChange(function(value){
         var divNum = bufferLength;
-        if(params.visual == 'waveform'){
+        if(value == 'waveform'){
             divNum = analyser.fftSize;
+        }
+        else if(value == 'amplitude'){
+            divNum = 1;
         }
         createVisuals(divNum);
     });
@@ -224,17 +221,32 @@
     });
 
     setInterval(function(){
-        analyser.getByteFrequencyData(spectrumArray);
-        analyser.getFloatTimeDomainData(waveArray);
         // console.log(dataArray);
 
         if(params.visual == "spectrum"){
+            analyser.getByteFrequencyData(spectrumArray);
+
             for(var i = 0; i < bufferLength; i++){
+                totalAmp += spectrumArray[i] / 255;
                 document.getElementById(i).style.bottom = 0;
                 var newHeight = (spectrumArray[i] / 255) * (window.innerHeight / 2) + window.innerHeight / 2;
                 document.getElementById(i).style.height = newHeight + "px";
             }
+
+        }else if(params.visual == 'amplitude'){
+            analyser.getByteFrequencyData(spectrumArray);
+
+            var totalAmp = 0;
+            for(var i = 0; i < bufferLength; i++){
+                totalAmp += spectrumArray[i] / 255;
+            }
+            totalAmp /= bufferLength;
+            // console.log(totalAmp);
+            var newHeight = totalAmp * (window.innerHeight / 2) + window.innerHeight / 2;
+            document.getElementById("0").style.height = newHeight + "px";
         }else{
+            analyser.getFloatTimeDomainData(waveArray);
+
             for(var i = 0; i < analyser.fftSize; i++){
                 document.getElementById(i).style.height = "5px";
                 document.getElementById(i).style.bottom = waveArray[i] * (window.innerHeight / 2) + window.innerHeight / 2 + "px";

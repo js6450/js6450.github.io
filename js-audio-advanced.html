@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Javascript with Audio | Advanced</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <h4>Javascript with Audio using <b>AudioContext</b></h4>
+                <p>AudioContext is a javascript object that allows you to access the actual data of the audio on the web. Using AudioContext, you can get the frequency data in relative to time of the audio element as well as get amplitudes of frequency bands. You can also control panning of the sound as well as apply other effects to the audio data that alter the overall sound.</p>
+                <iframe height="500" src="js-audio-analyser.html"></iframe>
+                <p><u><a class="p-link" href="js-audio-analyser.html">Click to view it as a full web page.</a></u></p>
+                <h5>Attaching AudioContext to an &lt;audio> Tag</h5>
+                <p></p>
+                <pre>
+&lt;audio id="audio" loop controls preload="auto">
+    &lt;source src="audio/1.mpt" type="audio/mpeg">
+&lt;/audio>
+                </pre>
+                <pre>
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                </pre>
+                <pre>
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+var audioElement = document.getElementById('audio');
+var audioSource = audioCtx.createMediaElementSource(audioElement);
+
+audioSource.connect(audioCtx.destination);
+                </pre>
+                <h5>Creating Audio Stream (Microphone Input) and Attaching Audio Context</h5>
+                <pre>
+&lt;audio id="audio" loop controls preload="auto">&lt;/audio>
+                </pre>
+                <pre>
+var audioElement = document.getElementById('audio');
+
+navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
+    audioElement.srcObject = stream;
+}).catch(function(err){
+    console.log(err);
+});
+                </pre>
+                <pre>
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
+    var streamSource = audioCtx.createMediaStreamSource(stream);
+
+    streamSource.connect(audioCtx.destination);
+}).catch(function(err){
+    console.log(err);
+});
+                </pre>
+                <h5>Analysing Sound</h5>
+                <p class="p-head"><u>Spectrum</u>: Amplitudes of Frequency Bands</p>
+                <pre>
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+var audioElement = document.getElementById('audio');
+var audioSource = audioCtx.createMediaElementSource(audioElement);
+
+var analyser = audioCtx.createAnalyser();
+var bufferLength = analyser.frequencyBinCount;
+var spectrumArray = new Uint8Array(bufferLength);
+
+audioSource.connect(analyser);
+analyser.connect(audioCtx.destination);
+                </pre>
+                <pre>
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
+    var streamSource = audioCtx.createMediaStreamSource(stream);
+
+    var analyser = audioCtx.createAnalyser();
+    var bufferLength = analyser.frequencyBinCount;
+    var spectrumArray = new Uint8Array(bufferLength);
+
+    streamSource.connect(analyser);
+    analyser.connect(audioCtx.destination);
+}).catch(function(err){
+    console.log(err);
+});
+                </pre>
+                <pre>
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+var audioElement = document.getElementById('audio');
+var audioSource = audioCtx.createMediaElementSource(audioElement);
+
+var analyser = audioCtx.createAnalyser();
+var bufferLength = analyser.frequencyBinCount;
+var spectrumArray = new Uint8Array(bufferLength);
+
+audioSource.connect(analyser);
+analyser.connect(audioCtx.destination);
+
+setInterval(function(){
+    analyser.getByteFrequencyData(spectrumArray);
+}, 50);
+                </pre>
+                <p class="p-head"><u>Waveform</u>: Frequency over Time</p>
+                <pre>
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+var audioElement = document.getElementById('audio');
+var audioSource = audioCtx.createMediaElementSource(audioElement);
+
+var analyser = audioCtx.createAnalyser();
+//to save waveform data
+var waveArray = new Float32Array(analyser.fftSize);
+
+audioSource.connect(analyser);
+analyser.connect(audioCtx.destination);
+                </pre>
+                <pre>
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+var audioElement = document.getElementById('audio');
+var audioSource = audioCtx.createMediaElementSource(audioElement);
+
+var analyser = audioCtx.createAnalyser();
+//to save waveform data
+var waveArray = new Float32Array(analyser.fftSize);
+
+audioSource.connect(analyser);
+analyser.connect(audioCtx.destination);
+
+setInterval(function(){
+    analyser.getFloatTimeDomainData(waveArray);
+}, 50);
+                </pre>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+</html>
