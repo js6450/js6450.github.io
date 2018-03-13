@@ -7,6 +7,13 @@
 <style>
     body, html{
         height: 100%;
+        font-family: 'Helvetica', sans-serif;
+        overflow-y: hidden;
+        margin: 0;
+    }
+
+    .dg, #audio{
+        display: none;
     }
 
     #audio{
@@ -18,11 +25,30 @@
         bottom: 0;
         z-index: -1;
     }
+
+    #preload{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 100vh;
+    }
+
+    #preload-txt{
+        font-size: 3em;
+        animation: blink 1s alternate infinite;
+    }
+
+    @keyframes blink {
+        to{
+            opacity: 0;
+        }
+    }
 </style>
 <body>
-<audio id="audio" autoplay loop controls>
+<audio id="audio" autoplay loop controls preload="auto">
 </audio>
 <div id="visuals"></div>
+<div id="preload"><span id="preload-txt">LOADING AUDIO...</span></div>
 </body>
 <script type="text/javascript">
 
@@ -45,6 +71,13 @@
     function setupAudioFile(){
         audioElement = document.getElementById('audio');
         audioElement.src = "audio/bgm.mp3";
+
+        audioElement.addEventListener('canplay', function(){
+            document.getElementById('preload').style.display = "none";
+            document.getElementById('audio').style.display = "block";
+            document.getElementsByClassName('dg')[0].style.display = "block";
+        });
+
         audioSource = audioCtx.createMediaElementSource(audioElement);
 
         initPanner();
@@ -99,7 +132,7 @@
     var vis;
     function createVisuals(divNum){
 
-        console.log(divNum);
+        // console.log(divNum);
 
         vis = document.getElementById('visuals');
 
