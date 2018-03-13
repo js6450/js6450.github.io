@@ -164,7 +164,7 @@
     }
 
     var params = {
-        "showAudioControl": true,
+        "control": true,
         "input": false,
         "visual": "spectrum",
         "fftSize": 128,
@@ -174,7 +174,7 @@
     };
 
     var gui = new dat.gui.GUI();
-    gui.add(params, 'showAudioControl').onChange(function(value){
+    gui.add(params, 'control').onChange(function(value){
         if(value){
             document.getElementById('audio').style.display = "block";
         }else{
