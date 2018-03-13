@@ -1,83 +1,214 @@
-<!doctype html>
-<body>
-<script>
-    const audioCtx = new AudioContext();
-
-    //Create audio source
-    //Here, we use an audio file, but this could also be e.g. microphone input
-    const audioEle = new Audio();
-    audioEle.src = 'audio/bgm.mp3';//insert file name here
-    audioEle.autoplay = true;
-    audioEle.loop = true;
-    audioEle.preload = 'auto';
-    const audioSourceNode = audioCtx.createMediaElementSource(audioEle);
-
-    //Create analyser node
-    const analyserNode = audioCtx.createAnalyser();
-    analyserNode.fftSize = 256;
-    const bufferLength = analyserNode.frequencyBinCount;
-    const dataArray = new Float32Array(bufferLength);
-
-    var panner = audioCtx.createPanner();
-    panner.panningModel = 'HRTF';
-    panner.coneOuterAngle = 0;
-    audioSourceNode.connect(panner);
-    panner.connect(audioCtx.destination);
-
-    var listener = audioCtx.listener;
-
-    if(listener.forwardX) {
-        listener.forwardX.value = 0;
-        listener.forwardY.value = 0;
-        listener.forwardZ.value = -1;
-        listener.upX.value = 0;
-        listener.upY.value = 1;
-        listener.upZ.value = 0;
-    } else {
-        listener.setOrientation(0,0,-1,0,1,0);
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Context Demo</title>
+    <script src="libraries/dat.gui.min.js"></script>
+</head>
+<style>
+    body, html{
+        height: 100%;
     }
 
-    listener.setPosition(window.innerWidth / 2, window.innerHeight / 2, 300);
+    #audio{
+        z-index: 1;
+    }
+
+    .bar{
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+    }
+</style>
+<body>
+<audio id="audio" autoplay loop controls>
+</audio>
+<div id="visuals"></div>
+</body>
+<script type="text/javascript">
+
+    var audioCtx, audioElement;
+    var audioSource, streamSource;
+    var panner;
+    var analyser, bufferLength, spectrumArray, waveArray;
+
+    initContext();
+
+    function initContext(){
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        setupStream();
+        setupAudioFile();
+
+        createVisuals(bufferLength);
+    }
+
+    function setupAudioFile(){
+        audioElement = document.getElementById('audio');
+        audioElement.src = "audio/bgm.mp3";
+        audioSource = audioCtx.createMediaElementSource(audioElement);
+
+        initPanner();
+        initAnalyser();
+
+        // createVisuals(bufferLength);
+
+        audioSource.connect(panner);
+        panner.connect(analyser);
+        // source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+    }
+
+    function setupStream(){
+        navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
+            streamSource = audioCtx.createMediaStreamSource(stream);
+
+            initPanner();
+            initAnalyser();
+
+            // createVisuals();
+
+            streamSource.connect(panner);
+            panner.connect(analyser);
+            // source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+
+            if(params.input == false){
+                streamSource.disconnect();
+                audioSource.connect(panner);
+            }
+
+        }).catch(function(err){
+            console.log(err);
+        });
+    }
 
 
-    //Set up audio node network
-    audioSourceNode.connect(analyserNode);
-    analyserNode.connect(audioCtx.destination);
+    function initPanner(){
+        panner = audioCtx.createPanner();
+        panner.panningModel = 'HRTF';
+    }
 
-    //Create 2D canvas
-    const canvas = document.createElement('canvas');
-    canvas.style.position = 'absolute';
-    canvas.style.top = 0;
-    canvas.style.left = 0;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    document.body.appendChild(canvas);
-    const canvasCtx = canvas.getContext('2d');
-    canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+    function initAnalyser(){
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 128;
+        bufferLength = analyser.frequencyBinCount;
+        spectrumArray = new Uint8Array(bufferLength);
+        waveArray = new Float32Array(analyser.fftSize);
+    }
 
+    var vis;
+    function createVisuals(divNum){
 
-    function draw() {
-        //Schedule next redraw
-        requestAnimationFrame(draw);
+        console.log(divNum);
 
-        //Get spectrum data
-        analyserNode.getFloatFrequencyData(dataArray);
+        vis = document.getElementById('visuals');
 
-        //Draw black background
-        canvasCtx.fillStyle = 'rgb(0, 0, 0)';
-        canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+        // var divNum = bufferLength;
+        var barWidth = Math.ceil(window.innerWidth / divNum);
 
-        //Draw spectrum
-        const barWidth = (canvas.width / bufferLength) * 2.5;
-        let posX = 0;
-        for (let i = 0; i < bufferLength; i++) {
-            const barHeight = (dataArray[i] + 140) * 2;
-            canvasCtx.fillStyle = 'rgb(' + Math.floor(barHeight + 100) + ', 50, 50)';
-            canvasCtx.fillRect(posX, canvas.height - barHeight / 2, barWidth, barHeight / 2);
-            posX += barWidth + 1;
+        if(vis.children.length > 0){
+            while(vis.children[0]){
+                vis.children[0].remove();
+            }
         }
+
+        // console.log(barWidth);
+        for(var i = 0; i < divNum; i++){
+            var newDiv = document.createElement("DIV");
+
+            newDiv.id = i;
+            newDiv.className = "bar";
+            newDiv.style.width = barWidth + "px";
+            newDiv.style.backgroundColor = "pink";
+            newDiv.style.left = i * barWidth + "px";
+
+            vis.appendChild(newDiv);
+        }
+
+    }
+
+    var params = {
+        "showAudioControl": true,
+        "input": false,
+        "visual": "spectrum",
+        "fftSize": 128,
+        "posX": 0,
+        "posY": 0,
+        "posZ": 0
     };
 
-    draw();
+    var gui = new dat.gui.GUI();
+    gui.add(params, 'showAudioControl').onChange(function(value){
+        if(value){
+            document.getElementById('audio').style.display = "block";
+        }else{
+            document.getElementById('audio').style.display = "none";
+        }
+    });
+    gui.add(params, 'input').onChange(function(value){
+        if(value){
+            audioElement.pause();
+            // audioElement.currentTime = 0;
+            audioSource.disconnect();
+            streamSource.connect(panner);
+        }else{
+            audioElement.play();
+            streamSource.disconnect();
+            audioSource.connect(panner);
+        }
+    });
+    gui.add(params, 'visual', ['spectrum', 'waveform']).onChange(function(value){
+        var divNum = bufferLength;
+        if(params.visual == 'waveform'){
+            divNum = analyser.fftSize;
+        }
+        createVisuals(divNum);
+    });
+    gui.add(params, 'fftSize', [128, 256, 512, 1024, 2048]).onChange(function(value){
+        analyser.fftSize = value;
+        bufferLength = analyser.frequencyBinCount;
+        spectrumArray = new Uint8Array(bufferLength);
+        waveArray = new Float32Array(analyser.fftSize);
+
+        var divNum = bufferLength;
+        if(params.visual == 'waveform'){
+            divNum = analyser.fftSize;
+        }
+        createVisuals(divNum);
+    });
+    var f1 = gui.addFolder('panner');
+    f1.add(params, 'posX', -5, 5, 0.1).onChange(function(value){
+        panner.positionX.value = value;
+    });
+    f1.add(params, 'posY', -5, 5, 0.1).onChange(function(value){
+        panner.positionY.value = value;
+    });
+    f1.add(params, 'posZ', -5, 5, 0.1).onChange(function(value){
+        panner.positionZ.value = value;
+    });
+
+    setInterval(function(){
+        analyser.getByteFrequencyData(spectrumArray);
+        analyser.getFloatTimeDomainData(waveArray);
+        // console.log(dataArray);
+
+        if(params.visual == "spectrum"){
+            for(var i = 0; i < bufferLength; i++){
+                document.getElementById(i).style.bottom = 0;
+                var newHeight = (spectrumArray[i] / 255) * (window.innerHeight / 2) + window.innerHeight / 2;
+                document.getElementById(i).style.height = newHeight + "px";
+            }
+        }else{
+            for(var i = 0; i < analyser.fftSize; i++){
+                document.getElementById(i).style.height = "5px";
+                document.getElementById(i).style.bottom = waveArray[i] * (window.innerHeight / 2) + window.innerHeight / 2 + "px";
+                // var newHeight = waveArray[i] * (window.innerHeight / 2);
+                // document.getElementById(i).style.height = newHeight + "px";
+            }
+        }
+
+    }, 50);
+
+
 </script>
-</body>
+</html>
