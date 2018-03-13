@@ -12,7 +12,7 @@
         margin: 0;
     }
 
-    .dg, #audio{
+    .dg.ac, #audio{
         display: none;
     }
 
@@ -75,7 +75,7 @@
         audioElement.addEventListener('canplay', function(){
             document.getElementById('preload').style.display = "none";
             document.getElementById('audio').style.display = "block";
-            document.getElementsByClassName('dg')[0].style.display = "block";
+            document.getElementsByClassName('dg ac')[0].style.display = "blockgit ";
         });
 
         audioSource = audioCtx.createMediaElementSource(audioElement);
