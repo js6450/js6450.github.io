@@ -93,8 +93,8 @@
       <file leaf-file-name="js-audio-analyser.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="77" column="78" lean-forward="false" selection-start-line="77" selection-start-column="78" selection-end-line="77" selection-end-column="78" />
+            <state relative-caret-position="264">
+              <caret line="77" column="61" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -194,7 +194,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="439" />
-    <option name="y" value="23" />
+    <option name="y" value="24" />
     <option name="width" value="1001" />
     <option name="height" value="877" />
   </component>
@@ -396,15 +396,15 @@
       <workItem from="1519876467837" duration="12448000" />
       <workItem from="1520322539191" duration="855000" />
       <workItem from="1520406316997" duration="14106000" />
-      <workItem from="1520907732765" duration="20962000" />
+      <workItem from="1520907732765" duration="21385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263636000" />
+    <option name="totallyTimeSpent" value="264059000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="439" y="23" width="1001" height="877" extended-state="0" />
+    <frame x="439" y="24" width="1001" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28469387" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -863,8 +863,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="77" column="78" lean-forward="false" selection-start-line="77" selection-start-column="78" selection-end-line="77" selection-end-column="78" />
+        <state relative-caret-position="264">
+          <caret line="77" column="61" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding />
         </state>
       </provider>

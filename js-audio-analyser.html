@@ -73,9 +73,12 @@
         audioElement.src = "audio/bgm.mp3";
 
         audioElement.addEventListener('canplay', function(){
-            document.getElementById('preload').style.display = "none";
-            document.getElementById('audio').style.display = "block";
-            document.getElementsByClassName('dg ac')[0].style.display = "blockgit ";
+            document.getElementById('preload-txt').innerHTML = "READY!";
+            setTimeout(function(){
+                document.getElementById('preload').style.display = "none";
+                document.getElementById('audio').style.display = "block";
+                document.getElementsByClassName('dg ac')[0].style.display = "block";
+            }, 1000);
         });
 
         audioSource = audioCtx.createMediaElementSource(audioElement);
