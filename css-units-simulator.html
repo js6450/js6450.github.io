@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Position & Display Simulator</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<style>
+    .col{
+        width: calc(100% / 3);
+        float: left;
+    }
+
+    .form-row{
+        width: 33%;
+        float: left;
+        margin-bottom: 1rem;
+    }
+
+    #panel{
+        min-height: 450px;
+    }
+</style>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <iframe id="code-demo" height="500px" src="css-units-demo.html"></iframe>
+                <br>
+                <form id="panel" oninput="checkNum()" onchange="checkVal()">
+                    <div class="form-col">
+                        Unit:<br>
+                        <div class="form-row">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                                <input type="radio" class="mdl-radio__button" name="uVal" value="%" checked>
+                                <span class="mdl-radio__label">%</span>
+                            </label>
+                        </div>
+                        <div class="form-row">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                                <input type="radio" class="mdl-radio__button" name="uVal" value="vw">
+                                <span class="mdl-radio__label">vw</span>
+                            </label>
+                        </div>
+                        <div class="form-row">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                                <input type="radio" class="mdl-radio__button" name="uVal" value="vh">
+                                <span class="mdl-radio__label">vh</span>
+                            </label>
+                        </div>
+                    </div>
+                    <br><br>
+                    <hr>
+                    <br>
+                    <div class="col">
+                        Outer &lt;div>:<br>
+                        Width: <span id="outer-width">100%</span>
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="outer" min="0" max="100" value="100" tabindex="0">
+                        </p>
+                        <br>
+                        Height: <span id="outer-height">100%</span>
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="outer" min="0" max="100" value="100" tabindex="0">
+                        </p>
+                        Margin Top: <span id="outer-mt">0%</span>
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="outer" min="0" max="100" value="0" tabindex="0">
+                        </p>
+                        <br>
+                        Margin Left: <span id="outer-ml">0%</span>
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="outer" min="0" max="100" value="0" tabindex="0">
+                        </p>
+                        <br>
+                    </div>
+                    <div class="col">
+                        Middle &lt;div>:<br>
+                        Width: <span id="mid-width">50%</span>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="mid" min="0" max="100" value="50" tabindex="0">
+                        </p>
+                        <br>
+                        Height: <span id="mid-height">50%</span>
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="mid" min="0" max="100" value="50" tabindex="0">
+                        </p>
+                        Margin Top: <span id="mid-mt">0%</span>
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="mid" min="0" max="100" value="0" tabindex="0">
+                        </p>
+                        <br>
+                        Margin Left: <span id="mid-ml">0%</span>
+                        <br>
+                        <p style="width: 80%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="mid" min="0" max="100" value="0" tabindex="0">
+                        </p>
+                        <br>
+                    </div>
+                    <div class="col">
+                        Inner &lt;div>:<br>
+                        Width: <span id="inner-width">50%</span>
+                        <p style="width: 100%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="inner" min="0" max="100" value="50" tabindex="0">
+                        </p>
+                        <br>
+                        Height: <span id="inner-height">50%</span>
+                        <br>
+                        <p style="width: 100%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="inner" min="0" max="100" value="50" tabindex="0">
+                        </p>
+                        Margin Top: <span id="inner-mt">0%</span>
+                        <br>
+                        <p style="width: 100%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="inner" min="0" max="100" value="0" tabindex="0">
+                        </p>
+                        <br>
+                        Margin Left: <span id="inner-ml">0%</span>
+                        <br>
+                        <p style="width: 100%; margin-top: 1rem;">
+                            <input class="mdl-slider mdl-js-slider" type="range" name="inner" min="0" max="100" value="0" tabindex="0">
+                        </p>
+                        <br>
+                    </div>
+                </form>
+            </div>
+            <footer style="clear: both;" class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+<script>
+    var currUnit = "%";
+    var outDiv, midDiv, inDiv;
+
+    function checkNum(){
+
+        outDiv = document.getElementById('code-demo').contentDocument.getElementById('outer-div');
+        midDiv = document.getElementById('code-demo').contentDocument.getElementById('mid-div');
+        inDiv = document.getElementById('code-demo').contentDocument.getElementById('inner-div');
+
+        outDiv.style.width = document.getElementById('outer-width').innerHTML = document.getElementsByName('outer')[0].value + currUnit;
+        outDiv.style.height = document.getElementById('outer-height').innerHTML = document.getElementsByName('outer')[1].value + currUnit;
+        outDiv.style.marginTop = document.getElementById('outer-mt').innerHTML = document.getElementsByName('outer')[2].value + currUnit;
+        outDiv.style.marginLeft = document.getElementById('outer-ml').innerHTML = document.getElementsByName('outer')[3].value + currUnit;
+
+        midDiv.style.width = document.getElementById('mid-width').innerHTML = document.getElementsByName('mid')[0].value + currUnit;
+        midDiv.style.height = document.getElementById('mid-height').innerHTML = document.getElementsByName('mid')[1].value + currUnit;
+        midDiv.style.marginTop = document.getElementById('mid-mt').innerHTML = document.getElementsByName('mid')[2].value + currUnit;
+        midDiv.style.marginLeft = document.getElementById('mid-ml').innerHTML = document.getElementsByName('mid')[3].value + currUnit;
+
+        inDiv.style.width = document.getElementById('inner-width').innerHTML = document.getElementsByName('inner')[0].value + currUnit;
+        inDiv.style.height = document.getElementById('inner-height').innerHTML = document.getElementsByName('inner')[1].value + currUnit;
+        inDiv.style.marginTop = document.getElementById('inner-mt').innerHTML = document.getElementsByName('inner')[2].value + currUnit;
+        inDiv.style.marginLeft = document.getElementById('inner-ml').innerHTML = document.getElementsByName('inner')[3].value + currUnit;
+    }
+
+    function checkVal(){
+        // var selectSpan = document.getElementById('code-demo').contentDocument.getElementsByClassName('selection')[0];
+        for(var i = 0; i < document.getElementsByName('uVal').length; i++){
+            if(document.getElementsByName('uVal')[i].checked){
+                currUnit = document.getElementsByName('uVal')[i].value;
+            }
+        }
+    }
+</script>
+</html>
