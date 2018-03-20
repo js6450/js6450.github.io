@@ -65,6 +65,11 @@
                 <img class="p-mid-img" src="img/foundations/link.png">
                 <img class="p-mid-img" src="img/foundations/script.png">
                 <p>Reason for this is that CSS styles needs to be loaded before HTML to apply the styles as the HTML elements are loaded, and Javascript files need the HTML elements inside &lt;body> to load beforehand, because they usually contain code that use and manipulate the HTML elements.</p>
+                <p>Assuming that you are following the layout of the folder structure as described in the previous section, if we need to access image files from the css stylesheet, we would need to set the path to the file like below:</p>
+                <pre>
+background-image: url("../assets/img/imgName.jpg");
+                </pre>
+                <p>The <b>../</b> is a way of indicating to move out of the current folder. In this case, since the style.css file is inside css folder, it will move one folder out into the root folder of the project, where index.html is located, then go into the assets folder then img folder to locate a file called imgName.jpg</p>
                 <p class="p-head"><u>Indentation</u></p>
                 <p>Although indentation has no effect in the actual result of the website, it is important to keep a practice of neatly indenting your code for your own good. As the code gets more complex and long, it will help you reduce errors as well as visually see where a single line of code fits into forming the structure / logic of the web page.</p>
                 <img class="p-mid-img" src="img/foundations/indent.png">
