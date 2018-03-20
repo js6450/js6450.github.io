@@ -60,42 +60,81 @@
                 <img class="p-mid-img" src="img/foundations/folderstructure.png">
                 <p>The assets folder contains all of my media assets. Inside, it has three other folders: audio, img and video. This way, I can upload my media assets into their categories and keep them organized.</p>
                 <p>Please keep in mind that this isn't the only way that you can structure your folders and files. What is important is that you try to keep a uniform format that you are comfortable with and repeatedly use.</p>
-                <p class="p-head"><u>Indentation</u></p>
-                <p>Although indentation has no effect in the actual result of the website, it is important to keep a practice of neatly indenting your code for your own good. As the code gets more complex and long, it will help you reduce errors as well as visually see where a single line of code fits into forming the structure / logic of the web page.</p>
-                <img class="p-mid-img" src="img/foundations/indent.png">
-                <p>Above image is an example of proper indentation for HTML pages. In HTML, another added reason for good indentation will be that CSS styles are <b>inherited</b> by the elements that are surrounding an html element. For example, if using percentage as unit of the size of .col-img &lt;img> tags, it will depend on what the defined sizes are for the .col and .row &lt;div> elements.</p>
-                <img class="p-mid-img" src="img/foundations/indent-js.png">
                 <p class="p-head"><u>Including External Files to HTML: CSS and Javascript</u></p>
                 <p>Generally, CSS stylesheets are added between the &lt;head> tags and Javscript files are added <b>AFTER</b> the closing &lt;/body> tag.</p>
                 <img class="p-mid-img" src="img/foundations/link.png">
                 <img class="p-mid-img" src="img/foundations/script.png">
                 <p>Reason for this is that CSS styles needs to be loaded before HTML to apply the styles as the HTML elements are loaded, and Javascript files need the HTML elements inside &lt;body> to load beforehand, because they usually contain code that use and manipulate the HTML elements.</p>
+                <p class="p-head"><u>Indentation</u></p>
+                <p>Although indentation has no effect in the actual result of the website, it is important to keep a practice of neatly indenting your code for your own good. As the code gets more complex and long, it will help you reduce errors as well as visually see where a single line of code fits into forming the structure / logic of the web page.</p>
+                <img class="p-mid-img" src="img/foundations/indent.png">
+                <p>Above image is an example of proper indentation for HTML pages. In HTML, another added reason for good indentation will be that CSS styles are <b>inherited</b> by the elements that are surrounding an html element. For example, if using percentage as unit of the size of .col-img &lt;img> tags, it will depend on what the defined sizes are for the .col and .row &lt;div> elements.</p>
+                <img class="p-mid-img" src="img/foundations/indent-js.png">
+                <p>In javascript, indentation becomes especially helpful when using multiple loops and if-statements. It will help you see what sections of code are inside an if-statement or a loop as well as help you see you have the correct number of brackets.</p>
                 <p class="p-head"><u>Comments</u></p>
-                <p></p>
+                <p>In any programming language, you can <b>comment</b> on the source code, meaning that you can make annotations for you and your collaborators. Generally, it is a good practice to make comments that briefly describe what different parts of the code do. You can also make comment out sections of code that you want to keep as reference but no longer want. If you are a complex function, commenting is a good way to make note of the syntax for future reference. Comments will not be executed and will be ignored by the web browser. Future you will appreciate the comments you make today!</p>
+                <p>Comments can be written followed by a group of characters that differ from a programming language to another.</p>
+                <p><u>HTML</u>:</p>
                 <pre>
 &lt;!-- This is a comment in html -->
                 </pre>
                 <img class="p-mid-img" src="img/foundations/comment-html.png">
+                <p><u>CSS</u>:</p>
                 <pre>
-/** This is a comment in css **/
+/* This is a comment in css */
                 </pre>
                 <img class="p-mid-img" src="img/foundations/comment-css.png">
+                <p><u>Javascript</u>:</p>
                 <pre>
-// This is a comment in javascript
+// This is a one line comment in javascript
+
+/*
+This is a multi line comment
+in javascript
+*/
                 </pre>
                 <img class="p-mid-img" src="img/foundations/comment-js.png">
                 <h5>HTML</h5>
                 <p class="p-head">Class & Id</p>
-                <pre>
-&lt;div class="row">
-    &lt;div class="col">&lt;/div>
-    &lt;div class="col">&lt;/div>
-&lt;/div>
-&lt;div class="row">
-    &lt;div class="col">&lt;/div>
-    &lt;div class="col">&lt;/div>
-&lt;/div>
-                </pre>
+                <p>There are three major ways that HTML elements can be referenced in CSS and Javascript: by tag name, class and id. Tag name is the most general way of referencing HTML elements. Referencing the &lt;p> tag will select ALL &lt;p> tags in the HTML document. Classes can be used to select a <b>GROUP of HTML elements</b>, and thus one class can be given to multiple HTML elements. Ids are used to select a <b>SINGLE HTML element</b>, thus is given to an HTML element that you want to separate out / is an unique element on an html document. Below example will help make a more clear distinction between use of classes and ids.</p>
+                <style>
+                    .code-demo-row{
+                        width: 200px;
+                        height: 100px;
+                        margin: auto;
+                    }
+
+                    .code-demo-col{
+                        width: 50%;
+                        height: 100%;
+                        float: left;
+                    }
+
+                    #firstBox{
+                        background-color: red;
+                    }
+
+                    #secondBox{
+                        background-color: blue;
+                    }
+
+                    #thirdBox{
+                        background-color: green;
+                    }
+
+                    #fourthBox{
+                        background-color: yellow;
+                    }
+                </style>
+                <div class="code-demo-row">
+                    <div id="firstBox" class="code-demo-col"></div>
+                    <div id="secondBox" class="code-demo-col"></div>
+                </div>
+                <div class="code-demo-row">
+                    <div id="thirdBox" class="code-demo-col"></div>
+                    <div id="fourthBox" class="code-demo-col"></div>
+                </div>
+                <p><u>HTML</u>:</p>
                 <pre>
 &lt;div class="row">
     &lt;div id="firstBox" class="col">&lt;/div>
@@ -106,10 +145,53 @@
     &lt;div id="fourthBox" class="col">&lt;/div>
 &lt;/div>
                 </pre>
-                <p></p>
+                <p><u>CSS</u>:</p>
+                <pre>
+.row{
+    width: 200px;
+    height: 100px;
+    margin: auto;
+}
+
+.col{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#firstBox{
+    background-color: red;
+}
+
+#secondBox{
+    background-color: blue;
+}
+
+#thirdBox{
+    background-color: green;
+}
+
+#fourthBox{
+    background-color: yellow;
+}
+                </pre>
+                <p>Above code is the basic HTML structure for creating a 2 by 2 grid. Within each &lt;div> of class .row, there are two &lt;div> of class .col - hence classes are used for applying a single set of styles for multiple elements. Here, you can see that classes should be used to elements that you want to have the same styles. Each &lt;div> element of class .col also have a unique id that are being used to apply different background-color property. Thus, id is used to apply differentiated and unique values for an individual HTML element.</p>
                 <p class="p-head">Attributes</p>
-                <p>We've already seen the two most commonly used attributes: <b>id</b> and <b>class</b>.</p>
+                <p>Attributes are properties that belong to a particular HTML element. Attributes of HTML tags are written inside of the opening tag in the form of:</p>
+                <pre>
+&lt;p attribute="value">&lt;/p>
+                </pre>
+                <p>This should look familiar, because we've seen things like below before:</p>
+                <pre>
+&lt;img class="grid-img" width="100%" src="img/1.jpg">
+                </pre>
+                <p>In the above line inside the &lt;img> tag, class, width and src are all <b>attributes</b> of the &lt;img> tag. Some HTML tags have <b>required attributes</b>. For example, src is a required attribute for &lt;img>. Some attributes are applicable only for certain HTML tags, again like src for &lt;img> - because src cannot be used for a &lt;p> element, for example. However, there are attributes that can be used for <b>ANY</b> HTML elements (they are called global attributes) - two of the most commonly used being <b>class</b> and <b>id</b>. There are also another type of attributes that we've seen - event attributes.</p>
                 <p><b>Event Attributes:</b></p>
+                <p>Event attributes are used to have an event trigger javascript code for a specific HTML element. There are other ways of attaching javascript code to an event (in pure javascript), but you can also simply attach a function to an HTML element using an event attribute like below:</p>
+                <pre>
+&lt;img onclick="changeImg()" src="img/1.jpg">
+                </pre>
+                <p>The list below includes commonly used event attributes:</p>
                 <ul>
                     <li>Window Events:</li>
                     <ul>
@@ -143,13 +225,14 @@
                         <li>onvolumechange</li>
                     </ul>
                 </ul>
-                <p class="p-head">Non-English characters: Charset</p>
+                <p class="p-head">Non-Roman characters: Charset</p>
+                <p>To be able to display non-English / or non-roman characters on a web page, you will need to specify that the web page also uses sets of non-roman characters. This can be done by simply adding the line below within the &lt;head> tag.</p>
                 <pre>
 &lt;meta charset="utf-8">
                 </pre>
                 <h5>CSS</h5>
                 <p class="p-head">Units</p>
-                <p><b>px</b> is the <u>absolute unit of measurement</u>, meaning that 1 px on one screen is generally the same as 1 px on aother screen.</p>
+                <p><b>px</b> is the <u>absolute unit of measurement</u>, meaning that 1 px on one screen is generally the same as 1 px on aother screen. But this also means that if you set a width of an HTML element in px, no matter the size of the screen, it will always the absolute fixed size. One alternative is % (percentage).</p>
                 <p>There are actually a lot more units of measurement than just pixels and percentages you can use in css. This <a href="https://www.w3schools.com/cssref/css_units.asp" target="_blank">w3schools page</a> shows all the existing units of measurement in css. Out of the many units of measurement, I want to emphasize just a couple: <b>vw, vh and em</b>.</p>
                 <p><b>vw</b> and <b>vh</b> stands for <u>"viewport width"</u> and <u>"viewport height"</u>. 1 vw is 1% of the viewport width, which means the current width of the window. This means that if the width of your window changes, the absolute size (in pixels) of 1 vw will change accordingly. Thus, 100 vw will signify the width of your browser window and 100 vh will be the height of your browser window. You can also make something 120 vw, which would be the 120% of your viewport width.</p>
                 <p>See below demo for comparison between %, vw and vh: (<a target="_blank" href="css-units-simulator.html">Click here for full page demo.</a>)</p>
@@ -272,17 +355,18 @@ position: relative;
 display: block;
 margin: auto;
                 </pre>
+                <p>The <b>margin: auto;</b> line of CSS automatically adjusts the margin-left and margin-right to center the HTML element <b>HORIZONTALLY</b>.</p>
                 <h5>Javascript</h5>
                 <p>The best way to get use to Javascript is simply to play with it. Sections of the Javascript simulator are added below, but <a target="_blank" href="dom-bom-events.html">click here to see the full version</a>.</p>
                 <p class="p-head">Looking up HTML element(s)</p>
                 <pre>
 document.getElementById('idName')
                 </pre>
-                <p></p>
+                <p>: returns a single HTML element of id "idName".</p>
                 <pre>
 document.getElementsByClassName('className')
                 </pre>
-                <p></p>
+                <p>: returns an <b>ARRAY</b> of HTML elements of class "className". You can reference individual elements of the array using an <b>ARRAY INDEX</b>.</p>
                 <pre>
 var boxes = document.getElementsByClassName('box');
 
@@ -290,9 +374,11 @@ for(var i = 0; i < boxes.length; i++){
     boxes[i].style.width = i * 50 + "px";
 }
                 </pre>
+                <p>Above for-loop iterates through all elements of class "box" and sets the width of each div to be in increasing multiples of 50px.</p>
                 <pre>
 document.getElementsByTagName('h1')
                 </pre>
+                <p>: returns an <b>ARRAY</b> of HTML elements of tag "h1". Same as the way for getElementsByClassName, you can access individual elements using an <b>ARRAY INDEX</b>.</p>
                 <pre>
 var titles = document.getElementsByClassName('title');
 
@@ -336,8 +422,11 @@ for(var i = 0; i < titles.length; i++){
                     <pre class="code-result"></pre>
                 </div>
                 <br>
-                <p class="p-head">DEMO: Type Animation with Javascript</p>
+                <p class="p-head">DEMO 1: Type Animation with Javascript</p>
+                <p>This demo focuses on the use of <b>arrays</b>, <b>if-statements</b> and <b>setInterval</b> function.</p>
+                <hr>
                 <div id="typePanel"><span id="typedText"></span></div>
+                <hr>
                 <p><u>HTML</u>:</p>
                 <pre>
 &lt;div id="typePanel">&lt;span id="typedText">&lt;/span>&lt;/div>
@@ -358,29 +447,31 @@ for(var i = 0; i < titles.length; i++){
                 <pre>
 var words = ["Hello.", "Welcome.", "How are you today?"];
 var currText = "";
-var currWord = 0;
-var currLetter = 0;
+var currWord = "";
+var wordIndex = 0;
+var letterIndex = 0;
 var typeDirection = 0;
 
 setInterval(function(){
 
     if(typeDirection == 0){
-        currText += words[currWord][currLetter];
+        currWord = words[wordIndex];
+        currText += currWord[letterIndex];
 
-        if(currLetter < words[currWord].length - 1){
-            currLetter++;
+        if(letterIndex < words[wordIndex].length - 1){
+            letterIndex++;
         }else{
             typeDirection = 1;
         }
     }else{
-        currText = words[currWord].slice(0, currLetter);
-        if(currLetter > 0){
-            currLetter--;
+        currText = words[wordIndex].slice(0, letterIndex);
+        if(letterIndex > 0){
+            letterIndex--;
         }else{
-            if(currWord < words.length - 1){
-                currWord++;
+            if(wordIndex < words.length - 1){
+                wordIndex++;
             }else{
-                currWord = 0;
+                wordIndex = 0;
             }
             typeDirection = 0;
         }
@@ -389,6 +480,45 @@ setInterval(function(){
     document.getElementById('typedText').innerHTML = currText;
 
 }, 200);
+                </pre>
+                <p class="p-head">DEMO 2: onclick Event with variable <b><i>this</i></b></p>
+                <p>This demo demonstrates the use of <b><i>this</i></b> variable</p>
+                <iframe height="400px" src="foundations-click-demo.html"></iframe>
+                <p><u>HTML</u>:</p>
+                <pre>
+&lt;div id="box-container">&lt;/div>
+                </pre>
+                <p><u>CSS</u>:</p>
+                <pre>
+body, html{
+    margin: 0;
+    background-color: white;
+}
+
+.box{
+    width: 10vw;
+    height: 10vh;
+    background-color: red;
+}
+                </pre>
+                <p><u>Javascript</u>:</p>
+                <pre>
+var newDiv;
+window.onload = function(){
+    for(var i = 0; i < 10; i++){
+        newDiv = document.createElement("DIV");
+        newDiv.className = "box";
+        newDiv.setAttribute("onclick", "changeBG(this)");
+
+        newDiv.style.marginLeft = i * 10 + "vw";
+
+        document.getElementById("box-container").appendChild(newDiv);
+    }
+}
+
+function changeBG(currDiv){
+    currDiv.style.backgroundColor = "blue";
+}
                 </pre>
             </div>
             <footer class="mdl-mini-footer">

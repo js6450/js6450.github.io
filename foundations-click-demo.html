@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DEMO: onclick with this</title>
+</head>
+<style>
+    body, html{
+        margin: 0;
+        background-color: white;
+    }
+
+    .box{
+        width: 10vw;
+        height: 10vh;
+        background-color: red;
+    }
+</style>
+<body>
+<div id="box-container"></div>
+</body>
+<script type="text/javascript">
+    var newDiv;
+    window.onload = function(){
+        for(var i = 0; i < 10; i++){
+            newDiv = document.createElement("DIV");
+            newDiv.className = "box";
+            newDiv.setAttribute("onclick", "changeBG(this)");
+
+            newDiv.style.marginLeft = i * 10 + "vw";
+
+            document.getElementById("box-container").appendChild(newDiv);
+        }
+    }
+
+    function changeBG(currDiv){
+        currDiv.style.backgroundColor = "blue";
+    }
+</script>
+</html>
