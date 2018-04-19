@@ -200,6 +200,19 @@
                 <p>Secondly, we've changed the colorMode to HSB, which stands for Hue, Saturation, Brightness. This color mode makes it easy for us to go through the primary colors, as we only need to change one number, hue. In this example, saturation and brightness is set to their maximum values, 360. We can also use frameCount variable in our color value. Which will make it change from red to blue, and on repeat.</p>
                 <p>The last thing to look at is the second number in our background() function. This second number indicates the opacity of the background, and using this will create this "fading" or "trailing" visual.</p>
                 <h5>Mouse Interactions</h5>
+                <p>Just like setup() and draw() functions for p5.js, the code inside of the mousePressed() function will run whenever a mouse press is detected.</p>
+                <pre>
+    function mousePressed(){
+        //run when mouse is pressed
+    }
+                </pre>
+                <p>There are also environment variables of p5.js that make it easy to use mouse positions to create visuals.</p>
+                <ul>
+                    <li><b>mouseX</b>: x position of mouse ( = event.clientX)</li>
+                    <li><b>mouseY</b>: y position of mouse ( = event.clientY)</li>
+                    <li><b>pmouseX</b>: x position of mouse in the <u>PREVIOUS</u> frame</li>
+                    <li><b>pmouseY</b>: y position of mouse in the <u>PREVIOUS</u> frame</li>
+                </ul>
                 <iframe height="300px" src="p5-sketch/basicMouse.html"></iframe>
                 <pre>
     function setup() {
@@ -215,6 +228,84 @@
     function mousePressed() {
         fill(random(255), random(255), random(255));
         ellipse(mouseX, mouseY, 50, 50);
+    }
+                </pre>
+                <p>Looking at the demo code above, you will see that the lines are drawn whenever the mouse moves around. This is because the environment values (mouseX, mouseY, pmouseX and pmouseY) are used inside of the draw() function, meaning that it will update the values for every frame of the animation of the canvas. The ellipse is drawn only upon pressing of the mouse, because the code is inside of the mousePressed() function.</p>
+                <iframe height="300px" src="p5-sketch/basicMouse-styled.html"></iframe>
+                <pre>
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+    }
+
+    function draw() {
+        background(0, 30);
+
+        stroke(255);
+        strokeWeight(5);
+        line(pmouseX, pmouseY, mouseX, mouseY);
+    }
+
+    function mousePressed() {
+        fill(random(255), random(255), random(255));
+        ellipse(mouseX, mouseY, 50, 50);
+    }
+                </pre>
+                <p>The difference between the above demo code and the previous one is whether the background is redrawn for every frame or not. The opacity of the background color is what makes the "trailing" visual effect.</p>
+                <h5>Keyboard Interactions</h5>
+                <p>Similar to mousePressed() function, the keyPressed() function will detect and run code inside.</p>
+                <pre>
+    function keyPressed(){
+        //run when a key is pressed
+    }
+                </pre>
+                <p>There are also environment variables that keep track of the last key on the user's keyboard that was pressed:</p>
+                <ul>
+                    <li><b>key</b>: the value of last ASCII key pressed</li>
+                    <li><b>keyCode</b>: the value of last non-ASCII key pressed</li>
+                </ul>
+                <p>The <b>key</b> variable keeps track of the last ASCII key that was pressed - meaning that any LETTER key on your keyboard. The <b>keyCode</b> variable stores the value of any other non-ASCII "special" keys - the conclusive list of these offered by p5.js are: BACKSPACE, DELETE, ENTER, RETURN, TAB, ESCAPE, SHIFT, CONTROL, OPTION, ALT, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW.</p>
+                <iframe height="300px" src="p5-sketch/basicKeyboard.html"></iframe>
+                <pre>
+    var xPos;
+    var yPos;
+    var redVal;
+    var greenVal;
+    var blueVal;
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+
+        xPos = width / 2;
+        yPos = height / 2;
+
+        redVal = random(255);
+        greenVal = random(255);
+        blueVal = random(255);
+
+        noStroke();
+    }
+
+    function draw() {
+        //background(0, 30);
+
+        fill(redVal, greenVal, blueVal);
+        ellipse(xPos, yPos, 100, 100);
+    }
+
+    function keyPressed() {
+        redVal = random(255);
+        greenVal = random(255);
+        blueVal = random(255);
+
+        if(keyCode == LEFT_ARROW){
+            xPos -= 15;
+        }else if(keyCode == RIGHT_ARROW){
+            xPos += 15;
+        }else if(keyCode == UP_ARROW){
+            yPos -= 15;
+        }else if(keyCode == DOWN_ARROW){
+            yPos += 15;
+        }
     }
                 </pre>
             </div>

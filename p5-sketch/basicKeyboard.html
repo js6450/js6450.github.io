@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Keyboard Interaction</title>
+    <script src="../libraries/p5.js" type="text/javascript"></script>
+    <script src="../libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="../libraries/p5.sound.js" type="text/javascript"></script>
+</head>
+<style>
+    body, html{
+        overflow: hidden;
+    }
+
+    body{
+        margin: 0;
+        background-color: white;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    var xPos;
+    var yPos;
+    var redVal;
+    var greenVal;
+    var blueVal;
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+
+        xPos = width / 2;
+        yPos = height / 2;
+
+        redVal = random(255);
+        greenVal = random(255);
+        blueVal = random(255);
+
+        noStroke();
+    }
+
+    function draw() {
+        //background(0, 30);
+
+        fill(redVal, greenVal, blueVal);
+        ellipse(xPos, yPos, 100, 100);
+    }
+
+    function keyPressed() {
+        redVal = random(255);
+        greenVal = random(255);
+        blueVal = random(255);
+
+        if(keyCode == LEFT_ARROW){
+            xPos -= 15;
+        }else if(keyCode == RIGHT_ARROW){
+            xPos += 15;
+        }else if(keyCode == UP_ARROW){
+            yPos -= 15;
+        }else if(keyCode == DOWN_ARROW){
+            yPos += 15;
+        }
+    }
+</script>
+</html>
