@@ -308,6 +308,58 @@
         }
     }
                 </pre>
+                <h5>Code from Workshop:</h5>
+                <pre>
+function setup(){
+	//runs once before draw
+	createCanvas(windowWidth, windowHeight);
+	noStroke();
+
+	// ellipseMode(CORNER);
+	rectMode(CENTER);
+}
+
+//width, height
+//windowWidth, windowHeight
+//mouseX, mouseY
+//pmouseX, pmouseY
+
+function draw(){
+	//runs on loop
+	background(0, 30);
+
+	noStroke();
+	for(var y = 0; y < 10; y++){
+		for(var x = 0; x < 10; x++){
+			push();
+			//fill(random(255), random(255), random(255));
+			translate(x * (width / 10), y * (height / 10));
+			rotate(frameCount * 0.01);
+			fill(150, 150, 255, 100);
+			rect(0, 0, 10, 150);
+			push();
+			rotate(frameCount * 0.05);
+			noFill();
+			stroke(random(255), random(100, 150), random(100, 150), 50);
+			strokeWeight(5);
+			ellipse(0, 0, 75, 50);
+			pop();
+			pop();
+		}
+	}
+
+	stroke(255, 0, 0);
+	strokeWeight(25);
+	line(pmouseX, pmouseY, mouseX, mouseY);
+	noStroke();
+	fill(0, 0, 255);
+	ellipse(mouseX, mouseY, 15, 15);
+}
+
+function windowResized(){
+	resizeCanvas(windowWidth, windowHeight);
+}
+                </pre>
             </div>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
