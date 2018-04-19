@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>Basics of p5.js</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <h4><b>Basics of p5.js</b></h4>
+                <div id="first-sketch"></div>
+                <h5>What is p5.js?</h5>
+                <p><a href="https://p5js.org/" target="_blank" class="p-link">p5.js</a> is a javascript library which you can basically think of as Processing's javascript version. It allows users to do graphical programming easily. In this workshop, we are going to use p5.js to create visuals iteratively and make multiples do the same, or make them each do something similar but different.</p>
+                <h5>Getting started with p5.js</h5>
+                <p>The first thing that we need to do is downloading the library files and importing it to the directory that we are going to be using in.</p>
+                <p>The library files can be downloaded from <a href="https://p5js.org/download/" target="_blank" class="p-link">here</a>. There is also an option to use the library files without downloading through <a href="https://cdnjs.com/libraries/p5.js" target="_blank" class="p-link">CDN</a>.</p>
+                <p>If you have downloaded p5.js library files, conventionally, you would create a folder inside the directory of the folder you are working in called "libraries" or "libs" and copy the library files, in this cas files called <i>p5.js</i> inside of that folder. Next we need to reference this file so we can use it in our html pages. We need to put something like this inside of our &lt;head> tag.
+                <pre>
+        &lt;script language="javascript" src="libraries/p5.js">&lt;/script>
+      </pre>
+                If you are going with the CDN option, which means you are referencing to a file on the web, you should be doing this instead:
+                <pre>
+        &lt;script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.js">&lt;/script>
+      </pre>
+                And now, we are ready to code using p5.js!</p>
+                <h5>Creating rectangles using for-loops</h5>
+                <p>First, we need to create a new javascript file to do our coding using p5.js in. If you haven't done this already, create a folder for your javascript files to be in, and create a new javascript file.</p>
+                <p>Before we do any serious coding, let's create the basic structure of p5.js - creating setup and draw.
+                <pre>
+        function setup(){
+
+        }
+        function draw(){
+
+        }
+      </pre>
+                The code you put inside <i>setup</i> section will run only once at the very beginning of the load - hence the name "setup". Here is where you would usually define the size of your sketch, background color and initialize values, arrays, objects, etc,. The code you put in <i>draw</i> runs continuously over time - running 60 frames per second by default. We will put code that is to do with animating our visual elements in here.</p>
+                <p>Let's create a simple sketch of a rectangle traveling from one end of the sketch to another, and repeat this process continuously.
+                    <iframe height="140px" src="p5-sketch/basicRect.html"></iframe>
+                <pre>
+      function setup() {
+        createCanvas(640, 140);
+        rectMode(CENTER);
+      }
+      function draw(){
+        background(0);
+        stroke(255);
+        fill(100);
+        rect(frameCount % width, height / 2, 100, 100);
+      }
+      </pre>
+                There are some things to note in this sketch. p5.js has some values you can use that are pre-defined by the library itself. <i>width</i> and <i>height</i> are set by p5 library based on the size you give when you first create the canvas. <i>frameCount</i> is also another one of the predefined variables that keep track of how many frames the draw loop has displayed since the program has started to run. This value is useful when we are trying to animate something repeatedly as long as the frameCount is increasing.</p>
+                <p><i>%</i> operand stands for the <i>modulo</i> operand. Modulus is basically a calculation of the remainder of a division. In the case of our example, frameCount % width will return the remainder of the operation <i>frameCount / width</i>. frameCount % width essentially returns values from 0 to width - 1, in this order and in repetition.</p>
+
+                <p>Now, instead of trying to make the rectangle move from left to right, we are going to try to rotate the rectangle.</p>
+
+                <iframe height="140px" src="p5-sketch/simpleRotate.html"></iframe>
+                <pre>
+      function setup() {
+        createCanvas(windowWidth, 140);
+        rectMode(CENTER);
+        noStroke();
+      }
+
+      function draw() {
+        background(0);
+        translate(width / 2, height / 2);
+        rotate(frameCount);
+        rect(0, 0, 100, 100);
+      }
+      </pre>
+                <p>The important things to note in this example are the arguments in the translate() function and the x and y coordinates in rect(). You will see that I've put the actual coordinates of the rectangle in translate instead of in rect(). This is because in order for us to rotate a rectangle in its place, we are essentially translating our canvas to let (width / 2, height / 2) be our new origin. This is why, in this new translated canvas, if we draw our rect at (0, 0), it renders as if it is at (width / 2, height / 2).</p>
+
+                <p>Next, we are going to put some iteration to our program to create multiple rotating rectangles.</p>
+
+                <iframe height="140px" src="p5-sketch/rowRotate.html"></iframe>
+                <pre>
+      var col = 5;
+      var c_width;
+
+      function setup() {
+        createCanvas(windowWidth, 140);
+        rectMode(CENTER);
+        noStroke();
+        background(0);
+
+        c_width = width / col;
+      }
+
+      function draw() {
+        background(0);
+
+        for (var i = 0; i < col; i++) {
+          push();
+          translate(i * c_width + c_width / 2, height / 2);
+          rotate(frameCount);
+          fill(255);
+          rect(0, 0, 100, 100);
+          pop();
+        }
+      }
+      </pre>
+                <p>In this example, we create a variable called <i>col</i> to indicate the number of columns we want to have, which we use to divide up our canvas in to 5 columns. Then we can calculate the width of each column by doing width / col. I've saved this value to a variable called c_width, which stands for cell width. We use a for-loop to create rectangles iteratively. Because our rectMode is set to CENTER, we have to calculate the center point of these divided columns. We do this by i * c_width + c_width / 2. The rest is the same, except for the fact that we surround our code inside of the for-loop with push() and pop().</p>
+                <p>If you are familiar with processing, this is equivalent to pushMatrix() and popMatrix(). This makes each of our iterated operations contained and prevents transformations of an iteration from affecting others. Without this push() and pop(), the operations will add on from the previous iterations, meaning the first translation will be at 1 * c_width + c_width / 2, but the second translation will be at 1 * c_width + c_width / 2 PLUS 2* c_width + c_width / 2.</p>
+
+                <p>Now, with this knowledge as a base, let's use a nested for-loop to create a matrix of rotating rectangles.</p>
+
+                <iframe height="240px" src="p5-sketch/rotateRect.html"></iframe>
+                <pre>
+      var col = 10;
+      var row = 8;
+
+      var c_width, c_height;
+
+      function setup() {
+        createCanvas(500, 500);
+        rectMode(CENTER);
+        noStroke();
+        background(0);
+
+        c_width = width / col;
+        c_height = height / row;
+      }
+
+      function draw() {
+        background(0);
+
+        for (var j = 0; j < row; j++) {
+          for (var i = 0; i < col; i++) {
+            push();
+            translate(i * c_width + c_width / 2, j * c_height + c_height / 2);
+            rotate(frameCount);
+            fill(random(255), random(255), random(255));
+            rect(0, 0, 30, 30);
+            pop();
+          }
+        }
+      }
+      </pre>
+
+                <p>Here, we need to add variable row and c_height in order to set the number of rows and calculate the cell's height. We need to put another for-loop outside of our exising loop. In regards to the order of events of the nested for-loop, in our case, when j = 0, we will be at our 1st row, and we start drawing one rect per column until we are done with our iteration at when i < col (i = col - 1). When one row is done being drawn, it moves down to the next row and so on. We can calculate our center point for our height in the same way that we do for width by doing j * c_height + c_height / 2.</p>
+
+                <p>Before we move on in terms of learning more about iterative methods, let's look at ways that we can make this graphics a little easier on our eyes.</p>
+
+                <iframe height="240px" src="p5-sketch/styledRotateRect.html"></iframe>
+                <pre>
+      var col = 10;
+      var row = 5;
+
+      var c_width, c_height;
+
+      function setup() {
+        createCanvas(windowWidth, 240);
+        rectMode(CENTER);
+        colorMode(HSB);
+        noStroke();
+        background(0);
+
+        c_width = width / col;
+        c_height = height / row;
+      }
+
+      function draw() {
+        background(0, 30);
+
+        for (var j = 0; j < row; j++) {
+          for (var i = 0; i < col; i++) {
+            push();
+            translate(i * c_width + c_width / 2, j * c_height + c_height / 2);
+            rotate(frameCount * 0.05);
+            fill(frameCount % 360, 360, 360);
+            rect(0, 0, 30, 30);
+            pop();
+          }
+        }
+      }
+      </pre>
+
+                <p>The first thing to note is that our rotation has slowed down. This is because, inside the rotate() function, it now has * 0.05 after the frameCount. This decreases the speed of the rotation.</p>
+                <p>Secondly, we've changed the colorMode to HSB, which stands for Hue, Saturation, Brightness. This color mode makes it easy for us to go through the primary colors, as we only need to change one number, hue. In this example, saturation and brightness is set to their maximum values, 360. We can also use frameCount variable in our color value. Which will make it change from red to blue, and on repeat.</p>
+                <p>The last thing to look at is the second number in our background() function. This second number indicates the opacity of the background, and using this will create this "fading" or "trailing" visual.</p>
+                <h5>Mouse Interactions</h5>
+                <iframe height="300px" src="p5-sketch/basicMouse.html"></iframe>
+                <pre>
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+    }
+
+    function draw() {
+        stroke(random(255), random(255), random(255));
+        strokeWeight(5);
+        line(pmouseX, pmouseY, mouseX, mouseY);
+    }
+
+    function mousePressed() {
+        fill(random(255), random(255), random(255));
+        ellipse(mouseX, mouseY, 50, 50);
+    }
+                </pre>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+</html>
