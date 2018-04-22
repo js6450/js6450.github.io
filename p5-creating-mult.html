@@ -33,24 +33,24 @@
             <p>Click on canvas to create balls and press space bar to make them move again:</p>
             <iframe height="500" src="bouncingBall.html"></iframe>
             <br>
-            <!--<p>The overall structure of the example is that every time mouse is pressed 5 more ellipses are created. Note that I say 5 more, because the canvas still draws the ellipses that were generated before. For this example, we will be mainly focusing on how objects can be used with for-loops and arrays so that multiple objects can be created and updated.</p>-->
-            <!--<p>First, let's create our Circle class, which will contain the attributes and behaviors of our "balls" or "circles" that appear when we mousepress.</p>-->
-            <!--<pre>-->
-    <!--function Circle(x, y){-->
-		<!--this.x = x;-->
-		<!--this.y = y;-->
-        <!--this.dia = 50;-->
+            <p>The overall structure of the example is that every time mouse is pressed 5 more ellipses are created. Note that I say 5 more, because the canvas still draws the ellipses that were generated before. For this example, we will be mainly focusing on how objects can be used with for-loops and arrays so that multiple objects can be created and updated.</p>
+            <p>First, let's create our Circle class, which will contain the attributes and behaviors of our "balls" or "circles" that appear when we mousepress.</p>
+            <pre>
+    function Circle(x, y){
+		this.x = x;
+		this.y = y;
+        this.dia = 50;
 
-        <!--this.display = function(){-->
-			<!--fill(255, 255, 255);-->
-			<!--ellipse(this.x, this.y, this.dia, this.dia);-->
-		<!--}-->
-    <!--}-->
-            <!--</pre>-->
-            <!--<p>Above code is for creating the class we name Circle, and it takes 2 arguements when created. This means, when we create a new object of class Circle, we would say:</p>-->
-            <!--<pre>-->
-    <!--var c = new Circle(200, 300);-->
-            <!--</pre>-->
+        this.display = function(){
+			fill(255, 255, 255);
+			ellipse(this.x, this.y, this.dia, this.dia);
+		}
+    }
+            </pre>
+            <p>Above code is for creating the class we name Circle, and it takes 2 arguments when created. This means, when we create a new object of class Circle, we would say:</p>
+            <pre>
+    var c = new Circle(200, 300);
+            </pre>
             <script src="https://gist.github.com/js6450/ed4025a02c4d6bed1dbe821db1724edf.js"></script>
             <h5>Example 2: Spinning balls</h5>
             <p>Click on canvas to create spinning balls:</p>

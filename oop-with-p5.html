@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>OOP with p5.js</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<style>
+.lang:hover{
+    cursor: pointer;
+    background: black;
+    color: white;
+    text-decoration: none;
+}
+
+.selected{
+    background: red;
+    color: white;
+}
+
+.unselected{
+    text-decoration: line-through;
+}
+
+.es6{
+    display: none;
+}
+</style>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <h4><b>Creating Multiples with p5.js</b></h4>
+                <p>To review the basics of p5.js, please read over content from <a class="p-link" href="https://js6450.github.io/basic-p5.html"><u>this previous workshop</u></a>.</p>
+                <iframe height="400px" src="p5-sketch/genCircles.html"></iframe>
+                <p>The concepts that we are going to use to create this sketch are for-loops, arrays, classes and objects. By creating a class, which we can use to create multiple instances of objects, we can apply same structure to each of our objects but also differentiate the values given to it.</p>
+                <p>The objective of this sketch is basically to have circles be generated at the center of the screen. The generated circles are going to move out to eventually go out of the sketch. When one cirlce goes outside the boundaries of the sketch, we create a new circle from the center of the screen.</p>
+                <p>Let's look at the code for creating the class Circle:</p>
+                <p>View below code in <span onclick="showClassic()" class="lang lang-classic selected">Classic Model</span> or <span onclick="showES6()" class="lang lang-es6 unselected">ES6</span></p>
+                <pre class="classic">
+  function Circle(i, j) {
+    this.xorigin = i;
+    this.yorigin = j;
+    this.xpos = i;
+    this.ypos = j;
+    this.size = random(10, 50);
+    this.c = color(random(255), random(255), random(255), 150);
+    this.xspeed = random(-5, 5);
+    this.yspeed = random(-5, 5);
+
+    this.display = function() {
+      fill(this.c);
+      ellipse(this.xpos, this.ypos, this.size, this.size);
+    }
+
+    this.update = function() {
+      this.xpos += this.xspeed;
+      this.ypos += this.yspeed;
+    }
+
+    this.checkBoundary = function() {
+      if (this.xpos > width || this.xpos < 0 || this.ypos < 0 || this.ypos > height) {
+        this.xpos = this.xorigin;
+        this.ypos = this.yorigin;
+      }
+    }
+                </pre>
+                <pre class="es6">
+  "use strict"
+
+  class Circle{
+  	constructor(i, j){
+	  	this.xorigin = i;
+	    this.yorigin = j;
+	    this.xpos = i;
+	    this.ypos = j;
+	    this.size = random(10, 50);
+	    this.c = color(random(255), random(255), random(255), 150);
+	    this.xspeed = random(-5, 5);
+	    this.yspeed = random(-5, 5);
+  	}
+
+  	display(){
+  		fill(this.c);
+        ellipse(this.xpos, this.ypos, this.size, this.size);
+  	}
+
+  	update(){
+  		this.xpos += this.xspeed;
+        this.ypos += this.yspeed;
+  	}
+
+  	checkBoundary(){
+      if (this.xpos > width || this.xpos < 0 || this.ypos < 0 || this.ypos > height) {
+        this.xpos = this.xorigin;
+        this.ypos = this.yorigin;
+      }
+  	}
+  }
+                </pre>
+                <p>The class Circle, requires 2 arguments to initialize an object instance of it. These two values, i and j are used to set the x position and y position of the ellipse, which is evident when we look at the this.display function. This position is then constantly updated by adding our xspeed and yspeed to our xpos and ypos, which we do in our this.update function. The reason why there are values this.xorigin and this.yorigin is for the "regeneration" of the circles. If we actually wanted to keep creating new circles when circles go outside of the sketch boundary, and if we do this by creating more objects whenever one goes outside the boundary, eventually we will have infinite number of Circle objects and our program will crash. The trick to this "regeneration" is a simple resetting of our position to the origin point, in this case, (width / 2, height / 2). This way, we don't need to actually create new Circle objects. this.checkBoundary function checks if each circle has gone off the windown and needs to be reset.</p>
+                <p>Below is the complete code of the sketch. In the setup, we initialize our 100 Circle objects and save them to an array called circles by pushing them into the array. The draw is just a for-loop which calls the functions to checkBoundary, update and display for each of the Circle objects in the cirlces array.</p>
+                <p>View below code in <span onclick="showClassic()" class="lang lang-classic selected">Classic Model</span> or <span onclick="showES6()" class="lang lang-es6 unselected">ES6</span></p>
+                <pre class="classic">
+  var circles = [];
+  var num_circles = 100;
+
+  function setup() {
+    createCanvas(windowWidth, 240);
+
+    noStroke();
+
+    for (var i = 0; i < num_circles; i++) {
+      circles.push(new Circle(width / 2, height / 2));
+    }
+
+  }
+
+  function draw() {
+    background(0, 30);
+
+    for (var i = 0; i < circles.length; i++) {
+      circles[i].checkBoundary();
+      circles[i].update();
+      circles[i].display();
+    }
+  }
+
+  function Circle(i, j) {
+    this.xorigin = i;
+    this.yorigin = j;
+    this.xpos = i;
+    this.ypos = j;
+    this.size = random(10, 50);
+    this.c = color(random(255), random(255), random(255), 150);
+    this.xspeed = random(-5, 5);
+    this.yspeed = random(-5, 5);
+
+    this.display = function() {
+      fill(this.c);
+      ellipse(this.xpos, this.ypos, this.size, this.size);
+    }
+
+    this.update = function() {
+      this.xpos += this.xspeed;
+      this.ypos += this.yspeed;
+    }
+
+    this.checkBoundary = function() {
+      if (this.xpos > width || this.xpos < 0 || this.ypos < 0 || this.ypos > height) {
+        this.xpos = this.xorigin;
+        this.ypos = this.yorigin;
+      }
+    }
+  }
+      </pre>
+      <pre class="es6">
+  "use strict";
+
+  var circles = [];
+  var num_circles = 100;
+
+  function setup() {
+    createCanvas(windowWidth, windowHeight);
+
+    noStroke();
+
+    for (var i = 0; i < num_circles; i++) {
+      circles.push(new Circle(width / 2, height / 2));
+    }
+
+  }
+
+  function draw() {
+    background(0, 30);
+
+    for (var i = 0; i < circles.length; i++) {
+      circles[i].checkBoundary();
+      circles[i].update();
+      circles[i].display();
+    }
+  }
+
+  class Circle{
+  	constructor(i, j){
+	  	this.xorigin = i;
+	    this.yorigin = j;
+	    this.xpos = i;
+	    this.ypos = j;
+	    this.size = random(10, 50);
+	    this.c = color(random(255), random(255), random(255), 150);
+	    this.xspeed = random(-5, 5);
+	    this.yspeed = random(-5, 5);
+  	}
+
+  	display(){
+  		fill(this.c);
+        ellipse(this.xpos, this.ypos, this.size, this.size);
+  	}
+
+  	update(){
+  		this.xpos += this.xspeed;
+        this.ypos += this.yspeed;
+  	}
+
+  	checkBoundary(){
+      if (this.xpos > width || this.xpos < 0 || this.ypos < 0 || this.ypos > height) {
+        this.xpos = this.xorigin;
+        this.ypos = this.yorigin;
+      }
+  	}
+  }
+      </pre>
+
+                <p>Please don't forget to use to the <a href="https://p5js.org/reference" target="_blank">p5.js's reference page</a> for further information about functions used in this workshop and more!</p>
+
+                <h5>Mouse interaction - clickable circle objects</h5>
+                <p>You can also make the circle objects clickable. When the circle is clicked, they turn into hearts. The code for this sketch is shown below!</p>
+                <iframe height="480px" src="p5-sketch/mouseClick.html"></iframe>
+                <p>View below code in <span onclick="showClassic()" class="lang lang-classic selected">Classic Model</span> or <span onclick="showES6()" class="lang lang-es6 unselected">ES6</span></p>
+                <pre class="classic">
+var numCircles = 100;
+var circles = [];
+
+function setup(){
+	createCanvas(windowWidth, 480);
+
+	noStroke();
+
+	for(var i = 0; i < numCircles; i++){
+		circles.push(new Circle(width / 2, height / 2));
+	}
+}
+
+
+function draw(){
+	background(0, 30);
+
+	for(var i = 0; i < circles.length; i++){
+		circles[i].checkBoundary();
+		circles[i].update();
+		circles[i].display();
+	}
+}
+
+function Circle(i, j){
+	this.xorigin = i;
+	this.yorigin = j;
+	this.xpos = i;
+	this.ypos = j;
+	this.xspeed = random(-2, 2);
+	this.yspeed = random(-2, 2);
+	this.size = random(20, 100);
+	this.scale = random(1) + 1;
+	this.c = color(random(255), random(255), random(255), 150);
+	this.toHeart = false;
+
+	this.display = function(){
+		fill(this.c);
+
+		if(mouseIsPressed){
+			if(dist(this.xpos, this.ypos, mouseX, mouseY) <= this.size / 2){
+				this.toHeart = true;
+			}
+		}
+
+		if(this.toHeart == true){
+			push();
+			translate(this.xpos - 50, this.ypos);
+			scale(this.scale);
+			beginShape();
+			vertex(50, 15);
+			bezierVertex(50, -5, 100, 5, 50, 45);
+			vertex(50, 15);
+			bezierVertex(50, -5, 0, 5, 50, 45);
+			endShape();
+			pop();
+		}else{
+			ellipse(this.xpos, this.ypos, this.size, this.size);
+		}
+	}
+
+	this.update = function(){
+		this.xpos += this.xspeed;
+		this.ypos += this.yspeed;
+
+	}
+
+	this.checkBoundary = function(){
+		if(this.xpos <= 0 || this.ypos <= 0 || this.ypos >= height){
+			this.xpos = this.xorigin;
+			this.ypos = this.yorigin;
+			this.toHeart = false;
+		}
+	}
+
+}
+                </pre>
+                <pre class="es6">
+"use strict";
+
+var numCircles = 100;
+var circles = [];
+
+function setup(){
+	createCanvas(windowWidth, 480);
+
+	noStroke();
+
+	for(var i = 0; i < numCircles; i++){
+		circles.push(new Circle(width / 2, height / 2));
+	}
+}
+
+
+function draw(){
+	background(0, 30);
+
+	for(var i = 0; i < circles.length; i++){
+		circles[i].checkBoundary();
+		circles[i].update();
+		circles[i].display();
+	}
+}
+
+class Circle{
+	constructor(i, j){
+		this.xorigin = i;
+		this.yorigin = j;
+		this.xpos = i;
+		this.ypos = j;
+		this.xspeed = random(-2, 2);
+		this.yspeed = random(-2, 2);
+		this.size = random(20, 100);
+		this.scale = random(1) + 1;
+		this.c = color(random(255), random(255), random(255), 150);
+		this.toHeart = false;
+	}
+
+
+	display(){
+		fill(this.c);
+
+		if(mouseIsPressed){
+			if(dist(this.xpos, this.ypos, mouseX, mouseY) <= this.size / 2){
+				this.toHeart = true;
+			}
+		}
+
+		if(this.toHeart == true){
+			push();
+			translate(this.xpos - 50, this.ypos);
+			scale(this.scale);
+			beginShape();
+			vertex(50, 15);
+			bezierVertex(50, -5, 100, 5, 50, 45);
+			vertex(50, 15);
+			bezierVertex(50, -5, 0, 5, 50, 45);
+			endShape();
+			pop();
+		}else{
+			ellipse(this.xpos, this.ypos, this.size, this.size);
+		}
+	}
+
+	update(){
+		this.xpos += this.xspeed;
+		this.ypos += this.yspeed;
+	}
+
+	checkBoundary(){
+		if(this.xpos <= 0 || this.ypos <= 0 || this.ypos >= height){
+			this.xpos = this.xorigin;
+			this.ypos = this.yorigin;
+			this.toHeart = false;
+		}
+	}
+
+}
+                </pre>
+                <h5>Generating bouncing balls on mousePressed</h5>
+                <p>Click on canvas to create balls and press space bar to make them move again:</p>
+                <iframe height="500" src="bouncingBall.html"></iframe>
+                <br>
+                <p>The overall structure of the example is that every time mouse is pressed 5 more ellipses are created. Note that I say 5 more, because the canvas still draws the ellipses that were generated before. For this example, we will be mainly focusing on how objects can be used with for-loops and arrays so that multiple objects can be created and updated.</p>
+                <p>First, let's create our Circle class, which will contain the attributes and behaviors of our "balls" or "circles" that appear when we mousepress.</p>
+                <p>View below code in <span onclick="showClassic()" class="lang lang-classic selected">Classic Model</span> or <span onclick="showES6()" class="lang lang-es6 unselected">ES6</span></p>
+                <pre class="classic">
+function Circle(x, y){
+	this.x = x;
+	this.y = y;
+	this.dia = 50;
+
+	this.display = function(){
+		fill(255, 255, 255);
+		ellipse(this.x, this.y, this.dia, this.dia);
+	}
+}
+                </pre>
+                <pre class="es6">
+class Circle{
+	constructor(x, y){
+		this.x = x;
+		this.y = y;
+		this.dia = 50;
+	}
+
+	display(){
+		fill(255, 255, 255);
+		ellipse(this.x, this.y, this.dia, this.dia);
+	}
+}
+                </pre>
+                <p>Above code is for creating the class we name Circle, and it takes 2 arguments when created. This means, when we create a new object of class Circle, we would say:</p>
+                <pre>
+                var c = new Circle(200, 300);
+                </pre>
+                <p>The full code is available below:</p>
+                <p>View below code in <span onclick="showClassic()" class="lang lang-classic selected">Classic Model</span> or <span onclick="showES6()" class="lang lang-es6 unselected">ES6</span></p>
+                <pre class="classic">
+var MAX_NUM = 200;
+var circles= [];
+
+function setup(){
+	createCanvas(window.innerWidth, window.innerHeight);
+	background(0);
+	noStroke();
+}
+
+function draw(){
+	background(0, 50);
+	for(var i = 0; i < circles.length; i++){
+		circles[i].checkBoundary();
+		circles[i].update();
+		circles[i].display();
+	}
+}
+
+function mouseClicked(){
+	if(circles.length < MAX_NUM){
+		for(var i = 0; i < 5; i++){
+			circles.push(new Circle(mouseX, mouseY));
+		}
+	}
+}
+
+function keyPressed(){
+	if(key == " "){
+		for(var i = 0; i < circles.length; i++){
+			circles[i].speedX = random(-5, 5) * 2;
+			circles[i].speedY = random(-5, 5) * 2;
+		}
+	}
+}
+
+function Circle(x, y){
+	this.x = x;
+	this.y = y;
+	this.speedX = random(-5, 5);
+	this.speedY = random(-5, 5);
+	this.size = random(25, 50);
+	this.color = color(random(255), random(255), random(255), 100);
+	this.checkBoundary = function(){
+		if(this.x < 0){
+			this.x = 0;
+			this.speedX *= -1;
+		}
+		if(this.x > width){
+			this.x = width;
+			this.speedX *= -1;
+		}
+		if(this.y < 0){
+			this.y = 0;
+			this.speedY *= -1;
+		}
+		if(this.y > height){
+			this.y = height;
+			this.speedY *= -1;
+		}
+	}
+	this.update = function(){
+		//restitution
+		this.speedX *= 0.98;
+		this.speedY *= 0.98;
+		this.x += this.speedX;
+		this.y += this.speedY;
+	}
+	this.display = function(){
+		push();
+		fill(this.color);
+		ellipse(this.x, this.y, this.size, this.size);
+		pop();
+	}
+}                </pre>
+                <pre class="es6">
+"use strict";
+
+var MAX_NUM = 200;
+var circles= [];
+
+function setup(){
+	createCanvas(window.innerWidth, window.innerHeight);
+	background(0);
+	noStroke();
+}
+
+function draw(){
+	background(0, 50);
+	for(var i = 0; i < circles.length; i++){
+		circles[i].checkBoundary();
+		circles[i].update();
+		circles[i].display();
+	}
+}
+
+function mouseClicked(){
+	if(circles.length < MAX_NUM){
+		for(var i = 0; i < 5; i++){
+			circles.push(new Circle(mouseX, mouseY));
+		}
+	}
+}
+
+function keyPressed(){
+	if(key == " "){
+		for(var i = 0; i < circles.length; i++){
+			circles[i].speedX = random(-5, 5) * 2;
+			circles[i].speedY = random(-5, 5) * 2;
+		}
+	}
+}
+
+class Circle{
+	constructor(x, y){
+		this.x = x;
+		this.y = y;
+		this.speedX = random(-5, 5);
+		this.speedY = random(-5, 5);
+		this.size = random(25, 50);
+		this.color = color(random(255), random(255), random(255), 100);
+	}
+
+	checkBoundary(){
+		if(this.x < 0){
+			this.x = 0;
+			this.speedX *= -1;
+		}
+		if(this.x > width){
+			this.x = width;
+			this.speedX *= -1;
+		}
+		if(this.y < 0){
+			this.y = 0;
+			this.speedY *= -1;
+		}
+		if(this.y > height){
+			this.y = height;
+			this.speedY *= -1;
+		}
+	}
+
+	update(){
+		//restitution
+		this.speedX *= 0.98;
+		this.speedY *= 0.98;
+		this.x += this.speedX;
+		this.y += this.speedY;
+	}
+
+	display(){
+		push();
+		fill(this.color);
+		ellipse(this.x, this.y, this.size, this.size);
+		pop();
+	}
+}
+                </pre>
+                <h5>Generating spinning balls on mousePressed</h5>
+                <p>Click on canvas to create spinning balls:</p>
+                <p><u><a class="p-link" href="bouncingBall.html">Click to view the demo as a full web page.</a></u></p>
+                <iframe height="500" src="spinningBall.html"></iframe>
+                <br>
+                <p>View below code in <span onclick="showClassic()" class="lang lang-classic selected">Classic Model</span> or <span onclick="showES6()" class="lang lang-es6 unselected">ES6</span></p>
+                <pre class="classic">
+var circles = [];
+
+function setup() {
+	createCanvas(window.innerWidth, window.innerHeight);
+	colorMode(HSB, 360, 100, 100, 100);
+	noStroke();
+}
+
+function draw() {
+	background(0, 15);
+
+	for(var i = 0; i < circles.length; i++){
+		circles[i].display();
+	}
+}
+
+function mousePressed(){
+	circles.push(new Circle(mouseX, mouseY));
+}
+
+function Circle(x, y){
+	this.xpos = x;
+	this.ypos = y;
+	this.distance = random(50, 75);
+	this.rad = random(15, 30);
+	this.col = random(360);
+	this.colSpeed = random(0.01, 0.05);
+
+	this.display = function(){
+		for(var i = 0; i < 6; i++){
+			push();
+			translate(this.xpos, this.ypos);
+			rotate(frameCount * this.colSpeed + PI * i / 3);
+			fill(this.col + 5 * i, sin(frameCount * this.colSpeed) * 30 + 70, 100, 75);
+			ellipse(this.distance + sin(frameCount * this.colSpeed) * this.distance, 0, this.rad + 3 * i, this.rad + 3 * i);
+			pop();
+		}
+	}
+}
+                </pre>
+                <pre class="es6">
+"use strict";
+
+var circles = [];
+
+function setup() {
+	createCanvas(window.innerWidth, window.innerHeight);
+	colorMode(HSB, 360, 100, 100, 100);
+	noStroke();
+}
+
+function draw() {
+	background(0, 15);
+
+	for(var i = 0; i < circles.length; i++){
+		circles[i].display();
+	}
+}
+
+function mousePressed(){
+	circles.push(new Circle(mouseX, mouseY));
+}
+
+class Circle{
+	constructor(x, y){
+		this.xpos = x;
+		this.ypos = y;
+		this.distance = random(50, 75);
+		this.rad = random(15, 30);
+		this.col = random(360);
+		this.colSpeed = random(0.01, 0.05);
+	}
+
+
+	display(){
+		for(var i = 0; i < 6; i++){
+			push();
+			translate(this.xpos, this.ypos);
+			rotate(frameCount * this.colSpeed + PI * i / 3);
+			fill(this.col + 5 * i, sin(frameCount * this.colSpeed) * 30 + 70, 100, 75);
+			ellipse(this.distance + sin(frameCount * this.colSpeed) * this.distance, 0, this.rad + 3 * i, this.rad + 3 * i);
+			pop();
+		}
+	}
+}
+                </pre>
+                <h5>Waves</h5>
+                <p>Move the mouse vertically to change the height of the waves:</p>
+                <p><u><a class="p-link" href="spinningBall.html">Click to view the demo as a full web page.</a></u></p>
+                <iframe height="500" src="waves.html"></iframe>
+                <br>
+                <p><u><a class="p-link" href="waves.html">Click to view the demo as a full web page.</a></u></p>
+                <pre>
+function setup() {
+	createCanvas(window.innerWidth, window.innerHeight);
+	noStroke();
+}
+function draw() {
+	background(0, 15);
+
+	for(var x = 0; x < width; x += 4){
+  	//freq = speed of movement
+  	var freq = sin(frameCount * 0.01) * 0.01;
+    //amp height
+    var amp = sin(frameCount * 0.01) * mouseY / 3;
+    var sinVal = sin((x + frameCount) * freq) * amp;
+    var y = height / 2 + sinVal;
+    var dia = random(3, 10);
+    noStroke();
+    fill(255, random(0, 70))
+    ellipse(x, y, dia, dia);
+    noFill();
+    stroke(255, random(0, 70));
+    line(x, y, x, height);
+}
+for(var x = 0; x < width; x += 4){
+  	//speed of change
+  	//number of waves
+  	var freq = sin(frameCount * 0.005) * 0.005;
+    //height of wave
+    var amp = sin(frameCount * 0.01) * mouseY / 2;
+    var sinVal = sin((PI + x + frameCount) * freq) * amp;
+   	//var sinVal = sin(x + frameCount * freq) * amp;
+   	var y = height / 2 + sinVal;
+   	var dia = random(3, 10);
+   	noStroke();
+   	fill(255, 0, 0, random(0, 70));
+   	ellipse(x, y, dia, dia);
+   	noFill();
+   	stroke(0, 0, 180, random(0, 70));
+   	line(x, y, x, 0);
+   }
+}
+                </pre>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+<script>
+    var classicLangs = document.getElementsByClassName('lang-classic');
+    var es6Langs = document.getElementsByClassName('lang-es6');
+
+    var classics = document.getElementsByClassName('classic');
+    var es6s = document.getElementsByClassName('es6');
+
+    function showClassic(){
+        for(var i = 0; i < classicLangs.length; i++){
+            classicLangs[i].className = "lang lang-classic selected";
+        }
+
+        for(var i = 0; i < es6Langs.length; i++){
+            es6Langs[i].className = "lang lang-es6 unselected";
+        }
+
+        for(var i = 0; i < classics.length; i++){
+            classics[i].style.display = "block";
+        }
+
+        for(var i = 0; i < es6s.length; i++){
+            es6s[i].style.display = "none";
+        }
+    }
+
+    function showES6(){
+        for(var i = 0; i < classicLangs.length; i++){
+            classicLangs[i].className = "lang lang-classic unselected";
+        }
+
+        for(var i = 0; i < es6Langs.length; i++){
+            es6Langs[i].className = "lang lang-es6 selected";
+        }
+
+        for(var i = 0; i < classics.length; i++){
+            classics[i].style.display = "none";
+        }
+
+        for(var i = 0; i < es6s.length; i++){
+            es6s[i].style.display = "block";
+        }
+    }
+</script>
+</html>
