@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/oop-with-p5.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/p5-creating-mult.html" afterPath="$PROJECT_DIR$/p5-creating-mult.html" />
-      <change beforePath="$PROJECT_DIR$/p5-sketch/genCircles.html" afterPath="$PROJECT_DIR$/p5-sketch/genCircles.html" />
+      <change beforePath="$PROJECT_DIR$/oop-with-p5.html" afterPath="$PROJECT_DIR$/oop-with-p5.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="263">
@@ -31,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oop-with-p5.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="oop-with-p5.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oop-with-p5.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3813">
-              <caret line="701" column="0" lean-forward="true" selection-start-line="701" selection-start-column="0" selection-end-line="701" selection-end-column="0" />
+            <state relative-caret-position="427">
+              <caret line="687" column="22" lean-forward="false" selection-start-line="687" selection-start-column="22" selection-end-line="687" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -136,9 +133,9 @@
         <option value="$PROJECT_DIR$/p5-sketch/basicKeyboard.html" />
         <option value="$PROJECT_DIR$/basic-p5.html" />
         <option value="$PROJECT_DIR$/p5-creating-mult.html" />
-        <option value="$PROJECT_DIR$/oop-with-p5.html" />
         <option value="$PROJECT_DIR$/p5-sketch/genCircles.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/oop-with-p5.html" />
       </list>
     </option>
   </component>
@@ -340,12 +337,12 @@
       <workItem from="1520959254027" duration="30864000" />
       <workItem from="1521989774048" duration="2230000" />
       <workItem from="1524067478285" duration="6578000" />
-      <workItem from="1524411713513" duration="3765000" />
+      <workItem from="1524411713513" duration="4555000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307985000" />
+    <option name="totallyTimeSpent" value="308775000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -713,14 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oop-with-p5.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3813">
-          <caret line="701" column="0" lean-forward="true" selection-start-line="701" selection-start-column="0" selection-end-line="701" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/p5-sketch/genCircles.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -733,6 +722,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
           <caret line="31" column="91" lean-forward="false" selection-start-line="31" selection-start-column="91" selection-end-line="31" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oop-with-p5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="687" column="22" lean-forward="false" selection-start-line="687" selection-start-column="22" selection-end-line="687" selection-end-column="22" />
           <folding />
         </state>
       </provider>

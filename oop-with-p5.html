@@ -686,54 +686,6 @@ class Circle{
 	}
 }
                 </pre>
-                <h5>Waves</h5>
-                <p>Move the mouse vertically to change the height of the waves:</p>
-                <p><u><a class="p-link" href="spinningBall.html">Click to view the demo as a full web page.</a></u></p>
-                <iframe height="500" src="waves.html"></iframe>
-                <br>
-                <p><u><a class="p-link" href="waves.html">Click to view the demo as a full web page.</a></u></p>
-                <pre>
-function setup() {
-	createCanvas(window.innerWidth, window.innerHeight);
-	noStroke();
-}
-function draw() {
-	background(0, 15);
-
-	for(var x = 0; x < width; x += 4){
-  	//freq = speed of movement
-  	var freq = sin(frameCount * 0.01) * 0.01;
-    //amp height
-    var amp = sin(frameCount * 0.01) * mouseY / 3;
-    var sinVal = sin((x + frameCount) * freq) * amp;
-    var y = height / 2 + sinVal;
-    var dia = random(3, 10);
-    noStroke();
-    fill(255, random(0, 70))
-    ellipse(x, y, dia, dia);
-    noFill();
-    stroke(255, random(0, 70));
-    line(x, y, x, height);
-}
-for(var x = 0; x < width; x += 4){
-  	//speed of change
-  	//number of waves
-  	var freq = sin(frameCount * 0.005) * 0.005;
-    //height of wave
-    var amp = sin(frameCount * 0.01) * mouseY / 2;
-    var sinVal = sin((PI + x + frameCount) * freq) * amp;
-   	//var sinVal = sin(x + frameCount * freq) * amp;
-   	var y = height / 2 + sinVal;
-   	var dia = random(3, 10);
-   	noStroke();
-   	fill(255, 0, 0, random(0, 70));
-   	ellipse(x, y, dia, dia);
-   	noFill();
-   	stroke(0, 0, 180, random(0, 70));
-   	line(x, y, x, 0);
-   }
-}
-                </pre>
             </div>
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
