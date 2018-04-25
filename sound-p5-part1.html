@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>p5 Sound</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <h4>p5.sound Library: Part 1</h4>
+                <p>NOTE: This workshop is broken into 2 parts, due to come constraints with the number of canvases using the p5.sound library.</p>
+                <p>p5.sound library extends p5 with Web Audio functionality including audio input, playback, analysis and synthesis. p5.sound library is provided as a SEPARATE javascript file, which means that we have to include this in addition to the main p5 library.</p>
+                <p>Remember that the library files can be downloaded from <a href="https://p5js.org/download/" target="_blank">the p5 website</a>. There is also an option to use the library files without downloading through <a href="https://cdnjs.com/libraries/p5.js" target="_blank">CDN</a>.</p>
+                <p>If you have downloaded p5.js library files, conventionally, you would create a folder inside the directory of the folder you are working in called "libraries" or "libs" and copy the library files. Next we need to reference this file so we can use it in our html pages.</p>
+                <pre>
+&lt;script type="text/javascript" src="js/libs/p5.js">&lt;/script>
+&lt;script type="text/javascript" src="js/libs/p5.sound.js">&lt;/script>
+                </pre>
+                If you are going with the CDN option, which means you are referencing to a file on the web, you should be doing this instead:
+                <pre>
+&lt;script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.js">&lt;/script>
+&lt;script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.sound.js">&lt;/script>
+                </pre>
+                <h5>Setting up python SimpleHTTPServer</h5>
+                <p>When using the p5.sound library, we will need to run our web pages on localhost. The reason for this is because when dealing with external files in javascript, there are some restrictions to using an "external file" that can be overcome by running a localhost, a local server within your computer. Below illustrate steps to run HTML files inside of a folder of your computer on localhost. Images by MOQN.</p>
+                <img class="p-half-img" src="img/pythonServer/0.png">
+                <img class="p-half-img" src="img/pythonServer/1.png">
+                <p>First, you need to open "Terminal". It is available in all Mac computers by default, and you can find this by searching your applications. </p>
+                <p>Next, type in the command <b>cd </b>, which stands for Change Directory.</p>
+                <img class="p-half-img" src="img/pythonServer/2.png">
+                <img class="p-half-img" src="img/pythonServer/3.png">
+                <p>Put a spacebar character after the <b>cd</b> command, then drag in the folder that contains the web pages you want to run on localhost onto the Terminal application. The dragging in of the folder should enter in the path to the folder on the Terminal application, which will look something like this:</p>
+                <pre>
+cd Users/userName/Desktop/FolderName
+                </pre>
+                <p>Once you see something like above, press enter!</p>
+                <img class="p-half-img" src="img/pythonServer/4.png">
+                <img class="p-half-img" src="img/pythonServer/5.png">
+                <p>Next, type on the Terminal application the following code:</p>
+                <pre>
+python -m SimpleHTTPServer
+                </pre>
+                <p>, then press enter! After a few seconds, you should see the Terminal application say something like below:</p>
+                <pre>
+Serving HTTP on 0.0.0.0 port 8000 ...
+                </pre>
+                <p>The number after "port" means the number you need to enter after localhost + colon (:). This number will usually be 8000.</p>
+                <p>Now, you will be able to view the index.html file inside of the folder you dragged into the Terminal application by going to http://localhost:8000 on your browser.</p>
+                <p>We are ready to start using p5.sound library!</p>
+                <h5>Using an audio file with p5</h5>
+                <p>You can use an audio file inside of a p5 sketch for various uses, such as to do sound analysis (we will get to this later) and to trigger it at specified situations. In order to use audio files, we use the <b>loadSound()</b> function. <b>loadSound()</b> function should generally be saved to a variable, in which case the variable can be used to refer to the sound file inside the sketch. It should also be called inside of the <b>preload()</b> function, to load the audio files before running setup(). This ensures that the file is fully loaded to be playable and usable all the way through without buffering.</p>
+                <pre>
+var sound;
+
+function preload(){
+  sound = loadSound('audio/0.mp3');
+}
+                </pre>
+                <p>All af the javascript functions that you already know to control the audio file exist within the p5.sound libary as well, such as, play() and pause(), in addition to many others. Below are a selection of available functions that p5.sound library provides to control the audio file.</p>
+                <ul>
+                    <li><b>play()</b>: Plays the audio file.</li>
+                    <li><b>loop()</b>: Loops the audio file.</li>
+                    <li><b>pause()</b>: Pauses the audio file.</li>
+                    <li><b>stop()</b>: Stops the audio file.</li>
+                    <li><b>isPlaying()</b>: Returns true if audio file is currently playing.</li>
+                    <li><b>setVolume(vol)</b>: Sets the volume to the specified <u>vol</u>. Minimum of 0.0 (silence) and maximum of 1.0 (full volume).</li>
+                    <li><b>rate(r)</b>: Set the playback rate of audio file of specified <u>r</u>.</li>
+                    <li><b>duration()</b>: Returns the duration of the audio file in seconds.</li>
+                    <li><b>currentTime()</b>: Returns the current playback position in seconds.</li>
+                    <li><b>jump(time)</b>: Jumps the playback position to the specified <u>time</u>.</li>
+                </ul>
+                <p>The above functions that control the audio file need to be preceded by the name of the variable that you saved the loadSound() function to, followed by a dot(.) See the example code below:</p>
+                <pre>
+var sound;
+
+function preload(){
+  sound = loadSound('audio/0.mp3');
+}
+
+function setup() {
+  sound.loop();
+}
+                </pre>
+                <p>If you set the audio file to play or loop inside the setup() function, it will begin to play / loop the audio file as soon as the audio file has finished loading and is ready to play.</p>
+                <p>Below is a simple example of using mousePressed() to play() and pause() audio file, and change the background accordingly. It uses the isPlaying() function to check if the sound file is already playing. If isPlaying() is true, pause() the audio, else, play() the audio. Using the same if-else-statement structure inside the draw() function, set the background to red if it audio is playing and to blue if the audio is not playing.</p>
+                <iframe height="150px" src="p5-sketch/simpleAudioPlay.html"></iframe>
+                <pre>
+var sound;
+
+function preload() {
+    sound = loadSound('assets/music/0.mp3');
+}
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+}
+
+function draw() {
+    if (sound.isPlaying() == true) {
+        background(255, 0, 0);
+    } else {
+        background(0, 0, 255);
+    }
+}
+
+function mousePressed() {
+    if (sound.isPlaying() == true) {
+        sound.pause();
+    } else {
+        sound.play();
+    }
+}
+                </pre>
+                <h5>Using microphone input</h5>
+                <p>You can access the microphone of your computer within the p5 sketch using the p5.sound library. The p5.sound library provides p5.AudioIn object that you can use to access and start using the microphone input. See code below:</p>
+                <pre>
+var mic;
+
+function setup() {
+    mic = new p5.AudioIn();
+    mic.start();
+}
+                </pre>
+                <p>In the setup() function, we create a new p5.AudioIn object to access the microphone, and we start receiving the microphone input with the start() function.</p>
+                <p>You can also use the getLevel() function with the p5.AudioIn object, to get the amplitude (volume) of the microphone input. The getLevel() function will return a number between 0 (silence) and 1 (maximum volume microphone can detect). Below example uses the amplitude of the microphone input to change the width and height of the ellipse.</p>
+                <iframe height="150px" src="p5-sketch/micInput.html"></iframe>
+                <pre>
+var mic;
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+
+    mic = new p5.AudioIn();
+    mic.start();
+
+    noStroke();
+}
+
+function draw() {
+    background(0, 30);
+
+    var level = mic.getLevel();
+    ellipse(width / 2, height / 2, level * 500, level * 500)
+}
+                </pre>
+                <h5>Using p5.sound library for sound analysis</h5>
+                <p><a href="sound-p5-part2.html">Click to proceed to the next section of this workshop</a>.</p>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+</html>

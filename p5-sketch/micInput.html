@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Microphone Input</title>
+    <script src="../libraries/p5.js"></script>
+    <script src="../libraries/p5.sound.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        overflow: hidden;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    var mic;
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+
+        mic = new p5.AudioIn();
+        mic.start();
+
+        noStroke();
+    }
+
+    function draw() {
+        background(0, 30);
+
+        var level = mic.getLevel();
+        ellipse(width / 2, height / 2, level * 500, level * 500)
+    }
+</script>
+</html>

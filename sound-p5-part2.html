@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>p5 Sound</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <h4>p5.sound Library: Part 2</h4>
+                <p>NOTE: This workshop is broken into 2 parts, due to come constraints with the number of canvases using the p5.sound library. <a href="sound-p5-part1.html">Click to go back to the previous section of this workshop</a>.</p>
+                <h5>Using p5.sound library for sound analysis</h5>
+                <p>p5.sound library provides many functions we can use to analyse and get data of an audio file or of microphone input.</p>
+                <p><u>Amplitude</u>:</p>
+                <p>You can easily get the current amplitude of an audio file that is being played inside the p5 sketch using the p5.Amplitude object. The p5.Amplitude object keeps track of the volume of a sound, and we can get this number, that ranges between 0 and 1, using the getLevel() function. As we have seen before, for getting amplitude of the microphone input, the getLevel() function can be used directly with the p5.AudioIn object. </p>
+                <pre>
+var amp;
+
+function setup() {
+  amp = new p5.Amplitude();
+}
+
+function draw() {
+  var level = amp.getLevel();
+}
+                </pre>
+                <p>When the getLevel() function is called inside the draw() function, it returns the volume of a sound at the given time of each frame. Below example uses the level variable to manipulate the width and height of an ellipse.</p>
+                <iframe height="300px" src="p5-sketch/simpleAmplitude.html"></iframe>
+                <pre>
+var sound;
+var amp;
+
+function preload() {
+    sound = loadSound('assets/music/0.mp3');
+}
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+
+    amp = new p5.Amplitude();
+    noStroke();
+}
+
+function draw() {
+    if (sound.isPlaying() == true) {
+        background(0, 30);
+    } else {
+        background(255);
+    }
+
+    var level = amp.getLevel();
+    ellipse(width / 2, height / 2, level * 500, level * 500);
+}
+
+function mousePressed() {
+    if (sound.isPlaying() == true) {
+        sound.pause();
+    } else {
+        sound.play();
+    }
+}
+                </pre>
+                <p><u>FFT</u>:</p>
+                <p>FFT (Fast Fourier Transform) is an analysis algorithm that isolates individual audio frequencies within a waveform. The p5.FFT object can return two types of data in arrays via two different functions: waveform() and analyze()</p>
+                <ul>
+                    <li><b>waveform()</b>: Returns an array of amplitude values (between -1.0 and 1.0) along the time domain (a sample of time)</li>
+                    <li><b>analyze()</b>: Returns an array of amplitude values (between 0 and 255) across the frequency spectrum.</li>
+                </ul>
+                <p>Same as it was for p5.Amplitude, p5.FFT object can be created in setup() function, then used inside of draw() to continuously update the data to reflect the audio of the given frame.</p>
+                <pre>
+var fft;
+
+function setup() {
+  fft = new p5.FFT();
+}
+
+function draw() {
+  var waveform = fft.waveform();
+  var spectrum = fft.analyze();
+}
+                </pre>
+                <p>Below example code draws out waveforms using the waveform array. map() functions are used to translate a number of one range to another.</p>
+                <iframe height="300px" src="p5-sketch/fftWaveform.html"></iframe>
+                <pre>
+var sound;
+var fft;
+
+function preload() {
+    sound = loadSound('assets/music/2.mp3');
+}
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+
+    fft = new p5.FFT();
+    noStroke();
+}
+
+function draw() {
+    if (sound.isPlaying() == true) {
+        background(0, 30);
+        fill(255);
+
+        var waveform = fft.waveform();
+        for (var i = 0; i < waveform.length; i++) {
+            var x = map(i, 0, waveform.length, 0, width);
+            var y = map(waveform[i], -1, 1, height, 0);
+            ellipse(x, y, 5, 5);
+        }
+
+    } else {
+        background(255);
+    }
+}
+
+function mousePressed() {
+    if (sound.isPlaying() == true) {
+        sound.pause();
+    } else {
+        sound.play();
+    }
+}
+                </pre>
+                <p>Below example code draws out a frequency spectrum using the spectrum array. map() functions are used here again to translate a number of one range to another.</p>
+                <iframe height="400px" src="p5-sketch/fftSpectrum.html"></iframe>
+                <pre>
+var sound;
+var fft;
+
+function preload() {
+    sound = loadSound('assets/music/2.mp3');
+}
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+
+    fft = new p5.FFT();
+    noStroke();
+}
+
+function draw() {
+    if (sound.isPlaying() == true) {
+        background(0, 30);
+        fill(255);
+
+        var spectrum = fft.analyze();
+        for (var i = 0; i < spectrum.length; i += 10) {
+            var x = map(i, 0, spectrum.length, 0, width);
+            var y = map(spectrum[i], 0, 255, height, 0);
+            ellipse(x, y, 5, 5);
+        }
+
+    } else {
+        background(255);
+    }
+}
+
+function mousePressed() {
+    if (sound.isPlaying() == true) {
+        sound.pause();
+    } else {
+        sound.play();
+    }
+}
+                </pre>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+</html>

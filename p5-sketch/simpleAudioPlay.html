@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Audio File Play</title>
+    <script src="../libraries/p5.js"></script>
+    <script src="../libraries/p5.sound.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        overflow: hidden;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    var sound;
+
+    function preload() {
+        sound = loadSound('assets/music/0.mp3');
+    }
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+        textAlign(CENTER);
+    }
+
+    function draw() {
+        if (sound.isPlaying() == true) {
+            background(255, 0, 0);
+        } else {
+            background(0, 0, 255);
+        }
+
+        fill(255);
+        textSize(24);
+        text("Click to Play / Pause Audio File", width / 2, height / 2);
+    }
+
+    function mousePressed() {
+        if (sound.isPlaying() == true) {
+            sound.pause();
+        } else {
+            sound.play();
+        }
+    }
+</script>
+</html>

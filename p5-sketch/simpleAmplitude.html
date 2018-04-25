@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Amplitude Visualization</title>
+    <script src="../libraries/p5.js"></script>
+    <script src="../libraries/p5.sound.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        overflow: hidden;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    var sound;
+    var amp;
+
+    function preload() {
+        sound = loadSound('assets/music/1.mp3');
+    }
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+
+        amp = new p5.Amplitude();
+        noStroke();
+        textAlign(CENTER);
+    }
+
+    function draw() {
+        if (sound.isPlaying() == true) {
+            background(0, 30);
+            fill(255);
+        } else {
+            background(255);
+            fill(0);
+        }
+
+        var level = amp.getLevel();
+        ellipse(width / 2, height / 2, level * 500, level * 500);
+
+        textSize(24);
+        text("Click to Play / Pause Audio File", width / 2, 48);
+    }
+
+    function mousePressed() {
+        if (sound.isPlaying() == true) {
+            sound.pause();
+        } else {
+            sound.play();
+        }
+    }
+</script>
+</html>

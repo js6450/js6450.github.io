@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FFT Waveform Visualization</title>
+    <script src="../libraries/p5.js"></script>
+    <script src="../libraries/p5.sound.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        overflow: hidden;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    var sound;
+    var fft;
+
+    function preload() {
+        sound = loadSound('assets/music/2.mp3');
+    }
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+
+        fft = new p5.FFT();
+        noStroke();
+        textAlign(CENTER);
+    }
+
+    function draw() {
+        if (sound.isPlaying() == true) {
+            background(0, 30);
+            fill(255);
+
+            var waveform = fft.waveform();
+            for (var i = 0; i < waveform.length; i++) {
+                var x = map(i, 0, waveform.length, 0, width);
+                var y = map(waveform[i], -1, 1, height, 0);
+                ellipse(x, y, 5, 5);
+            }
+
+        } else {
+            background(255);
+            fill(0);
+        }
+
+
+
+        textSize(24);
+        text("Click to Play / Pause Audio File", width / 2, 48);
+    }
+
+    function mousePressed() {
+        if (sound.isPlaying() == true) {
+            sound.pause();
+        } else {
+            sound.play();
+        }
+    }
+</script>
+</html>
