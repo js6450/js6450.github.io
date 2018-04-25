@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <title>p5 Sound</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="full-page-content">
+                <h4>p5.sound Library: Part 3</h4>
+                <p>NOTE: This workshop is broken into 3 parts, due to come constraints with the number of canvases using the p5.sound library. <a href="sound-p5-part2.html">Click to go back to the previous section of this workshop</a>.</p>
+                <h5>Using p5.sound to generate sound</h5>
+                <p>p5.sound library provides the p5.Oscillator object, which creates an audio signal that oscillates between -1.0 and 1.0. By default, the signal will oscilate in a sine wave form. The p5.Oscillator will start generating the signal with start() function, and there are also other functions that you can use to manipulate the audio signal being generated.</p>
+                <ul>
+                    <li><b>amp(vol)</b>: Sets the amplitude to vol of minimum 0 and maximum 1.0</li>
+                    <li><b>freq(val)</b>: Sets frequency of an oscillator to val</li>
+                    <li><b>setType('type')</b>: Sets type to 'sine', 'triangle', 'sawtooth' or 'square' (default is 'sine').</li>
+                </ul>
+                <p>p5.Oscillator object can be created inside the setup() function, and depending on the behavior of signal you are trying to generate, you can also initialize amplitude, frequency and type values also in the setup() function.</p>
+                <pre>
+var osc;
+
+function setup() {
+    osc = new p5.Oscillator();
+    osc.start();
+}
+                </pre>
+                <p>Below example code will change the frequency of the oscillator depending on the mouseX position. The mouseX position is mapped between 220 and 880.</p>
+                <iframe height="150px" src="p5-sketch/simpleOscillator.html"></iframe>
+                <pre>
+var osc;
+var playing = false;
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+
+    osc = new p5.Oscillator();
+    osc.amp(0);
+    osc.start();
+    noStroke();
+}
+
+function draw() {
+    if (playing == true) {
+        background(0, 30);
+        fill(255);
+
+        var frequency = map(mouseX, 0, width, 240, 880);
+
+        osc.freq(frequency);
+        ellipse(mouseX, height / 2, 100, 100);
+    } else {
+        background(255);
+    }
+}
+
+function mousePressed() {
+    if (playing == true) {
+        osc.amp(0);
+        playing = false;
+    } else {
+        osc.amp(1);
+        playing = true;
+    }
+}
+                </pre>
+                <p>Below example code combines OOP with p5.Oscillator:</p>
+                <iframe height="400px" src="p5-sketch/bouncingBallOscillator.html"></iframe>
+                <pre>
+"use strict";
+
+var osc;
+var playing = false;
+var particles = [];
+
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+
+    for(var i = 0; i < 50; i++){
+        particles.push(new Particle(random(width), random(height)));
+    }
+
+    osc = new p5.Oscillator();
+    osc.amp(0);
+    osc.start();
+
+    noStroke();
+}
+
+function draw() {
+
+    if (playing == true) {
+        background(0, 30);
+        osc.amp(0.5);
+
+        for(var i = 0; i < particles.length; i++){
+            particles[i].checkBoundary();
+            if(particles[i].hit){
+                osc.freq(particles[i].frequency);
+            }
+            particles[i].update();
+            particles[i].display();
+        }
+
+        fill(255);
+    } else {
+        background(255);
+    }
+}
+
+function mousePressed() {
+    if (playing == true) {
+        osc.amp(0);
+        playing = false;
+    } else {
+        osc.amp(1);
+        playing = true;
+    }
+}
+
+class Particle{
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+        this.xSpeed = random(-5, 5);
+        this.ySpeed = random(-5, 5);
+        this.size = random(25, 75);
+        this.col = color(random(255), random(255), random(255), 100);
+        this.frequency = int(random(220, 680));
+        this.hit = false;
+    }
+
+    checkBoundary(){
+        this.hit = false;
+
+        if(this.x > width || this.x < 0){
+            this.xSpeed *= -1;
+            this.hit = true;
+        }
+
+        if(this.y > height || this.y < 0){
+            this.ySpeed *= -1;
+            this.hit = true;
+        }
+    }
+
+    update(){
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+    }
+
+    display(){
+        fill(this.col);
+        ellipse(this.x, this.y, this.size, this.size);
+    }
+}
+                </pre>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><u><a class="p-link" href="index.html" target="_self">BACK TO MAIN</a></u></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>Workshops By <u><a class="p-link" href="http://jiwonshin.com" target="_blank">Jiwon Shin</a></u></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </main>
+</div>
+</body>
+<script src="js/background.js"></script>
+</html>

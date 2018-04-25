@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Oscillator</title>
+    <script src="../libraries/p5.js"></script>
+    <script src="../libraries/p5.sound.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        overflow: hidden;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    var osc;
+    var playing = false;
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+
+        osc = new p5.Oscillator();
+        osc.amp(0);
+        osc.start();
+        noStroke();
+        textAlign(CENTER);
+    }
+
+    function draw() {
+        if (playing == true) {
+            background(0, 30);
+            fill(255);
+
+            var frequency = map(mouseX, 0, width, 240, 880);
+
+            osc.freq(frequency);
+            ellipse(mouseX, height / 2, 100, 100);
+        } else {
+            background(255);
+            fill(0);
+        }
+
+        textSize(24);
+        text("Click to Play / Pause Audio", width / 2, 48);
+    }
+
+    function mousePressed() {
+        if (playing == true) {
+            osc.amp(0);
+            playing = false;
+        } else {
+            osc.amp(1);
+            playing = true;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Oscillator</title>
+    <script src="../libraries/p5.js"></script>
+    <script src="../libraries/p5.sound.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        overflow: hidden;
+    }
+</style>
+<body>
+
+</body>
+<script>
+    "use strict";
+
+    var osc;
+    var playing = false;
+    var particles = [];
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+
+        for(var i = 0; i < 50; i++){
+            particles.push(new Particle(random(width), random(height)));
+        }
+
+        osc = new p5.Oscillator();
+        osc.amp(0);
+        osc.start();
+
+        noStroke();
+        textAlign(CENTER);
+
+    }
+
+    function draw() {
+
+        if (playing == true) {
+            background(0, 30);
+            osc.amp(0.5);
+
+            for(var i = 0; i < particles.length; i++){
+                particles[i].checkBoundary();
+                if(particles[i].hit){
+                    osc.freq(particles[i].frequency);
+                }
+                particles[i].update();
+                particles[i].display();
+            }
+
+            fill(255);
+        } else {
+            background(255);
+            fill(0);
+        }
+
+        textSize(24);
+        text("Click to Play / Pause Audio", width / 2, 48);
+
+    }
+
+    function mousePressed() {
+        if (playing == true) {
+            osc.amp(0);
+            playing = false;
+        } else {
+            osc.amp(1);
+            playing = true;
+        }
+    }
+
+    class Particle{
+        constructor(x, y){
+            this.x = x;
+            this.y = y;
+            this.xSpeed = random(-2, 2);
+            this.ySpeed = random(-2, 2);
+            this.size = random(5, 25);
+            this.col = color(random(255), random(255), random(255), 100);
+            this.frequency = int(random(220, 680));
+            this.hit = false;
+        }
+
+        checkBoundary(){
+            this.hit = false;
+
+            if(this.x > width || this.x < 0){
+                this.xSpeed *= -1;
+                this.hit = true;
+            }
+
+            if(this.y > height || this.y < 0){
+                this.ySpeed *= -1;
+                this.hit = true;
+            }
+        }
+
+        update(){
+            this.x += this.xSpeed;
+            this.y += this.ySpeed;
+        }
+
+        display(){
+            fill(this.col);
+            ellipse(this.x, this.y, this.size, this.size);
+        }
+    }
+</script>
+</html>

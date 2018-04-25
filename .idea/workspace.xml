@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/p5-sketch/fftSpectrum.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/p5-sketch/fftWaveform.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/p5-sketch/micInput.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/p5-sketch/simpleAmplitude.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/p5-sketch/simpleAudioPlay.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/sound-p5-part1.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/sound-p5-part2.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/p5-sketch/bouncingBallOscillator.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/p5-sketch/simpleOscillator.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/sound-p5-part3.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/audio/1.mp3" afterPath="$PROJECT_DIR$/audio/1.mp3" />
-      <change beforePath="$PROJECT_DIR$/basic-p5.html" afterPath="$PROJECT_DIR$/basic-p5.html" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/p5-sketch/animatedType.html" afterPath="$PROJECT_DIR$/p5-sketch/animatedType.html" />
-      <change beforePath="$PROJECT_DIR$/p5-sketch/playSound.html" afterPath="$PROJECT_DIR$/p5-sketch/playSound.html" />
-      <change beforePath="$PROJECT_DIR$/p5-sketch/simpleType.html" afterPath="$PROJECT_DIR$/p5-sketch/simpleType.html" />
-      <change beforePath="$PROJECT_DIR$/sound.html" afterPath="$PROJECT_DIR$/sound.html" />
+      <change beforePath="$PROJECT_DIR$/sound-p5-part1.html" afterPath="$PROJECT_DIR$/sound-p5-part1.html" />
+      <change beforePath="$PROJECT_DIR$/sound-p5-part2.html" afterPath="$PROJECT_DIR$/sound-p5-part2.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,48 +35,38 @@
       <file leaf-file-name="sound-p5-part1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sound-p5-part1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
-              <caret line="67" column="186" lean-forward="true" selection-start-line="67" selection-start-column="186" selection-end-line="67" selection-end-column="186" />
+            <state relative-caret-position="180">
+              <caret line="12" column="92" lean-forward="false" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sound-p5-part2.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sound-p5-part2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sound-p5-part2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="86" column="129" lean-forward="true" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="129" />
+            <state relative-caret-position="450">
+              <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="animatedType.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/p5-sketch/animatedType.html">
+      <file leaf-file-name="sound-p5-part3.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sound-p5-part3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-365">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="400">
+              <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="p5SoundVis.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/p5SoundVis.html">
+      <file leaf-file-name="bouncingBallOscillator.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/p5-sketch/bouncingBallOscillator.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-199">
-              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fftSpectrum.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/p5-sketch/fftSpectrum.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            <state relative-caret-position="247">
+              <caret line="80" column="35" lean-forward="false" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -130,9 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/basic-js-demo-fs.html" />
-        <option value="$PROJECT_DIR$/js-timed-events/1.html" />
-        <option value="$PROJECT_DIR$/js-timed-events/2.html" />
         <option value="$PROJECT_DIR$/js-timed-events/0.html" />
         <option value="$PROJECT_DIR$/js-timed-events/3.html" />
         <option value="$PROJECT_DIR$/js-timed-events/4.html" />
@@ -173,7 +150,6 @@
         <option value="$PROJECT_DIR$/p5-sketch/simpleAmplitude.html" />
         <option value="$PROJECT_DIR$/p5-sketch/micInput.html" />
         <option value="$PROJECT_DIR$/p5-sound.html" />
-        <option value="$PROJECT_DIR$/sound-p5-part1.html" />
         <option value="$PROJECT_DIR$/p5-sketch/fftWaveform.html" />
         <option value="$PROJECT_DIR$/p5-sketch/fftSpectrum.html" />
         <option value="$PROJECT_DIR$/p5-sketch/animatedType.html" />
@@ -181,6 +157,10 @@
         <option value="$PROJECT_DIR$/p5-sketch/simpleType.html" />
         <option value="$PROJECT_DIR$/p5-sketch/playSound.html" />
         <option value="$PROJECT_DIR$/sound-p5-part2.html" />
+        <option value="$PROJECT_DIR$/sound-p5-part1.html" />
+        <option value="$PROJECT_DIR$/p5-sketch/simpleOscillator.html" />
+        <option value="$PROJECT_DIR$/p5-sketch/bouncingBallOscillator.html" />
+        <option value="$PROJECT_DIR$/sound-p5-part3.html" />
       </list>
     </option>
   </component>
@@ -389,12 +369,12 @@
       <workItem from="1521989774048" duration="2230000" />
       <workItem from="1524067478285" duration="6578000" />
       <workItem from="1524411713513" duration="5929000" />
-      <workItem from="1524663584661" duration="12064000" />
+      <workItem from="1524663584661" duration="16644000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322213000" />
+    <option name="totallyTimeSpent" value="326793000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -436,27 +416,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js-loops-arrays.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6855">
-          <caret line="457" column="26" lean-forward="false" selection-start-line="457" selection-start-column="26" selection-end-line="457" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js-timed-events.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="108" column="54" lean-forward="false" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js-timed-events-demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="72" column="13" lean-forward="false" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -636,6 +595,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3055">
           <caret line="375" column="12" lean-forward="true" selection-start-line="375" selection-start-column="12" selection-end-line="375" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -702,14 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/p5-sketch/simpleAmplitude.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/p5-sketch/fftWaveform.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -730,14 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
           <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/p5-sketch/fftSpectrum.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -766,10 +710,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/p5-sketch/animatedType.html">
+    <entry file="file://$PROJECT_DIR$/p5-sketch/simpleAmplitude.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-365">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="400">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="55" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -782,18 +726,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/p5-sketch/fftSpectrum.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="52" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="64" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sound-p5-part1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="67" column="186" lean-forward="true" selection-start-line="67" selection-start-column="186" selection-end-line="67" selection-end-column="186" />
+        <state relative-caret-position="180">
+          <caret line="12" column="92" lean-forward="false" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/p5-sketch/animatedType.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="78" column="22" lean-forward="true" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sound-p5-part2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="86" column="129" lean-forward="true" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="129" />
+        <state relative-caret-position="450">
+          <caret line="30" column="55" lean-forward="false" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/p5-sketch/simpleOscillator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/p5-sketch/bouncingBallOscillator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="80" column="35" lean-forward="false" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sound-p5-part3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding />
         </state>
       </provider>
