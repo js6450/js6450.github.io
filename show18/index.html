@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="js/libs/p5.min.js"></script>
+</head>
+<style>
+	body{
+		margin: 0;
+	}
+</style>
+<body>
+
+</body>
+<script type="text/javascript">
+	"use strict";
+	var titles = ["Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"];
+	var names = [["Team Member", "Team Member"], ["Team Member", "Team Member", "Team Member"], ["Team Member"], ["Team Member", "Team Member"], ["Team Member", "Team Member"], ["Team Member"]];
+	var links = ["https://js6450.github.io/", "https://js6450.github.io/", "https://js6450.github.io/", "https://js6450.github.io/", "https://js6450.github.io/", "https://js6450.github.io/"];
+
+	var authors = "Website Design by Quoey Wu & Tiger Tian";
+
+	var particles = [];
+	var numOfParticles;
+
+	var myFont;
+	var fontSize; 
+
+	var colors = [[102, 197, 172], [80, 158, 178], [66, 101, 136], [63, 62, 104], [62, 48, 70], [177, 241, 238], [135, 195, 224], [229, 135, 57], [243, 207, 77]];
+
+	function preload(){
+		myFont = loadFont('font/custom.ttf');
+	}
+
+	function setup(){
+		createCanvas(windowWidth, windowHeight);
+
+		for(var i = 0; i < titles.length; i++){
+			particles.push(new Particles(true, titles[i], names[i], links[i]));
+		}
+
+		numOfParticles = int(random(20, 30));
+
+		for(var i = 0; i < numOfParticles; i++){
+			particles.push(new Particles(false));
+		}
+
+		fontSize = width / 18;
+		noStroke();
+		textAlign(CENTER);
+		textFont(myFont);
+
+	}
+
+	function draw(){
+		background(20);
+
+		noStroke();
+		fill(150, 200);
+		textSize(fontSize);
+		text("COMMUNICATIONS LAB", width / 2 + 5, height / 2 - 5);
+		text("Spring 2018", width / 2 + 5, height / 2 + fontSize - 5);
+		fill(255, 200);
+		textSize(fontSize);
+		text("COMMUNICATIONS LAB", width / 2, height / 2);
+		text("Spring 2018", width / 2, height / 2 + fontSize);
+
+		textSize(21);
+		fill(255, 120);
+		text(authors, width - textWidth(authors) / 2 - 12, height - 12);
+
+		for(var i = 0; i < particles.length; i++){
+			for(var j = 0; j < particles.length; j++){
+				if(i != j){
+					particles[i].checkCollision(particles[j]);
+				}
+			}
+			particles[i].checkClick();
+			particles[i].update();
+			particles[i].display();
+		}
+	}
+
+	class Particles{
+		constructor(p, title, names, link){
+			this.isProject = p;
+
+			if(this.isProject){
+				this.rad = random(160, 200);
+				this.xSpeed = random(-3, 3);
+				this.ySpeed = random(-3, 3);
+				this.title = title;
+				this.names = names;
+				this.link = link;
+			}else{
+				this.rad = random(15, 50);
+				this.xSpeed = random(-10, 10);
+				this.ySpeed = random(-10, 10);
+			}
+
+			this.initXSpeed = this.xSpeed;
+			this.initYSpeed = this.ySpeed;
+
+			this.xpos = random(this.rad, width - this.rad);
+			this.ypos = random(this.rad, height - this.rad);
+
+			var colorIndex = int(random(colors.length));
+			this.col = color(colors[colorIndex][0], colors[colorIndex][1], colors[colorIndex][2]);
+
+			this.xOffsets = [];
+			this.yOffsets = [];
+
+			for(var i = 0; i < 5; i++){
+				this.xOffsets.push(random(-5, 5));
+				this.yOffsets.push(random(-5, 5));
+			}
+
+			this.opacity = 100;
+		}
+
+		checkClick(){
+			var distance = dist(mouseX, mouseY, this.xpos, this.ypos);
+			if(distance < this.rad){
+				this.opacity = 200;
+				if(mouseIsPressed){
+					window.open(this.link, "_blank");
+				}
+			}else{
+				this.opacity = 100;
+			}
+
+		}
+
+		checkCollision(other){
+			var distance = dist(other.xpos, other.ypos, this.xpos, this.ypos);
+
+			if(distance < this.rad + other.rad){
+				var newXSpeed = (other.xpos - this.xpos) / this.rad;
+				var newYSpeed = (other.ypos - this.ypos) / this.rad;
+				this.xSpeed = -newXSpeed;
+				this.ySpeed = -newYSpeed;
+
+				newXSpeed = (this.xpos - other.xpos) / other.rad;
+				newYSpeed = (this.ypos - other.ypos) / other.rad;
+				other.xSpeed = -newXSpeed;
+				other.ySpeed = -newYSpeed;
+			}
+		}
+
+		update(){
+			this.xpos += this.xSpeed;
+			this.ypos += this.ySpeed;
+
+			if(this.xpos > width - this.rad){
+				this.xpos = width - this.rad;
+				this.xSpeed *= -1;
+			}
+
+			if(this.xpos < this.rad){
+				this.xpos = this.rad;
+				this.xSpeed *= -1;
+			}
+
+			if(this.ypos > height - this.rad){
+				this.ypos = height - this.rad;
+				this.ySpeed *= -1;
+			}
+
+			if(this.ypos < this.rad){
+				this.ypos = this.rad;
+				this.ySpeed *= -1;
+			}
+		}
+
+		display(){
+			if(this.isProject){
+				noStroke();
+				fill(this.col.levels[0], this.col.levels[1], this.col.levels[2], this.opacity);
+				push();
+				translate(this.xpos, this.ypos);
+				rotate(frameCount * 0.05)
+				for(var i = 0; i < 5; i++){
+					stroke(255, 60);
+					ellipse(this.xOffsets[i], this.yOffsets[i], this.rad * i / 5 + this.rad, this.rad * i / 5 + this.rad);
+				}
+				pop();
+				fill(255);
+				textSize(24);
+				text(this.title, this.xpos, this.ypos + 12);
+
+				for(var i = 0; i < this.names.length; i++){
+					push();
+					textSize(18);
+					textAlign(LEFT);
+					translate(this.xpos, this.ypos);
+					rotate(this.names.length * (i + 1) * frameCount * 0.005 / PI);
+					fill(255);
+					text(this.names[i], this.rad + 5, 0)
+					pop();
+				}
+			}else{
+				strokeWeight(2);
+				fill(this.col.levels[0], this.col.levels[1], this.col.levels[2], 30);
+				push();
+				translate(this.xpos, this.ypos);
+				rotate(frameCount * 0.05)
+				for(var i = 0; i < 5; i++){
+					ellipse(this.xOffsets[i], this.yOffsets[i], this.rad * i / 3 + this.rad / 2, this.rad * i / 3 + this.rad / 2);
+				}
+				pop();
+			}
+		}
+	}
+
+	function windowResized(){
+		resizeCanvas(windowWidth, windowHeight);
+	}
+</script>
+</html>
