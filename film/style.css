@@ -1,0 +1,66 @@
+body, html{
+    margin: 0;
+    background: #252525;
+    font-family: "Helvetica Neue", sans-serif;
+    color: whitesmoke;
+}
+
+.nav{
+    width: calc(20vw - 5em);
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    margin: 2.5em;
+}
+
+.main{
+    width: calc(80vw - 5em);
+    margin: 2.5em;
+    margin-left: 20vw;
+}
+
+.content{
+    margin: 12px;
+}
+
+.main-title{
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.sub-title{
+    font-size: 1.5em;
+    margin: 1.5em 0;
+}
+
+.home-title.main-title{
+    font-size: 20vh;
+    text-align: center;
+    color: whitesmoke;
+    margin: 12.5vh 0;
+}
+
+.home.nav-items{
+    margin-left: 12.5vw;
+}
+
+.home-title.sub-title{
+    font-size: 5vh;
+    display: inline-block;
+    width: 25vw;
+    text-align: center;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: whitesmoke;
+    font-style: normal;
+    transition: background-color 1s, color 1s, font-style 1s;
+}
+
+.nav-items .nav-link:hover{
+    background-color: whitesmoke;
+    color: #252525;
+    font-style: italic;
+}
