@@ -33,7 +33,7 @@
             push();
             translate(i * c_width + c_width / 2, j * c_height + c_height / 2);
             rotate(frameCount * 0.05);
-            fill(frameCount % 255, 255, 255);
+            fill(frameCount % 360, 255, 255);
             rect(0, 0, 30, 30);
             pop();
           }
