@@ -1,0 +1,164 @@
+body, html{
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+    margin: 0;
+}
+
+#bgCanvas{
+    position: fixed;
+    top: 0;
+    z-index: -999;
+}
+
+#main-content{
+    margin-right: 1.5em;
+}
+
+#page-content{
+    width: 70%;
+    margin: auto;
+    margin-top: 4em;
+    border-radius: 4em;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 4em;
+}
+
+#back-button{
+    float: right;
+    margin-top: 2em;
+    margin-bottom: 4em;
+    margin-right: calc(15% - 4em);
+}
+
+#back-button-text:hover{
+    text-decoration: underline;
+}
+
+#main{
+    width: 75%;
+}
+
+#menu{
+    width: calc(25% - 1.5em);
+    float: right;
+    margin-right: 1.5em;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu-title, .menu-subtitle{
+    text-align: right;
+}
+
+.menu-title{
+    font-size: 48px;
+    margin: 1em 0 0.25em 0;
+    letter-spacing: 0.45em;
+    margin-right: -0.45em;
+}
+
+.menu-link{
+    text-align: right;
+    font-weight: lighter;
+    color: #4e4e4e;
+}
+
+.entry{
+    clear: both;
+}
+
+.menu-subtitle{
+    display: inline-block;
+    float: right;
+    margin: 0.5em 0;
+}
+
+.menu-subtitle:hover{
+    color: white;
+    font-style: italic;
+    background-color: black;
+
+    transition: color 1s, font-style 1s, background-color 1s;
+}
+
+.section{
+    text-align: right;
+    background: black;
+    color: white;
+    margin-left: 1.5em;
+}
+
+.subtle-link{
+    color: #4e4e4e;
+    margin-bottom: 0.5em;
+    font-size: 16px;
+}
+
+.subtle-link:hover{
+    text-decoration: underline;
+    color: black;
+    transition: text-decoration 1s, color 1s;
+}
+
+.entry-title{
+    font-size: 32px;
+    margin: 1em 0;
+}
+
+.video-wrap {
+    position: relative;
+    /*padding-bottom: 56.25%; !* 16:9 *!*/
+    padding-bottom: 53.25%;
+    padding-top: 25px;
+    height: 0;
+}
+.video-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+iframe{
+    border: none !important;
+}
+
+.p-link{
+    text-decoration: underline;
+    color: magenta;
+}
+
+p{
+    text-align: justify;
+}
+
+.date-text{
+    text-align: right;
+    color: #848484;
+}
+
+.full-img{
+    width: 100%;
+}
+
+.mid-img{
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+
+.two-grid{
+    display: block;
+    margin: auto;
+}
+
+.two-grid-img{
+    width: 49%;
+}

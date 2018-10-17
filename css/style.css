@@ -24,7 +24,7 @@ body{
   text-align: right;
   color: white;
   margin: 16px 16px 0px 0px;
-  font-weight: 600;
+  /*font-weight: 600;*/
 }
 
 #title-link{
@@ -180,4 +180,22 @@ pre{
 #bgCanvas{
   position: fixed;
   top: 0;
+}
+
+.t-head{
+  width: 100%;
+  margin: 0.5em 0;
+  font-size: 1.2em;
+  text-align: right;
+}
+
+.t-link{
+  text-decoration: none;
+  color: black
+}
+
+.t-link:hover{
+  color:white;
+  background: black;
+  font-style: italic;
 }
