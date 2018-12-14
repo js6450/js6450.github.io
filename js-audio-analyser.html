@@ -38,6 +38,10 @@
         animation: blink 1s alternate infinite;
     }
 
+    #preload:hover{
+        cursor: pointer;
+    }
+
     @keyframes blink {
         to{
             opacity: 0;
@@ -48,214 +52,223 @@
 <audio id="audio" loop controls preload="auto">
 </audio>
 <div id="visuals"></div>
-<div id="preload"><span id="preload-txt">LOADING AUDIO...</span></div>
+<div id="preload"><span id="preload-txt">CLICK TO START</span></div>
 </body>
 <script type="text/javascript">
 
-    var audioCtx, audioElement;
-    var audioSource, streamSource;
-    var panner;
-    var analyser, bufferLength, spectrumArray, waveArray;
+    window.onload = function(){
+        document.body.addEventListener('click', startAll);
+    };
 
-    initContext();
 
-    function initContext(){
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function startAll(){
 
-        setupStream();
-        setupAudioFile();
+        var audioCtx, audioElement;
+        var audioSource, streamSource;
+        var panner;
+        var analyser, bufferLength, spectrumArray, waveArray;
 
-        createVisuals(bufferLength);
-    }
+        initContext();
 
-    function setupAudioFile(){
-        audioElement = document.getElementById('audio');
-        audioElement.src = "audio/bgm.mp3";
+        function initContext(){
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-        audioElement.addEventListener('canplay', function(){
-            document.getElementById('preload-txt').innerHTML = "READY!";
-            setTimeout(function(){
-                document.getElementById('preload').style.display = "none";
-                document.getElementById('audio').style.display = "block";
-                document.getElementsByClassName('dg ac')[0].style.display = "block";
-            }, 1000);
-        });
+            setupStream();
+            setupAudioFile();
 
-        audioSource = audioCtx.createMediaElementSource(audioElement);
+            createVisuals(bufferLength);
+        }
 
-        initPanner();
-        initAnalyser();
+        function setupAudioFile(){
+            audioElement = document.getElementById('audio');
+            audioElement.src = "audio/bgm.mp3";
 
-        audioSource.connect(panner);
-        panner.connect(analyser);
-        analyser.connect(audioCtx.destination);
-    }
+            audioElement.addEventListener('canplay', function(){
+                document.getElementById('preload-txt').innerHTML = "READY!";
+                setTimeout(function(){
+                    document.getElementById('preload').style.display = "none";
+                    document.getElementById('audio').style.display = "block";
+                    document.getElementsByClassName('dg ac')[0].style.display = "block";
+                }, 1000);
+            });
 
-    function setupStream(){
-        navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
-            streamSource = audioCtx.createMediaStreamSource(stream);
+            audioSource = audioCtx.createMediaElementSource(audioElement);
 
             initPanner();
             initAnalyser();
 
-            streamSource.connect(panner);
+            audioSource.connect(panner);
             panner.connect(analyser);
             analyser.connect(audioCtx.destination);
+        }
 
-            if(params.input == false){
+        function setupStream(){
+            navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
+                streamSource = audioCtx.createMediaStreamSource(stream);
+
+                initPanner();
+                initAnalyser();
+
+                streamSource.connect(panner);
+                panner.connect(analyser);
+                analyser.connect(audioCtx.destination);
+
+                if(params.input == false){
+                    streamSource.disconnect();
+                    audioSource.connect(panner);
+                }
+
+            }).catch(function(err){
+                console.log(err);
+            });
+        }
+
+
+        function initPanner(){
+            panner = audioCtx.createPanner();
+            panner.panningModel = 'HRTF';
+        }
+
+        function initAnalyser(){
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 128;
+            bufferLength = analyser.frequencyBinCount;
+            spectrumArray = new Uint8Array(bufferLength);
+            waveArray = new Float32Array(analyser.fftSize);
+        }
+
+        var vis;
+        function createVisuals(divNum){
+
+            // console.log(divNum);
+
+            vis = document.getElementById('visuals');
+
+            // var divNum = bufferLength;
+            var barWidth = Math.ceil(window.innerWidth / divNum);
+
+            if(vis.children.length > 0){
+                while(vis.children[0]){
+                    vis.children[0].remove();
+                }
+            }
+
+            // console.log(barWidth);
+            for(var i = 0; i < divNum; i++){
+                var newDiv = document.createElement("DIV");
+
+                newDiv.id = i;
+                newDiv.className = "bar";
+                newDiv.style.width = barWidth + "px";
+                newDiv.style.backgroundColor = "pink";
+                newDiv.style.left = i * barWidth + "px";
+
+                vis.appendChild(newDiv);
+            }
+
+        }
+
+        var params = {
+            "control": true,
+            "input": false,
+            "visual": "spectrum",
+            "fftSize": 128,
+            "posX": 0,
+            "posY": 0,
+            "posZ": 0
+        };
+
+        var gui = new dat.gui.GUI();
+        gui.add(params, 'control').onChange(function(value){
+            if(value){
+                document.getElementById('audio').style.display = "block";
+            }else{
+                document.getElementById('audio').style.display = "none";
+            }
+        });
+        gui.add(params, 'input').onChange(function(value){
+            if(value){
+                audioElement.pause();
+                // audioElement.currentTime = 0;
+                audioSource.disconnect();
+                streamSource.connect(panner);
+            }else{
+                audioElement.play();
                 streamSource.disconnect();
                 audioSource.connect(panner);
             }
-
-        }).catch(function(err){
-            console.log(err);
         });
-    }
-
-
-    function initPanner(){
-        panner = audioCtx.createPanner();
-        panner.panningModel = 'HRTF';
-    }
-
-    function initAnalyser(){
-        analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 128;
-        bufferLength = analyser.frequencyBinCount;
-        spectrumArray = new Uint8Array(bufferLength);
-        waveArray = new Float32Array(analyser.fftSize);
-    }
-
-    var vis;
-    function createVisuals(divNum){
-
-        // console.log(divNum);
-
-        vis = document.getElementById('visuals');
-
-        // var divNum = bufferLength;
-        var barWidth = Math.ceil(window.innerWidth / divNum);
-
-        if(vis.children.length > 0){
-            while(vis.children[0]){
-                vis.children[0].remove();
+        gui.add(params, 'visual', ['spectrum', 'waveform', 'amplitude']).onChange(function(value){
+            var divNum = bufferLength;
+            if(value == 'waveform'){
+                divNum = analyser.fftSize;
             }
-        }
+            else if(value == 'amplitude'){
+                divNum = 1;
+            }
+            createVisuals(divNum);
+        });
+        gui.add(params, 'fftSize', [128, 256, 512, 1024, 2048]).onChange(function(value){
+            analyser.fftSize = value;
+            bufferLength = analyser.frequencyBinCount;
+            spectrumArray = new Uint8Array(bufferLength);
+            waveArray = new Float32Array(analyser.fftSize);
 
-        // console.log(barWidth);
-        for(var i = 0; i < divNum; i++){
-            var newDiv = document.createElement("DIV");
+            var divNum = bufferLength;
+            if(params.visual == 'waveform'){
+                divNum = analyser.fftSize;
+            }
+            createVisuals(divNum);
+        });
+        var f1 = gui.addFolder('panner');
+        f1.add(params, 'posX', -5, 5, 0.1).onChange(function(value){
+            panner.positionX.value = value;
+        });
+        f1.add(params, 'posY', -5, 5, 0.1).onChange(function(value){
+            panner.positionY.value = value;
+        });
+        f1.add(params, 'posZ', -5, 5, 0.1).onChange(function(value){
+            panner.positionZ.value = value;
+        });
 
-            newDiv.id = i;
-            newDiv.className = "bar";
-            newDiv.style.width = barWidth + "px";
-            newDiv.style.backgroundColor = "pink";
-            newDiv.style.left = i * barWidth + "px";
+        setInterval(function(){
+            // console.log(dataArray);
 
-            vis.appendChild(newDiv);
-        }
+            if(params.visual == "spectrum"){
+                analyser.getByteFrequencyData(spectrumArray);
 
-    }
+                for(var i = 0; i < bufferLength; i++){
+                    totalAmp += spectrumArray[i] / 255;
+                    document.getElementById(i).style.bottom = 0;
+                    var newHeight = (spectrumArray[i] / 255) * (window.innerHeight / 2) + window.innerHeight / 2;
+                    document.getElementById(i).style.height = newHeight + "px";
+                }
 
-    var params = {
-        "control": true,
-        "input": false,
-        "visual": "spectrum",
-        "fftSize": 128,
-        "posX": 0,
-        "posY": 0,
-        "posZ": 0
-    };
+            }else if(params.visual == 'amplitude'){
+                analyser.getByteFrequencyData(spectrumArray);
 
-    var gui = new dat.gui.GUI();
-    gui.add(params, 'control').onChange(function(value){
-        if(value){
-            document.getElementById('audio').style.display = "block";
-        }else{
-            document.getElementById('audio').style.display = "none";
-        }
-    });
-    gui.add(params, 'input').onChange(function(value){
-        if(value){
-            audioElement.pause();
-            // audioElement.currentTime = 0;
-            audioSource.disconnect();
-            streamSource.connect(panner);
-        }else{
-            audioElement.play();
-            streamSource.disconnect();
-            audioSource.connect(panner);
-        }
-    });
-    gui.add(params, 'visual', ['spectrum', 'waveform', 'amplitude']).onChange(function(value){
-        var divNum = bufferLength;
-        if(value == 'waveform'){
-            divNum = analyser.fftSize;
-        }
-        else if(value == 'amplitude'){
-            divNum = 1;
-        }
-        createVisuals(divNum);
-    });
-    gui.add(params, 'fftSize', [128, 256, 512, 1024, 2048]).onChange(function(value){
-        analyser.fftSize = value;
-        bufferLength = analyser.frequencyBinCount;
-        spectrumArray = new Uint8Array(bufferLength);
-        waveArray = new Float32Array(analyser.fftSize);
+                var totalAmp = 0;
+                for(var i = 0; i < bufferLength; i++){
+                    totalAmp += spectrumArray[i] / 255;
+                }
+                totalAmp /= bufferLength;
+                // console.log(totalAmp);
+                var newHeight = totalAmp * (window.innerHeight / 2) + window.innerHeight / 2;
+                document.getElementById("0").style.height = newHeight + "px";
+            }else{
+                analyser.getFloatTimeDomainData(waveArray);
 
-        var divNum = bufferLength;
-        if(params.visual == 'waveform'){
-            divNum = analyser.fftSize;
-        }
-        createVisuals(divNum);
-    });
-    var f1 = gui.addFolder('panner');
-    f1.add(params, 'posX', -5, 5, 0.1).onChange(function(value){
-        panner.positionX.value = value;
-    });
-    f1.add(params, 'posY', -5, 5, 0.1).onChange(function(value){
-        panner.positionY.value = value;
-    });
-    f1.add(params, 'posZ', -5, 5, 0.1).onChange(function(value){
-        panner.positionZ.value = value;
-    });
-
-    setInterval(function(){
-        // console.log(dataArray);
-
-        if(params.visual == "spectrum"){
-            analyser.getByteFrequencyData(spectrumArray);
-
-            for(var i = 0; i < bufferLength; i++){
-                totalAmp += spectrumArray[i] / 255;
-                document.getElementById(i).style.bottom = 0;
-                var newHeight = (spectrumArray[i] / 255) * (window.innerHeight / 2) + window.innerHeight / 2;
-                document.getElementById(i).style.height = newHeight + "px";
+                for(var i = 0; i < analyser.fftSize; i++){
+                    document.getElementById(i).style.height = "5px";
+                    document.getElementById(i).style.bottom = waveArray[i] * (window.innerHeight / 2) + window.innerHeight / 2 + "px";
+                    // var newHeight = waveArray[i] * (window.innerHeight / 2);
+                    // document.getElementById(i).style.height = newHeight + "px";
+                }
             }
 
-        }else if(params.visual == 'amplitude'){
-            analyser.getByteFrequencyData(spectrumArray);
+        }, 50);
 
-            var totalAmp = 0;
-            for(var i = 0; i < bufferLength; i++){
-                totalAmp += spectrumArray[i] / 255;
-            }
-            totalAmp /= bufferLength;
-            // console.log(totalAmp);
-            var newHeight = totalAmp * (window.innerHeight / 2) + window.innerHeight / 2;
-            document.getElementById("0").style.height = newHeight + "px";
-        }else{
-            analyser.getFloatTimeDomainData(waveArray);
-
-            for(var i = 0; i < analyser.fftSize; i++){
-                document.getElementById(i).style.height = "5px";
-                document.getElementById(i).style.bottom = waveArray[i] * (window.innerHeight / 2) + window.innerHeight / 2 + "px";
-                // var newHeight = waveArray[i] * (window.innerHeight / 2);
-                // document.getElementById(i).style.height = newHeight + "px";
-            }
-        }
-
-    }, 50);
+    }
 
 
 </script>
