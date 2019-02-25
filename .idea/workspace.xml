@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="" />
+    <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/generative-random.html" beforeDir="false" afterPath="$PROJECT_DIR$/generative-random.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -33,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generative-random-art.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/generative-random-art.html">
+      <file leaf-file-name="generative-random.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/generative-random.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="54" column="25" lean-forward="true" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+            <state relative-caret-position="288">
+              <caret line="84" column="146" selection-start-line="84" selection-start-column="146" selection-end-line="84" selection-end-column="146" />
             </state>
           </provider>
         </entry>
@@ -138,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js-timed-events-demo.html" />
         <option value="$PROJECT_DIR$/js-loops-arrays.html" />
         <option value="$PROJECT_DIR$/jsmult-demo.html" />
         <option value="$PROJECT_DIR$/js-timed-events.html" />
@@ -189,6 +190,7 @@
         <option value="$PROJECT_DIR$/js-audio-analyser.html" />
         <option value="$PROJECT_DIR$/itp/index.html" />
         <option value="$PROJECT_DIR$/generative-random-art.html" />
+        <option value="$PROJECT_DIR$/generative-random.html" />
       </list>
     </option>
   </component>
@@ -411,15 +413,16 @@
       <workItem from="1550005286453" duration="281000" />
       <workItem from="1550008531034" duration="27000" />
       <workItem from="1550040157822" duration="950000" />
-      <workItem from="1551109046317" duration="2730000" />
+      <workItem from="1551109046317" duration="3068000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345073000" />
+    <option name="totallyTimeSpent" value="345411000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16335142" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -781,10 +784,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generative-random-art.html">
+    <entry file="file://$PROJECT_DIR$/generative-random.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="54" column="25" lean-forward="true" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+        <state relative-caret-position="288">
+          <caret line="84" column="146" selection-start-line="84" selection-start-column="146" selection-end-line="84" selection-end-column="146" />
         </state>
       </provider>
     </entry>
