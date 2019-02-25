@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="author" content="Jiwon Shin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="js/script.js" defer></script>
+    <title>WORKSHOPS | Jiwon Shin</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110518171-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110518171-1');
+    </script>
+</head>
+<style>
+    .poster-main{
+        position: absolute;
+        top: 0;
+        color: white;
+        z-index: 999;
+        font-family: 'Lato', 'Helvetica', sans-serif;
+        /*font-weight: 100;*/
+
+        /*width: 90%;*/
+        /*max-width: 1000px;*/
+        /*margin: 5%;*/
+    }
+
+    .poster-title{
+        font-weight: 100;
+        font-style: italic;
+        font-size: 4em;
+        text-align: center;
+    }
+
+    .poster-p{
+        font-size: 1.75em;
+        line-height: 1.75em;
+        text-align: center;
+    }
+
+    .poster-p-small{
+        font-size: 1.2em;
+        line-height: 1.2em;
+        text-align: center;
+    }
+
+    .poster-p-button{
+        text-align: center;
+        margin: 4em 0;
+    }
+
+    .poster-button-link{
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.75em;
+        border: solid 3px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+
+</style>
+<body>
+
+<main class="mdl-layout__content poster-main">
+    <div class="page-content">
+        <h1 class="poster-title">GENERATIVE RANDOM ART</h1>
+        <p class="poster-p-small">Workshop by <a target="_blank" href="http://jiwonshin.com">Jiwon Shin</a></p>
+        <p class="poster-p-small">March 2, 12pm - 1pm</p>
+        <p class="poster-p-small">Computer Lab 619, <a href="https://goo.gl/maps/FFPHZTgHh6S2">NYU Bobst Library</a></p>
+        <p class="poster-p-button"><a class="poster-button-link" target="_blank" href="">REGISTER</a></p>
+        <p class="poster-p">In this workshop, we ask the fundamental question of what randomness is and what it looks like. By asking students to express what they think random is, and by looking at what can constitute as randomness in nature, the workshop attempts at defining random. We ask the question of whether complete randomness is useful in creating visuals and explore ways to tame the randomness to create a desired controlled randomized visuals in <a target="_blank" href="https://p5js.org/">p5.js</a>, a javascript library for creating visuals.</p>
+        <p class="poster-p">Students will approach the concept of random first with pen and paper, to reflect on what their idea of random is. Then they will examine whether their idea of random is truly random and compare it with p5's idea of randomness. We will also compare two functions that can be used to generate random values in p5.js: random() and noise(). We will attempt at gaining a deeper knowledge of these functions by applying different visuals using these functions and go further into controlling it with other functions such as modulus(%) and map().
+        </p>
+        <p class="poster-p">Basic programming skills are recommended, but not necessary.</p>
+        <p class="poster-p">This workshop is presented as a final project for <a target="_blank" href="https://teachingasart.github.io/posts/teachingasartday/">Teaching as Art</a> class at NYU ITP.</p>
+    </div>
+</main>
+
+<script>
+    let cvs;
+
+    let randomFlowers = [];
+    let noiseFlowers = [];
+
+    function setup() {
+        cvs = createCanvas(windowWidth, windowHeight);
+        cvs.id('bgCanvas');
+        colorMode(HSB, 360, 100, 100, 100);
+        noStroke();
+
+        for(let i = 0; i < 4; i++){
+            randomFlowers.push(new RandomFlower(random(width), random(height)));
+            noiseFlowers.push(new NoiseFlower(random(width), random(height)));
+        }
+
+        background(0);
+
+    }
+
+    function draw(){
+        //background(0, 15);
+
+        for(let i = 0; i < randomFlowers.length; i++){
+            randomFlowers[i].update();
+            randomFlowers[i].display();
+        }
+
+        for(let i = 0; i < noiseFlowers.length; i++){
+            noiseFlowers[i].update();
+            noiseFlowers[i].display();
+        }
+    }
+
+    function windowResized(){
+        resizeCanvas(windowWidth, windowHeight);
+
+        randomFlowers = [];
+        noiseFlowers = [];
+
+        for(let i = 0; i < 4; i++){
+            randomFlowers.push(new RandomFlower(random(width), random(height)));
+            noiseFlowers.push(new NoiseFlower(random(width), random(height)));
+        }
+
+        background(0);
+    }
+
+    class RandomFlower{
+        constructor(x, y){
+            this.x = x;
+            this.y = y;
+            this.range = int(random(30, 60));
+            this.updateSpeed = int(random(30, 50));
+            this.aSpeed = random(0.01, 0.05);
+        }
+
+        update(){
+            if (frameCount % this.updateSpeed == 0) {
+                this.range += 1;
+            }
+        }
+
+        display(){
+            let hue = random() * 60 + 180;
+            stroke(hue, 100, 80, 15);
+            fill(hue, 100, 80, 30);
+            push();
+            translate(this.x, this.y);
+            rotate(frameCount * this.aSpeed);
+            line(0, 0, random() * this.range + this.range, 0);
+            ellipse(random() * this.range + this.range, 0, 5, 5);
+            pop();
+        }
+    }
+
+    class NoiseFlower{
+        constructor(x, y){
+            this.x = x;
+            this.y = y;
+            this.range = int(random(30, 60));
+            this.updateSpeed = int(random(30, 50));
+            this.aSpeed = random(0.01, 0.05);
+        }
+
+        update(){
+            if (frameCount % this.updateSpeed == 0) {
+                this.range += 1;
+            }
+        }
+
+        display(){
+            let hue = noise(frameCount * this.aSpeed) * 60 + 180;
+            stroke(hue, 100, 80, 15);
+            fill(hue, 100, 80, 30);
+            push();
+            translate(this.x, this.y);
+            rotate(frameCount * this.aSpeed * 0.5);
+            line(0, 0, noise(frameCount * this.aSpeed * 0.5) * this.range + this.range, 0);
+            ellipse(noise(frameCount * this.aSpeed * 0.5) * this.range + this.range, 0, 5, 5);
+            pop();
+        }
+    }
+</script>
+</body>
+
+</html>
