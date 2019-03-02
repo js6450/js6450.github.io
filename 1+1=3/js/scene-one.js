@@ -52,6 +52,8 @@ function draw() {
 
     if(sound.soundInStarted){
 
+        // console.log(sound.returnLevel());
+
         background(0, sound.returnLevel() * 20 + 10);
         worldScale = map(sound.returnLevel(), 0, 1, 1, 0.3);
 
