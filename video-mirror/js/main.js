@@ -118,6 +118,16 @@ function draw(){
         line(0, noise(frameCount * 0.01 * i) * height, width, noise(frameCount * 0.01 * i) * height);
     }
 
+    for(let i = 0; i < 50; i++){
+        let x = int(random(width));
+        let y = int(random(height));
+
+        let color = noise(x, y);
+
+        fill(color, 50);
+        rect(x, y, 5, 2);
+    }
+
     let date = "" + Date();
 
     textFont('Courier');
