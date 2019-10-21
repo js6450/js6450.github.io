@@ -62,7 +62,7 @@ window.onload = function(){
             document.getElementById(`grid-row-${y}`).appendChild(newDiv);
             newDiv.setAttribute('class', 'grid-item');
             newDiv.id = divId;
-            connections.push(new p5(newSketch.render, divId));
+            networks.push(new p5(newSketch.render, divId));
         }
     }
 };
