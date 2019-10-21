@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/networks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/networks.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,26 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="js-audio-analyser.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="js-audio-analyser.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="networks.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/networks.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="53" column="68" lean-forward="true" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+              <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -209,8 +192,8 @@
         <option value="$PROJECT_DIR$/audio-viz/index.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/pixel-manipulation.html" />
-        <option value="$PROJECT_DIR$/js-audio-analyser.html" />
         <option value="$PROJECT_DIR$/networks.html" />
+        <option value="$PROJECT_DIR$/js-audio-analyser.html" />
       </list>
     </option>
   </component>
@@ -241,6 +224,11 @@
             <path>
               <item name="js6450.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="js6450.github.io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="js6450.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="js6450.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="media-theory" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -437,16 +425,15 @@
       <workItem from="1569453132234" duration="474000" />
       <workItem from="1570488947182" duration="862000" />
       <workItem from="1571259514655" duration="896000" />
-      <workItem from="1571683012328" duration="4656000" />
+      <workItem from="1571683012328" duration="4897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="381853000" />
+    <option name="totallyTimeSpent" value="382094000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="780" y="23" width="1100" height="1027" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21037999" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -763,23 +750,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/networks.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="53" column="68" lean-forward="true" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
+        <state relative-caret-position="308">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#p#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
         </state>
       </provider>
     </entry>
