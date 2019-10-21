@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Networks</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        font-family: "Helvetica Neue", sans-serif;
+    }
+    .grid-item{
+        display: inline-block;
+        margin-left: 12px;
+        margin-top: 6px;
+    }
+
+    #network-grid{
+        width: 80vw;
+        float: left;
+    }
+
+    #title{
+        width: calc(20vw - 15px);
+        height: 100vh;
+        background: white;
+        position: fixed;
+        right: 0;
+    }
+
+</style>
+<body>
+    <div id="network-grid"></div>
+    <div id="title">
+        <h1 style="text-align: center">exploring connections</h1>
+        <hr style="height: 3px; background: black">
+        <p style="padding: 0 15px">Click on the individual networks to reinitialize the number of nodes and connections.</p>
+        <p style="padding: 0 15px">The minimum number of possible network is 2 and maximum is 15.<br><br>Each node can have as many as networks as the number of connections available, excluding itself.</p>
+    </div>
+</body>
+<script>
+let canvasSize = (window.innerWidth * 0.80 - 60) / 5;
+let networks = [];
+
+let netRow = 5;
+let netCol = 5;
+
+window.onload = function(){
+    for(let y = 0; y < netRow; y++){
+        let newRow = document.createElement('DIV');
+        newRow.setAttribute('id', `grid-row-${y}`);
+        document.getElementById('network-grid').appendChild(newRow);
+        for(let x = 0; x < netCol; x++){
+            let newSketch = new Network();
+            let newDiv = document.createElement('DIV');
+            let divId = `network-${x + y * netCol}`;
+            document.getElementById(`grid-row-${y}`).appendChild(newDiv);
+            newDiv.setAttribute('class', 'grid-item');
+            newDiv.id = divId;
+            networks.push(new p5(newSketch.render, divId));
+        }
+    }
+};
+
+class Network{
+    constructor(){
+        this.render = this.render.bind(this);
+    }
+
+    render(sketch){
+        const w = canvasSize;
+
+        let nodes = [];
+        let totalConnected = 0;
+
+        sketch.setup = function(){
+            let cvs = sketch.createCanvas(w, w);
+            cvs.class('network');
+
+            sketch.background(0, 50);
+
+            let totalNodes = sketch.int(sketch.random(2, 15));
+
+            for(let i = 0; i < totalNodes; i++){
+                nodes.push(new Node(sketch, i, sketch.int(sketch.random(totalNodes)), totalNodes));
+
+                totalConnected += nodes[i].connected.length;
+            }
+        };
+
+        sketch.draw = function(){
+            sketch.background(0, 50);
+
+            for(let i = 0; i < nodes.length; i++){
+                nodes[i].update(nodes);
+                nodes[i].display();
+            }
+
+            sketch.noStroke();
+            sketch.fill(180);
+            sketch.text("total nodes: " + nodes.length, 15, sketch.height - 30);
+            sketch.text("total connections: " + totalConnected, 15, sketch.height - 15);
+        }
+
+        sketch.mousePressed = function(){
+
+            if(sketch.mouseX < sketch.width && sketch.mouseX > 0 && sketch.mouseY > 0 && sketch.mouseY < sketch.height){
+                nodes = [];
+                totalConnected = 0;
+
+                let totalNodes = sketch.int(sketch.random(3, 10));
+
+                for(let i = 0; i < totalNodes; i++){
+                    nodes.push(new Node(sketch, i, sketch.int(sketch.random(totalNodes)), totalNodes));
+
+                    totalConnected += nodes[i].connected.length;
+                }
+            }
+
+        }
+
+        sketch.windowResized = function(){
+            sketch.resizeCanvas((window.innerWidth * 0.80 - 60) / 5, (window.innerWidth * 0.80 - 60) / 5);
+        }
+    }
+}
+
+class Node{
+    constructor(sketch, id, numConnections, totalConnections){
+        this.sketch = sketch;
+
+        this.x = sketch.random(sketch.width);
+        this.y = sketch.random(sketch.height);
+
+        this.size = sketch.random(20, 50);
+
+        this.connected = [];
+
+        for(let i = 0; i < numConnections; i++){
+            let randIndex = sketch.int(sketch.random(totalConnections));
+
+            if(randIndex != id){
+                this.connected.push(randIndex);
+            }
+        }
+
+        this.xSpeed = sketch.random(-2, 2);
+        this.ySpeed = sketch.random(-2, 2);
+    }
+
+    update(others){
+
+        if(this.x < this.size / 2 || this.x > this.sketch.width - this.size / 2){
+            this.xSpeed *= -1;
+        }
+        if(this.x < this.size / 2){
+            this.x = this.size / 2;
+        }
+        if(this.x > this.sketch.width - this.size / 2){
+            this.x = this.sketch.width - this.size / 2;
+        }
+        if(this.y < this.size / 2 || this.y > this.sketch.height - this.size / 2){
+            this.ySpeed *= -1;
+        }
+        if(this.y < this.size / 2){
+            this.y = this.size / 2;
+        }
+        if(this.y > this.sketch.height - this.size / 2){
+            this.y = this.sketch.height - this.size / 2;
+        }
+
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+
+        for(let i = 0; i < this.connected.length; i++){
+            this.sketch.stroke(255, 80);
+            this.sketch.strokeWeight(2);
+            this.sketch.line(this.x, this.y, others[this.connected[i]].x, others[this.connected[i]].y);
+        }
+    }
+
+    display(){
+        this.sketch.fill(200, 50);
+        this.sketch.ellipse(this.x, this.y, this.size, this.size);
+    }
+}
+
+</script>
+</html>
