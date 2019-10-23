@@ -74,7 +74,7 @@
         }
 
         function draw(){
-            background(0, 15);
+            background(20, 15);
 
             if(keyLogs.length > 0){
                 for(let i = 0; i < keyLogs.length; i++){
@@ -130,7 +130,7 @@
 
                         for(let i = 0 ; i < keyStars.length; i++){
                             keyStars[i].alpha = 255;
-                            keyStars[i].alphaSpeed = 2;
+                            keyStars[i].alphaSpeed = 1;
                             keyStars[i].alphaLimit = 0;
                             keyStars[i].showCounter = true;
                         }
@@ -743,9 +743,9 @@
                 textSize(this.size);
                 text(this.key, this.x - this.size / 2, this.y);
                 if(this.showCounter){
-                    fill(200, 200, 0, this.alpha);
+                    fill(220, 220, 0, this.alpha);
                     textSize(int(this.size * 0.75));
-                    text(this.counter, this.x - this.size / 2, this.y - this.size + this.size * 2 / 3);
+                    text(this.counter, this.x + 12, this.y);
                 }
             }
         }
