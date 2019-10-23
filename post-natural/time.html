@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+</style>
+<body>
+    <script>
+
+        let days = [];
+        let rawText;
+        let inputText = [];
+        let specials = [
+            "DELETE|BACKSPACE",
+            "DOWNARROW",
+            "UPARROW",
+            "RIGHTARROW",
+            "LEFTARROW",
+            "RS(",
+            "RC(",
+            "RA(",
+            "RCMD(",
+            "LS(",
+            "LC(",
+            "LA(",
+            "LCMD("
+        ];
+
+        let dayCounter = 0;
+        let itemCounter = 1;
+        let keyStars = [];
+
+        let speed = 100;
+        let lastUpdate = 0;
+
+        function setup(){
+            for(let i = 0; i < 50; i++){
+                loadStrings('data/' + i, parseText);
+            }
+
+            createCanvas(windowWidth, windowHeight);
+
+            for(let s = 0; s < specials.length; s++){
+                let specialKey = specials[s];
+
+                keyStars.push(new KeyStar(specialKey));
+            }
+
+            for(let a = 32; a < 65; a++){
+                let key = String.fromCharCode(a);
+
+                keyStars.push(new KeyStar(key));
+            }
+
+            for(let a = 91; a < 127; a++){
+                let key = String.fromCharCode(a);
+
+                keyStars.push(new KeyStar(key));
+            }
+
+            textAlign(CENTER);
+        }
+
+        function draw(){
+            background(0, 15);
+
+            if(inputText[dayCounter]){
+
+                if(inputText[dayCounter][itemCounter]) {
+                    push();
+                    textAlign(LEFT);
+                    fill(255);
+                    textSize(16);
+                    text(inputText[dayCounter][itemCounter].timeFull, 10, 20);
+                    text(inputText[dayCounter][itemCounter].app, width - 10 - textWidth(inputText[dayCounter][itemCounter].app), 20);
+                    let textCount = (itemCounter - 1) + " number of keys pressed"
+                    text(textCount, width - 10 - textWidth(textCount), 40);
+                    pop();
+                }
+
+                for(let k = 0; k < keyStars.length; k++){
+                    keyStars[k].update();
+                    keyStars[k].display();
+                }
+
+                if(lastUpdate < millis() - speed){
+
+                    itemCounter++;
+
+                    if(itemCounter > inputText[dayCounter].length - 2){
+
+                        for(let i = 0 ; i < keyStars.length; i++){
+                            keyStars[i].alpha = 255;
+                            keyStars[i].alphaSpeed = 2;
+                            keyStars[i].alphaLimit = 0;
+                            keyStars[i].showCounter = true;
+                        }
+
+                        speed = 3000;
+                    }
+
+                    if(itemCounter > inputText[dayCounter].length - 1){
+
+                        for(let i = 0 ; i < keyStars.length; i++){
+                          //  keyStars[i].showCounter = false;
+
+                            keyStars[i].x = random(50, width - 50);
+                            keyStars[i].y = random(70, height - 50);
+
+                            keyStars[i].size = 12;
+                            keyStars[i].alphaSpeed = 10;
+                            keyStars[i].alphaLimit = 20;
+                            keyStars[i].alpha = 20;
+                            keyStars[i].showCounter = false;
+                            keyStars[i].counter = 0;
+                        }
+
+                        if(dayCounter > inputText.length - 1){
+                            dayCounter = 0;
+                        }
+
+                        dayCounter++;
+                        itemCounter = 1;
+                        speed = 100;
+                    }
+
+                    let currentKey = inputText[dayCounter][itemCounter];
+                    let starIndex = 0;
+
+                    if(currentKey.type == "special-key"){
+                        starIndex = specials.indexOf(currentKey.data);
+                    }else if(currentKey.type == "key"){
+                        let charCode = currentKey.data.charCodeAt(0);
+
+                        starIndex = charCode - 32 + specials.length;
+
+                        if(charCode > 90){
+                            starIndex -= 26;
+                        }
+                    }
+
+                    // console.log(starIndex);
+                    // console.log(currentKey);
+
+                    keyStars[starIndex].alpha = 255;
+                    keyStars[starIndex].size += 0.5;
+                    keyStars[starIndex].counter += 1;
+
+                    lastUpdate = millis();
+                }
+            }
+
+        }
+
+        function parseText(result){
+
+            let arrayIndex = 0;
+            rawText = result;
+
+            let appName = result[0];
+            let day = 0;
+            let time = 0;
+            let timeFullText = "";
+
+            for(let i = 1; i < result.length; i++){
+                if(result[i] != ""){
+                    let spaceSplit = result[i].split(' ');
+                    if(spaceSplit[spaceSplit.length - 1] == "Time"){
+
+                        day = int(spaceSplit[2].split(',')[0]);
+
+                        if(days.indexOf(day) < 0){
+                            days.push(day);
+                            days.sort();
+
+                            inputText.splice(days.indexOf(day), 0, []);
+
+                            let keyCounts = [];
+
+                            for(let s = 0; s < specials.length; s++){
+                                let specialKey = specials[s];
+                                //keyCounts[specialKey] = 0;
+                                keyCounts.push({
+                                    key: specialKey,
+                                    count: 0
+                                })
+                            }
+
+                            for(let a = 32; a < 65; a++){
+                                let key = String.fromCharCode(a);
+                                //keyCounts[key] = 0;
+                                keyCounts.push({
+                                    key: key,
+                                    count: 0
+                                })
+                            }
+
+                            for(let a = 91; a < 127; a++){
+                                let key = String.fromCharCode(a);
+                                //keyCounts[key] = 0;
+                                keyCounts.push({
+                                    key: key,
+                                    count: 0
+                                })
+                            }
+
+                            inputText[days.indexOf(day)].push(keyCounts);
+                        }
+
+                        arrayIndex = days.indexOf(day);
+
+
+
+                        time = 0;
+
+                        let timeText = spaceSplit[5].split(":");
+
+                        for(let t = 0; t < timeText.length; t++){
+                            if(t == 0 && int(timeText[0]) < 12){
+                                if(spaceSplit[6] == "PM"){
+                                  time += 12 * 3600;
+                                }
+                            }
+
+                            time += int(timeText[t]) * (pow(60, (2 - t)));
+                        }
+
+                        timeFullText = result[i];
+                    }else{
+                        let parseSpecial = result[i].split('\\');
+
+                        for(let i = 0; i < parseSpecial.length; i++){
+
+                            if(parseSpecial[i].indexOf(specials[0]) > -1){
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[0]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[0].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    inputText[arrayIndex].push({
+                                        type: "key",
+                                        app: appName,
+                                        day: day,
+                                        time: time,
+                                        timeFull: timeFullText,
+                                        data: rest[k]
+                                    });
+
+                                    addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[1]) > -1){
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[1]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[1].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    inputText[arrayIndex].push({
+                                        type: "key",
+                                        app: appName,
+                                        day: day,
+                                        time: time,
+                                        timeFull: timeFullText,
+                                        data: rest[k]
+                                    });
+
+                                    addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[2]) > -1){
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[2]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[2].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    inputText[arrayIndex].push({
+                                        type: "key",
+                                        app: appName,
+                                        day: day,
+                                        time: time,
+                                        timeFull: timeFullText,
+                                        data: rest[k]
+                                    });
+
+                                    addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[3]) > -1){
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[3]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[3].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    inputText[arrayIndex].push({
+                                        type: "key",
+                                        app: appName,
+                                        day: day,
+                                        time: time,
+                                        timeFull: timeFullText,
+                                        data: rest[k]
+                                    });
+
+                                    addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[4]) > -1){
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[4]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[4].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    inputText[arrayIndex].push({
+                                        type: "key",
+                                        app: appName,
+                                        day: day,
+                                        time: time,
+                                        timeFull: timeFullText,
+                                        data: rest[k]
+                                    });
+
+                                    addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[5]) > -1){
+
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[5]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[5].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    if(rest[k] != ")"){
+                                        inputText[arrayIndex].push({
+                                            type: "key",
+                                            app: appName,
+                                            day: day,
+                                            time: time,
+                                            timeFull: timeFullText,
+                                            data: rest[k]
+                                        });
+
+                                        addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                    }
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[6]) > -1){
+
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[6]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[6].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    if(rest[k] != ")"){
+                                        inputText[arrayIndex].push({
+                                            type: "key",
+                                            app: appName,
+                                            day: day,
+                                            time: time,
+                                            timeFull: timeFullText,
+                                            data: rest[k]
+                                        });
+
+                                        addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                    }
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[7]) > -1){
+
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[7]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[7].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    if(rest[k] != ")"){
+                                        inputText[arrayIndex].push({
+                                            type: "key",
+                                            app: appName,
+                                            day: day,
+                                            time: time,
+                                            timeFull: timeFullText,
+                                            data: rest[k]
+                                        });
+
+                                        addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                    }
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[8]) > -1){
+
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[8]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[8].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    if(rest[k] != ")"){
+                                        inputText[arrayIndex].push({
+                                            type: "key",
+                                            app: appName,
+                                            day: day,
+                                            time: time,
+                                            timeFull: timeFullText,
+                                            data: rest[k]
+                                        });
+
+                                        addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                    }
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[9]) > -1){
+
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[9]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[9].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    if(rest[k] != ")"){
+                                        inputText[arrayIndex].push({
+                                            type: "key",
+                                            app: appName,
+                                            day: day,
+                                            time: time,
+                                            timeFull: timeFullText,
+                                            data: rest[k]
+                                        });
+
+                                        addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                    }
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[10]) > -1){
+
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[10]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[10].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    if(rest[k] != ")"){
+                                        inputText[arrayIndex].push({
+                                            type: "key",
+                                            app: appName,
+                                            day: day,
+                                            time: time,
+                                            timeFull: timeFullText,
+                                            data: rest[k]
+                                        });
+
+                                        addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                    }
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[11]) > -1){
+
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[11]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[11].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    if(rest[k] != ")"){
+                                        inputText[arrayIndex].push({
+                                            type: "key",
+                                            app: appName,
+                                            day: day,
+                                            time: time,
+                                            timeFull: timeFullText,
+                                            data: rest[k]
+                                        });
+
+                                        addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                    }
+                                }
+                            }
+                            else if(parseSpecial[i].indexOf(specials[12]) > -1){
+
+                                inputText[arrayIndex].push({
+                                    type: "special-key",
+                                    app: appName,
+                                    day: day,
+                                    time: time,
+                                    timeFull: timeFullText,
+                                    data: specials[12]
+                                });
+
+                                addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+
+                                let rest = parseSpecial[i].substring(specials[12].length);
+
+                                for(let k = 0; k < rest.length; k++){
+                                    if(rest[k] != ")"){
+                                        inputText[arrayIndex].push({
+                                            type: "key",
+                                            app: appName,
+                                            day: day,
+                                            time: time,
+                                            timeFull: timeFullText,
+                                            data: rest[k]
+                                        });
+
+                                        addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                    }
+                                }
+                            }
+                            else{
+                                let rest = parseSpecial[i];
+
+                                for(let k = 0; k < rest.length; k++){
+                                    inputText[arrayIndex].push({
+                                        type: "key",
+                                        app: appName,
+                                        day: day,
+                                        time: time,
+                                        timeFull: timeFullText,
+                                        data: rest[k]
+                                    });
+
+                                    addToCounter(arrayIndex, inputText[arrayIndex].length - 1);
+                                }
+                            }
+                        }
+                    }
+
+                    if(inputText[arrayIndex].length > 1){
+                        inputText[arrayIndex].sort((a, b) => parseFloat(a.time) - parseFloat(b.time));
+                    }
+
+                }
+            }
+        }
+
+        function addToCounter(aIndex, lIndex){
+            let lastInput = inputText[aIndex][lIndex];
+
+            if(lastInput.type == "special-key"){
+                inputText[aIndex][0][specials.indexOf(lastInput.data)].count++;
+               // inputText[]
+            }else if(lastInput.type == "key"){
+                let charCode = lastInput.data.charCodeAt(0);
+
+                let keyIndex = charCode - 32 + specials.length;
+
+                if(charCode > 90){
+                    keyIndex -= 26;
+                }
+
+                inputText[aIndex][0][keyIndex].count++;
+            }
+
+           // console.log(lastInput);
+
+            //inputText[aIndex][0].sort((b, a) => parseFloat(a.count) - parseFloat(b.count));
+        }
+
+        class KeyStar{
+
+            constructor(key){
+
+                this.key = key;
+
+                if(key == "RS("){
+                    this.key = "RIGHT_SHIFT"
+                }else if(key == "RC("){
+                    this.key = "RIGHT_CONTROL"
+                }else if(key == "RA("){
+                    this.key = "RIGHT_ALT"
+                }else if(key == "RCMD("){
+                    this.key = "RIGHT_COMMAND"
+                }else if(key == "LS("){
+                    this.key = "LEFT_SHIFT"
+                }else if(key == "LC("){
+                    this.key = "LEFT_CONTROL"
+                }else if(key == "LA("){
+                    this.key = "LEFT_ALT"
+                }else if(key == "LCMD("){
+                    this.key = "LEFT_COMMAND"
+                }
+
+                this.x = random(50, width - 50);
+                this.y = random(70, height - 50);
+
+                this.alpha = 20;
+                this.alphaSpeed = 10;
+                this.alphaLimit = 20;
+                this.size = 12;
+
+                this.counter = 0;
+                this.showCounter = false;
+            }
+
+            update(){
+                if(this.alpha > this.alphaLimit){
+                    this.alpha -= this.alphaSpeed;
+                }
+            }
+
+
+            display(){
+                fill(255, this.alpha);
+                textSize(this.size);
+                text(this.key, this.x - this.size / 2, this.y - this.size);
+                if(this.showCounter){
+                    fill(125, 125, 0, this.alpha);
+                    textSize(int(this.size * 0.75));
+                    text(this.counter, this.x - this.size / 2, this.y - this.size + this.size * 2 / 3);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

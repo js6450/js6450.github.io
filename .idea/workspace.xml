@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/networks.html" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/post-natural/time.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -56,17 +57,35 @@
       <file leaf-file-name="js-audio-advanced.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js-audio-advanced.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
+            <state relative-caret-position="605">
               <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="js-audio-analyser.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="connections.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/media-theory/connections.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="6" selection-end-column="99" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="time.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/post-natural/time.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="705" column="13" lean-forward="true" selection-start-line="705" selection-start-column="13" selection-end-line="705" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="js-audio-analyser.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+            <state relative-caret-position="274">
+              <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -85,15 +104,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
               <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/audio-viz/sketches/spectrum-viz/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -132,6 +142,8 @@
       <find>sectio</find>
       <find>panner</find>
       <find>p-link</find>
+      <find>connections</find>
+      <find>counter</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -143,8 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/p5-sound.html" />
-        <option value="$PROJECT_DIR$/p5-sketch/fftWaveform.html" />
         <option value="$PROJECT_DIR$/p5-sketch/fftSpectrum.html" />
         <option value="$PROJECT_DIR$/p5-sketch/animatedType.html" />
         <option value="$PROJECT_DIR$/sound.html" />
@@ -194,6 +204,8 @@
         <option value="$PROJECT_DIR$/pixel-manipulation.html" />
         <option value="$PROJECT_DIR$/networks.html" />
         <option value="$PROJECT_DIR$/js-audio-analyser.html" />
+        <option value="$PROJECT_DIR$/media-theory/connections.html" />
+        <option value="$PROJECT_DIR$/post-natural/time.html" />
       </list>
     </option>
   </component>
@@ -207,9 +219,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="780" />
+    <option name="x" value="555" />
     <option name="y" value="23" />
-    <option name="width" value="1100" />
+    <option name="width" value="1125" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
@@ -228,7 +240,12 @@
             <path>
               <item name="js6450.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="js6450.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="media-theory" type="462c0819:PsiDirectoryNode" />
+              <item name="post-natural" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="js6450.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="js6450.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="show18" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -425,24 +442,26 @@
       <workItem from="1569453132234" duration="474000" />
       <workItem from="1570488947182" duration="862000" />
       <workItem from="1571259514655" duration="896000" />
-      <workItem from="1571683012328" duration="4897000" />
+      <workItem from="1571683012328" duration="24133000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="382094000" />
+    <option name="totallyTimeSpent" value="401330000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="780" y="23" width="1100" height="1027" extended-state="0" />
+    <frame x="555" y="23" width="1125" height="1027" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21037999" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17572464" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32903227" />
       <window_info anchor="bottom" id="Run" order="3" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2483871" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2483871" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="SFDX" order="10" />
@@ -455,7 +474,6 @@
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Salesforce" order="14" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32903227" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,24 +491,10 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/p5-sketch/fftSpectrum.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="40" column="61" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sound-p5-part3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="873">
-          <caret line="127" selection-start-line="127" selection-end-line="127" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/film/slides.html" />
     <entry file="file://$PROJECT_DIR$/film/syllabus.html" />
     <entry file="file://$PROJECT_DIR$/film/index.html" />
@@ -743,13 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js-audio-advanced.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/networks.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -766,8 +763,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js-audio-analyser.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+        <state relative-caret-position="274">
+          <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js-audio-advanced.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media-theory/connections.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="6" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post-natural/time.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="705" column="13" lean-forward="true" selection-start-line="705" selection-start-column="13" selection-end-line="705" selection-end-column="13" />
         </state>
       </provider>
     </entry>
