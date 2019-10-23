@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/post-natural/time.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post-natural/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/post-natural/time.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -75,8 +75,8 @@
       <file leaf-file-name="time.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/post-natural/time.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="705" column="13" lean-forward="true" selection-start-line="705" selection-start-column="13" selection-end-line="705" selection-end-column="13" />
+            <state relative-caret-position="646">
+              <caret line="803" selection-start-line="803" selection-end-line="803" />
             </state>
           </provider>
         </entry>
@@ -142,12 +142,17 @@
       <find>sectio</find>
       <find>panner</find>
       <find>p-link</find>
-      <find>connections</find>
       <find>counter</find>
+      <find>keylogs</find>
+      <find>connections</find>
     </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/video-mirror</dir>
+      <dir>$PROJECT_DIR$/show18/js</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -219,9 +224,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="555" />
+    <option name="x" value="560" />
     <option name="y" value="23" />
-    <option name="width" value="1125" />
+    <option name="width" value="1120" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
@@ -442,18 +447,18 @@
       <workItem from="1569453132234" duration="474000" />
       <workItem from="1570488947182" duration="862000" />
       <workItem from="1571259514655" duration="896000" />
-      <workItem from="1571683012328" duration="24133000" />
+      <workItem from="1571683012328" duration="31883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="401330000" />
+    <option name="totallyTimeSpent" value="409080000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="555" y="23" width="1125" height="1027" extended-state="0" />
+    <frame x="560" y="23" width="1120" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17572464" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17652412" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
@@ -784,8 +789,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/post-natural/time.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="705" column="13" lean-forward="true" selection-start-line="705" selection-start-column="13" selection-end-line="705" selection-end-column="13" />
+        <state relative-caret-position="646">
+          <caret line="803" selection-start-line="803" selection-end-line="803" />
         </state>
       </provider>
     </entry>
