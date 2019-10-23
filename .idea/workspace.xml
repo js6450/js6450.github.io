@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da07da4-12b2-44be-9447-cf6768cfd066" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post-natural/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/post-natural/time.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -75,8 +74,8 @@
       <file leaf-file-name="time.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/post-natural/time.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="808" column="26" selection-start-line="808" selection-start-column="26" selection-end-line="808" selection-end-column="26" />
+            <state relative-caret-position="360">
+              <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -224,9 +223,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="560" />
+    <option name="x" value="840" />
     <option name="y" value="23" />
-    <option name="width" value="1120" />
+    <option name="width" value="840" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectView">
@@ -447,17 +446,18 @@
       <workItem from="1569453132234" duration="474000" />
       <workItem from="1570488947182" duration="862000" />
       <workItem from="1571259514655" duration="896000" />
-      <workItem from="1571683012328" duration="32067000" />
+      <workItem from="1571683012328" duration="33630000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="409264000" />
+    <option name="totallyTimeSpent" value="410827000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="560" y="23" width="1120" height="1027" extended-state="0" />
+    <frame x="840" y="23" width="840" height="1027" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17652412" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.17652412" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
@@ -788,8 +788,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/post-natural/time.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="808" column="26" selection-start-line="808" selection-start-column="26" selection-end-line="808" selection-end-column="26" />
+        <state relative-caret-position="360">
+          <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
         </state>
       </provider>
     </entry>

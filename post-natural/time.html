@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Time: In Keys Pressed</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
 </head>
@@ -84,6 +84,12 @@
                 for(let i = 0; i < keyLogs.length; i++){
                     keyLogs[i].displayText();
                 }
+            }
+
+            for(let i = 0; i < 2; i++){
+                noStroke();
+                fill(255, random(50, 150));
+                circle(random(width), random(height), random(2, 5));
             }
 
             if(inputText[dayCounter]){
@@ -737,7 +743,7 @@
                 textSize(this.size);
                 text(this.key, this.x - this.size / 2, this.y);
                 if(this.showCounter){
-                    fill(125, 125, 0, this.alpha);
+                    fill(200, 200, 0, this.alpha);
                     textSize(int(this.size * 0.75));
                     text(this.counter, this.x - this.size / 2, this.y - this.size + this.size * 2 / 3);
                 }
@@ -753,8 +759,8 @@
                 this.currentX = this.startX;
                 this.currentY = this.startY;
 
-                this.xvel = 2 * cos(radians(36 * (i + 1)));
-                this.yvel = 2 * sin(radians(36 * (i + 1)));
+                this.xvel = 3 * cos(radians(random(360)));
+                this.yvel = 3 * sin(radians(random(360)));
                 // this.yvel = (height / 2 - 10) / 13683 * sin(radians(36 * (i + 1)));
 
                 this.xpos = [];
@@ -790,7 +796,7 @@
                 this.graphics.push();
                 this.graphics.noStroke();
                 this.graphics.colorMode(HSB, 360, 100, 100, 100);
-                this.graphics.fill(this.hue, this.sat, this.brightSpeed * this.currentIndex, 50);
+                this.graphics.fill(this.hue, this.sat, this.brightSpeed * this.currentIndex, 30);
                 this.graphics.ellipse(this.currentX, this.currentY, this.rad, this.rad);
                 this.graphics.pop();
 
