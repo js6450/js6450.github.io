@@ -1,0 +1,164 @@
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta http-equiv="Cache-Control" content="no-cache">
+      <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+      <title>Satellites</title>
+
+    </head>
+    <style>
+
+      body{
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #card{
+        width: 31vw;
+        height: 100vh;
+        background: #0B1013;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      #card-img{
+        margin: auto;
+        display: block;
+        margin-top: 120px;
+      }
+    </style>
+    <body>
+      <canvas id="webgl"></canvas>
+      <div id=card>
+        <img width="60%" height="auto" id="card-img" src="data/img/cover.png">
+      </div>
+      <script src="js/three.min.js"></script>
+      <script src="js/three.interaction.js"></script>
+      <script src="js/OrbitControls.js"></script>
+      <script>
+
+        let selected = -1;
+
+      	THREE.Object3D.prototype.rotateAroundWorldAxis = function() {
+  	    	var q1 = new THREE.Quaternion();
+  		    return function ( point, axis, angle ) {
+
+  		        q1.setFromAxisAngle( axis, angle );
+
+  		        this.quaternion.multiplyQuaternions( q1, this.quaternion );
+
+  		        this.position.sub( point );
+  		        this.position.applyQuaternion( q1 );
+  		        this.position.add( point );
+
+  		        return this;
+  		    }
+		    }();
+
+        window.addEventListener('resize', onWindowResize, false);
+        let WIDTH = window.innerWidth * 0.7;
+        let HEIGHT = window.innerHeight;
+        let camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.01, 1500);
+        camera.position.z = 100;
+
+        let renderer = new THREE.WebGLRenderer({
+          canvas: document.querySelector('#webgl'),
+          antialias: true,
+        });
+
+        let sats = [];
+
+        renderer.setClearColor(0x0B1013);
+        renderer.setSize(WIDTH, HEIGHT);
+
+        let controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        let scene = new THREE.Scene();
+        let interaction = new THREE.Interaction(renderer, scene, camera);
+
+        let earthMaterial = new THREE.MeshPhongMaterial();
+        earthMaterial.map = THREE.ImageUtils.loadTexture('data/img/earthmap.jpg');
+
+        let earth = new THREE.Mesh(
+            new THREE.SphereGeometry(30, 32, 32),
+            earthMaterial
+        );
+
+        scene.add(earth);
+
+
+        for(let j = 0; j < 12; j++){
+          for(let i = 0; i < 13; i++){
+            let index = j * 13 + i
+
+            if(index < 147){
+              let cube = new THREE.Mesh(
+                new THREE.BoxGeometry(2, 2, 2),
+                new THREE.MeshPhongMaterial({ color: 0xffffff })
+              );
+              cube.cursor = 'pointer';
+
+              cube.position.x = 40 * Math.cos(Math.PI * 2 / 13 * i) * Math.sin(Math.PI * 2 / 12 * j);
+              cube.position.y = 40 * Math.sin(Math.PI * 2 / 13 * i) * Math.sin(Math.PI * 2 / 12 * j);
+              cube.position.z = 40 * Math.cos(Math.PI * 2 / 12 * j);
+              cube.zOffset = THREE.Math.randFloat(0.001, 0.005);
+              cube.name = 'cube-' + i;
+
+              let index = j * 13 + i
+
+              sats.push(cube);
+              scene.add(sats[index]);
+
+              sats[index].on('mousedown', function(ev) {
+                sats[index].material.color.r = 0;
+                selected = index;
+                console.log(selected);
+                document.getElementById('card-img').src = "data/img/" + selected + ".png";
+              });
+
+              sats[index].on('mouseup', function(ev) {
+                sats[index].material.color.r = 1;
+              });
+            
+            }
+          
+          }
+        }
+        
+        let ambient = new THREE.AmbientLight( 0x666666 );
+        scene.add( ambient );
+
+        let light = new THREE.PointLight(0xffffff);
+        light.position.set(20, 50, 10);
+        scene.add(light);
+
+        let frameCount = 0;
+
+        function render() {
+
+        	for(let i = 0; i < sats.length; i++){
+            sats[i].rotation.y += 0.01;
+        		sats[i].rotateAroundWorldAxis(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 1, 0), sats[i].zOffset);
+        	}
+          
+          renderer.render(scene, camera);
+          requestAnimationFrame(render);
+          frameCount++;
+        }
+        render();
+
+        function onWindowResize() {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+
+
+      </script>
+
+    </body>
+
+    </html>
+
