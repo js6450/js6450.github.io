@@ -3,6 +3,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <meta http-equiv="Cache-Control" content="no-cache">
       <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
       <title>Satellites</title>
 
     </head>
@@ -11,10 +12,11 @@
       body{
         margin: 0;
         overflow: hidden;
+        font-family: 'Ubuntu', sans-serif;
       }
 
       #card{
-        width: 31vw;
+        width: 26vw;
         height: 100vh;
         background: #0B1013;
         position: absolute;
@@ -25,13 +27,37 @@
       #card-img{
         margin: auto;
         display: block;
-        margin-top: 120px;
+        margin-top: 96px;
+      }
+
+      #info{
+        color: white;
+        position: absolute;
+        bottom: 0;
+        margin: 0px 24px;
+        margin-bottom: 48px;
+      }
+
+      #title{
+        text-align: center;
+      }
+
+      a{
+        color: white;
       }
     </style>
     <body>
       <canvas id="webgl"></canvas>
       <div id=card>
         <img width="60%" height="auto" id="card-img" src="data/img/cover.png">
+        <div id=info>
+            <h1 id="title">ABOVE US</h1>
+            <div id="hidden-info">
+              <p>In spirit Lisa Park’s <i>Stuff You Can Kick: Toward a Theory of Media Infrastructures</i>, this piece investigates the infrastructure of satellites. Satellites have become one of the most essential infrastructures that make distribution of media possible and like most media infrastructures, the extent of the structure is hard to be visually represented in one glance and no human can physically see the whole infrastructure. To add to this difficulty of visualizing infrastructures, satellites, once launched to the Earth’s orbit, are no longer visible to the human eye.
+              </p>
+              <p>Data from <a target="_blank" href="https://www.ucsusa.org/resources/satellite-database">Union of Concerned Scientists</a>.</p>
+            </div>
+        </div>
       </div>
       <script src="js/three.min.js"></script>
       <script src="js/three.interaction.js"></script>
@@ -57,7 +83,7 @@
 		    }();
 
         window.addEventListener('resize', onWindowResize, false);
-        let WIDTH = window.innerWidth * 0.7;
+        let WIDTH = window.innerWidth * 0.75;
         let HEIGHT = window.innerHeight;
         let camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.01, 1500);
         camera.position.z = 100;
@@ -149,9 +175,9 @@
         render();
 
         function onWindowResize() {
-          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.aspect = (window.innerWidth * 0.75) / window.innerHeight;
           camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.setSize(window.innerWidth * 0.75, window.innerHeight);
         }
 
 
